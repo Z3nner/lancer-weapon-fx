@@ -1,0 +1,18 @@
+{   
+   "name": "lancer-weapon-fx",   
+   "title": "Lancer Weapon FX",   
+   "description": "Manual Weapon special effects oriented towards Lancer TTRPG.",   
+   "author": "Z3nner",
+   "version": "1.0.0",
+   "minimumCoreVersion": "9",
+   "compatibleCoreVersion": "9",
+   "packs": [
+    {
+      "name": "WeaponFX",
+      "label": "Lancer Weapon FX",
+      "path": "packs/weaponfx.db",
+      "entity": "Macro",
+      "module": "lancer-weapon-fx"
+    }
+  ]
+ }
