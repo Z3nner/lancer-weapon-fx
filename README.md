@@ -15,6 +15,7 @@ async function fxAttack(){
     fxAttack();
 ```
 
-[INSERT GIF LATER]
+[weaponfxdemo](https://user-images.githubusercontent.com/76132631/155030217-4ee5c47e-00d5-49b8-8601-20117b0e9c08.gif)
 
-I am not a professional by any means and am open to suggestions and critiques.  I would love to improve this product and add new FX.
+
+I am not a professional by any means and am open to suggestions and critiques.  I would love to improve this product and add new FX so please don't hesitate to leave a suggestion.
