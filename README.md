@@ -9,7 +9,7 @@ These macros can be coupled with a player's attack rolls by first dragging the d
 
 ```
 async function fxAttack(){
-  await game.lancer.prepareItemMacro("//INSERT ID FROM ATTACK MACRO//", "//INSERT 2ND ID FROM ATTACK MACRO//";
+  await game.lancer.prepareItemMacro("//INSERT ID FROM ATTACK MACRO//", "//INSERT 2ND ID FROM ATTACK MACRO//");
     //FX FUNCTION CALL GOES HERE//
     }
     fxAttack();
