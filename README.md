@@ -1,5 +1,5 @@
 # lancer-weapon-fx
-## Weapon visual and Sound Effects for use primarily with the Lancer TTRPG system on Foundry.
+## Weapon visual and sound effects for use primarily with the Lancer TTRPG system on Foundry.
 This module requires the following modules be installed: Token Magic FX, Sequencer, JB2A, Jack Kerouac's Animated Spell Effects and Spell Effects Cartoon.
 Token Magic FX is used for the smoke grenade and smoke mine macros, Sequencer is used for the rest of the macros and the rest of the modules provide the assets.
 The sound effects and macro icons are all included with this module.
