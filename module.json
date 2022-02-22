@@ -8,7 +8,7 @@
    "compatibleCoreVersion": "9",
    "url": "https://github.com/Z3nner/lancer-weapon-fx",
    "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/module/module.json",
-   "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/module/lancerweaponfx1-2.zip",
+   "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/module/lancerweaponfx1-2-1.zip",
    "dependencies": [ { "name": "sequencer" }, { "name": "JB2A_DnD5e" }, { "name": "animated-spell-effects" }, { "name": "animated-spell-effects-cartoon" }, { "name": "tokenmagic" } ],
    "languages": [
 		{ "lang": "en", "name": "English", "path": "lang/en.json" } ],
