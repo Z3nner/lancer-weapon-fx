@@ -1,24 +1,45 @@
-{   
-   "name": "lancer-weapon-fx",   
-   "title": "Lancer Weapon FX",   
-   "description": "Manual Weapon special effects oriented towards Lancer TTRPG.",   
-   "author": "Z3nner",
-   "version": "1.3",
-   "minimumCoreVersion": "9",
-   "compatibleCoreVersion": "9",
-   "url": "https://github.com/Z3nner/lancer-weapon-fx",
-   "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module/module.json",
-   "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.zip",
-   "dependencies": [ { "name": "sequencer" }, { "name": "JB2A_DnD5e" }, { "name": "animated-spell-effects" }, { "name": "animated-spell-effects-cartoon" }, { "name": "tokenmagic" } ],
-   "languages": [
-		{ "lang": "en", "name": "English", "path": "lang/en.json" } ],
-   "packs": [
-    {
-      "name": "WeaponFX",
-      "label": "Lancer Weapon FX",
-      "path": "packs/weaponfx.db",
-      "entity": "Macro",
-      "module": "lancer-weapon-fx"
-    }
-  ]
- }
+{
+    "name": "lancer-weapon-fx",
+    "title": "Lancer Weapon FX",
+    "description": "Manual Weapon special effects oriented towards Lancer TTRPG.",
+    "author": "Z3nner",
+    "version": "v1.3",
+    "minimumCoreVersion": "9",
+    "compatibleCoreVersion": "9",
+    "url": "https://github.com/Z3nner/lancer-weapon-fx",
+    "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.json",
+    "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/v1.3/module.zip",
+    "dependencies": [
+        {
+            "name": "sequencer"
+        },
+        {
+            "name": "JB2A_DnD5e"
+        },
+        {
+            "name": "animated-spell-effects"
+        },
+        {
+            "name": "animated-spell-effects-cartoon"
+        },
+        {
+            "name": "tokenmagic"
+        }
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "packs": [
+        {
+            "name": "WeaponFX",
+            "label": "Lancer Weapon FX",
+            "path": "packs/weaponfx.db",
+            "entity": "Macro",
+            "module": "lancer-weapon-fx"
+        }
+    ]
+}
