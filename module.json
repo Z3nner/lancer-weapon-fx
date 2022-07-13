@@ -33,6 +33,7 @@
             "path": "lang/en.json"
         }
     ],
+    "esmodules": [ "./scripts/WeaponFX.js" ],
     "packs": [
         {
             "name": "WeaponFX",
