@@ -95,11 +95,11 @@ Hooks.on("createChatMessage", (data) => {
     let chatMessageDataContent = data.data.content ?? '';
     // Parse the chat message as XML so that we can navigate through it
     const parser = new DOMParser();
-    const chatMessage = parser.parseFromString(chatMessageDataContent, "text/xml");
+    const chatMessage = parser.parseFromString(chatMessageDataContent, "text/html");
     // try to get macro details from reroll data
     // reroll data is embedded in the chat message under the reroll link in the `data-macro` attribute of the reroll <a> tag.
     // the reroll data is a JSON string that has been `encodeURIComponent`'d and then base64-encoded.
-    let encodedRerollData = chatMessage.querySelectorAll("[data-macro]")?.[0].getAttribute("data-macro");
+    let encodedRerollData = chatMessage.querySelectorAll("[data-macro]")?.[0]?.getAttribute("data-macro");
     if (!encodedRerollData) {
         return;
     }
