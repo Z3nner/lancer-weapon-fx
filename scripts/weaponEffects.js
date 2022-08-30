@@ -31,7 +31,7 @@ const weaponEffects = {
     "npcf_chain_axe_berserker": "DefaultMelee",
     "mw_charged_blade": "Charged Blade",
     "npcf_claws_monstrosity": "Plasma Talons",
-    "mw_combat_drill": "DefaultMelee",
+    "mw_combat_drill": "Combat Drill",
     "npcf_combat_knife_assault": "DefaultMelee",
     "npcf_combat_shotgun_sentinel": "Shotgun",
     "npcf_concussion_gun_spacer": "Burst Launcher",
