@@ -35,6 +35,13 @@ function _getTokenByIdOrActorId(id) {
 }
 
 Hooks.once("sequencer.ready", async function () {
+    //Check if either free or Patreon JB2A module is installed and activated, otherwise return and display an error message.
+    if (!game.modules.get('jb2a_patreon')?.active && !game.modules.get('JB2A_DnD5e')?.active){
+        const message = "Lancer Weapon FX | You need either the Free or the Patreon version of JB2A for this module to work properly";
+        console.log(`%c ${message}`, `color: #dc143c`)
+        ui.notifications.error(message);
+        return {}
+    }
     // preload effects data
     await Sequencer.Preloader.preload([
         "jb2a.arrow.physical.blue",
