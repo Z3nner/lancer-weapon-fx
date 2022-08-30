@@ -3,12 +3,12 @@
     "title": "Lancer Weapon FX",
     "description": "Manual Weapon special effects oriented towards Lancer TTRPG.",
     "author": "Z3nner",
-    "version": "1.5",
+    "version": "1.5.4",
     "minimumCoreVersion": "9",
     "compatibleCoreVersion": "9",
     "url": "https://github.com/Z3nner/lancer-weapon-fx",
     "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.json",
-    "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/1.4.2/module.zip",
+    "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/1.5.3/module.zip",
     "dependencies": [
         {
             "name": "sequencer"
@@ -30,7 +30,9 @@
             "path": "lang/en.json"
         }
     ],
-    "esmodules": [ "./scripts/WeaponFX.js" ],
+    "esmodules": [
+        "./scripts/WeaponFX.js"
+    ],
     "packs": [
         {
             "name": "WeaponFX",
