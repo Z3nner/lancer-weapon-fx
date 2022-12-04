@@ -109,37 +109,46 @@ Hooks.on("createChatMessage", (data) => {
     // reroll data is embedded in the chat message under the reroll link in the `data-macro` attribute of the reroll <a> tag.
     // the reroll data is a JSON string that has been `encodeURIComponent`'d and then base64-encoded.
     let encodedRerollData = chatMessage.querySelectorAll("[data-macro]")?.[0]?.getAttribute("data-macro");
-    if (!encodedRerollData) {
-        return;
-    }
-    let rerollData = JSON.parse(decodeURIComponent(atob(encodedRerollData)));
     let weaponIdentifier, targetTokens, sourceToken;
-    if (rerollData.fn == "prepareEncodedAttackMacro") {
-        let sourceInfo = rerollData.args[0];
-        sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
-        targetTokens = rerollData.args[3].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        let weaponItemId = rerollData.args[1];
-        weaponIdentifier = sourceToken.actor.items.get(weaponItemId)?.data.data.lid;
-    } else if (rerollData.fn == "prepareTechMacro") {
-        sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
-        targetTokens = rerollData.args[2].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        weaponIdentifier = "default_tech_attack";
-    } else if (rerollData.fn == "prepareActivationMacro") {
-        sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
-        targetTokens = rerollData.args[4].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        let triggeringItem = sourceToken.actor.items.get(rerollData.args[1]);
-        if (triggeringItem) {
-            if (["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.data.data.actions[rerollData.args[3]].activation)) {
-                weaponIdentifier = "default_tech_attack";
-            } else {
-                return;
-            }
+    if (!encodedRerollData) {
+        const header = chatMessage.querySelector(".lancer-header");
+        const regexIsStabilize = /^\/\/ .+ HAS STABILIZED \/\/$/;
+        if (header && regexIsStabilize.test(header.innerHTML)) {
+            console.log("it's a stabilize!!");
+            sourceToken = _getTokenByIdOrActorId(data.data.speaker.actor);
+            weaponIdentifier = "lwfx_stabilize";
         } else {
             return;
         }
     } else {
-        // we don't serve your kind here
-        return;
+        let rerollData = JSON.parse(decodeURIComponent(atob(encodedRerollData)));
+        if (rerollData.fn == "prepareEncodedAttackMacro") {
+            let sourceInfo = rerollData.args[0];
+            sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
+            targetTokens = rerollData.args[3].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
+            let weaponItemId = rerollData.args[1];
+            weaponIdentifier = sourceToken.actor.items.get(weaponItemId)?.data.data.lid;
+        } else if (rerollData.fn == "prepareTechMacro") {
+            sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
+            targetTokens = rerollData.args[2].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
+            weaponIdentifier = "default_tech_attack";
+        } else if (rerollData.fn == "prepareActivationMacro") {
+            sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
+            targetTokens = rerollData.args[4].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
+            let triggeringItem = sourceToken.actor.items.get(rerollData.args[1]);
+            if (triggeringItem) {
+                if (["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.data.data.actions[rerollData.args[3]].activation)) {
+                    weaponIdentifier = "default_tech_attack";
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            }
+        } else {
+            // we don't serve your kind here
+            return;
+        }
     }
 
     const macroName = weaponEffects[weaponIdentifier];
