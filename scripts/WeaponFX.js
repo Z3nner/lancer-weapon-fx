@@ -59,6 +59,7 @@ Hooks.once("sequencer.ready", async function () {
         "jb2a.eldritch_blast.purple",
         "jb2a.energy_beam.normal.bluepink.02",
         "jb2a.energy_strands.complete.blue.01",
+        "jb2a.energy_strands.range.multiple.purple.01.30ft",
         "jb2a.explosion.01.orange",
         "jb2a.explosion.02.blue",
         "jb2a.explosion.03.blueyellow",
@@ -82,6 +83,7 @@ Hooks.once("sequencer.ready", async function () {
         "jb2a.lightning_bolt.narrow.blue",
         "jb2a.magic_missile.purple",
         "jb2a.spear.melee.01.white.2",
+        "jb2a.static_electricity.02.blue",
         "jb2a.sword.melee.01.white",
         "jb2a.template_circle.vortex.loop.blue",
         "jb2a.toll_the_dead.green.shockwave",
@@ -112,15 +114,38 @@ Hooks.on("createChatMessage", (data) => {
         return;
     }
     let rerollData = JSON.parse(decodeURIComponent(atob(encodedRerollData)));
-    const sourceInfo = rerollData.args[0];
-    const weaponItemId = rerollData.args[1];
-    const targetTokens = rerollData.args[3].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-    let sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
-    const weaponLID = sourceToken.actor.items.get(weaponItemId)?.data.data.lid;
+    let weaponIdentifier, targetTokens, sourceToken;
+    if (rerollData.fn == "prepareEncodedAttackMacro") {
+        let sourceInfo = rerollData.args[0];
+        sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
+        targetTokens = rerollData.args[3].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
+        let weaponItemId = rerollData.args[1];
+        weaponIdentifier = sourceToken.actor.items.get(weaponItemId)?.data.data.lid;
+    } else if (rerollData.fn == "prepareTechMacro") {
+        sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
+        targetTokens = rerollData.args[2].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
+        weaponIdentifier = "default_tech_attack";
+    } else if (rerollData.fn == "prepareActivationMacro") {
+        sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
+        targetTokens = rerollData.args[4].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
+        let triggeringItem = sourceToken.actor.items.get(rerollData.args[1]);
+        if (triggeringItem) {
+            if (["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.data.data.actions[rerollData.args[3]].activation)) {
+                weaponIdentifier = "default_tech_attack";
+            } else {
+                return;
+            }
+        } else {
+            return;
+        }
+    } else {
+        // we don't serve your kind here
+        return;
+    }
 
-    const macroName = weaponEffects[weaponLID];
+    const macroName = weaponEffects[weaponIdentifier];
     if (macroName) {
-        console.log("Lancer Weapon FX | Found macro '" + macroName + "' for weapon '" + weaponLID + "', playing animation");
+        console.log("Lancer Weapon FX | Found macro '" + macroName + "' for weapon '" + weaponIdentifier + "', playing animation");
         _executeMacroByName(macroName, sourceToken, targetTokens);
     }
 });

@@ -166,7 +166,8 @@ const weaponEffects = {
     "mw_vulture_dmr": "AMR",
     "mw_war_pike": "War Pike",
     "mw_warp_rifle": "Warp Rifle",
-    "mw_sherman_integrated": "Railgun"
+    "mw_sherman_integrated": "Railgun",
+    "default_tech_attack": "DefaultTech"
 };
 
 export { weaponEffects };
