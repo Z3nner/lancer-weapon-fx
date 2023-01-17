@@ -8,11 +8,11 @@ async function _executeMacroByName(
 ) {
     const pack = game.packs.get(compendiumName);
     if (pack) {
-        const macro_data = (await pack.getDocuments()).find((i) => i.data.name === macroName)?.toObject();
+        const macro_data = (await pack.getDocuments()).find((i) => i.name === macroName)?.toObject();
 
         if (macro_data) {
             const temp_macro = new Macro(macro_data);
-            temp_macro.data.permission.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+            temp_macro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
             temp_macro.execute(sourceToken, targetTokens);
         } else {
             ui.notifications.error("Lancer Weapon FX | Macro " + macroName + " not found");
@@ -102,7 +102,7 @@ Hooks.once("sequencer.ready", async function () {
 Hooks.on("createChatMessage", (data) => {
     // output the chat message data to console for easy reading
     if(game.user.id !== data.user.id) return
-    let chatMessageDataContent = data.data.content ?? '';
+    let chatMessageDataContent = data.content ?? '';
     // Parse the chat message as XML so that we can navigate through it
     const parser = new DOMParser();
     const chatMessage = parser.parseFromString(chatMessageDataContent, "text/html");
@@ -116,7 +116,7 @@ Hooks.on("createChatMessage", (data) => {
         const regexIsStabilize = /^\/\/ .+ HAS STABILIZED \/\/$/;
         if (header && regexIsStabilize.test(header.innerHTML)) {
             console.log("it's a stabilize!!");
-            sourceToken = _getTokenByIdOrActorId(data.data.speaker.actor);
+            sourceToken = _getTokenByIdOrActorId(data.speaker.actor);
             weaponIdentifier = "lwfx_stabilize";
         } else {
             return;
@@ -128,7 +128,7 @@ Hooks.on("createChatMessage", (data) => {
             sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
             targetTokens = rerollData.args[3].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
             let weaponItemId = rerollData.args[1];
-            weaponIdentifier = sourceToken.actor.items.get(weaponItemId)?.data.data.lid;
+            weaponIdentifier = sourceToken.actor.items.get(weaponItemId)?.system.lid;
         } else if (rerollData.fn == "prepareTechMacro") {
             sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
             targetTokens = rerollData.args[2].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
@@ -138,7 +138,7 @@ Hooks.on("createChatMessage", (data) => {
             targetTokens = rerollData.args[4].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
             let triggeringItem = sourceToken.actor.items.get(rerollData.args[1]);
             if (triggeringItem) {
-                if (["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.data.data.actions[rerollData.args[3]].activation)) {
+                if (["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.system.actions[rerollData.args[3]].activation)) {
                     weaponIdentifier = "default_tech_attack";
                 } else {
                     return;

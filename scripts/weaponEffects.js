@@ -168,7 +168,8 @@ const weaponEffects = {
     "mw_warp_rifle": "Warp Rifle",
     "mw_sherman_integrated": "Railgun",
     "default_tech_attack": "DefaultTech",
-    "lwfx_stabilize": "Stabilize"
+    "lwfx_stabilize": "Stabilize",
+    "d3beb9d7-b162-4614-a3c3-eee9e50d28ab": "Plasma Talons" // Amarok Claws
 };
 
 export { weaponEffects };
