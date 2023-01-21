@@ -6,7 +6,7 @@
         { "name": "Z3nner" },
         { "name": "dodgepong" }
     ],
-    "version": "1.6.0",
+    "version": "1.6.1",
     "minimumCoreVersion": "10",
     "compatibility": {
         "minimum": 10,
