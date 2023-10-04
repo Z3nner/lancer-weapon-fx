@@ -6,7 +6,7 @@ let sequence = new Sequence()
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/CPR_Fire.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
         .repeats(5, 125)
 
     sequence.effect()
@@ -18,7 +18,7 @@ let sequence = new Sequence()
         .waitUntilFinished(-1600)
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/CPR_Impact.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
         .repeats(5, 125)
     .waitUntilFinished
 }

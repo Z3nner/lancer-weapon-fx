@@ -1,5 +1,17 @@
 import { weaponEffects } from "./weaponEffects.js";
 
+// Register settings
+Hooks.on("init", () => {
+    game.settings.register("lancer-weapon-fx", "volume", {
+        name: "Sound Volume",
+        scope: "world",
+        config: true,
+        type: Number,
+        range: {min: 0.1, max: 2, step: 0.1},
+        default: 1.0,
+    });
+})
+
 async function _executeMacroByName(
     macroName,
     sourceToken = {},

@@ -5,7 +5,7 @@ let target = Array.from(game.user.targets)[0];
   for(let target of Array.from(game.user.targets)){
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/AR_Fire.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
       sequence.effect()
         .file("jb2a.bullet.01.orange") 
         .atLocation(canvas.tokens.controlled[0])

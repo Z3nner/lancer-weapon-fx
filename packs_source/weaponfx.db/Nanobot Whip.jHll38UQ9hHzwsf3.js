@@ -18,11 +18,11 @@ let gridscale = gridsize / 100;
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
 
-        .volume(0.7)
+        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"))
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
         .delay(300)
-        .volume(0.7)
+        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"))
     sequence.effect()
         .file("jb2a.impact.blue")
         .scale(0.4)

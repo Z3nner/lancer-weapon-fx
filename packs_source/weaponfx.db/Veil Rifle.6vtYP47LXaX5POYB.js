@@ -11,6 +11,6 @@ let sequence = new Sequence()
         .stretchTo(target)
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/veil_rifle.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
 }
     sequence.play();

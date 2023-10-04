@@ -26,7 +26,7 @@ let gridscale = gridsize / 100;
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg")
-        .volume(0.7)
+        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"))
         .repeats(8, 125)
         .delay(200)
     sequence.effect()

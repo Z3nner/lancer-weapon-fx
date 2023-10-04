@@ -5,7 +5,7 @@ let sequence = new Sequence()
   for(let target of Array.from(game.user.targets)){
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
         .waitUntilFinished()
 
     sequence.effect()
@@ -17,7 +17,7 @@ let sequence = new Sequence()
         .center()
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
     .waitUntilFinished(-400)
 }
     sequence.play();

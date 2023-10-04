@@ -12,7 +12,7 @@ let sequence = new Sequence()
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Laser_Fire.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
         .repeats(4, random)
     sequence.effect()
         .file("jb2a.impact.blue.2")

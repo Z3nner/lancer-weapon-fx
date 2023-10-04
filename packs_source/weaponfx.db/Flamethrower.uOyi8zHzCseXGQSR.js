@@ -44,5 +44,5 @@ let sequence = new Sequence()
         .scale({ x: 0.9, y: 1.2 })
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
-        .volume(0.5)
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
     .play();
