@@ -1,25 +1,25 @@
 {
-	"name": "Preload LancerWeaponFX",
-	"type": "script",
-	"author": "AZ3wQQG0mIDlDIfD",
-	"img": "modules/lancer-weapon-fx/icons/loadfx.png",
-	"scope": "global",
-	"folder": null,
-	"sort": 0,
-	"permission": {
-		"default": 0,
-		"AZ3wQQG0mIDlDIfD": 3
-	},
-	"flags": {
-		"combat-utility-belt": {
-			"macroTrigger": ""
-		},
-		"advanced-macros": {
-			"runAsGM": false
-		},
-		"core": {
-			"sourceId": "Macro.J3aMSzCKUaEbcPVJ"
-		}
-	},
-	"_id": "7DO055aDh1QmVHby"
+    "name": "Preload LancerWeaponFX",
+    "type": "script",
+    "author": "AZ3wQQG0mIDlDIfD",
+    "img": "modules/lancer-weapon-fx/icons/loadfx.png",
+    "scope": "global",
+    "folder": null,
+    "sort": 0,
+    "permission": {
+        "default": 0,
+        "AZ3wQQG0mIDlDIfD": 3
+    },
+    "flags": {
+        "combat-utility-belt": {
+            "macroTrigger": ""
+        },
+        "advanced-macros": {
+            "runAsGM": false
+        },
+        "core": {
+            "sourceId": "Macro.J3aMSzCKUaEbcPVJ"
+        }
+    },
+    "_id": "7DO055aDh1QmVHby"
 }

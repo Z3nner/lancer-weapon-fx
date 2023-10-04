@@ -1,6 +1,6 @@
 const args = arguments[0].args;
 
-const findCenterOfTargetGroup = function(targetTokens) {
+const findCenterOfTargetGroup = function (targetTokens) {
     let total_x = 0;
     let total_y = 0;
     const numTargets = targetTokens.length;
@@ -9,7 +9,7 @@ const findCenterOfTargetGroup = function(targetTokens) {
         total_x = total_x + center.x;
         total_y = total_y + center.y;
     });
-    return {x: (total_x / numTargets), y: (total_y / numTargets)}
+    return {x: (total_x / numTargets), y: (total_y / numTargets)};
 };
 
 let source, target;
@@ -38,11 +38,11 @@ if (args && args.length == 2 && args[0] && args[1]) {
 
 let sequence = new Sequence()
     .effect()
-        .file("jb2a.burning_hands.01.orange")
-        .atLocation(source)
-        .rotateTowards(target)
-        .scale({ x: 0.9, y: 1.2 })
+    .file("jb2a.burning_hands.01.orange")
+    .atLocation(source)
+    .rotateTowards(target)
+    .scale({x: 0.9, y: 1.2})
     .sound()
-        .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+    .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
+    .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
     .play();

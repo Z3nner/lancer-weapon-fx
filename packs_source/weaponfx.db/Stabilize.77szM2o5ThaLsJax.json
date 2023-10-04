@@ -1,24 +1,24 @@
 {
-	"_id": "77szM2o5ThaLsJax",
-	"name": "Stabilize",
-	"type": "script",
-	"author": "V1p3l3q12ZqIraMP",
-	"img": "modules/JB2A_DnD5e/Library/Generic/Healing/HealingAbility_01_Green_Thumb.webp",
-	"scope": "global",
-	"folder": null,
-	"sort": 0,
-	"permission": {
-		"V1p3l3q12ZqIraMP": 3
-	},
-	"flags": {
-		"core": {
-			"sourceId": "Macro.Ma4E3RObKZN56959"
-		},
-		"combat-utility-belt": {
-			"macroTrigger": ""
-		},
-		"advanced-macros": {
-			"runAsGM": false
-		}
-	}
+    "_id": "77szM2o5ThaLsJax",
+    "name": "Stabilize",
+    "type": "script",
+    "author": "V1p3l3q12ZqIraMP",
+    "img": "modules/JB2A_DnD5e/Library/Generic/Healing/HealingAbility_01_Green_Thumb.webp",
+    "scope": "global",
+    "folder": null,
+    "sort": 0,
+    "permission": {
+        "V1p3l3q12ZqIraMP": 3
+    },
+    "flags": {
+        "core": {
+            "sourceId": "Macro.Ma4E3RObKZN56959"
+        },
+        "combat-utility-belt": {
+            "macroTrigger": ""
+        },
+        "advanced-macros": {
+            "runAsGM": false
+        }
+    }
 }

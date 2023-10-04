@@ -1,25 +1,25 @@
 {
-	"_id": "hWPrLPzlj6Y5RvC5",
-	"name": "Lasers",
-	"type": "script",
-	"author": "V1p3l3q12ZqIraMP",
-	"img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Blue_Thumb.webp",
-	"scope": "global",
-	"folder": null,
-	"sort": 0,
-	"permission": {
-		"default": 0,
-		"V1p3l3q12ZqIraMP": 3
-	},
-	"flags": {
-		"combat-utility-belt": {
-			"macroTrigger": ""
-		},
-		"advanced-macros": {
-			"runAsGM": true
-		},
-		"core": {
-			"sourceId": "Macro.Jyj2zOE26351Q1rQ"
-		}
-	}
+    "_id": "hWPrLPzlj6Y5RvC5",
+    "name": "Lasers",
+    "type": "script",
+    "author": "V1p3l3q12ZqIraMP",
+    "img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Blue_Thumb.webp",
+    "scope": "global",
+    "folder": null,
+    "sort": 0,
+    "permission": {
+        "default": 0,
+        "V1p3l3q12ZqIraMP": 3
+    },
+    "flags": {
+        "combat-utility-belt": {
+            "macroTrigger": ""
+        },
+        "advanced-macros": {
+            "runAsGM": true
+        },
+        "core": {
+            "sourceId": "Macro.Jyj2zOE26351Q1rQ"
+        }
+    }
 }

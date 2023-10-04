@@ -1,25 +1,25 @@
 {
-	"name": "Retort Loop",
-	"type": "script",
-	"author": "V1p3l3q12ZqIraMP",
-	"img": "modules/JB2A_DnD5e/Library/Generic/Energy/EnergyBeam_02_Regular_BluePink_Thumb.webp",
-	"scope": "global",
-	"folder": null,
-	"sort": 0,
-	"permission": {
-		"default": 0,
-		"V1p3l3q12ZqIraMP": 3
-	},
-	"flags": {
-		"combat-utility-belt": {
-			"macroTrigger": ""
-		},
-		"advanced-macros": {
-			"runAsGM": false
-		},
-		"core": {
-			"sourceId": "Macro.MYvW9vDvnlzPxRLQ"
-		}
-	},
-	"_id": "NbTm6IW88EKyM6sN"
+    "name": "Retort Loop",
+    "type": "script",
+    "author": "V1p3l3q12ZqIraMP",
+    "img": "modules/JB2A_DnD5e/Library/Generic/Energy/EnergyBeam_02_Regular_BluePink_Thumb.webp",
+    "scope": "global",
+    "folder": null,
+    "sort": 0,
+    "permission": {
+        "default": 0,
+        "V1p3l3q12ZqIraMP": 3
+    },
+    "flags": {
+        "combat-utility-belt": {
+            "macroTrigger": ""
+        },
+        "advanced-macros": {
+            "runAsGM": false
+        },
+        "core": {
+            "sourceId": "Macro.MYvW9vDvnlzPxRLQ"
+        }
+    },
+    "_id": "NbTm6IW88EKyM6sN"
 }

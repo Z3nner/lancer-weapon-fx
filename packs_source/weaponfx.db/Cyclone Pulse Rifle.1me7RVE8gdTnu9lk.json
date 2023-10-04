@@ -1,25 +1,25 @@
 {
-	"_id": "1me7RVE8gdTnu9lk",
-	"name": "Cyclone Pulse Rifle",
-	"type": "script",
-	"author": "V1p3l3q12ZqIraMP",
-	"img": "modules/JB2A_DnD5e/Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
-	"scope": "global",
-	"folder": null,
-	"sort": 0,
-	"permission": {
-		"default": 0,
-		"V1p3l3q12ZqIraMP": 3
-	},
-	"flags": {
-		"core": {
-			"sourceId": "Macro.8CSStDFwPkXZUdDy"
-		},
-		"combat-utility-belt": {
-			"macroTrigger": ""
-		},
-		"advanced-macros": {
-			"runAsGM": false
-		}
-	}
+    "_id": "1me7RVE8gdTnu9lk",
+    "name": "Cyclone Pulse Rifle",
+    "type": "script",
+    "author": "V1p3l3q12ZqIraMP",
+    "img": "modules/JB2A_DnD5e/Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
+    "scope": "global",
+    "folder": null,
+    "sort": 0,
+    "permission": {
+        "default": 0,
+        "V1p3l3q12ZqIraMP": 3
+    },
+    "flags": {
+        "core": {
+            "sourceId": "Macro.8CSStDFwPkXZUdDy"
+        },
+        "combat-utility-belt": {
+            "macroTrigger": ""
+        },
+        "advanced-macros": {
+            "runAsGM": false
+        }
+    }
 }

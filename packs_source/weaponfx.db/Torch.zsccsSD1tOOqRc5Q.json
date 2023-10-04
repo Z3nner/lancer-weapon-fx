@@ -1,24 +1,24 @@
 {
-	"_id": "zsccsSD1tOOqRc5Q",
-	"name": "Torch",
-	"type": "script",
-	"author": "V1p3l3q12ZqIraMP",
-	"img": "modules/lancer-weapon-fx/icons/axe-swing.png",
-	"scope": "global",
-	"folder": null,
-	"sort": 0,
-	"permission": {
-		"V1p3l3q12ZqIraMP": 3
-	},
-	"flags": {
-		"core": {
-			"sourceId": "Macro.7HdAyp8kUFGxXkAG"
-		},
-		"combat-utility-belt": {
-			"macroTrigger": ""
-		},
-		"advanced-macros": {
-			"runAsGM": false
-		}
-	}
+    "_id": "zsccsSD1tOOqRc5Q",
+    "name": "Torch",
+    "type": "script",
+    "author": "V1p3l3q12ZqIraMP",
+    "img": "modules/lancer-weapon-fx/icons/axe-swing.png",
+    "scope": "global",
+    "folder": null,
+    "sort": 0,
+    "permission": {
+        "V1p3l3q12ZqIraMP": 3
+    },
+    "flags": {
+        "core": {
+            "sourceId": "Macro.7HdAyp8kUFGxXkAG"
+        },
+        "combat-utility-belt": {
+            "macroTrigger": ""
+        },
+        "advanced-macros": {
+            "runAsGM": false
+        }
+    }
 }

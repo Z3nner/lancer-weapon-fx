@@ -1,24 +1,24 @@
 let target = Array.from(game.user.targets)[0];
 
-let sequence = new Sequence()
+let sequence = new Sequence();
 
-  for(let target of Array.from(game.user.targets)){
+for (let target of Array.from(game.user.targets)) {
     sequence.effect()
         .file("modules/animated-spell-effects-cartoon/spell-effects/cartoon/mix/fire_earth_explosion_SQUARE_02.webm")
         .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .rotateTowards(target)
-        .scale(0.5)
+        .scale(0.5);
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Mortar_Launch.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
     sequence.effect()
-       .file("jb2a.explosion.03.blueyellow")
+        .file("jb2a.explosion.03.blueyellow")
         .atLocation(target, {randomOffset: true})
-        .repeats (3, 125)
-        .delay(900)
-     sequence.sound()
-       .file("modules/lancer-weapon-fx/soundfx/Mortar_Impact.ogg")
-       .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
-       .delay(900)
+        .repeats(3, 125)
+        .delay(900);
+    sequence.sound()
+        .file("modules/lancer-weapon-fx/soundfx/Mortar_Impact.ogg")
+        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .delay(900);
 }
-    sequence.play();
+sequence.play();

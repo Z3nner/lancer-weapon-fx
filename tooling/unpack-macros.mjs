@@ -41,7 +41,7 @@ fs.readdirSync(DIR_PACKS)
 
                 fs.writeFileSync(outPathScript, json.command, "utf-8");
                 delete json.command;
-                fs.writeFileSync(outPathJson, JSON.stringify(json, null, "\t"), "utf-8");
+                fs.writeFileSync(outPathJson, JSON.stringify(json, null, 4), "utf-8");
 
                 console.log(`Unpacked "${json.name}"`);
             });
