@@ -10,7 +10,7 @@ let gridscale = gridsize / 100;
         .scale(0.6)
 
         .filter("Glow", { color: 0xd7d23c })
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .spriteOffset({x: -10 * gridscale, y:10 * gridscale})
         .moveTowards(target)
         .moveSpeed(100)
@@ -19,7 +19,7 @@ let gridscale = gridsize / 100;
     sequence.effect()
         .file("jb2a.gust_of_wind.veryfast")
         .scale(0.2)
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .moveTowards(target)
         .zIndex(2)
         .delay(50)

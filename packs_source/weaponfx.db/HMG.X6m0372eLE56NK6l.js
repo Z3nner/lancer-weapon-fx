@@ -8,7 +8,7 @@ let target = Array.from(game.user.targets)[0];
         .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
       sequence.effect()
         .file("jb2a.bullet.01.orange") 
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .stretchTo(target, {randomOffset: 0.3})
         .repeats(7, 50)
 		.scale(0.5)

@@ -5,7 +5,7 @@ let sequence = new Sequence()
   for(let target of Array.from(game.user.targets)){
     sequence.effect()
         .file("jb2a.lasershot.green") 
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .stretchTo(target, {randomOffset: 0.4})
         .repeats(3, 300)
     sequence.sound()

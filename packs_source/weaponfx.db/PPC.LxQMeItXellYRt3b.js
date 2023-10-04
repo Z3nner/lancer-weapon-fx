@@ -10,7 +10,7 @@ let sequence = new Sequence()
     sequence.effect()
         .file("jb2a.chain_lightning.primary.blue")
         .scale(0.7)
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .stretchTo(target)
 }
     sequence.play();

@@ -10,7 +10,7 @@ targets.forEach(target => {
         .file("jb2a.energy_strands.range.multiple.purple.01.30ft")
 	.scale(1.4)
 	.playbackRate(1.5)
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .stretchTo(target)
         .waitUntilFinished(-800)
     .sound()

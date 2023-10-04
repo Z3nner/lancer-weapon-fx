@@ -9,7 +9,7 @@ let gridscale = gridsize / 100;
     sequence.effect()
         .file("jb2a.divine_smite.target.blueyellow")
         .scale(0.8)
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .rotateTowards(target)
         .spriteOffset({x: -160 * gridscale, y:90 * gridscale})
         .rotate(90)

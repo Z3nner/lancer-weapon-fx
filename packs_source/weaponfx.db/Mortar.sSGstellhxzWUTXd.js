@@ -5,7 +5,7 @@ let sequence = new Sequence()
   for(let target of Array.from(game.user.targets)){
     sequence.effect()
         .file("modules/animated-spell-effects-cartoon/spell-effects/cartoon/mix/fire_earth_explosion_SQUARE_02.webm")
-        .atLocation(canvas.tokens.controlled[0])
+        .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
         .rotateTowards(target)
         .scale(0.5)
     sequence.sound()
