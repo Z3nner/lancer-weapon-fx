@@ -1,0 +1,25 @@
+{
+	"name": "Burst Launcher",
+	"type": "script",
+	"author": "o4uIv78Hm1yumC2C",
+	"img": "modules/lancer-weapon-fx/icons/airburst.png",
+	"scope": "global",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"default": 0,
+		"o4uIv78Hm1yumC2C": 3
+	},
+	"flags": {
+		"core": {
+			"sourceId": "Macro.7HdAyp8kUFGxXkAG"
+		},
+		"combat-utility-belt": {
+			"macroTrigger": ""
+		},
+		"advanced-macros": {
+			"runAsGM": false
+		}
+	},
+	"_id": "EHls7n7amW2fEZ97"
+}

@@ -1,0 +1,7 @@
+{
+    "type": "module",
+    "scripts": {
+        "db:unpack": "node tooling/unpack-macros.mjs",
+        "db:pack": "node tooling/pack-macros.mjs"
+    }
+}

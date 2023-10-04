@@ -1,0 +1,25 @@
+{
+	"name": "Flechette Launcher",
+	"type": "script",
+	"author": "o4uIv78Hm1yumC2C",
+	"img": "modules/lancer-weapon-fx/icons/crowned-explosion.png",
+	"scope": "global",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"default": 0,
+		"o4uIv78Hm1yumC2C": 3
+	},
+	"flags": {
+		"combat-utility-belt": {
+			"macroTrigger": ""
+		},
+		"advanced-macros": {
+			"runAsGM": false
+		},
+		"core": {
+			"sourceId": "Macro.ZlM1qLZ3IUaxzhDW"
+		}
+	},
+	"_id": "4znqR8pQvSs3KpZo"
+}

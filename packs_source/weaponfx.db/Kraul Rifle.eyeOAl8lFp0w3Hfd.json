@@ -1,0 +1,25 @@
+{
+	"_id": "eyeOAl8lFp0w3Hfd",
+	"name": "Kraul Rifle",
+	"type": "script",
+	"author": "V1p3l3q12ZqIraMP",
+	"img": "modules/lancer-weapon-fx/icons/harpoon-chain.png",
+	"scope": "global",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"default": 0,
+		"V1p3l3q12ZqIraMP": 3
+	},
+	"flags": {
+		"combat-utility-belt": {
+			"macroTrigger": ""
+		},
+		"advanced-macros": {
+			"runAsGM": false
+		},
+		"core": {
+			"sourceId": "Macro.UnZmFVh9t9J5M8j7"
+		}
+	}
+}

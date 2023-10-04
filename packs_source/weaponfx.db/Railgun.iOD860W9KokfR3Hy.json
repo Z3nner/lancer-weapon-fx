@@ -1,0 +1,25 @@
+{
+	"name": "Railgun",
+	"type": "script",
+	"author": "V1p3l3q12ZqIraMP",
+	"img": "modules/lancer-weapon-fx/icons/supersonic-bullet.png",
+	"scope": "global",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"default": 0,
+		"V1p3l3q12ZqIraMP": 3
+	},
+	"flags": {
+		"combat-utility-belt": {
+			"macroTrigger": ""
+		},
+		"advanced-macros": {
+			"runAsGM": false
+		},
+		"core": {
+			"sourceId": "Macro.e2KnuysIXP5IhXFy"
+		}
+	},
+	"_id": "iOD860W9KokfR3Hy"
+}

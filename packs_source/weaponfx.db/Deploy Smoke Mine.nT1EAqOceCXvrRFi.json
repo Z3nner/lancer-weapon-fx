@@ -1,0 +1,22 @@
+{
+	"_id": "nT1EAqOceCXvrRFi",
+	"name": "Deploy Smoke Mine",
+	"type": "script",
+	"author": "V1p3l3q12ZqIraMP",
+	"img": "icons/svg/acid.svg",
+	"scope": "global",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"default": 0,
+		"V1p3l3q12ZqIraMP": 3
+	},
+	"flags": {
+		"core": {
+			"sourceId": "Macro.DQjpFvFEGSrSzSYq"
+		},
+		"combat-utility-belt": {
+			"macroTrigger": ""
+		}
+	}
+}

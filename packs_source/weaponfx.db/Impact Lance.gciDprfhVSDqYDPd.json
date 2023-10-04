@@ -1,0 +1,24 @@
+{
+	"name": "Impact Lance",
+	"type": "script",
+	"author": "V1p3l3q12ZqIraMP",
+	"img": "modules/JB2A_DnD5e/Library/6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
+	"scope": "global",
+	"folder": null,
+	"sort": 0,
+	"permission": {
+		"V1p3l3q12ZqIraMP": 3
+	},
+	"flags": {
+		"core": {
+			"sourceId": "Macro.7HdAyp8kUFGxXkAG"
+		},
+		"combat-utility-belt": {
+			"macroTrigger": ""
+		},
+		"advanced-macros": {
+			"runAsGM": false
+		}
+	},
+	"_id": "gciDprfhVSDqYDPd"
+}
