@@ -1,3 +1,5 @@
+let target = Array.from(game.user.targets)[0];
+let scale = 0.1 * target.actor.data.data.derived.mm.Size;
 let gridsize = canvas.grid.grid.options.dimensions.size;
 let gridscale = gridsize / 100;
 
@@ -17,7 +19,7 @@ let sequence = new Sequence()
     .waitUntilFinished(200);
 sequence.effect()
     .file("jb2a.fumes.steam.white")
-    .atLocation(canvas.tokens.controlled[0], {offset: {x: (50 * gridscale), y: (-50 * gridscale)})
+    .atLocation(canvas.tokens.controlled[0], {offset: {x: (50 * gridscale), y: (-50 * gridscale)}})
     .scale(scale)
     .scaleOut(3, 6000)
     .opacity(0.8);
