@@ -16,7 +16,6 @@ Hooks.on("init", () => {
 async function _executeMacroByName(
     macroName,
     sourceToken = {},
-    targetTokens = [],
     compendiumName = "lancer-weapon-fx.WeaponFX"
 ) {
     const pack = game.packs.get(compendiumName);
@@ -26,7 +25,7 @@ async function _executeMacroByName(
         if (macro_data) {
             const temp_macro = new Macro(macro_data);
             temp_macro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
-            temp_macro.execute(sourceToken, targetTokens);
+            temp_macro.execute({actor: sourceToken.actor, token: sourceToken});
         } else {
             ui.notifications.error("Lancer Weapon FX | Macro " + macroName + " not found");
         }
@@ -175,11 +174,11 @@ Hooks.on("createChatMessage", (data) => {
     const messageMeta = getMessageInfo({data});
     if (messageMeta == null) return;
 
-    const {weaponIdentifier, sourceToken, targetTokens} = messageMeta;
+    const {weaponIdentifier, sourceToken} = messageMeta;
 
     const macroName = weaponEffects[weaponIdentifier];
     if (!macroName) return;
 
     console.log("Lancer Weapon FX | Found macro '" + macroName + "' for weapon '" + weaponIdentifier + "', playing animation");
-    _executeMacroByName(macroName, sourceToken, targetTokens).then(null);
+    _executeMacroByName(macroName, sourceToken).then(null);
 });
