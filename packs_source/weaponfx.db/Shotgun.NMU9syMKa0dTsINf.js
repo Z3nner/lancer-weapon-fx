@@ -5,14 +5,14 @@ let sequence = new Sequence();
 for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_cycle.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .delay(500);
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_impact.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .delay(800);
     sequence.effect()
         .file("jb2a.bullet.01.orange")

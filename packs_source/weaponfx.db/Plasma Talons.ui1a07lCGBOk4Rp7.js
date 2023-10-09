@@ -11,7 +11,7 @@ for (let target of Array.from(game.user.targets)) {
         .atLocation(target);
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Melee.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .repeats(2, 200);
     sequence.effect()
         .file("jb2a.impact.blue.2")

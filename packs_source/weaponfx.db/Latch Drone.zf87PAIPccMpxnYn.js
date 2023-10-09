@@ -12,11 +12,11 @@ for (let target of Array.from(game.user.targets)) {
         .moveSpeed(1200);
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Mortar_Launch.ogg")
-        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
         .waitUntilFinished()
         .sound()
         .file("modules/lancer-weapon-fx/soundfx/Stabilize.ogg")
-        .volume(0.9 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.9))
         .delay(200)
         .effect()
         .file("jb2a.healing_generic.400px.green")

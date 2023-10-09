@@ -7,5 +7,5 @@ let sequence = new Sequence()
     .rotateTowards(target)
     .sound()
     .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
-    .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .play();

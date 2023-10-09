@@ -5,7 +5,7 @@ let sequence = new Sequence();
 for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/RetortLoop.ogg")
-        .volume(0.8 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
     sequence.effect()
         .file("jb2a.energy_beam.normal.bluepink.02")
         .scale(0.7)

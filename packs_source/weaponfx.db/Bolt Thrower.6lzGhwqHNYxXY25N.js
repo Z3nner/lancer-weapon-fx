@@ -6,7 +6,7 @@ for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg")
         .delay(200)
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect()
         .file("jb2a.bolt.physical.orange")
         .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
@@ -15,7 +15,7 @@ for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
         .delay(700)
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect()
         .file("jb2a.explosion.01.orange")
         .atLocation(target)

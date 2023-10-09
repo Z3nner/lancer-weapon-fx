@@ -17,12 +17,12 @@ for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
         .repeats(6, 300)
-        .volume(0.6 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6));
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
         .delay(300)
         .repeats(5, 300)
-        .volume(0.8 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
     sequence.effect()
         .file("jb2a.impact.blue")
         .scale(0.4)

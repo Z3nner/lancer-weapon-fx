@@ -5,7 +5,7 @@ let sequence = new Sequence();
 for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/AssaultCannonFire.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)

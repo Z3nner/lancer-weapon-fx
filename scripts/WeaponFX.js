@@ -1,4 +1,5 @@
 import { weaponEffects } from "./weaponEffects.js";
+import "./api.js";
 
 // Register settings
 Hooks.on("init", () => {

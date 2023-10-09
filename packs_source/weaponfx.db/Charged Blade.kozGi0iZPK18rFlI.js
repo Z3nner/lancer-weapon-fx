@@ -11,11 +11,11 @@ for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Axe_swing.ogg")
         .delay(900)
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Melee.ogg")
         .delay(1200)
-        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
     sequence.effect()
         .file("jb2a.impact.blue.3")
         .scale(1.2)

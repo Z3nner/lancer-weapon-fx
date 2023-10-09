@@ -11,11 +11,11 @@ for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/knuckleswing.ogg")
         .delay(300)
-        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/knucklehit.ogg")
         .delay(600)
-        .volume(0.8 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
         .waitUntilFinished(-100);
 }
 sequence.play();

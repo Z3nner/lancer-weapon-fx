@@ -26,7 +26,7 @@ for (let target of Array.from(game.user.targets)) {
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg")
-        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
         .repeats(8, 125)
         .delay(200);
     sequence.effect()

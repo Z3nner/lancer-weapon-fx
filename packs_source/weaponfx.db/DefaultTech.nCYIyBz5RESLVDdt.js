@@ -5,7 +5,7 @@ targets.forEach(target => {
 
         .sound()
         .file("modules/lancer-weapon-fx/soundfx/Nexus_Fire.ogg")
-        .volume(0.7 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
         .effect()
         .file("jb2a.energy_strands.range.multiple.purple.01.30ft")
         .scale(1.4)
@@ -15,7 +15,7 @@ targets.forEach(target => {
         .waitUntilFinished(-800)
         .sound()
         .file("modules/lancer-weapon-fx/soundfx/PPC2.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .effect()
         .file("jb2a.static_electricity.02.blue")
         .scale(0.5)

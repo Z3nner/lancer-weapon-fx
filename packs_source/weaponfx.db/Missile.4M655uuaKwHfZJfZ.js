@@ -5,10 +5,10 @@ let sequence = new Sequence();
 for (let target of Array.from(game.user.targets)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect()
         .file("modules/animated-spell-effects/spell-effects/air/black_smoke_RAY_01.webm")
         .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
@@ -17,7 +17,7 @@ for (let target of Array.from(game.user.targets)) {
         .waitUntilFinished(-3700);
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect()
         .file("jb2a.explosion.01.orange")
         .atLocation(target)

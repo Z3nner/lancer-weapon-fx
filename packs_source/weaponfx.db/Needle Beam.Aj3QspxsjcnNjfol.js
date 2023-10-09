@@ -6,7 +6,7 @@ for (let target of Array.from(game.user.targets)) {
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(-1200);
     sequence.effect()
         .file("jb2a.lasershot.green")
@@ -15,7 +15,7 @@ for (let target of Array.from(game.user.targets)) {
         .repeats(2, 300);
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Plasma_Fire.ogg")
-        .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .repeats(2, 300);
     sequence.effect()
         .file("jb2a.impact.orange.0")

@@ -1,7 +1,7 @@
 let sequence = new Sequence()
     .sound()
     .file("modules/lancer-weapon-fx/soundfx/Flechette.ogg")
-    .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
     .file("jb2a.explosion.04.blue")
     .playbackRate(2)
