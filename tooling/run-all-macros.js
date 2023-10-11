@@ -1,5 +1,5 @@
 /**
- * A macro to run through all macros in the compendium.
+ * A macro to run through all macros in the compendium, testing hit/miss versions where available.
  */
 (async () => {
     const tokenSource = canvas.tokens.controlled[0];
@@ -14,29 +14,68 @@
         "Preload LancerWeaponFX",
     ]);
 
+    const NAMES_NO_MISS = new Set([
+        "Apply Smoke Grenade",
+        "Deploy Smoke Mine",
+        "Flechette Launcher",
+        "Flamethrower",
+        "LockOn",
+        "Plasma Thrower",
+        "Plasma Torch",
+        "Stabilize",
+    ]);
+
     // ---
 
-    const pDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    // Patch the API function to allow us to return specific values
+    const api = game.modules.get("lancer-weapon-fx").api;
+    const fnCache = api.getMacroVariables.bind(api);
 
-    const packMacros = game.packs.get("lancer-weapon-fx.WeaponFX");
-    const macros = [...(await packMacros.getDocuments())]
-        .sort((a, b) => a.name.localeCompare(b.name, {sensitivity: "base"}));
+    let isMiss = false;
+    api.getMacroVariables = () => {
+        return {
+            sourceToken: tokenSource,
+            targetsMissed: isMiss ? new Set([tokenTarget.id]) : new Set(),
+            targetTokens: [tokenTarget],
+        };
+    };
 
-    for (const macro of macros) {
-        if (NAMES_BLOCKLIST.has(macro.name)) continue;
+    // ---
 
-			const macroData = macro.toObject();
+    try {
+        const pDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-			const tempMacro = new Macro(macroData);
-			tempMacro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+        const packMacros = game.packs.get("lancer-weapon-fx.WeaponFX");
+        const macros = [...(await packMacros.getDocuments())]
+            .sort((a, b) => a.name.localeCompare(b.name, {sensitivity: "base"}));
 
-			ui.notifications.info(`Playing "${macroData.name}"`);
+        for (const macro of macros) {
+            if (NAMES_BLOCKLIST.has(macro.name)) continue;
 
-			tempMacro.execute(tokenSource, [tokenTarget]);
+            const missVals = NAMES_NO_MISS.has(macro.name) ? [null] : [true, false];
 
-			await pDelay(3000);
+            for (const _isMiss of missVals) {
+                isMiss = _isMiss;
 
-			TokenMagic.deleteFilters(tokenSource);
-			TokenMagic.deleteFilters(tokenTarget);
+                const macroData = macro.toObject();
+
+                const tempMacro = new Macro(macroData);
+                tempMacro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+
+                const ptMessageMiss = isMiss != null
+                    ? ` (${isMiss ? "Miss" : "Hit"})`
+                    : "";
+                ui.notifications.info(`Playing "${macroData.name}"${ptMessageMiss}`);
+
+                tempMacro.execute(tokenSource, [tokenTarget]);
+
+                await pDelay(3000);
+
+                TokenMagic.deleteFilters(tokenSource);
+                TokenMagic.deleteFilters(tokenTarget);
+            }
+        }
+    } finally {
+        api.getMacroVariables = fnCache;
     }
 })();
