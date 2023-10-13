@@ -2,6 +2,9 @@
     "type": "module",
     "scripts": {
         "db:unpack": "node tooling/unpack-macros.mjs",
-        "db:pack": "node tooling/pack-macros.mjs"
+        "db:pack": "node tooling/pack-macros.mjs",
+
+        "test": "npm run test:packs",
+        "test:packs": "npm run db:pack && git diff --no-patch --exit-code packs/weaponfx.db && echo 'Pack test passed!'"
     }
 }

@@ -28,7 +28,7 @@ fs.readdirSync(DIR_PACKS_SOURCE)
             path.join(DIR_PACKS, dir),
             docs
                 .map(json => JSON.stringify(json))
-                .join("\n"),
+                .join("\n") + "\n",
             "utf-8",
         );
         console.log(`Packed ${docs.length} documents into ${dir}`);
