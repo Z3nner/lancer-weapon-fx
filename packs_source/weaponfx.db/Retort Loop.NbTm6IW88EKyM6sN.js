@@ -19,7 +19,8 @@ for (const target of targetTokens) {
             .scale(0.3)
             .atLocation(target, {randomOffset: 0.9})
             .repeats(8, 300)
-            .delay(500);
+            .delay(500)
+            .waitUntilFinished();
     }
 }
 sequence.play();

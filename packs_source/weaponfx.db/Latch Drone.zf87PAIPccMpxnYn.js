@@ -25,7 +25,8 @@ for (const target of targetTokens) {
             .file("jb2a.healing_generic.400px.green")
             .atLocation(target)
             .scale(0.5)
-            .delay(200);
+            .delay(200)
+            .waitUntilFinished();
     }
 }
 sequence.play();
