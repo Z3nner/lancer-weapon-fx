@@ -9,7 +9,7 @@ Hooks.on("init", () => {
         scope: "world",
         config: true,
         type: Number,
-        range: {min: 0.1, max: 2, step: 0.1},
+        range: {min: 0, max: 2, step: 0.1},
         default: 1.0,
     });
 })
