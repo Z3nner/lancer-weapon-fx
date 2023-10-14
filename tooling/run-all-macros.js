@@ -3,10 +3,10 @@
  */
 (async () => {
     const tokenSource = canvas.tokens.controlled[0];
-    if (!tokenSource) return ui.notifications.warning("Please select a source token first!");
+    if (!tokenSource) return ui.notifications.warn("Please select a source token first!");
 
-    const tokenTarget = [...game.user.targets][0];
-    if (!tokenTarget) return ui.notifications.warning("Please select a target token first!");
+    const tokenTargets = [...game.user.targets];
+    if (!tokenTargets.length) return ui.notifications.warn("Please select some target tokens first!");
 
     // ---
 
@@ -35,8 +35,8 @@
     api.getMacroVariables = () => {
         return {
             sourceToken: tokenSource,
-            targetsMissed: isMiss ? new Set([tokenTarget.id]) : new Set(),
-            targetTokens: [tokenTarget],
+            targetsMissed: isMiss ? new Set(tokenTargets.map(token => token.id)) : new Set(),
+            targetTokens: tokenTargets,
         };
     };
 
@@ -65,14 +65,14 @@
                 const ptMessageMiss = isMiss != null
                     ? ` (${isMiss ? "Miss" : "Hit"})`
                     : "";
-                ui.notifications.info(`Playing "${macroData.name}"${ptMessageMiss}`);
+                ui.notifications.warn(`Playing "${macroData.name}"${ptMessageMiss}`);
 
-                tempMacro.execute(tokenSource, [tokenTarget]);
+                tempMacro.execute(tokenSource, tokenTargets);
 
                 await pDelay(3000);
 
                 TokenMagic.deleteFilters(tokenSource);
-                TokenMagic.deleteFilters(tokenTarget);
+                tokenTargets.forEach(token => TokenMagic.deleteFilters(token));
             }
         }
     } finally {
