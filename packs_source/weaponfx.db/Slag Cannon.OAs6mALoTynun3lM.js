@@ -6,7 +6,7 @@ let scale = 0.1 * target.actor.system.derived.mm.Size;
 let sequence = new Sequence()
     .sound()
     .file("modules/lancer-weapon-fx/soundfx/CPR_Fire.ogg")
-    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1.0))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
     .effect()
     .file("jb2a.energy_strands.complete.blue.01")
     .tint("#ceb673")
@@ -20,7 +20,7 @@ let sequence = new Sequence()
 if (!targetsMissed.has(target.id)) {
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerHit1.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1.0))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
         .repeats(3, 100)
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6));
     sequence.effect()
