@@ -12,6 +12,14 @@ Hooks.on("init", () => {
         range: {min: 0, max: 2, step: 0.1},
         default: 1.0,
     });
+
+    game.settings.register("lancer-weapon-fx", "debug-is-default-miss", {
+        name: "lancer-weapon-fx.Debug: Play Miss Animations by Default",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
+    });
 })
 
 async function _executeMacroByName(

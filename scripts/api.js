@@ -14,7 +14,9 @@ class ModuleApi {
             return {
                 sourceToken: sourceTokenFallback,
                 targetTokens: targetsFallback,
-                targetsMissed: new Set(),
+                targetsMissed: game.settings.get("lancer-weapon-fx", "debug-is-default-miss")
+                    ? new Set(targetsFallback.map(target => target.id))
+                    : new Set(),
             };
         }
 
