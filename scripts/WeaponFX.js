@@ -6,6 +6,7 @@ import {getMessageInfo} from "./messageParser.js";
 Hooks.on("init", () => {
     game.settings.register("lancer-weapon-fx", "volume", {
         name: "lancer-weapon-fx.Sound Volume",
+        hint: "lancer-weapon-fx.Sound Volume Hint",
         scope: "world",
         config: true,
         type: Number,
