@@ -1,12 +1,12 @@
 /**
- * A macro to run through all macros in the compendium.
+ * A macro to run through all macros in the compendium, testing hit/miss versions where available.
  */
 (async () => {
     const tokenSource = canvas.tokens.controlled[0];
-    if (!tokenSource) return ui.notifications.warning("Please select a source token first!");
+    if (!tokenSource) return ui.notifications.warn("Please select a source token first!");
 
-    const tokenTarget = [...game.user.targets][0];
-    if (!tokenTarget) return ui.notifications.warning("Please select a target token first!");
+    const tokenTargets = [...game.user.targets];
+    if (!tokenTargets.length) return ui.notifications.warn("Please select some target tokens first!");
 
     // ---
 
@@ -14,29 +14,68 @@
         "Preload LancerWeaponFX",
     ]);
 
+    const NAMES_NO_MISS = new Set([
+        "Apply Smoke Grenade",
+        "Deploy Smoke Mine",
+        "Flechette Launcher",
+        "Flamethrower",
+        "LockOn",
+        "Plasma Thrower",
+        "Plasma Torch",
+        "Stabilize",
+    ]);
+
     // ---
 
-    const pDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    // Patch the API function to allow us to return specific values
+    const api = game.modules.get("lancer-weapon-fx").api;
+    const fnCache = api.getMacroVariables.bind(api);
 
-    const packMacros = game.packs.get("lancer-weapon-fx.WeaponFX");
-    const macros = [...(await packMacros.getDocuments())]
-        .sort((a, b) => a.name.localeCompare(b.name, {sensitivity: "base"}));
+    let isMiss = false;
+    api.getMacroVariables = () => {
+        return {
+            sourceToken: tokenSource,
+            targetsMissed: isMiss ? new Set(tokenTargets.map(token => token.id)) : new Set(),
+            targetTokens: tokenTargets,
+        };
+    };
 
-    for (const macro of macros) {
-        if (NAMES_BLOCKLIST.has(macro.name)) continue;
+    // ---
 
-			const macroData = macro.toObject();
+    try {
+        const pDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-			const tempMacro = new Macro(macroData);
-			tempMacro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+        const packMacros = game.packs.get("lancer-weapon-fx.WeaponFX");
+        const macros = [...(await packMacros.getDocuments())]
+            .sort((a, b) => a.name.localeCompare(b.name, {sensitivity: "base"}));
 
-			ui.notifications.info(`Playing "${macroData.name}"`);
+        for (const macro of macros) {
+            if (NAMES_BLOCKLIST.has(macro.name)) continue;
 
-			tempMacro.execute(tokenSource, [tokenTarget]);
+            const missVals = NAMES_NO_MISS.has(macro.name) ? [null] : [true, false];
 
-			await pDelay(3000);
+            for (const _isMiss of missVals) {
+                isMiss = _isMiss;
 
-			TokenMagic.deleteFilters(tokenSource);
-			TokenMagic.deleteFilters(tokenTarget);
+                const macroData = macro.toObject();
+
+                const tempMacro = new Macro(macroData);
+                tempMacro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+
+                const ptMessageMiss = isMiss != null
+                    ? ` (${isMiss ? "Miss" : "Hit"})`
+                    : "";
+                ui.notifications.warn(`Playing "${macroData.name}"${ptMessageMiss}`);
+
+                tempMacro.execute(tokenSource, tokenTargets);
+
+                await pDelay(3000);
+
+                TokenMagic.deleteFilters(tokenSource);
+                tokenTargets.forEach(token => TokenMagic.deleteFilters(token));
+            }
+        }
+    } finally {
+        api.getMacroVariables = fnCache;
     }
 })();

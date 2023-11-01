@@ -1,0 +1,19 @@
+name: Release Creation
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      name: Checkout
+
+    - uses: actions/setup-node@v3
+      name: Setup Node
+      with:
+        node-version: latest
+    - name: Run Tests
+      run: |
+        npm ci
+        npm test

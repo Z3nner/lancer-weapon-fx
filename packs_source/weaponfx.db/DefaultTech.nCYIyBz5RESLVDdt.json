@@ -2,24 +2,7 @@
     "_id": "nCYIyBz5RESLVDdt",
     "name": "DefaultTech",
     "type": "script",
-    "author": "AZ3wQQG0mIDlDIfD",
+    "author": "LancerWeaponFX00",
     "img": "modules/lancer-weapon-fx/icons/processor.png",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "AZ3wQQG0mIDlDIfD": 3
-    },
-    "flags": {
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        },
-        "core": {
-            "sourceId": "Macro.Dp0FTIgouxTBxtbj"
-        }
-    }
+    "scope": "global"
 }

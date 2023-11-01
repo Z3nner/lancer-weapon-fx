@@ -1,24 +1,31 @@
-let target = Array.from(game.user.targets)[0];
+const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
+
+const target = targetTokens[0];
 
 let sequence = new Sequence()
     .sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Load.ogg")
-    .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .waitUntilFinished()
     .sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Fire.ogg")
-    .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
     .file("jb2a.bullet.01.orange")
-    .atLocation(canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId)
+    .atLocation(sourceToken)
     .stretchTo(target)
+    .missed(targetsMissed.has(target.id))
     .scale(2.0)
-    .waitUntilFinished(-300)
-    .effect()
-    .file("jb2a.fireball.explosion.orange")
-    .atLocation(target)
-    .zIndex(1)
-    .sound()
-    .file("modules/lancer-weapon-fx/soundfx/APR2_Impact.ogg")
-    .volume(0.5 * game.settings.get("lancer-weapon-fx", "volume"))
-    .play();
+    .waitUntilFinished(-300);
+
+if (!targetsMissed.has(target.id)) {
+    sequence.effect()
+        .file("jb2a.fireball.explosion.orange")
+        .atLocation(target)
+        .zIndex(1)
+        .sound()
+        .file("modules/lancer-weapon-fx/soundfx/APR2_Impact.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+}
+
+sequence.play();

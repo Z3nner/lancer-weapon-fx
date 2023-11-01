@@ -1,49 +1,53 @@
 import { weaponEffects } from "./weaponEffects.js";
+import "./api.js";
+import {getMessageInfo} from "./messageParser.js";
 
 // Register settings
 Hooks.on("init", () => {
     game.settings.register("lancer-weapon-fx", "volume", {
-        name: "Sound Volume",
+        name: "lancer-weapon-fx.Sound Volume",
+        hint: "lancer-weapon-fx.Sound Volume Hint",
         scope: "world",
         config: true,
         type: Number,
-        range: {min: 0.1, max: 2, step: 0.1},
+        range: {min: 0, max: 2, step: 0.1},
         default: 1.0,
+    });
+
+    game.settings.register("lancer-weapon-fx", "debug-is-default-miss", {
+        name: "lancer-weapon-fx.Debug: Play Miss Animations by Default",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
     });
 })
 
 async function _executeMacroByName(
     macroName,
     sourceToken = {},
-    targetTokens = [],
-    compendiumName = "lancer-weapon-fx.WeaponFX"
+    {
+        compendiumName = "lancer-weapon-fx.WeaponFX",
+        messageId = null,
+    } = {},
 ) {
     const pack = game.packs.get(compendiumName);
     if (pack) {
         const macro_data = (await pack.getDocuments()).find((i) => i.name === macroName)?.toObject();
 
         if (macro_data) {
+            // Prepend the dynamic "messageId" value
+            macro_data.command = `const messageId = "${messageId}";\n${macro_data.command}`;
+
             const temp_macro = new Macro(macro_data);
             temp_macro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
-            temp_macro.execute(sourceToken, targetTokens);
+            temp_macro.execute({actor: sourceToken.actor, token: sourceToken});
         } else {
             ui.notifications.error("Lancer Weapon FX | Macro " + macroName + " not found");
         }
     } else {
         ui.notifications.error("Lancer Weapon FX | Compendium " + compendiumName + " not found");
     }
-}
-
-function _getTokenByIdOrActorId(id) {
-    let token = canvas.tokens.get(id);
-    if (!token) {
-        token = canvas.tokens.ownedTokens.filter(t => t.actor.id == id)?.[0];
-        if (!token) {
-            console.log("Lancer Weapon FX | No token with id '" + id + "' found.");
-            return {};
-        }
-    }
-    return token;
 }
 
 Hooks.once("sequencer.ready", async function () {
@@ -110,75 +114,18 @@ Hooks.once("sequencer.ready", async function () {
     console.log('Lancer Weapon FX | Effects preloaded');
 });
 
-function getMessageInfo ({data}) {
-    let chatMessageDataContent = data.content ?? '';
-    // Parse the chat message as XML so that we can navigate through it
-    const parser = new DOMParser();
-    const chatMessage = parser.parseFromString(chatMessageDataContent, "text/html");
-
-    // try to get macro details from reroll data
-    // reroll data is embedded in the chat message under the reroll link in the `data-macro` attribute of the reroll <a> tag.
-    // the reroll data is a JSON string that has been `encodeURIComponent`'d and then base64-encoded.
-    let encodedRerollData = chatMessage.querySelectorAll("[data-macro]")?.[0]?.getAttribute("data-macro");
-
-    let weaponIdentifier = null, targetTokens = null, sourceToken = null;
-    if (!encodedRerollData) {
-        const header = chatMessage.querySelector(".lancer-header");
-        const regexIsStabilize = /^\/\/ .+ HAS STABILIZED \/\/$/;
-        if (header && regexIsStabilize.test(header.innerHTML)) {
-            console.log("it's a stabilize!!");
-            sourceToken = _getTokenByIdOrActorId(data.speaker.actor);
-            weaponIdentifier = "lwfx_stabilize";
-            return {sourceToken, weaponIdentifier, targetTokens}
-        }
-        return null;
-    }
-
-    let rerollData = JSON.parse(decodeURIComponent(atob(encodedRerollData)));
-    if (rerollData.fn === "prepareEncodedAttackMacro") {
-        let sourceInfo = rerollData.args[0];
-        sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
-        targetTokens = rerollData.args[3].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        let weaponItemId = rerollData.args[1];
-        weaponIdentifier = sourceToken.actor.items.get(weaponItemId)?.system.lid;
-        return {sourceToken, weaponIdentifier, targetTokens}
-    }
-
-    if (rerollData.fn === "prepareTechMacro") {
-        sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
-        targetTokens = rerollData.args[2].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        weaponIdentifier = "default_tech_attack";
-        return {sourceToken, weaponIdentifier, targetTokens}
-    }
-
-    if (rerollData.fn === "prepareActivationMacro") {
-        sourceToken = _getTokenByIdOrActorId(rerollData.args[0]);
-        targetTokens = rerollData.args[4].targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        let triggeringItem = sourceToken.actor.items.get(rerollData.args[1]);
-        if (!triggeringItem) return null;
-        if (["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.system.actions[rerollData.args[3]].activation)) {
-            weaponIdentifier = "default_tech_attack";
-            return {sourceToken, weaponIdentifier, targetTokens}
-        }
-        return null;
-    }
-
-    // we don't serve your kind here
-    return null;
-}
-
 // Every time a chat message is posted...
 Hooks.on("createChatMessage", (data) => {
     if(game.user.id !== data.user.id) return
 
-    const messageMeta = getMessageInfo({data});
+    const messageMeta = getMessageInfo(data);
     if (messageMeta == null) return;
 
-    const {weaponIdentifier, sourceToken, targetTokens} = messageMeta;
+    const {weaponIdentifier, sourceToken} = messageMeta;
 
     const macroName = weaponEffects[weaponIdentifier];
     if (!macroName) return;
 
     console.log("Lancer Weapon FX | Found macro '" + macroName + "' for weapon '" + weaponIdentifier + "', playing animation");
-    _executeMacroByName(macroName, sourceToken, targetTokens).then(null);
+    _executeMacroByName(macroName, sourceToken, {messageId: data._id}).then(null);
 });

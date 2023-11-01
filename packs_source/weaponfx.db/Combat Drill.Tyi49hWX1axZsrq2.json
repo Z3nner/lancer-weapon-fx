@@ -1,25 +1,8 @@
 {
     "name": "Combat Drill",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/lancer-weapon-fx/icons/drill.png",
     "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        },
-        "core": {
-            "sourceId": "Macro.XbZb6J0ytnpJ0m7t"
-        }
-    },
     "_id": "Tyi49hWX1axZsrq2"
 }
