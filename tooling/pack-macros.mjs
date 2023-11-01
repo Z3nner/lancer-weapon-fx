@@ -14,10 +14,11 @@ fs.readdirSync(DIR_PACKS_SOURCE)
         const dirPath = path.join(DIR_PACKS_SOURCE, dir);
         const docs = fs.readdirSync(dirPath)
             .filter(fname => fname.endsWith(".json"))
+            .sort((a, b) => a.localeCompare(b, {sensitivity: "base"}))
             .map(fname => {
                 const jsFilename = fname.replace(".json", ".js");
                 const json = JSON.parse(fs.readFileSync(path.join(dirPath, fname), "utf-8"));
-                const command = fs.readFileSync(path.join(dirPath, jsFilename), "utf-8");
+                const command = fs.readFileSync(path.join(dirPath, jsFilename), "utf-8").replace(/\r/g, "");
                 return {
                     ...json,
                     command,
@@ -27,7 +28,7 @@ fs.readdirSync(DIR_PACKS_SOURCE)
             path.join(DIR_PACKS, dir),
             docs
                 .map(json => JSON.stringify(json))
-                .join("\n"),
+                .join("\n") + "\n",
             "utf-8",
         );
         console.log(`Packed ${docs.length} documents into ${dir}`);

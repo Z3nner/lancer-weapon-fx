@@ -5,12 +5,21 @@ import {getMessageInfo} from "./messageParser.js";
 // Register settings
 Hooks.on("init", () => {
     game.settings.register("lancer-weapon-fx", "volume", {
-        name: "Sound Volume",
+        name: "lancer-weapon-fx.Sound Volume",
+        hint: "lancer-weapon-fx.Sound Volume Hint",
         scope: "world",
         config: true,
         type: Number,
-        range: {min: 0.1, max: 2, step: 0.1},
+        range: {min: 0, max: 2, step: 0.1},
         default: 1.0,
+    });
+
+    game.settings.register("lancer-weapon-fx", "debug-is-default-miss", {
+        name: "lancer-weapon-fx.Debug: Play Miss Animations by Default",
+        scope: "client",
+        config: true,
+        type: Boolean,
+        default: false,
     });
 })
 

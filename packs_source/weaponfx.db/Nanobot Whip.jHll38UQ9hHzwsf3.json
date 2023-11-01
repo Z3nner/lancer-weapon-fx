@@ -2,23 +2,7 @@
     "_id": "jHll38UQ9hHzwsf3",
     "name": "Nanobot Whip",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/lancer-weapon-fx/icons/electric-whip.png",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "core": {
-            "sourceId": "Macro.7HdAyp8kUFGxXkAG"
-        },
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        }
-    }
+    "scope": "global"
 }

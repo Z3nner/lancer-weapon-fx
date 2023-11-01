@@ -2,24 +2,7 @@
     "_id": "5B4QaBx52NzRhdum",
     "name": "Fuel Rod Gun",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/lancer-weapon-fx/icons/radiations.png",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        },
-        "core": {
-            "sourceId": "Macro.eHA0kJsiudxLiu9d"
-        }
-    }
+    "scope": "global"
 }
