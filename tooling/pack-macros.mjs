@@ -18,7 +18,7 @@ fs.readdirSync(DIR_PACKS_SOURCE)
             .map(fname => {
                 const jsFilename = fname.replace(".json", ".js");
                 const json = JSON.parse(fs.readFileSync(path.join(dirPath, fname), "utf-8"));
-                const command = fs.readFileSync(path.join(dirPath, jsFilename), "utf-8");
+                const command = fs.readFileSync(path.join(dirPath, jsFilename), "utf-8").replace(/\r/g, "");
                 return {
                     ...json,
                     command,
