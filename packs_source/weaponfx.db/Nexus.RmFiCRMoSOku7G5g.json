@@ -2,24 +2,7 @@
     "_id": "RmFiCRMoSOku7G5g",
     "name": "Nexus",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/lancer-weapon-fx/icons/nano-bot.png",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        },
-        "core": {
-            "sourceId": "Macro.7nwy8pr1RWVbCAvc"
-        }
-    }
+    "scope": "global"
 }

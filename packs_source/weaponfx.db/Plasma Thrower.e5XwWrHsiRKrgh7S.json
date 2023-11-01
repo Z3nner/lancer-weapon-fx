@@ -2,24 +2,7 @@
     "_id": "e5XwWrHsiRKrgh7S",
     "name": "Plasma Thrower",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/lancer-weapon-fx/icons/lightning-flame.png",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        },
-        "core": {
-            "sourceId": "Macro.uB7pKp9YJ1yS5WvO"
-        }
-    }
+    "scope": "global"
 }
