@@ -8,7 +8,7 @@ let gridscale = gridsize / 100;
 let sequence = new Sequence()
 
     .sound()
-    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1.0))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
     .file("modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg")
     .startTime(900)
     .fadeInAudio(500)
@@ -41,7 +41,7 @@ if (!targetsMissed.has(target.id)) {
         .repeats(6, 200)
         .sound()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1.0))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
         .delay(600)
         .effect()
         .file("jb2a.divine_smite.caster.blueyellow")

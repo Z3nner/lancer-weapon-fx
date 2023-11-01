@@ -1,3 +1,6 @@
 # IDE files
 ## IntelliJ
 .idea
+
+# Node.js
+node_modules/

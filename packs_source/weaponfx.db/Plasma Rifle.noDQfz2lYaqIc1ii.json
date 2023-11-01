@@ -2,24 +2,7 @@
     "_id": "noDQfz2lYaqIc1ii",
     "name": "Plasma Rifle",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Green_Thumb.webp",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": true
-        },
-        "core": {
-            "sourceId": "Macro.3w5iIuIb43kEheKy"
-        }
-    }
+    "scope": "global"
 }

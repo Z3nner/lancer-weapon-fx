@@ -22,7 +22,7 @@ for (const target of targetTokens) {
             .file("modules/lancer-weapon-fx/soundfx/CPR_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .repeats(5, 125)
-            .waitUntilFinished;
+            .waitUntilFinished();
     }
 }
 sequence.play();
