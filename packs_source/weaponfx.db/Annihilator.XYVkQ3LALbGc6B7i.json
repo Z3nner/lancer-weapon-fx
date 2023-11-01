@@ -2,23 +2,7 @@
     "_id": "XYVkQ3LALbGc6B7i",
     "name": "Annihilator",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/JB2A_DnD5e/Library/Cantrip/Eldritch_Blast/EldritchBlast_01_Regular_Purple_Thumb.webp",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "core": {
-            "sourceId": "Macro.7HdAyp8kUFGxXkAG"
-        },
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        }
-    }
+    "scope": "global"
 }

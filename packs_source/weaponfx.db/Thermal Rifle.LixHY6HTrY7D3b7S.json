@@ -2,24 +2,7 @@
     "_id": "LixHY6HTrY7D3b7S",
     "name": "Thermal Rifle",
     "type": "script",
-    "author": "V1p3l3q12ZqIraMP",
+    "author": "LancerWeaponFX00",
     "img": "modules/JB2A_DnD5e/Library/3rd_Level/Fireball/FireballBeam_01_Orange_Thumb.webp",
-    "scope": "global",
-    "folder": null,
-    "sort": 0,
-    "permission": {
-        "default": 0,
-        "V1p3l3q12ZqIraMP": 3
-    },
-    "flags": {
-        "core": {
-            "sourceId": "Macro.7HdAyp8kUFGxXkAG"
-        },
-        "combat-utility-belt": {
-            "macroTrigger": ""
-        },
-        "advanced-macros": {
-            "runAsGM": false
-        }
-    }
+    "scope": "global"
 }
