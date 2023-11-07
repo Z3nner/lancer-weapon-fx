@@ -1,0 +1,14 @@
+{
+    "type": "module",
+    "scripts": {
+        "db:unpack": "node tooling/unpack-macros.mjs",
+        "db:pack": "node tooling/pack-macros.mjs",
+        "new-effect": "node tooling/create-new-effect.mjs ",
+        "test": "npm run test:packs",
+        "test:packs": "npm run db:pack && git diff --no-patch --exit-code packs/weaponfx.db && echo 'Pack test passed!'"
+    },
+    "devDependencies": {
+        "commander": "^11.1.0",
+        "sanitize-filename": "^1.6.3"
+    }
+}

@@ -1,0 +1,5 @@
+{
+	"lancer-weapon-fx.Sound Volume": "Sound Volume",
+	"lancer-weapon-fx.Sound Volume Hint": "Set a base volume level for all sound effects. Note that for each user, this value is combined with the user's \"Global: Interface\" volume setting (see the \"Playlists\" sidebar tab) to produce their final volume level.",
+	"lancer-weapon-fx.Debug: Play Miss Animations by Default": "Debug: Play Miss Animations by Default"
+}

@@ -10,7 +10,7 @@ The sound effects and macro icons are all included with this module.
 
 Once installed and activated, weapon FX should "just work" with all attack rolls, with the following provisions:
 
-* The token making the attack must be selected selected
+* The token making the attack must be selected (the active combatant is used as a fallback if no token is selected)
 * The token(s) being attacked must be targeted
 * The only weapons currently supported for automated FX are PC/NPC weapons from official Massif products (as of this writing: Core, The Long Rim, No Room For A Wallflower Pt. 1, Field Guide to the Karrakin Trade Baronies). Automatic FX for custom/homebrew weapons are currently not supported without modifying module code, though support for this is planned in a future release -- for the time being, using the Manual method is the recommended way to support unofficial content.
 

@@ -1,0 +1,2 @@
+packs/*.db text eol=lf
+packs_source/weaponfx.db text eol=lf

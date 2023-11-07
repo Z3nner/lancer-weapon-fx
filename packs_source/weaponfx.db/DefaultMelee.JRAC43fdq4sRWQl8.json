@@ -1,0 +1,8 @@
+{
+    "_id": "JRAC43fdq4sRWQl8",
+    "name": "DefaultMelee",
+    "type": "script",
+    "author": "LancerWeaponFX00",
+    "img": "modules/lancer-weapon-fx/icons/mailed-fist.png",
+    "scope": "global"
+}

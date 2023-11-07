@@ -1,0 +1,8 @@
+{
+    "_id": "NMU9syMKa0dTsINf",
+    "name": "Shotgun",
+    "type": "script",
+    "author": "LancerWeaponFX00",
+    "img": "modules/lancer-weapon-fx/icons/shotgun-rounds.png",
+    "scope": "global"
+}
