@@ -8,6 +8,7 @@ for (const target of targetTokens) {
         .filter("ColorMatrix", {hue: 60})
         .filter("Glow", {distance: 3})
         .atLocation(sourceToken)
+        .scale(0.8)
         .stretchTo(target)
         .missed(targetsMissed.has(target.id));
     sequence.sound()

@@ -25,24 +25,6 @@
                     "minimum": "2.3.7"
                 }
             },
-            {
-                "id": "animated-spell-effects",
-                "type": "module",
-                "manifest": "https://github.com/jackkerouac/animated-spell-effects/releases/latest/download/module.json"
-            },
-            {
-                "id": "animated-spell-effects-cartoon",
-                "type": "module",
-                "manifest": "https://github.com/jackkerouac/animated-spell-effects-cartoon/releases/download/latest/module.json",
-                "compatibility": {
-                    "minimum": "0.2.0"
-                }
-            },
-            {
-                "id": "tokenmagic",
-                "type": "module",
-                "manifest": "https://raw.githubusercontent.com/Feu-Secret/Tokenmagic/master/tokenmagic/module.json"
-            }
         ]
     },
     "languages": [

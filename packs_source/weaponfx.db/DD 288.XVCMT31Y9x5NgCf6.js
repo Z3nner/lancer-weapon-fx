@@ -1,37 +1,41 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-let gridsize = canvas.grid.grid.options.dimensions.size;
-let gridscale = gridsize / 100;
-
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    sequence.effect()
-        .file("jb2a.unarmed_strike")
-        .scale(0.8)
-        .atLocation(sourceToken)
-        .rotateTowards(target)
-        .missed(targetsMissed.has(target.id))
-        .spriteOffset({x: -170 * gridscale})
-        .repeats(6, 200);
-
+    
     sequence.sound()
-        .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
-        .repeats(6, 300)
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6));
-    if (!targetsMissed.has(target.id)) {
-        sequence.sound()
-            .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
-            .delay(300)
-            .repeats(5, 300)
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
+        .file("modules/lancer-weapon-fx/soundfx/DD288Full.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6))
+        .waitUntilFinished(-3400);    
+    sequence.effect()
+        .file("jb2a.unarmed_strike.physical.01.blue")
+	.filter("ColorMatrix", {hue: 000, brightness: 0.5})
+        .filter("Glow", {distance: 3, color: 0xe99649, innerStrength: 2})
+        .atLocation(sourceToken)
+        .playbackRate(0.7)
+        .scale(8)
+        .stretchTo(target)
+        .missed(targetsMissed.has(target.id))
+        .name("impact")
+        .waitUntilFinished(-650);
+
+
         sequence.effect()
-            .file("jb2a.impact.blue")
-            .scale(0.4)
-            .atLocation(target, {randomOffset: 1})
-            .repeats(4, 90)
-            .delay(1900)
-            .waitUntilFinished(-500);
-    }
+            .file("jb2a.explosion_side.01.orange")
+            .scaleToObject(6)
+            .atLocation("impact")
+            .rotateTowards(sourceToken)
+            .rotate(180)
+            .spriteOffset({x: -2.9}, {gridUnits:true})
+            .zIndex(1);
+         sequence.effect()
+            .file("jb2a.explosion.side_fracture.flask.01")
+            .playIf(!targetsMissed.has(target.id))
+            .scaleToObject(3)
+            .atLocation("impact")
+            .rotateTowards(sourceToken)
+            .rotate(180)
+            .delay(200);
 }
 sequence.play();

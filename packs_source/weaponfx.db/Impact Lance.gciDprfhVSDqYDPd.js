@@ -13,14 +13,14 @@ for (const target of targetTokens) {
         .atLocation(sourceToken)
         .stretchTo(target)
         .missed(targetsMissed.has(target.id))
-        .waitUntilFinished(-4000);
+        .waitUntilFinished(-4000)
+    sequence.sound()
+        .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));;
     if (!targetsMissed.has(target.id)) {
-        sequence.sound()
-            .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
         sequence.effect()
             .file("jb2a.impact.blue.3")
-            .scale(1.0)
+            .scaleToObject(2)
             .atLocation(target)
             .waitUntilFinished(-400);
     }

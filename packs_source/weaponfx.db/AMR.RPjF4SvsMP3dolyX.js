@@ -4,6 +4,10 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence.sound()
+        .file("modules/lancer-weapon-fx/soundfx/WeaponClick.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+        .waitUntilFinished(200)
+       .sound()
         .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect()
@@ -15,13 +19,15 @@ for (const target of targetTokens) {
     if (!targetsMissed.has(target.id)) {
         sequence.sound()
             .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+            .delay(75);
         sequence.effect()
             .file("jb2a.impact.orange.0")
             .atLocation(target)
             .rotateTowards(sourceToken)
             .rotate(230)
             .center()
+            .delay(75)
             .waitUntilFinished();
     }
 }

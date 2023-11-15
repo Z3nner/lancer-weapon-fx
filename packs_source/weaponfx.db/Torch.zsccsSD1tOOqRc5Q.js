@@ -9,23 +9,25 @@ for (const target of targetTokens) {
         .scale(0.8)
         .atLocation(sourceToken)
         .moveTowards(target)
-        .missed(targetsMissed.has(target.id));
-    sequence.sound()
+        .missed(targetsMissed.has(target.id))
+        .waitUntilFinished(-1200)
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Axe_swing.ogg")
-        .delay(1300)
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
-    if (!targetsMissed.has(target.id)) {
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+ 
         sequence.sound()
             .file("modules/lancer-weapon-fx/soundfx/Axe_Hit.ogg")
-            .delay(1550)
+            .playIf(!targetsMissed.has(target.id))
+            .delay(275)
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
         sequence.effect()
             .file("jb2a.impact.blue.3")
-            .scale(1.2)
+            .playIf(!targetsMissed.has(target.id))
+            .delay(275)
+            .scaleToObject(2)
             .tint("#c91af9")
             .atLocation(target)
-            .delay(1550)
             .waitUntilFinished(-1000);
-    }
+
 }
 sequence.play();

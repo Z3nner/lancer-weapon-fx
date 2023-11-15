@@ -1,0 +1,8 @@
+{
+    "_id": "1ntDWMtnxAA1uZMH",
+    "name": "MissileAirBurst",
+    "img": "modules/lancer-weapon-fx/icons/incoming-rocket.png",
+    "type": "script",
+    "scope": "global",
+    "author": "LancerWeaponFX00"
+}
