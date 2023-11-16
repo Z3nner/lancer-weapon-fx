@@ -26,7 +26,7 @@ targetTokens.forEach(target => {
         .playbackRate(1.5)
         .atLocation(target, {randomOffset: 0.7, gridUnits: true})
         .filter("Glow", {color: 0x36c11a})
-	    missed(targetsMissed.has(target.id))
+        .missed(targetsMissed.has(target.id))
         .waitUntilFinished()		
 
         sequence.sound()
@@ -45,7 +45,7 @@ targetTokens.forEach(target => {
             .file("jb2a.static_electricity")
             .scaleToObject(1.1)
             .atLocation(target)
-	        .playIf(!targetsMissed.has(target.id))
+            .playIf(!targetsMissed.has(target.id))
 
     sequence.play();
 	});
