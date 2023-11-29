@@ -64,6 +64,7 @@ Hooks.once("sequencer.ready", async function () {
     "jb2a.breath_weapons02.burst.line.fire.orange.01",
     "jb2a.breath_weapons02.burst.cone.fire.orange.02",
     "jb2a.bolt.physical.orange",
+    "jb2a.bullet.03.blue",
     "jb2a.bullet.01.orange",
     "jb2a.bullet.02.orange",
     "jb2a.bullet.Snipe.blue",
@@ -112,7 +113,9 @@ Hooks.once("sequencer.ready", async function () {
     "jb2a.warhammer.melee.01.white.4",
     "jb2a.zoning.inward.square.loop.bluegreen.01.01",
     "jb2a.zoning.inward.circle.loop",
-    "modules/lancer-weapon-fx/icons/LatchDrone.png"
+    "modules/lancer-weapon-fx/icons/LatchDrone.png",
+    "modules/lancer-weapon-fx/video/jetlancer_explosion_1000.webm",
+    "modules/lancer-weapon-fx/video/pw_nuke_effect.webm"
     ], true);
     console.log('Lancer Weapon FX | Effects preloaded');
 });
