@@ -1,19 +1,6 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-//Calculate the point at the center of a group of targets
-const findCenterOfTargetGroup = function (targetTokens) {
-    let total_x = 0;
-    let total_y = 0;
-    const numTargets = targetTokens.length;
-    targetTokens.forEach(t => {
-        let center = t.getCenter(t.position.x, t.position.y);
-        total_x = total_x + center.x;
-        total_y = total_y + center.y;
-    });
-    return {x: (total_x / numTargets), y: (total_y / numTargets)};
-};
-
-const pTarget = findCenterOfTargetGroup(targetTokens);
+const pTarget = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
 // Calculate the point 70% of the distance between sourceToken and pTarget
 const pBlast = {
@@ -50,7 +37,7 @@ let sequence = new Sequence()
         .waitUntilFinished(-2200);
 
 for (let i=0; i < targetTokens.length; i++) {
-    let target = targetTokens[i];		
+    let target = targetTokens[i];
 
     sequence.effect()
         .file("jb2a.impact.004.blue")

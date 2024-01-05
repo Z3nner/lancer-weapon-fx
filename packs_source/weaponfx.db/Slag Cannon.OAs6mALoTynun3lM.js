@@ -1,18 +1,6 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-const findCenterOfTargetGroup = function (targetTokens) {
-    let total_x = 0;
-    let total_y = 0;
-    const numTargets = targetTokens.length;
-    targetTokens.forEach(t => {
-        let center = t.getCenter(t.position.x, t.position.y);
-        total_x = total_x + center.x;
-        total_y = total_y + center.y;
-    });
-    return {x: (total_x / numTargets), y: (total_y / numTargets)};
-};
-
-const target = findCenterOfTargetGroup(targetTokens);
+const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
 let sequence = new Sequence()
 
@@ -27,9 +15,9 @@ let sequence = new Sequence()
         .stretchTo(target)
         .playbackRate(1.5)
         .waitUntilFinished(-3500);
-		
+
 for (let i=0; i < targetTokens.length; i++) {
-    let target = targetTokens[i];		
+    let target = targetTokens[i];
 
     if (!targetsMissed.has(target.id)) {
         sequence.effect()

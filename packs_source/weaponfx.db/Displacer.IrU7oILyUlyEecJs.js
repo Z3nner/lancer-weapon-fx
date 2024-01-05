@@ -1,19 +1,6 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-//Calculate the point at the center of a group of targets
-const findCenterOfTargetGroup = function (targetTokens) {
-    let total_x = 0;
-    let total_y = 0;
-    const numTargets = targetTokens.length;
-    targetTokens.forEach(t => {
-        let center = t.getCenter(t.position.x, t.position.y);
-        total_x = total_x + center.x;
-        total_y = total_y + center.y;
-    });
-    return {x: (total_x / numTargets), y: (total_y / numTargets)};
-};
-
-const pTarget = findCenterOfTargetGroup(targetTokens);
+const pTarget = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
 let sequence = new Sequence()
 
@@ -22,7 +9,7 @@ let sequence = new Sequence()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg")
         .startTime(900)
         .fadeInAudio(300)
-		
+
     .effect()
         .file("jb2a.dancing_light.purplegreen")
         .tint("#2d0a3d")
@@ -32,7 +19,7 @@ let sequence = new Sequence()
         .atLocation(sourceToken)
         .moveTowards(pTarget)
         .waitUntilFinished();
-		
+
    sequence.effect()
         .file("jb2a.fumes.steam.white")
         .fadeIn(1500)
@@ -41,7 +28,7 @@ let sequence = new Sequence()
         .spriteAnchor({ x: 0.2, y: 1.2 })
         .scaleToObject()
         .opacity(0.7);
-		
+
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
@@ -56,7 +43,7 @@ let sequence = new Sequence()
 
 
 for (let i=0; i < targetTokens.length; i++) {
-    let target = targetTokens[i];		
+    let target = targetTokens[i];
 
     if (!targetsMissed.has(target.id)) {
 
