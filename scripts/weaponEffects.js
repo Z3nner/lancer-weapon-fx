@@ -175,7 +175,7 @@ const weaponEffects = {
     "mw_xc_dpm_predator_nexus": "Nexus",
     //DUSTGRAVE
     "mw_tempest_charged_blade": "TempestBlade",
-    "mw_hurricane_cluster_projector": "CannonAirburst",
+    "mw_hurricane_cluster_projector": "MissileAirBurst",
     "mw_reaper_assault_cannon": "Leviathan",
     "mw_shock_baton": "ShockBaton",
     "mw_blast_pick": "BlastPick",
