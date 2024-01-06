@@ -13,7 +13,7 @@ for (const target of targetTokens) {
         .missed(targetsMissed.has(target.id))
         .name("impact")
         .scale(0.5)
-        .waitUntilFinished(-500);
+        .waitUntilFinished(-800);
     sequence.effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)

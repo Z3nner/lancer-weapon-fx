@@ -175,12 +175,17 @@ const weaponEffects = {
     "mw_xc_dpm_predator_nexus": "Nexus",
     //DUSTGRAVE
     "mw_tempest_charged_blade": "TempestBlade",
-    "mw_hurricane_cluster_projector": "MissileAirBurst",
+    "mw_hurricane_cluster_projector": "CannonAirburst",
     "mw_reaper_assault_cannon": "Leviathan",
     "mw_shock_baton": "ShockBaton",
     "mw_blast_pick": "BlastPick",
     "mw_brutus_wrecker": "DefaultMelee",
-    "mw_brutus_shield": "DefaultMelee"
+    "mw_brutus_shield": "DefaultMelee",
+    //SIRENS SONG
+    "npc_Leech_PairedTalonsMKII": "Plasma Talons",
+    "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
+    "npc_Tempest_TyphoonNaniteCannon": "Nexus",
+    "npc_PDCTurret": "Leviathan"
     };
 
 export { weaponEffects };
