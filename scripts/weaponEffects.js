@@ -181,6 +181,17 @@ const weaponEffects = {
     "mw_blast_pick": "BlastPick",
     "mw_brutus_wrecker": "DefaultMelee",
     "mw_brutus_shield": "DefaultMelee",
+    //DUSTGRAVE NPCs
+    "npcf_rock_drill_industrial_mech": "Combat Drill",
+    "npcf_fusion_cutter_industrial_mech": "Plasma Torch",
+    "npcf_rivet_cannon_industrial_mech": "Bolt Thrower",
+    "npcf_buzzsaw_industrial_mech": "DefaultMelee",
+    "npcf_wrecker_industrial_mech": "DefaultMelee",
+    "npcf_industrial_clamps_industrial_mech": "DefaultMelee",
+    "npcf_gyrojet_cannon_spec_op": "Missile",
+    "npcf_serrated_machete_spec_op": "DefaultMelee",
+    "npcf_assimilaiton_maw_horror": "AssimilationMaw",
+    "npcf_disruptor_whip_horror": "DisruptorWhip",
     //SIRENS SONG
     "npc_Leech_PairedTalonsMKII": "Plasma Talons",
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
