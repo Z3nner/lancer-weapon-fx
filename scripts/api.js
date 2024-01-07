@@ -28,14 +28,14 @@ class ModuleApi {
         };
     }
 
-    static euclideanDistance = function(point1, point2) {
+    static euclideanDistance (point1, point2) {
         // Calculate the Euclidean distance between two points.
         const dx = point1.x - point2.x;
         const dy = point1.y - point2.y;
         return Math.sqrt(dx * dx + dy * dy);
     }
 
-    static assignToClusters = function(points, centroids) {
+    static assignToClusters (points, centroids) {
         const clusters = new Array(centroids.length).fill(null).map(() => []);
 
         for (const point of points) {
@@ -47,7 +47,7 @@ class ModuleApi {
         return clusters;
     }
 
-    static calculateCentroids = function(cluster) {
+    static calculateCentroids (cluster) {
         // Calculate the centroid (mean) of a cluster of points.
         if (cluster.length === 0) {
           return null;
@@ -57,9 +57,9 @@ class ModuleApi {
         const sumY = cluster.reduce((sum, point) => sum + point.y, 0);
 
         return { x: sumX / cluster.length, y: sumY / cluster.length };
-    };
+    }
 
-    static lloydsAlgorithm = function(points, numCentroids) {
+    static lloydsAlgorithm (points, numCentroids) {
         if (numCentroids <= 0) {
           return [];
         }
@@ -89,7 +89,7 @@ class ModuleApi {
         }
 
         return centroids;
-    };
+    }
 
     static getTargetLocationsFromTokenGroup(targetTokens, numGroups) {
         const targetPoints = targetTokens.map(token => {
