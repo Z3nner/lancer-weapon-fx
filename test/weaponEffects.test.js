@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import {expect, jest, test} from '@jest/globals';
 import {weaponEffects} from "../scripts/weaponEffects.js";
 import {DIR_PACKS_SOURCE} from "../tooling/consts.mjs";
 

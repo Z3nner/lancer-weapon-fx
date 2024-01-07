@@ -1,4 +1,4 @@
-import {euclideanDistance} from "./utils.js";
+import {euclideanDistance, fisherYatesShuffle, getUniquePoints} from "./utils.js";
 
 export default class LloydsAlgorithm {
     static _assignToClusters (points, centroids) {
@@ -36,9 +36,18 @@ export default class LloydsAlgorithm {
         }
 
         // Initialize random centroids to start the algorithm.
-        const centroids = [];
-        for (let i = 0; i < numCentroids; i++) {
-            centroids.push(points[Math.floor(Math.random() * points.length)]);
+        // Ensure each seed centroid is unique.
+        const uniquePoints = getUniquePoints(points);
+        const centroids = fisherYatesShuffle(uniquePoints.slice()).slice(0, numCentroids);
+        if (centroids.length < numCentroids) {
+            // If there are insufficiently many unique seed points, generate more points by adding an increasing offset
+            //   to the biggest X and Y values from all points.
+            const maxX = Math.max(...uniquePoints.map(({x}) => x));
+            const maxY = Math.max(...uniquePoints.map(({y}) => y));
+
+            for (let i = centroids.length; i < numCentroids; ++i) {
+                centroids.push({x: maxX + i, y: maxY + i});
+            }
         }
 
         let previousCentroids;
@@ -48,7 +57,7 @@ export default class LloydsAlgorithm {
                 centroid.x === previousCentroids[i].x && centroid.y === previousCentroids[i].y
             )
         ) {
-            previousCentroids = centroids.map(centroid => ({ ...centroid }));
+            previousCentroids = centroids.slice();
 
             // Assign points to clusters based on the current centroids.
             const clusters = this._assignToClusters(points, centroids);
