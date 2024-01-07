@@ -30,6 +30,11 @@ export default class LloydsAlgorithm {
             return [];
         }
 
+        // If we request more centroids than there are points, each point must be its own centroid
+        if (points.length <= numCentroids) {
+            return points;
+        }
+
         // Initialize random centroids to start the algorithm.
         const centroids = [];
         for (let i = 0; i < numCentroids; i++) {
@@ -42,7 +47,7 @@ export default class LloydsAlgorithm {
             !centroids.every((centroid, i) =>
                 centroid.x === previousCentroids[i].x && centroid.y === previousCentroids[i].y
             )
-            ) {
+        ) {
             previousCentroids = centroids.map(centroid => ({ ...centroid }));
 
             // Assign points to clusters based on the current centroids.
