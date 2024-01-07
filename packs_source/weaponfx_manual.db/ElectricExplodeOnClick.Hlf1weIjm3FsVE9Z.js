@@ -1,5 +1,6 @@
 //This Macro requires Warpgate module to function. When executed, the macro will play the explosion fx on the clicked location.  Useful for grenades or any other occurance where something needs to explode.
 
+if (typeof warpgate === "undefined") ui.notifications.error("This macro requires the Warpgate module to be installed!");
 
 let config = {
     size:2,

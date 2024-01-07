@@ -41,6 +41,20 @@
             "path": "packs/weaponfx.db",
             "type": "Macro",
             "module": "lancer-weapon-fx"
+        },
+        {
+            "name": "WeaponFXManual",
+            "label": "Lancer Weapon FX (Manual)",
+            "path": "packs/weaponfx_manual.db",
+            "type": "Macro",
+            "module": "lancer-weapon-fx"
+        },
+        {
+            "name": "WeaponFXUtility",
+            "label": "Lancer Weapon FX (Utility)",
+            "path": "packs/utility.db",
+            "type": "Macro",
+            "module": "lancer-weapon-fx"
         }
     ]
 }

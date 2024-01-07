@@ -31,5 +31,5 @@ fs.readdirSync(DIR_PACKS_SOURCE)
                 .join("\n") + "\n",
             "utf-8",
         );
-        console.log(`Packed ${docs.length} documents into ${dir}`);
+        console.log(`Packed ${docs.length} document(s) into ${dir}`);
     });
