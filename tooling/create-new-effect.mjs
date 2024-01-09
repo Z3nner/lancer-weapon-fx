@@ -16,7 +16,8 @@ program
 	.argument("<name>", "macro name")
 	.option("--id <id>", "16-character alphanumeric ID", getFoundryId())
 	.option("--img <img>", "path to icon image", "icons/svg/dice-target.svg")
-	.action((name, {id, img}) => {
+	.option("--pack <packName>", "pack to add the macro to", "weaponfx")
+	.action((name, {id, img, pack}) => {
 		if (!name.trim()) program.error(`<name> must be 1 or more (non-whitespace) characters!`);
 		if (id.length !== 16) program.error(`<id> must be 16 characters!`);
 		if (!img.trim()) program.error(`<img> must be 1 or more (non-whitespace) characters!`);
@@ -38,7 +39,7 @@ program
 			4,
 		);
 
-		const dirOut = path.join(DIR_PACKS_SOURCE, "weaponfx.db");
+		const dirOut = path.join(DIR_PACKS_SOURCE, `${pack}.db`);
 
 		const fnameOut = `${sanitize(name)}.${id}`;
 		const fpathOutJs = path.join(dirOut, `${fnameOut}.js`);
@@ -53,8 +54,7 @@ program
 • Complete the macro JS
 • Edit the "img" in the macro JSON
 • Run "npm run db:pack"
-• Test in-game!
-• (Add to "scripts/weaponEffects")`);
+• Test in-game!${pack === "weaponfx" ? `\n• (Add to "scripts/weaponEffects")` : ""}`);
 	});
 
 program.parse();

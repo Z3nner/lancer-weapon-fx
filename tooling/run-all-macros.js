@@ -10,6 +10,8 @@
 
     // ---
 
+    const NAMES_BLOCKLIST = new Set([]);
+
     const NAMES_NO_MISS = new Set([
         "Flechette Launcher",
         "Flamethrower",
