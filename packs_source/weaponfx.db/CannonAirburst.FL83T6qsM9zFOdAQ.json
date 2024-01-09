@@ -1,0 +1,8 @@
+{
+    "_id": "FL83T6qsM9zFOdAQ",
+    "name": "CannonAirburst",
+    "img": "modules/lancer-weapon-fx/icons/cluster-bomb.png",
+    "type": "script",
+    "scope": "global",
+    "author": "LancerWeaponFX00"
+}

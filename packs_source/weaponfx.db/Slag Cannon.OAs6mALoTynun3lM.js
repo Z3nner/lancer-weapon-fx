@@ -1,34 +1,34 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-const target = targetTokens[0];
-let scale = 0.1 * target.actor.system.derived.mm.Size;
+const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
 let sequence = new Sequence()
-    .sound()
-    .file("modules/lancer-weapon-fx/soundfx/CPR_Fire.ogg")
-    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
-    .effect()
-    .file("jb2a.energy_strands.complete.blue.01")
-    .tint("#ceb673")
-    .endTime(1500)
-    .scale(0.10)
-    .atLocation(sourceToken)
-    .moveTowards(target)
-    .missed(targetsMissed.has(target.id))
-    .waitUntilFinished(200);
 
-if (!targetsMissed.has(target.id)) {
     sequence.sound()
-        .file("modules/lancer-weapon-fx/soundfx/DisplacerHit1.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
-        .repeats(3, 100)
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6));
+        .file("modules/lancer-weapon-fx/soundfx/RetortLoop.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     sequence.effect()
-        .file("jb2a.impact.blue")
-        .tint("#ceb673")
-        .scale(0.3)
-        .atLocation(target, {randomOffset: 0.9})
-        .repeats(3, 100)
-}
+        .file("jb2a.breath_weapons02.burst.line")
+        .atLocation(sourceToken)
+        .filter("ColorMatrix", {hue: 180, brightness: 0.2, contrast: 0.5})
+        .filter("Glow", {distance: 0.5, color: 0xd6c194, innerStrength: 2})
+        .stretchTo(target)
+        .playbackRate(1.5)
+        .waitUntilFinished(-3500);
 
-sequence.play();
+for (let i=0; i < targetTokens.length; i++) {
+    let target = targetTokens[i];
+
+    if (!targetsMissed.has(target.id)) {
+        sequence.effect()
+            .file("jb2a.grease.dark_brown.loop")
+            .opacity(0.8)
+            .fadeIn(800)
+            .fadeOut(800)
+            .atLocation(target, {randomOffset: 2, gridUnits: true})
+            .belowTokens()
+            .repeats(3)
+            .scaleToObject(1);
+    }
+}
+    sequence.play();

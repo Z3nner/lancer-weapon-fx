@@ -15,16 +15,15 @@ let sequence = new Sequence()
     .missed(targetsMissed.has(target.id))
     .waitUntilFinished();
 
-if (!targetsMissed.has(target.id)) {
-    sequence
-        .sound()
+    sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/AirBurst.ogg")
+        .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
-        .effect()
+    .effect()
         .file("jb2a.explosion.02.blue")
+        .playIf(!targetsMissed.has(target.id))
         .scale(0.5)
         .atLocation(target)
         .waitUntilFinished();
-}
 
 sequence.play();

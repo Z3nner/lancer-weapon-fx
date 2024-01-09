@@ -13,5 +13,5 @@ let sequence = new Sequence()
     .file("jb2a.impact.yellow")
     .scale(0.5)
     .repeats(6, 20)
-    .atLocation(sourceToken, {randomOffset: 2.2})
+    .atLocation(sourceToken, {randomOffset: 2.2, gridUnits: true})
     .play();

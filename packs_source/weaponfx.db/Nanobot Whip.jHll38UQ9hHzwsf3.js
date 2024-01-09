@@ -2,36 +2,35 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 let sequence = new Sequence();
 
-let gridsize = canvas.grid.grid.options.dimensions.size;
-let gridscale = gridsize / 100;
-
 for (const target of targetTokens) {
     sequence.effect()
         .file("jb2a.divine_smite.target.blueyellow")
-        .scale(0.8)
+        .scale(0.9)
         .tint("#066605")
         .atLocation(sourceToken)
-        .rotateTowards(target)
+        .moveTowards(target)
+        .moveSpeed(175)
+        .spriteOffset({x: 0, y: 100, gridUnits: true})
         .missed(targetsMissed.has(target.id))
-        .spriteOffset({x: -160 * gridscale, y: 90 * gridscale})
-        .rotate(90);
-
-    sequence.sound()
+        .rotate(90)
+        .delay(500)
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
+        .delay(500)
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
 
     if (!targetsMissed.has(target.id)) {
         sequence.sound()
             .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
-            .delay(300)
+            .delay(800)
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
         sequence.effect()
             .file("jb2a.impact.blue")
-            .scale(0.4)
+            .scale(0.5)
             .tint("#066605")
             .atLocation(target, {randomOffset: 1})
             .repeats(4, 80)
-            .delay(700)
+            .delay(1200)
             .waitUntilFinished(-1500);
     }
 }

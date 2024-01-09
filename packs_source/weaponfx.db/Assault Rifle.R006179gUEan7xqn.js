@@ -9,9 +9,15 @@ for (const target of targetTokens) {
     sequence.effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
-        .stretchTo(target, {randomOffset: 0.4})
+        .stretchTo(target)
         .missed(targetsMissed.has(target.id))
-        .repeats(4, 100)
+        .name("impact")
+        .waitUntilFinished(-550);
+    sequence.effect()
+        .file("jb2a.bullet.01.orange")
+        .atLocation(sourceToken)
+        .stretchTo("impact", {randomOffset: 0.4, gridUnits: true})
+        .repeats(3, 100)
         .waitUntilFinished();
 }
 

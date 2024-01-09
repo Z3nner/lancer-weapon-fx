@@ -1,31 +1,57 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-let sequence = new Sequence();
+const findFarthestTargetOfGroup = function (targetTokens) {
+    let farthestToken = null;
+    let farthestTokenDistance = 0;
+    targetTokens.forEach(t => {
+        let distance = canvas.grid.measureDistance(sourceToken, t);
+        if (distance > farthestTokenDistance) {
+            farthestToken = t;
+            farthestTokenDistance = distance;
+        }
+    });
 
-for (const target of targetTokens) {
-    sequence.sound()
-        .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
-        .waitUntilFinished(-500);
-    sequence.sound()
-        .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-    sequence.effect()
-        .file("jb2a.bullet.Snipe.blue")
-        .atLocation(sourceToken)
-        .stretchTo(target)
-        .missed(targetsMissed.has(target.id));
-    if (!targetsMissed.has(target.id)) {
-        sequence.sound()
-            .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-        sequence.effect()
-            .file("jb2a.impact.orange.0")
-            .atLocation(target)
-            .rotateTowards(sourceToken)
-            .rotate(230)
-            .center()
-            .waitUntilFinished();
-    }
+    return farthestToken;
+};
+
+const target = findFarthestTargetOfGroup(targetTokens);
+
+const repeatImpactAnimationForEachTarget = function (sequence, targets) {
+    targets.forEach(t => {
+        if (!targetsMissed.has(t.id)) {
+            sequence.effect()
+                .file("jb2a.impact.orange.0")
+                .atLocation(t)
+                .rotateTowards(sourceToken)
+                .rotate(230)
+                .center()
+        }
+    });
+    return sequence;
 }
+
+
+let sequence = new Sequence()
+
+        .sound()
+         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
+         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+         .waitUntilFinished(-500);
+
+        sequence.effect()
+         .file("jb2a.bullet.Snipe.blue")
+         .atLocation(sourceToken)
+         .stretchTo(target)
+
+        .sound()
+         .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
+         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+         
+        .sound()
+         .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
+         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+        ;
+
+sequence = repeatImpactAnimationForEachTarget(sequence, targetTokens);
+
 sequence.play();

@@ -12,17 +12,18 @@ for (const target of targetTokens) {
         .atLocation(sourceToken)
         .startTime(500)
         .stretchTo(target)
-        .missed(targetsMissed.has(target.id));
+        .missed(targetsMissed.has(target.id))
+        .name("bolt")
+        .waitUntilFinished(-900)
+    .effect()
+        .file("jb2a.explosion.01.orange")
+        .atLocation("bolt");
+
     if (!targetsMissed.has(target.id)) {
         sequence.sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
-            .delay(700)
+            .delay(50)
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-        sequence.effect()
-            .file("jb2a.explosion.01.orange")
-            .atLocation(target)
-            .delay(700)
-            .waitUntilFinished();
     }
 }
 sequence.play();

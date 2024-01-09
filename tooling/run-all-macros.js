@@ -10,13 +10,9 @@
 
     // ---
 
-    const NAMES_BLOCKLIST = new Set([
-        "Preload LancerWeaponFX",
-    ]);
+    const NAMES_BLOCKLIST = new Set([]);
 
     const NAMES_NO_MISS = new Set([
-        "Apply Smoke Grenade",
-        "Deploy Smoke Mine",
         "Flechette Launcher",
         "Flamethrower",
         "LockOn",

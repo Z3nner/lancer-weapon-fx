@@ -1,0 +1,8 @@
+{
+    "_id": "EiG9UfyeoHsXCX3L",
+    "name": "Designate Smoke Mine",
+    "img": "modules/lancer-weapon-fx/icons/SmokeArea.png",
+    "type": "script",
+    "scope": "global",
+    "author": "LancerWeaponFX00"
+}

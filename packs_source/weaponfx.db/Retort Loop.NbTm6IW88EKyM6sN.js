@@ -12,15 +12,23 @@ for (const target of targetTokens) {
         .atLocation(sourceToken)
         .stretchTo(target)
         .missed(targetsMissed.has(target.id))
+        .name("impact")
         .delay(200);
     if (!targetsMissed.has(target.id)) {
         sequence.effect()
             .file("jb2a.impact.blue")
             .scale(0.3)
             .atLocation(target, {randomOffset: 0.9})
-            .repeats(8, 300)
-            .delay(500)
-            .waitUntilFinished();
+            .repeats(8, 200)
+            .delay(700);
+    }
+    else {
+        sequence.effect()
+            .file("jb2a.impact.blue")
+            .scale(0.3)
+            .atLocation("impact", {randomOffset: 0.9})
+            .repeats(8, 200)
+            .delay(700);
     }
 }
 sequence.play();

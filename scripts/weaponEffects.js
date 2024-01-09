@@ -1,4 +1,5 @@
 const weaponEffects = {
+    //CORE, LONG RIM, WALLFLOWER, KTB
     "npcf_devils_cough_shotgun_assassin": "Shotgun",
     "mw_exo_steelpunch_heavy_needlebeam": "Needle Beam",
     "mw_exo_sting_heavy_anti_armor_rifle": "AMR",
@@ -82,7 +83,7 @@ const weaponEffects = {
     "mw_krakatoa_thermobaric_flamethrower": "Flamethrower",
     "mw_kraul_rifle": "Kraul Rifle",
     "mw_lancaster_integrated": "Latch Drone",
-    "mw_leviathan_heavy_assault_cannon": "HMG",
+    "mw_leviathan_heavy_assault_cannon": "Leviathan",
     "npcf_light_laser_aegis": "Lasers",
     "npcf_light_machine_gun_archer": "HMG",
     "mw_raleigh_integrated": "Burst Launcher",
@@ -94,9 +95,9 @@ const weaponEffects = {
     "npcf_melee_weapon_human": "DefaultMelee",
     "mw_mimic_gun": "PPC",
     "npcf_missile_launcher_ace": "Missile",
-    "npcf_missile_pods_rainmaker": "Missile",
+    "npcf_missile_pods_rainmaker": "Missiles",
     "mw_missile_rack": "Missile",
-    "npcf_missile_swarm_ace": "Missile",
+    "npcf_missile_swarm_ace": "Missiles",
     "npcf_monowire_sword_specter": "DefaultMelee",
     "mw_mortar": "Mortar",
     "npcf_nail_gun_berserker": "Kraul Rifle",
@@ -107,7 +108,7 @@ const weaponEffects = {
     "mw_nexus_light": "Nexus",
     "npcf_nova_missiles_operator": "Missile",
     "mw_oracle_lmg_i": "Assault Rifle",
-    "mw_pinaka_missiles": "Missile",
+    "mw_pinaka_missiles": "MissilePinaka",
     "mw_pistol": "Pistol",
     "mw_exo_plasma_maul": "Plasma Maul",
     "mw_tokugawa_alt_enkidu_integrated": "Plasma Talons",
@@ -134,7 +135,7 @@ const weaponEffects = {
     "nrfaw-npc_npcf_scouring_whip_lurker": "Nanobot Whip",
     "npcf_seeker_cloud_hive": "Nexus",
     "mw_segment_knife": "DefaultMelee",
-    "mw_sharanga_missiles": "Missile",
+    "mw_sharanga_missiles": "Missiles",
     "mw_shatterhead_colony_missiles": "Missile",
     "mw_shock_knife": "DefaultMelee",
     "mw_shotgun": "Shotgun",
@@ -163,12 +164,39 @@ const weaponEffects = {
     "mw_veil_rifle": "Veil Rifle",
     "mw_vijaya_rockets": "Missile",
     "mw_vorpal_gun": "Retort Loop",
-    "mw_vulture_dmr": "AMR",
+    "mw_vulture_dmr": "BattleRifle",
     "mw_war_pike": "War Pike",
     "mw_warp_rifle": "Warp Rifle",
     "mw_sherman_integrated": "Railgun",
     "default_tech_attack": "DefaultTech",
-    "lwfx_stabilize": "Stabilize"
-};
+    "lwfx_stabilize": "Stabilize",
+    //SOLSTICE RAIN
+    "mw_xc_br_battle_rifle": "BattleRifle",
+    "mw_xc_dpm_predator_nexus": "Nexus",
+    //DUSTGRAVE
+    "mw_tempest_charged_blade": "TempestBlade",
+    "mw_hurricane_cluster_projector": "CannonAirburst",
+    "mw_reaper_assault_cannon": "Leviathan",
+    "mw_shock_baton": "ShockBaton",
+    "mw_blast_pick": "BlastPick",
+    "mw_brutus_wrecker": "DefaultMelee",
+    "mw_brutus_shield": "DefaultMelee",
+    //DUSTGRAVE NPCs
+    "npcf_rock_drill_industrial_mech": "Combat Drill",
+    "npcf_fusion_cutter_industrial_mech": "Plasma Torch",
+    "npcf_rivet_cannon_industrial_mech": "Bolt Thrower",
+    "npcf_buzzsaw_industrial_mech": "DefaultMelee",
+    "npcf_wrecker_industrial_mech": "DefaultMelee",
+    "npcf_industrial_clamps_industrial_mech": "DefaultMelee",
+    "npcf_gyrojet_cannon_spec_op": "Missile",
+    "npcf_serrated_machete_spec_op": "DefaultMelee",
+    "npcf_assimilaiton_maw_horror": "AssimilationMaw",
+    "npcf_disruptor_whip_horror": "DisruptorWhip",
+    //SIRENS SONG
+    "npc_Leech_PairedTalonsMKII": "Plasma Talons",
+    "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
+    "npc_Tempest_TyphoonNaniteCannon": "Nexus",
+    "npc_PDCTurret": "Leviathan"
+    };
 
 export { weaponEffects };

@@ -1,0 +1,8 @@
+{
+    "_id": "ZNQDndUit13iQDfV",
+    "name": "Designate Smoke Grenade",
+    "img": "modules/lancer-weapon-fx/icons/SmokeGrenadeArea.png",
+    "type": "script",
+    "scope": "global",
+    "author": "LancerWeaponFX00"
+}

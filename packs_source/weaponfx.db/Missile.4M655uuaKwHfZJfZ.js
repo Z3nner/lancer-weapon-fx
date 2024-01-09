@@ -1,31 +1,33 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
 
-let sequence = new Sequence();
+const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-for (const target of targetTokens) {
+
+let sequence = new Sequence()
+
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+        .timeRange(700, 2000);
     sequence.effect()
-        .file("modules/animated-spell-effects/spell-effects/air/black_smoke_RAY_01.webm")
+        .file("jb2a.pack_hound_missile")
         .atLocation(sourceToken)
         .stretchTo(target)
-        .missed(targetsMissed.has(target.id))
-        .scale({x: 1.0, y: .5})
-        .waitUntilFinished(-3700);
+        .waitUntilFinished(-3200);
+    sequence.effect()
+         .file("jb2a.explosion.01.orange")
+         .atLocation(target)
+         .scale(1.2)
+         .zIndex(1)
+         .waitUntilFinished(-1300);
+
     if (!targetsMissed.has(target.id)) {
         sequence.sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-        sequence.effect()
-            .file("jb2a.explosion.01.orange")
-            .atLocation(target)
-            .scale(1.3)
-            .zIndex(1)
-            .waitUntilFinished(-1200);
+
     }
-}
 sequence.play();
