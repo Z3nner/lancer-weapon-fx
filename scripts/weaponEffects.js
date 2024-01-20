@@ -196,7 +196,33 @@ const weaponEffects = {
     "npc_Leech_PairedTalonsMKII": "Plasma Talons",
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
     "npc_Tempest_TyphoonNaniteCannon": "Nexus",
-    "npc_PDCTurret": "Leviathan"
+    "npc_PDCTurret": "Leviathan",
+    //LIMINAL SPACE
+    "liminal_npcf_archon_irradiationbeam": "Tachyon Lance",
+    "liminal_npcf_blackguard_scorcher":"ArcBow",
+    "liminal_npcf_blackguard_stabilizedlash": "Nanobot Whip",
+    "liminal_npcf_harrier_coachgun": "Shotgun",
+    "liminal_npcf_harvester_assimilationray": "Veil Rifle",
+    "liminal_npcf_landship_coilgunbroadsides": "Railgun",
+    "liminal_npcf_landship_microcorelasers": "Thermal Rifle",
+    "liminal_npcf_megafauna_toothandclaw": "Plasma Talons",
+    "liminal_npcf_megafauna_earthshakingroar": "DefaultMelee",
+    "liminal_npcf_pistolero_bigirons": "Pistol",
+    "liminal_npcf_scrapper_wreckingball": "DefaultMelee",
+    "liminal_npcf_scrapper_rivetgun": "Bolt Thrower",
+    "liminal_npcf_scrapper_chainsaw": "DefaultMelee",
+    "liminal_npcf_sorceress_evocationarray":"PPC",
+    "liminal_npcf_stormcaller_boltfromtheblue": "PPC",
+    "liminal_npcf_strikebreaker_riotbreaker": "Shotgun",
+    "liminal_npcf_warden_magblade": "War Pike",
+    "liminal_npcf_warden_steelfist": "DefaultMelee",
+    "liminal_npcf_wingman_blazervulcans": "Leviathan",
+    "liminal_npcf_wingman_solidcore": "Railgun",
+    "liminal_npcf_partisan_smuggledweapons": "Assault Rifle",
+    "liminal_npcf_partisan_scavengedatgm": "Missile",
+    "liminal_npcf_security_shockbaton": "ShockBaton",
+    "liminal_npcf_eclipse_shiningfissure": "ArcBow",
+    "liminal_npcf_ferryman_scullingoar":"DD 288"
     };
 
 export { weaponEffects };
