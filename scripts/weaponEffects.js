@@ -215,7 +215,7 @@ const weaponEffects = {
     !! BACK UP YOUR CHANGES BEFORE A MODULE UPDATE OR THEY'LL BE LOST !!
     */
     "Example Custom Weapon": "Assault Rifle",
-    "\"SPAGHETTI\" Weaponized JavaScript Module": "DefaultTech"
+    "\"SPAGHETTI\" Weaponized JavaScript Module": "DefaultTech",
     };
 
 export { weaponEffects };
