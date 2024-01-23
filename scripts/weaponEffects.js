@@ -196,7 +196,26 @@ const weaponEffects = {
     "npc_Leech_PairedTalonsMKII": "Plasma Talons",
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
     "npc_Tempest_TyphoonNaniteCannon": "Nexus",
-    "npc_PDCTurret": "Leviathan"
+    "npc_PDCTurret": "Leviathan",
+
+    /*
+    Custom effects go under here. You can associate the name of a feature in Foundry to the name of a macro in the compendium, like so:
+
+        "Data Dart": "Nexus"
+        "Anticausal Thought": "Displacer"
+        "Example Custom Weapon": "Assault Rifle",
+
+    If your feature has quotes in the name, use backslashes (\) to prevent issues:
+
+        "\"Hornet\" Light Submachine Gun": "Assault Rifle",
+
+    If there aren't any effects you like, you can unlock the compendium and add your own.
+    If Foundry is open, refreshing the window will reflect changes made here; you don't need to reload the world.
+
+    !! BACK UP YOUR CHANGES BEFORE A MODULE UPDATE OR THEY'LL BE LOST !!
+    */
+    "Example Custom Weapon": "Assault Rifle",
+    "\"SPAGHETTI\" Weaponized JavaScript Module": "DefaultTech"
     };
 
 export { weaponEffects };

@@ -2,6 +2,7 @@ class MessageInfo {
     constructor (
         {
             sourceToken,
+            weaponObject,
             weaponIdentifier,
             targetTokens = null,
             targetsMissed = new Set(),
@@ -9,6 +10,7 @@ class MessageInfo {
     ) {
         this.sourceToken = sourceToken;
         this.weaponIdentifier = weaponIdentifier;
+        this.weaponObject = weaponObject;
         this.targetTokens = targetTokens;
         this.targetsMissed = targetsMissed;
     }
@@ -82,6 +84,7 @@ export function getMessageInfo (data) {
         const targetTokens = targets.map(t =>_getTokenByIdOrActorId(t.target_id));
         return new MessageInfo({
             sourceToken,
+            weaponObject: sourceToken.actor.items.get(weaponItemId),
             weaponIdentifier: sourceToken.actor.items.get(weaponItemId)?.system.lid,
             targetTokens,
             targetsMissed: _getTargetsMissed(chatMessage, targets),

@@ -128,10 +128,17 @@ Hooks.on("createChatMessage", (data) => {
     const messageMeta = getMessageInfo(data);
     if (messageMeta == null) return;
 
-    const {weaponIdentifier, sourceToken} = messageMeta;
+    const {weaponObject, weaponIdentifier, sourceToken} = messageMeta;
 
-    const macroName = weaponEffects[weaponIdentifier];
-    if (!macroName) return;
+    // Check for any custom/user-defined macros first
+    var macroName = weaponEffects[weaponObject?.system.name];
+    if (!macroName)
+    {
+        // If we don't find them, only then do we check the hardcoded ones
+        macroName = weaponEffects[weaponIdentifier];
+        if (!macroName)
+            return;
+    }
 
     console.log("Lancer Weapon FX | Found macro '" + macroName + "' for weapon '" + weaponIdentifier + "', playing animation");
     _executeMacroByName(macroName, sourceToken, {messageId: data._id}).then(null);
