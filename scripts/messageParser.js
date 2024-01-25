@@ -2,13 +2,13 @@ class MessageInfo {
     constructor (
         {
             sourceToken,
-            weaponObject,
+            weaponIdentifier,
             targetTokens = null,
             targetsMissed = new Set(),
         }
     ) {
         this.sourceToken = sourceToken;
-        this.weaponObject = weaponObject;
+        this.weaponIdentifier = weaponIdentifier;
         this.targetTokens = targetTokens;
         this.targetsMissed = targetsMissed;
     }
@@ -67,7 +67,7 @@ export function getMessageInfo (data) {
             console.log("it's a stabilize!!");
             return new MessageInfo({
                 sourceToken: _getTokenByIdOrActorId(data.speaker.actor),
-                weaponObject: "lwfx_stabilize",
+                weaponIdentifier: "lwfx_stabilize",
             })
         }
 
@@ -82,7 +82,7 @@ export function getMessageInfo (data) {
         const targetTokens = targets.map(t =>_getTokenByIdOrActorId(t.target_id));
         return new MessageInfo({
             sourceToken,
-            weaponObject: sourceToken.actor.items.get(weaponItemId),
+            weaponIdentifier: sourceToken.actor.items.get(weaponItemId),
             targetTokens,
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });
@@ -93,7 +93,7 @@ export function getMessageInfo (data) {
 
         return new MessageInfo({
             sourceToken: _getTokenByIdOrActorId(sourceInfo),
-            weaponObject: "default_tech_attack",
+            weaponIdentifier: "default_tech_attack",
             targetTokens: targets.map(t =>_getTokenByIdOrActorId(t.target_id)),
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         })
@@ -111,7 +111,7 @@ export function getMessageInfo (data) {
 
         return new MessageInfo({
             sourceToken,
-            weaponObject: "default_tech_attack",
+            weaponIdentifier: "default_tech_attack",
             targetTokens: targets.map(t =>_getTokenByIdOrActorId(t.target_id)),
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });

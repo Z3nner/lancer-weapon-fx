@@ -128,27 +128,27 @@ Hooks.on("createChatMessage", (data) => {
     const messageMeta = getMessageInfo(data);
     if (messageMeta == null) return;
 
-    const {weaponObject, weaponIdentifier, sourceToken} = messageMeta;
+    const {weaponIdentifier, sourceToken} = messageMeta;
 
     var macroName;
 
-    // weaponObject can variously be either an object with Foundry item data, or a string
+    // weaponIdentifier can variously be either an object with Foundry item data, or a string
     // We use strings as a fallback, so that we can have effects for itemless actions (stabilizing, tech attacks, etc)
-    if (weaponObject instanceof Object)
+    if (weaponIdentifier instanceof Object)
     {
         // Check for any custom/user-defined macros first by checking the name of the object
-        macroName = weaponEffects[weaponObject?.system.name];
+        macroName = weaponEffects[weaponIdentifier?.system.name];
         if (!macroName)
         {
             // If we don't find them, then we check the hardcoded list
-            macroName = weaponEffects[weaponObject?.system.lid];
+            macroName = weaponEffects[weaponIdentifier?.system.lid];
             if (!macroName)
                 return;
         }
     }
     else
     {
-        macroName = weaponEffects[weaponObject];
+        macroName = weaponEffects[weaponIdentifier];
         if (!macroName)
             return;
     }
