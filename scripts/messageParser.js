@@ -3,13 +3,11 @@ class MessageInfo {
         {
             sourceToken,
             weaponObject,
-            weaponIdentifier,
             targetTokens = null,
             targetsMissed = new Set(),
         }
     ) {
         this.sourceToken = sourceToken;
-        this.weaponIdentifier = weaponIdentifier;
         this.weaponObject = weaponObject;
         this.targetTokens = targetTokens;
         this.targetsMissed = targetsMissed;
@@ -69,7 +67,7 @@ export function getMessageInfo (data) {
             console.log("it's a stabilize!!");
             return new MessageInfo({
                 sourceToken: _getTokenByIdOrActorId(data.speaker.actor),
-                weaponIdentifier: "lwfx_stabilize",
+                weaponObject: "lwfx_stabilize",
             })
         }
 
@@ -85,7 +83,6 @@ export function getMessageInfo (data) {
         return new MessageInfo({
             sourceToken,
             weaponObject: sourceToken.actor.items.get(weaponItemId),
-            weaponIdentifier: sourceToken.actor.items.get(weaponItemId)?.system.lid,
             targetTokens,
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });
@@ -96,7 +93,7 @@ export function getMessageInfo (data) {
 
         return new MessageInfo({
             sourceToken: _getTokenByIdOrActorId(sourceInfo),
-            weaponIdentifier: "default_tech_attack",
+            weaponObject: "default_tech_attack",
             targetTokens: targets.map(t =>_getTokenByIdOrActorId(t.target_id)),
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         })
@@ -114,7 +111,7 @@ export function getMessageInfo (data) {
 
         return new MessageInfo({
             sourceToken,
-            weaponIdentifier: "default_tech_attack",
+            weaponObject: "default_tech_attack",
             targetTokens: targets.map(t =>_getTokenByIdOrActorId(t.target_id)),
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });
