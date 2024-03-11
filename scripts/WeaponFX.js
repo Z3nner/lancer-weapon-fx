@@ -130,8 +130,28 @@ Hooks.on("createChatMessage", (data) => {
 
     const {weaponIdentifier, sourceToken} = messageMeta;
 
-    const macroName = weaponEffects[weaponIdentifier];
-    if (!macroName) return;
+    var macroName;
+
+    // weaponIdentifier can variously be either an object with Foundry item data, or a string
+    // We use strings as a fallback, so that we can have effects for itemless actions (stabilizing, tech attacks, etc)
+    if (weaponIdentifier instanceof Object)
+    {
+        // Check for any custom/user-defined macros first by checking the name of the object
+        macroName = weaponEffects[weaponIdentifier?.system.name];
+        if (!macroName)
+        {
+            // If we don't find them, then we check the hardcoded list
+            macroName = weaponEffects[weaponIdentifier?.system.lid];
+            if (!macroName)
+                return;
+        }
+    }
+    else
+    {
+        macroName = weaponEffects[weaponIdentifier];
+        if (!macroName)
+            return;
+    }
 
     console.log("Lancer Weapon FX | Found macro '" + macroName + "' for weapon '" + weaponIdentifier + "', playing animation");
     _executeMacroByName(macroName, sourceToken, {messageId: data._id}).then(null);

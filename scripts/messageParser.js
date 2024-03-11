@@ -82,7 +82,7 @@ export function getMessageInfo (data) {
         const targetTokens = targets.map(t =>_getTokenByIdOrActorId(t.target_id));
         return new MessageInfo({
             sourceToken,
-            weaponIdentifier: sourceToken.actor.items.get(weaponItemId)?.system.lid,
+            weaponIdentifier: sourceToken.actor.items.get(weaponItemId),
             targetTokens,
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });
