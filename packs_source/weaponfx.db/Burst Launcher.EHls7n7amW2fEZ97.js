@@ -4,7 +4,7 @@ const target = targetTokens[0];
 
 let sequence = new Sequence()
     .sound()
-    .file("modules/lancer-weapon-fx/soundfx/AutoPod_Fire.ogg")
+    .file("modules/lancer-weapon-fx/soundfx/Autopod_Fire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
     .effect()
     .file("jb2a.lightning_ball.blue")
