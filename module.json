@@ -10,11 +10,11 @@
             "name": "dodgepong"
         }
     ],
-    "version": "1.7.2",
+    "version": "1.7.4",
     "minimumCoreVersion": "10",
     "compatibility": {
         "minimum": 10,
-        "verified": "10.291"
+        "verified": "10.312"
     },
     "url": "https://github.com/Z3nner/lancer-weapon-fx",
     "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.json",
