@@ -5,7 +5,7 @@ let sequence = new Sequence();
 new Sequence()
     .effect("jb2a.shield.01.outro_explode.blue")
         .atLocation(token)
-        .scaleToObject(9.5)
+        .scaleToObject(9.5, {uniform: true})
         .waitUntilFinished(-400)
         .thenDo(endFX)
 .play()
