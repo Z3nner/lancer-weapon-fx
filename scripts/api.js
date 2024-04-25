@@ -1,13 +1,14 @@
 import {getMessageInfo} from "./messageParser.js";
 import {euclideanDistance} from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
+import {MODULE_ID, SETTING_DEBUG_IS_DEFAULT_MISS, SETTING_VOLUME} from "./settings.js";
 
 /**
  * Functions exposed by the module for use in macros.
  */
 class ModuleApi {
     static getEffectVolume(volume) {
-        return volume * game.settings.get("lancer-weapon-fx", "volume");
+        return volume * game.settings.get(MODULE_ID, SETTING_VOLUME);
     }
 
     static getMacroVariables(messageId, actor) {
@@ -19,7 +20,7 @@ class ModuleApi {
             return {
                 sourceToken: sourceTokenFallback,
                 targetTokens: targetsFallback,
-                targetsMissed: game.settings.get("lancer-weapon-fx", "debug-is-default-miss")
+                targetsMissed: game.settings.get(MODULE_ID, SETTING_DEBUG_IS_DEFAULT_MISS)
                     ? new Set(targetsFallback.map(target => target.id))
                     : new Set(),
             };
@@ -44,4 +45,6 @@ class ModuleApi {
     static euclideanDistance = euclideanDistance;
 }
 
-Hooks.on("init", () => game.modules.get("lancer-weapon-fx").api = ModuleApi);
+export const bindHooks = () => {
+    Hooks.on("init", () => game.modules.get(MODULE_ID).api = ModuleApi);
+};
