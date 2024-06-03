@@ -1,4 +1,4 @@
-const {sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
+const {sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 let sequence = new Sequence()
     .sound()

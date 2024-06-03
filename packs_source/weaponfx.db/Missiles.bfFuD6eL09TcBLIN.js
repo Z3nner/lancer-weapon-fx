@@ -1,4 +1,4 @@
-const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(typeof messageId === "undefined" ? null : messageId, actor);
+const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 let sequence = new Sequence();
 for (let i=0; i < targetTokens.length; i++) {

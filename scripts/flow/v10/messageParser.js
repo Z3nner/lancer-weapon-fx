@@ -1,30 +1,4 @@
-class MessageInfo {
-    constructor (
-        {
-            sourceToken,
-            weaponIdentifier,
-            targetTokens = null,
-            targetsMissed = new Set(),
-        }
-    ) {
-        this.sourceToken = sourceToken;
-        this.weaponIdentifier = weaponIdentifier;
-        this.targetTokens = targetTokens;
-        this.targetsMissed = targetsMissed;
-    }
-}
-
-function _getTokenByIdOrActorId(id) {
-    let token = canvas.tokens.get(id);
-    if (!token) {
-        token = canvas.tokens.ownedTokens.filter(t => t.actor.id === id)?.[0];
-        if (!token) {
-            console.log("Lancer Weapon FX | No token with id '" + id + "' found.");
-            return null;
-        }
-    }
-    return token;
-}
+import {FlowInfo, getTokenByIdOrActorId} from "../common.js";
 
 function _getTargetsMissed(chatMessageDom, targets) {
     const hitChips = [...chatMessageDom.querySelectorAll(".lancer-hit-chip")];
@@ -45,9 +19,9 @@ function _getTargetsMissed(chatMessageDom, targets) {
 
 /**
  * @param {ChatMessage} data
- * @return {null|MessageInfo}
+ * @return {null|FlowInfo}
  */
-export function getMessageInfo (data) {
+export function getFlowInfo (data) {
     let chatMessageDataContent = data.content ?? '';
     // Parse the chat message as XML so that we can navigate through it
     const parser = new DOMParser();
@@ -65,9 +39,9 @@ export function getMessageInfo (data) {
         const regexIsStabilize = /^\/\/ .+ HAS STABILIZED \/\/$/;
         if (regexIsStabilize.test(header.innerHTML)) {
             console.log("it's a stabilize!!");
-            return new MessageInfo({
-                sourceToken: _getTokenByIdOrActorId(data.speaker.actor),
-                weaponIdentifier: "lwfx_stabilize",
+            return new FlowInfo({
+                sourceToken: getTokenByIdOrActorId(data.speaker.actor),
+                actionIdentifier: "lwfx_stabilize",
             })
         }
 
@@ -78,11 +52,11 @@ export function getMessageInfo (data) {
     if (rerollData.fn === "prepareEncodedAttackMacro") {
         const [sourceInfo, weaponItemId, , {targets}] = rerollData.args;
 
-        const sourceToken = _getTokenByIdOrActorId(sourceInfo.id);
-        const targetTokens = targets.map(t =>_getTokenByIdOrActorId(t.target_id));
-        return new MessageInfo({
+        const sourceToken = getTokenByIdOrActorId(sourceInfo.id);
+        const targetTokens = targets.map(t =>getTokenByIdOrActorId(t.target_id));
+        return new FlowInfo({
             sourceToken,
-            weaponIdentifier: sourceToken.actor.items.get(weaponItemId)?.system.lid,
+            actionIdentifier: sourceToken.actor.items.get(weaponItemId)?.system.lid,
             targetTokens,
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });
@@ -91,10 +65,10 @@ export function getMessageInfo (data) {
     if (rerollData.fn === "prepareTechMacro") {
         const [sourceInfo, , {targets}] = rerollData.args;
 
-        return new MessageInfo({
-            sourceToken: _getTokenByIdOrActorId(sourceInfo),
-            weaponIdentifier: "default_tech_attack",
-            targetTokens: targets.map(t =>_getTokenByIdOrActorId(t.target_id)),
+        return new FlowInfo({
+            sourceToken: getTokenByIdOrActorId(sourceInfo),
+            actionIdentifier: "default_tech_attack",
+            targetTokens: targets.map(t =>getTokenByIdOrActorId(t.target_id)),
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         })
     }
@@ -102,17 +76,17 @@ export function getMessageInfo (data) {
     if (rerollData.fn === "prepareActivationMacro") {
         const [sourceInfo, triggeringItemId, , actionName, {targets}] = rerollData.args;
 
-        const sourceToken = _getTokenByIdOrActorId(sourceInfo);
+        const sourceToken = getTokenByIdOrActorId(sourceInfo);
 
         let triggeringItem = sourceToken.actor.items.get(triggeringItemId);
         if (!triggeringItem) return null;
 
         if (!["Invade", "Full Tech", "Quick Tech"].includes(triggeringItem.system.actions[actionName].activation)) return null;
 
-        return new MessageInfo({
+        return new FlowInfo({
             sourceToken,
-            weaponIdentifier: "default_tech_attack",
-            targetTokens: targets.map(t =>_getTokenByIdOrActorId(t.target_id)),
+            actionIdentifier: "default_tech_attack",
+            targetTokens: targets.map(t =>getTokenByIdOrActorId(t.target_id)),
             targetsMissed: _getTargetsMissed(chatMessage, targets),
         });
     }

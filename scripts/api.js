@@ -1,4 +1,3 @@
-import {getMessageInfo} from "./messageParser.js";
 import {euclideanDistance} from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
 import {MODULE_ID, SETTING_DEBUG_IS_DEFAULT_MISS, SETTING_VOLUME} from "./settings.js";
@@ -11,12 +10,12 @@ class ModuleApi {
         return volume * game.settings.get(MODULE_ID, SETTING_VOLUME);
     }
 
-    static getMacroVariables(messageId, actor) {
-        const message = game.messages.get(messageId);
+    static getMacroVariables(macro) {
         const sourceTokenFallback = canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId;
         const targetsFallback = [...game.user.targets];
+        const flowInfo = macro?.flags?.["lancer-weapon-fx"]?.flowInfo;
 
-        if (!message) {
+        if (!flowInfo) {
             return {
                 sourceToken: sourceTokenFallback,
                 targetTokens: targetsFallback,
@@ -26,7 +25,7 @@ class ModuleApi {
             };
         }
 
-        const {sourceToken, targetTokens, targetsMissed} = getMessageInfo(message);
+        const {sourceToken, targetTokens, targetsMissed} = flowInfo;
         return {
             sourceToken: sourceToken || sourceTokenFallback,
             targetTokens: targetTokens || targetsFallback,
