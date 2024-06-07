@@ -28,3 +28,4 @@ export function getUniquePoints(points) {
             return true;
         });
 }
+

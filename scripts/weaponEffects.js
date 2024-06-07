@@ -169,6 +169,8 @@ const weaponEffects = {
     "mw_warp_rifle": "Warp Rifle",
     "mw_sherman_integrated": "Railgun",
     "default_tech_attack": "DefaultTech",
+    "lwfx_default_melee": "DefaultMelee",
+    "lwfx_default_ranged": "Pistol",
     "lwfx_stabilize": "Stabilize",
     //SOLSTICE RAIN
     "mw_xc_br_battle_rifle": "BattleRifle",
@@ -196,7 +198,7 @@ const weaponEffects = {
     "npc_Leech_PairedTalonsMKII": "Plasma Talons",
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
     "npc_Tempest_TyphoonNaniteCannon": "Nexus",
-    "npc_PDCTurret": "Leviathan"
-    };
+    "npc_PDCTurret": "Leviathan",
+};
 
 export { weaponEffects };
