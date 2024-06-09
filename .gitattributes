@@ -1,5 +1,1 @@
 packs_source/weaponfx text eol=lf
-
-# Ensure LDB files are handled as binary
-packs/**   binary
-

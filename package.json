@@ -2,16 +2,16 @@
     "type": "module",
     "private": true,
     "scripts": {
+        "build": "npm run db:pack",
         "db:unpack": "node tooling/unpack-macros.mjs",
         "db:pack": "node tooling/pack-macros.mjs",
         "new-effect": "node tooling/create-new-effect.mjs",
-        "test": "npm run db:pack && npm run test:js",
+        "test": "npm run test:js",
         "test:js": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "devDependencies": {
         "@foundryvtt/foundryvtt-cli": "^1.0.2",
         "chalk": "^5.3.0",
-        "classic-level": "^1.4.1",
         "commander": "^11.1.0",
         "jest": "^29.7.0"
     }
