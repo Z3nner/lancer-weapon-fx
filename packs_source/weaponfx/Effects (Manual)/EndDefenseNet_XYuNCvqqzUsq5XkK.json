@@ -1,0 +1,10 @@
+{
+  "_id": "XYuNCvqqzUsq5XkK",
+  "name": "EndDefenseNet",
+  "img": "modules/lancer-weapon-fx/icons/cracked-shield.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!XYuNCvqqzUsq5XkK",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/EndDefenseNet_XYuNCvqqzUsq5XkK.js"
+}

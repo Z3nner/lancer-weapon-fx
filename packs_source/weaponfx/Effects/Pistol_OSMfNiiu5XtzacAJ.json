@@ -1,0 +1,10 @@
+{
+  "_id": "OSMfNiiu5XtzacAJ",
+  "name": "Pistol",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/pistol-gun.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!OSMfNiiu5XtzacAJ",
+  "command_source": "packs_source/weaponfx/Effects/Pistol_OSMfNiiu5XtzacAJ.js"
+}

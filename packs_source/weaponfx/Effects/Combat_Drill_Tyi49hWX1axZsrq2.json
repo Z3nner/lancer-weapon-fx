@@ -1,0 +1,10 @@
+{
+  "name": "Combat Drill",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/drill.png",
+  "scope": "global",
+  "_id": "Tyi49hWX1axZsrq2",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!Tyi49hWX1axZsrq2",
+  "command_source": "packs_source/weaponfx/Effects/Combat_Drill_Tyi49hWX1axZsrq2.js"
+}

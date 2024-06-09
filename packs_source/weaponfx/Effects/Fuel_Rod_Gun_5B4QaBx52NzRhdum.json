@@ -1,0 +1,10 @@
+{
+  "_id": "5B4QaBx52NzRhdum",
+  "name": "Fuel Rod Gun",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/radiations.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!5B4QaBx52NzRhdum",
+  "command_source": "packs_source/weaponfx/Effects/Fuel_Rod_Gun_5B4QaBx52NzRhdum.js"
+}

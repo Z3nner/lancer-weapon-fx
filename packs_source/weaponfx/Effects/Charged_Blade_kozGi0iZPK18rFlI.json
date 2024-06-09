@@ -1,0 +1,10 @@
+{
+  "_id": "kozGi0iZPK18rFlI",
+  "name": "Charged Blade",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/shining-sword.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!kozGi0iZPK18rFlI",
+  "command_source": "packs_source/weaponfx/Effects/Charged_Blade_kozGi0iZPK18rFlI.js"
+}

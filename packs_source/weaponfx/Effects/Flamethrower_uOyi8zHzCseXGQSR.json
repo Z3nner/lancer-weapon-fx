@@ -1,0 +1,10 @@
+{
+  "_id": "uOyi8zHzCseXGQSR",
+  "name": "Flamethrower",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/flamethrower-soldier.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!uOyi8zHzCseXGQSR",
+  "command_source": "packs_source/weaponfx/Effects/Flamethrower_uOyi8zHzCseXGQSR.js"
+}

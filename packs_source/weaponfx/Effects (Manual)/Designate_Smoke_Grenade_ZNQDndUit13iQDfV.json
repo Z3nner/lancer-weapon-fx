@@ -1,0 +1,10 @@
+{
+  "_id": "ZNQDndUit13iQDfV",
+  "name": "Designate Smoke Grenade",
+  "img": "modules/lancer-weapon-fx/icons/SmokeGrenadeArea.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!ZNQDndUit13iQDfV",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/Designate_Smoke_Grenade_ZNQDndUit13iQDfV.js"
+}

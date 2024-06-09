@@ -1,0 +1,10 @@
+{
+  "_id": "CqlCKrYyJCYdmLks",
+  "name": "War Pike",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/barbed-spear.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!CqlCKrYyJCYdmLks",
+  "command_source": "packs_source/weaponfx/Effects/War_Pike_CqlCKrYyJCYdmLks.js"
+}

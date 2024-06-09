@@ -1,8 +1,0 @@
-{
-    "_id": "Hlf1weIjm3FsVE9Z",
-    "name": "ElectricExplodeOnClick",
-    "img": "modules/lancer-weapon-fx/icons/crowned-explosion.png",
-    "type": "script",
-    "scope": "global",
-    "author": "LancerWeaponFX00"
-}

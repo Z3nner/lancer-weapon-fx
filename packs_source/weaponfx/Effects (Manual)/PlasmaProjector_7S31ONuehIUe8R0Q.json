@@ -1,0 +1,10 @@
+{
+  "_id": "7S31ONuehIUe8R0Q",
+  "name": "PlasmaProjector",
+  "img": "modules/JB2A_DnD5e/Library/6th_Level/Disintegrate/Disintegrate_01_Regular_Green01_Thumb.webp",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!7S31ONuehIUe8R0Q",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/PlasmaProjector_7S31ONuehIUe8R0Q.js"
+}

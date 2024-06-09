@@ -1,0 +1,10 @@
+{
+  "name": "Railgun",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/supersonic-bullet.png",
+  "scope": "global",
+  "_id": "iOD860W9KokfR3Hy",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!iOD860W9KokfR3Hy",
+  "command_source": "packs_source/weaponfx/Effects/Railgun_iOD860W9KokfR3Hy.js"
+}

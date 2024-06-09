@@ -1,8 +1,0 @@
-{
-    "_id": "bfFuD6eL09TcBLIN",
-    "name": "Missiles",
-    "img": "modules/lancer-weapon-fx/icons/missile-swarm.png",
-    "type": "script",
-    "scope": "global",
-    "author": "LancerWeaponFX00"
-}

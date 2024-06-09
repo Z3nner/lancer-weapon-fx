@@ -1,0 +1,10 @@
+{
+  "_id": "ui1a07lCGBOk4Rp7",
+  "name": "Plasma Talons",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/claw-slashes.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!ui1a07lCGBOk4Rp7",
+  "command_source": "packs_source/weaponfx/Effects/Plasma_Talons_ui1a07lCGBOk4Rp7.js"
+}

@@ -1,0 +1,10 @@
+{
+  "_id": "WjxNFb3JQBla9BBC",
+  "name": "JetLancerExplosion",
+  "img": "modules/lancer-weapon-fx/icons/explosion-rays.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!WjxNFb3JQBla9BBC",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/JetLancerExplosion_WjxNFb3JQBla9BBC.js"
+}

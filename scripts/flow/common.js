@@ -1,4 +1,5 @@
 import {weaponEffects} from "../weaponEffects.js";
+import {MODULE_ID} from "../consts.js";
 
 export class FlowInfo {
 	constructor (
@@ -32,7 +33,7 @@ async function _executeMacroByName(
 	macroName,
 	sourceToken = {},
 	{
-		compendiumName = "lancer-weapon-fx.WeaponFX",
+		compendiumName = `${MODULE_ID}.weaponfx`,
 		flowInfo = null,
 	} = {},
 ) {
@@ -43,7 +44,7 @@ async function _executeMacroByName(
 		if (macro_data) {
 			const temp_macro = new Macro(macro_data);
 
-			(temp_macro.flags["lancer-weapon-fx"] ||= {}).flowInfo = flowInfo;
+			(temp_macro.flags[MODULE_ID] ||= {}).flowInfo = flowInfo;
 			temp_macro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
 
 			temp_macro.execute({actor: sourceToken.actor, token: sourceToken});

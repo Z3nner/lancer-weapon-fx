@@ -1,0 +1,10 @@
+{
+  "name": "Bolt Thrower",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/fast-arrow.png",
+  "scope": "global",
+  "_id": "6lzGhwqHNYxXY25N",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!6lzGhwqHNYxXY25N",
+  "command_source": "packs_source/weaponfx/Effects/Bolt_Thrower_6lzGhwqHNYxXY25N.js"
+}

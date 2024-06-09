@@ -1,0 +1,10 @@
+{
+  "name": "LockOn",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/crosshair.png",
+  "scope": "global",
+  "_id": "k5UDriYBR2pnAUjn",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!k5UDriYBR2pnAUjn",
+  "command_source": "packs_source/weaponfx/Effects/LockOn_k5UDriYBR2pnAUjn.js"
+}

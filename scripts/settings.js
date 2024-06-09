@@ -1,4 +1,4 @@
-export const MODULE_ID = "lancer-weapon-fx";
+import {MODULE_ID} from "./consts.js";
 
 export const SETTING_VOLUME = "volume";
 export const SETTING_IS_PRELOAD_EFFECTS = "is-preload-effects";

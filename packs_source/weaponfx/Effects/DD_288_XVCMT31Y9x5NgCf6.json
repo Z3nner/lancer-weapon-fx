@@ -1,0 +1,10 @@
+{
+  "_id": "XVCMT31Y9x5NgCf6",
+  "name": "DD 288",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/punch-blast.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!XVCMT31Y9x5NgCf6",
+  "command_source": "packs_source/weaponfx/Effects/DD_288_XVCMT31Y9x5NgCf6.js"
+}
