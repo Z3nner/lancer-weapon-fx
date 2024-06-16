@@ -4,6 +4,54 @@
         "Sound Volume Hint": "Set a base volume level for all sound effects. Note that for each user, this value is combined with the user's \"Global: Interface\" volume setting (see the \"Playlists\" sidebar tab) to produce their final volume level.",
         "Use Weapon Heuristic": "Use Weapon Heuristic",
         "Use Weapon Heuristic Hint": "Use a heuristic to determine a suitable effect to play when using an unknown (homebrew/custom) weapon.",
-        "Debug: Play Miss Animations by Default": "Debug: Play Miss Animations by Default"
+        "Debug: Play Miss Animations by Default": "Debug: Play Miss Animations by Default",
+
+        "effectManager": {
+            "settings": {
+                "Effects Manager": "Effects Manager",
+                "Open Effects Manager": "Open Effects Manager"
+            },
+
+            "app": {
+                "Effects Manager": "Effects Manager",
+                "Name": "Name",
+                "Lancer ID": "Lancer ID",
+                "Import Custom Effects": "Import Custom Effects",
+                "Import Custom Effects Hint 1": "You may import custom effects from an exported JSON file.",
+                "Import Custom Effects Hint 2": "This operation will update your custom effects and cannot be un-done.",
+                "Import": "Import",
+                "Create Effect": "Create Effect",
+                "Create Folder": "Create Folder",
+                "Export Data": "Export Data",
+                "Import Data": "Import Data",
+                "Uncategorized": "Uncategorized",
+                "Uncategorized Hint 1": "Drop an effect here to remove it from its folder.",
+                "Expand Folder": "Expand Folder",
+                "Collapse Folder": "Collapse Folder",
+                "Folder Name": "Folder Name",
+                "SHIFT to Also Delete Contents": "SHIFT to Also Delete Contents",
+                "Mode Hint": "Use \"Lancer ID\" mode for items from LCPs. Use \"Name\" mode for other items.",
+                "Mode": "Mode",
+                "Item Name": "Item Name",
+                "Macro": "Macro",
+                "Macro UUID": "Macro UUID",
+                "Execute Macro": "Execute Macro",
+                "Remove Folder": "Remove Folder",
+                "Delete Selected": "Delete Selected",
+                "Select All": "Select All",
+                "Delete Selected Effects": "Delete Selected Effects",
+                "Delete Selected Effects Hint": "{count} effect(s) will be deleted. This cannot be un-done.",
+                "Multiple Effects Item Name Hint": "Multiple effects exist with this item name!",
+                "Multiple Effects Lancer ID Hint": "Multiple effects exist with this Lancer ID!",
+                "Start Tour": "Start Tour",
+                "Usage Hint": "Drag-and-drop an Item or Macro to create a new effect."
+            },
+
+            "fields": {
+                "macroUuid": {
+                    "label": "Macro"
+                }
+            }
+        }
     }
 }

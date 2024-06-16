@@ -33,7 +33,7 @@ jobs:
       run: |
         npm ci
         npm run build
-        zip -r ./module.zip module.json icons/ lang/ packs/ scripts/ sprites/ soundfx/ video/
+        zip -r ./module.zip module.json icons/ lang/ packs/ scripts/ sprites/ soundfx/ video/ templates/ css/ tours/
 
     # Create a release for this specific version
     - name: Update Release with Files

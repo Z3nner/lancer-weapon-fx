@@ -1,0 +1,87 @@
+.lwfx-effects-manager {
+    color: var(--dark-text);
+    background: var(--background-color);
+}
+
+/* -------------------------------------------- */
+
+.lwfx-effects-manager__vr {
+    height: 100%;
+    border: 1px solid var(--primary-color, fuschia);
+}
+
+.lwfx-effects-manager__hr {
+    border-color: var(--primary-color, fuschia);
+}
+
+/* -------------------------------------------- */
+
+.lwfx-effects-manager__row {
+    margin-top: calc(0.5 * var(--lwfx-spacer));
+    margin-bottom: calc(0.5 * var(--lwfx-spacer));
+}
+
+/* -------------------------------------------- */
+
+.lwfx-effects-manager__folder,
+.lwfx-effects-manager__uncategorized {
+    border: 2px solid var(--primary-color);
+    border-top: 0;
+}
+
+.lancer.app input.lwfx-effects-manager__ipt-folder-name[type="text"] {
+    height: calc(2.25rem + 2px);
+    color: var(--light-text, fuschia);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 0;
+}
+
+.lancer.app input.lwfx-effects-manager__ipt-folder-name[type="text"]::placeholder {
+    color: color-mix(in srgb, var(--light-text), var(--dark-text) 27%);
+    font-style: italic;
+    font-weight: initial;
+}
+
+/* -------------------------------------------- */
+
+.lwfx-effects-manager__effects-uncategorized-empty {
+    /* Pad to a comfortable height for drag-drop */
+    min-height: 100px;
+}
+
+/* -------------------------------------------- */
+
+.lwfx-effects-manager__effect {
+    padding: var(--lwfx-spacer) var(--lwfx-spacer) var(--lwfx-spacer) 0;
+    margin-left: var(--lwfx-spacer);
+    margin-right: var(--lwfx-spacer);
+}
+
+.lwfx-effects-manager__grip {
+    cursor: move;
+    width: calc(2 * var(--lwfx-spacer));
+}
+
+.lwfx-effects-manager__grip-handle {
+    display: none;
+}
+
+.lwfx-effects-manager__effect:hover .lwfx-effects-manager__grip-handle {
+    display: block;
+}
+
+.lwfx-effects-manager__effect-ipt[type="text"],
+.lwfx-effects-manager__effect-sel {
+    width: calc(100% - calc(4 * var(--lwfx-spacer)));
+    margin: calc(0.5 * var(--lwfx-spacer)) calc(2 * var(--lwfx-spacer));
+    background-color: var(--tooltip-background);
+    color: var(--dark-text);
+    height: var(--form-field-height);
+}
+
+.lwfx-effects-manager__icon-duplicate {
+    color: var(--error-color);
+    filter: contrast(2);
+}

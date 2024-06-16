@@ -1,0 +1,67 @@
+<div
+    class="lwfx__clipped-top lwfx__flexcol lwfx-effects-manager__row lwfx__darken-1 lwfx-effects-manager__folder"
+    data-folder-id="{{folder.id}}"
+    data-drop-target="folder"
+>
+    <div
+        class="lancer-header lancer-primary lwfx__flexrow lwfx__py-1 lwfx__pr-2"
+    >
+        <button
+            type="button"
+            name="btn-folder-expand-collapse"
+            class="lwfx__w-initial lwfx__mr-1"
+            data-tooltip="{{#if folder.isCollapsed}}
+                {{localize "lancer-weapon-fx.effectManager.app.Expand Folder"}}
+            {{else}}
+                {{localize "lancer-weapon-fx.effectManager.app.Collapse Folder"}}
+            {{/if}}"
+        >
+            {{#if folder.isCollapsed}}
+                <i class="fas fa-folder fa-fw lwfx__fa lwfx__fa-fw"></i>
+            {{else}}
+                <i class="fas fa-folder-open fa-fw lwfx__fa lwfx__fa-fw"></i>
+            {{/if}}
+        </button>
+
+        <button
+            type="button"
+            name="btn-folder-create-effect"
+            data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Create Effect"}}"
+            class="lwfx__w-initial lwfx__mr-1"
+        >
+            <i class="fas fa-explosion fa-fw lwfx__fa lwfx__fa-fw"></i>
+        </button>
+
+        <input
+            type="text"
+            name="folders.{{folder.id}}.name"
+            value="{{folder.name}}"
+            placeholder="{{localize "lancer-weapon-fx.effectManager.app.Folder Name"}}"
+            class="lwfx__w-100 lwfx__mr-1 lwfx-effects-manager__ipt-folder-name submajor"
+        >
+
+        <button
+            type="button"
+            name="btn-folder-delete"
+            data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.SHIFT to Also Delete Contents"}}"
+            class="lwfx__w-initial lwfx__ws-nowrap lwfx__px-2"
+        >
+            <i class="fas fa-trash lwfx__fa"></i>
+            {{localize "lancer-weapon-fx.effectManager.app.Remove Folder"}}
+        </button>
+    </div>
+
+    <div
+        class="lwfx__flexcol lwfx__my-1 {{#if folder.isCollapsed}}lwfx__hidden {{/if}}"
+    >
+        {{#each folder.effects as |effect|}}
+            {{>
+                lancer-weapon-fx.effect-manager-effect-row
+                effect=effect
+                folder=@root.folder
+                macros=@root.macros
+                rowModes=@root.rowModes
+            }}
+        {{/each}}
+    </div>
+</div>

@@ -50,6 +50,10 @@
     "esmodules": [
         "./scripts/WeaponFX.js"
     ],
+    "styles": [
+        "./css/effects-manager.css",
+        "./css/helpers.css"
+    ],
     "packs": [
         {
             "name": "weaponfx",
