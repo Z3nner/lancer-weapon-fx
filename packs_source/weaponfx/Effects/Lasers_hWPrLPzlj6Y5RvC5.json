@@ -1,0 +1,10 @@
+{
+  "_id": "hWPrLPzlj6Y5RvC5",
+  "name": "Lasers",
+  "type": "script",
+  "img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Blue_Thumb.webp",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!hWPrLPzlj6Y5RvC5",
+  "command_source": "packs_source/weaponfx/Effects/Lasers_hWPrLPzlj6Y5RvC5.js"
+}

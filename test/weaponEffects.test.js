@@ -2,16 +2,16 @@ import fs from "fs";
 import path from "path";
 import {expect, jest, test} from '@jest/globals';
 import {weaponEffects} from "../scripts/weaponEffects.js";
-import {DIR_PACKS_SOURCE} from "../tooling/consts.mjs";
+import {DIR_PACKS_SOURCE, PACK_ID} from "../tooling/consts.mjs";
 
-const WEAPON_FX_PACK_DIR = path.join(DIR_PACKS_SOURCE, "weaponfx.db");
+const AUTO_EFFECTS_DIR = path.join(DIR_PACKS_SOURCE, PACK_ID, "Effects");
 
-const automaticMacros = fs.readdirSync(WEAPON_FX_PACK_DIR)
+const automaticMacros = fs.readdirSync(AUTO_EFFECTS_DIR)
     .filter(filename => filename.endsWith(".json"))
-    .map(filename => JSON.parse(fs.readFileSync(path.join(WEAPON_FX_PACK_DIR, filename), "utf-8")).name);
+    .map(filename => JSON.parse(fs.readFileSync(path.join(AUTO_EFFECTS_DIR, filename), "utf-8")).name);
 
 test(
-    `that all macros lined in "weaponEffects" exist`,
+    `that all macros linked in "weaponEffects" exist`,
     () => {
         const automaticMacrosSet = new Set(automaticMacros);
         const missingNames = Object.values(weaponEffects)
@@ -21,7 +21,7 @@ test(
 );
 
 test(
-    `that effects not listed in "weaponEffects" are not in the "weaponfx" compendium`,
+    `that effects not listed in "weaponEffects" are not in the "Effects" folder`,
     () => {
         const weaponEffectsSet = new Set(Object.values(weaponEffects));
         const manualNames = automaticMacros

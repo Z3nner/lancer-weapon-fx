@@ -1,0 +1,10 @@
+{
+  "_id": "X6m0372eLE56NK6l",
+  "name": "HMG",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/machine-gun.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!X6m0372eLE56NK6l",
+  "command_source": "packs_source/weaponfx/Effects/HMG_X6m0372eLE56NK6l.js"
+}

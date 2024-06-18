@@ -1,0 +1,10 @@
+{
+  "name": "ArcBow",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/lightning-bow.png",
+  "scope": "global",
+  "_id": "SvEgMaioDs6CiqaK",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!SvEgMaioDs6CiqaK",
+  "command_source": "packs_source/weaponfx/Effects/ArcBow_SvEgMaioDs6CiqaK.js"
+}

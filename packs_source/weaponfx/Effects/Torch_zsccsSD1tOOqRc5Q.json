@@ -1,0 +1,10 @@
+{
+  "_id": "zsccsSD1tOOqRc5Q",
+  "name": "Torch",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/axe-swing.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!zsccsSD1tOOqRc5Q",
+  "command_source": "packs_source/weaponfx/Effects/Torch_zsccsSD1tOOqRc5Q.js"
+}

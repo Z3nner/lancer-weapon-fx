@@ -1,0 +1,10 @@
+{
+  "_id": "blc8AUjYhehKKhc5",
+  "name": "BlastPick",
+  "img": "modules/lancer-weapon-fx/icons/war-pick.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!blc8AUjYhehKKhc5",
+  "command_source": "packs_source/weaponfx/Effects/BlastPick_blc8AUjYhehKKhc5.js"
+}

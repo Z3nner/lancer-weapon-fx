@@ -1,0 +1,10 @@
+{
+  "_id": "e5XwWrHsiRKrgh7S",
+  "name": "Plasma Thrower",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/lightning-flame.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!e5XwWrHsiRKrgh7S",
+  "command_source": "packs_source/weaponfx/Effects/Plasma_Thrower_e5XwWrHsiRKrgh7S.js"
+}

@@ -13,6 +13,7 @@ jobs:
       name: Setup Node
       with:
         node-version: latest
+
     - name: Run Tests
       run: |
         npm ci

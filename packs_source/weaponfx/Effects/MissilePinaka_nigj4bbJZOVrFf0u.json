@@ -1,0 +1,10 @@
+{
+  "_id": "nigj4bbJZOVrFf0u",
+  "name": "MissilePinaka",
+  "img": "modules/lancer-weapon-fx/icons/rocket.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!nigj4bbJZOVrFf0u",
+  "command_source": "packs_source/weaponfx/Effects/MissilePinaka_nigj4bbJZOVrFf0u.js"
+}

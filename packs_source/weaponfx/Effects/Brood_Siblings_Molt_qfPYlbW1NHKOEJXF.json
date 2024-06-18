@@ -1,0 +1,10 @@
+{
+  "_id": "qfPYlbW1NHKOEJXF",
+  "name": "Brood Siblings Molt",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/shining-claw.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!qfPYlbW1NHKOEJXF",
+  "command_source": "packs_source/weaponfx/Effects/Brood_Siblings_Molt_qfPYlbW1NHKOEJXF.js"
+}

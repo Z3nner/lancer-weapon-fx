@@ -1,6 +1,7 @@
 import {euclideanDistance} from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
-import {MODULE_ID, SETTING_DEBUG_IS_DEFAULT_MISS, SETTING_VOLUME} from "./settings.js";
+import {SETTING_DEBUG_IS_DEFAULT_MISS, SETTING_VOLUME} from "./settings.js";
+import {MODULE_ID} from "./consts.js";
 
 /**
  * Functions exposed by the module for use in macros.
@@ -13,7 +14,7 @@ class ModuleApi {
     static getMacroVariables(macro) {
         const sourceTokenFallback = canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId;
         const targetsFallback = [...game.user.targets];
-        const flowInfo = macro?.flags?.["lancer-weapon-fx"]?.flowInfo;
+        const flowInfo = macro?.flags?.[MODULE_ID]?.flowInfo;
 
         if (!flowInfo) {
             return {

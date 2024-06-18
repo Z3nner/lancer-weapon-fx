@@ -1,0 +1,10 @@
+{
+  "_id": "Nsmpx88frJTCU0Ax",
+  "name": "NuclearExplosionSFC",
+  "img": "modules/lancer-weapon-fx/icons/mushroom-cloud.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!Nsmpx88frJTCU0Ax",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/NuclearExplosionSFC_Nsmpx88frJTCU0Ax.js"
+}

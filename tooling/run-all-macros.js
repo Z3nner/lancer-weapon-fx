@@ -41,8 +41,9 @@
     try {
         const pDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        const packMacros = game.packs.get("lancer-weapon-fx.WeaponFX");
+        const packMacros = game.packs.get("lancer-weapon-fx.weaponfx");
         const macros = [...(await packMacros.getDocuments())]
+            .filter(macro => macro.folder?.name === "Effects")
             .sort((a, b) => a.name.localeCompare(b.name, {sensitivity: "base"}));
 
         for (const macro of macros) {

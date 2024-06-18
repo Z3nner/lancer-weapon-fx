@@ -1,0 +1,10 @@
+{
+  "_id": "NMU9syMKa0dTsINf",
+  "name": "Shotgun",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/shotgun-rounds.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!NMU9syMKa0dTsINf",
+  "command_source": "packs_source/weaponfx/Effects/Shotgun_NMU9syMKa0dTsINf.js"
+}

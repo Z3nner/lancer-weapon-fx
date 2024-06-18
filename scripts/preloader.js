@@ -1,4 +1,5 @@
-import {MODULE_ID, SETTING_IS_PRELOAD_EFFECTS} from "./settings.js";
+import {SETTING_IS_PRELOAD_EFFECTS} from "./settings.js";
+import {MODULE_ID} from "./consts.js";
 
 export const bindHooks = () => {
     Hooks.once("sequencer.ready", async () => {
@@ -70,9 +71,9 @@ export const bindHooks = () => {
             "jb2a.warhammer.melee.01.white.4",
             "jb2a.zoning.inward.square.loop.bluegreen.01.01",
             "jb2a.zoning.inward.circle.loop",
-            "modules/lancer-weapon-fx/icons/LatchDrone.png",
-            "modules/lancer-weapon-fx/video/jetlancer_explosion_1000.webm",
-            "modules/lancer-weapon-fx/video/pw_nuke_effect.webm"
+            `modules/${MODULE_ID}/icons/LatchDrone.png`,
+            `modules/${MODULE_ID}/video/jetlancer_explosion_1000.webm`,
+            `modules/${MODULE_ID}/video/pw_nuke_effect.webm`
         ], true);
         console.log('Lancer Weapon FX | Effects preloaded');
     });

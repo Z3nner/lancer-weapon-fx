@@ -1,8 +1,0 @@
-{
-    "_id": "DdNSH1DTIsRyJCK9",
-    "name": "BattleRifle",
-    "img": "modules/lancer-weapon-fx/icons/on-target.png",
-    "type": "script",
-    "scope": "global",
-    "author": "LancerWeaponFX00"
-}

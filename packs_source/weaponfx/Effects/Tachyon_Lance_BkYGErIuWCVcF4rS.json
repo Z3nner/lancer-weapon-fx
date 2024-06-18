@@ -1,0 +1,10 @@
+{
+  "name": "Tachyon Lance",
+  "type": "script",
+  "img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/Bullet_03_Regular_Blue_Thumb.webp",
+  "scope": "global",
+  "_id": "BkYGErIuWCVcF4rS",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!BkYGErIuWCVcF4rS",
+  "command_source": "packs_source/weaponfx/Effects/Tachyon_Lance_BkYGErIuWCVcF4rS.js"
+}

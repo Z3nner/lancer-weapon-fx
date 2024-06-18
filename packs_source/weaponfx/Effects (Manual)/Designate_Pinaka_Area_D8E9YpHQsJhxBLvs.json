@@ -1,0 +1,10 @@
+{
+  "_id": "D8E9YpHQsJhxBLvs",
+  "name": "Designate Pinaka Area",
+  "img": "modules/lancer-weapon-fx/icons/PinakaArea.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!D8E9YpHQsJhxBLvs",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/Designate_Pinaka_Area_D8E9YpHQsJhxBLvs.js"
+}

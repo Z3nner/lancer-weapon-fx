@@ -1,0 +1,10 @@
+{
+  "_id": "HOn4Xub4x5q0AmPw",
+  "name": "MissileAoE",
+  "img": "modules/lancer-weapon-fx/icons/rocket.png",
+  "type": "script",
+  "scope": "global",
+  "folder": "o8nGPmux6bWEpn9M",
+  "_key": "!macros!HOn4Xub4x5q0AmPw",
+  "command_source": "packs_source/weaponfx/Effects (Manual)/MissileAoE_HOn4Xub4x5q0AmPw.js"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Burst Launcher",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/airburst.png",
+  "scope": "global",
+  "_id": "EHls7n7amW2fEZ97",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!EHls7n7amW2fEZ97",
+  "command_source": "packs_source/weaponfx/Effects/Burst_Launcher_EHls7n7amW2fEZ97.js"
+}

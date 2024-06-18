@@ -1,0 +1,10 @@
+{
+  "_id": "IrU7oILyUlyEecJs",
+  "name": "Displacer",
+  "type": "script",
+  "img": "modules/lancer-weapon-fx/icons/hole.png",
+  "scope": "global",
+  "folder": "Qf6H7pepYZi6Oa6S",
+  "_key": "!macros!IrU7oILyUlyEecJs",
+  "command_source": "packs_source/weaponfx/Effects/Displacer_IrU7oILyUlyEecJs.js"
+}

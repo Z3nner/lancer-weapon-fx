@@ -26,3 +26,9 @@ export const isValidFoundryImage = str => {
 		str.split(".").map(it => it.trim()).filter(Boolean).at(-1)
 	);
 };
+
+// Based on Foundry CLI's `getSafeFilename`
+// See: https://github.com/foundryvtt/foundryvtt-cli/blob/c9d14019147997dc7f45382dc8f6842f66aa3f5d/lib/package.mjs#L546
+export const getSafeFilename = (filename) => {
+	return filename.replace(/[^a-zA-Z0-9А-я]/g, '_');
+}
