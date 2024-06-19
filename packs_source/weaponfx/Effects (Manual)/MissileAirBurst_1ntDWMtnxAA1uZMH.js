@@ -8,9 +8,9 @@ const pBlast = {
     y: sourceToken.position.y + 0.6 * (pTarget.y - sourceToken.position.y),
 };
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg", "modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg", "jb2a.throwable.launch.missile", "jb2a.explosion.08", "modules/lancer-weapon-fx/soundfx/Flechette.ogg", "jb2a.bullet.02.orange", "jb2a.explosion_side.01", "modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg"])
 
 let sequence = new Sequence()
-
 
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")

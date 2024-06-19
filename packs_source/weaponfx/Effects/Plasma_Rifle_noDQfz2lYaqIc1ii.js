@@ -2,6 +2,8 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const random = Sequencer.Helpers.random_float_between(300, 400);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Plasma_Fire.ogg", "jb2a.impact.004.blue", "jb2a.lasershot.green"])
+
 let sequence = new Sequence();
 
 for (let i=0; i < targetTokens.length; i++) {

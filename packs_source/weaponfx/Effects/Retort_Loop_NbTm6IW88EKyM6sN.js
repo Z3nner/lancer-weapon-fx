@@ -1,6 +1,9 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/RetortLoop.ogg", "jb2a.energy_beam.normal.bluepink.02", "jb2a.impact.blue"])
+
 let sequence = new Sequence();
+
 
 for (const target of targetTokens) {
     sequence.sound()

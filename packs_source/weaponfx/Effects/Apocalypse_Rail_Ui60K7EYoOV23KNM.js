@@ -2,7 +2,11 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/APR2_Load.ogg", "modules/lancer-weapon-fx/soundfx/APR2_Fire.ogg", "jb2a.bullet.01.orange", "jb2a.fireball.explosion.orange", "modules/lancer-weapon-fx/soundfx/APR2_Impact.ogg"])
+
 let sequence = new Sequence()
+
+
     .sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Load.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))

@@ -11,8 +11,9 @@ let config = {
 
 let position = await warpgate.crosshairs.show(config);
 
-let sequence = new Sequence()
+await Sequencer.Preloader.preloadForClients(["jb2a.explosion.02.blue", "jb2a.thunderwave.center.blue"])
 
+let sequence = new Sequence()
 
     .effect()
         .file("jb2a.explosion.02.blue")
@@ -26,6 +27,7 @@ let sequence = new Sequence()
         .atLocation(position)
         .name("impact")
         .scale(0.6)
+        .scaleOut(2, 400)
         .delay(600)
     .sound("modules/lancer-weapon-fx/soundfx/AirBurst.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))

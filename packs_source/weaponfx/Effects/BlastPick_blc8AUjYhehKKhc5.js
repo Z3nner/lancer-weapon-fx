@@ -1,7 +1,8 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-let sequence = new Sequence();
+await Sequencer.Preloader.preloadForClients(["jb2a.melee_generic.slash.01.orange", "modules/lancer-weapon-fx/soundfx/bladeswing.ogg", "modules/lancer-weapon-fx/soundfx/Mortar_Impact.ogg", "jb2a.explosion.01", "jb2a.static_electricity.03.blue"])
 
+let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence.effect()

@@ -1,6 +1,9 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["jb2a.divine_smite.target.blueyellow", "modules/lancer-weapon-fx/soundfx/bladeswing.ogg", "modules/lancer-weapon-fx/soundfx/bladehit.ogg", "jb2a.impact.blue"])
+
 let sequence = new Sequence();
+
 
 for (const target of targetTokens) {
     sequence.effect()
@@ -9,7 +12,7 @@ for (const target of targetTokens) {
         .tint("#066605")
         .atLocation(sourceToken)
         .moveTowards(target)
-        .moveSpeed(175)
+        .moveSpeed(300)
         .spriteOffset({x: 0, y: 100, gridUnits: true})
         .missed(targetsMissed.has(target.id))
         .rotate(90)

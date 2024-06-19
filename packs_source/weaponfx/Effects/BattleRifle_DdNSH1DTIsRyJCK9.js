@@ -1,5 +1,7 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/BR_Fire.ogg", "jb2a.bullet.03.blue", "modules/lancer-weapon-fx/soundfx/KineticImpact.ogg", "jb2a.impact.orange.0"], showProgressBar = true)
+
 let sequence = new Sequence();
 
 for (let i=0; i < targetTokens.length; i++) {
@@ -13,6 +15,7 @@ for (let i=0; i < targetTokens.length; i++) {
         .file("jb2a.bullet.03.blue")
         .atLocation(sourceToken)
         .scale(0.7)
+        .zIndex(1)
         .playbackRate(1.5)
         .stretchTo(target, {randomOffset: 0.6, gridUnits: true})
         .missed(targetsMissed.has(target.id))
@@ -23,15 +26,14 @@ for (let i=0; i < targetTokens.length; i++) {
         .file("modules/lancer-weapon-fx/soundfx/KineticImpact.ogg")
         .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
-        .delay(150)
     .effect()
         .file("jb2a.impact.orange.0")
         .playIf(!targetsMissed.has(target.id))
         .scaleToObject(1.5)
+        .zIndex(2)
         .atLocation('hitLocation${i}')
         .rotateTowards(sourceToken)
         .rotate(230)
-        .delay(150)
         .center();
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/BR_Fire.ogg")
@@ -52,14 +54,12 @@ for (let i=0; i < targetTokens.length; i++) {
         .file("modules/lancer-weapon-fx/soundfx/KineticImpact.ogg")
         .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
-        .delay(150)
     .effect()
         .file("jb2a.impact.orange.0")
         .playIf(!targetsMissed.has(target.id))
         .scaleToObject(1.5)
         .atLocation('hitLocation${i}')
         .rotateTowards(sourceToken)
-        .delay(150)
         .rotate(230)
         .center();
 }

@@ -2,7 +2,10 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const target = targetTokens[0];
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg", "jb2a.energy_strands.range.multiple.purple.01", "modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg", "jb2a.divine_smite.caster.blueyellow"])
+
 let sequence = new Sequence()
+
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))

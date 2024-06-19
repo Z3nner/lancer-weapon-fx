@@ -2,7 +2,10 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const target = targetTokens[0];
 
+await Sequencer.Preloader.preloadForClients(["jb2a.disintegrate.green", "jb2a.impact.blue", "modules/lancer-weapon-fx/sprites/jetlancer_explosion_white_bg.png", "modules/lancer-weapon-fx/sprites/shockwave.png", "modules/lancer-weapon-fx/soundfx/pw_nuke.ogg", "modules/lancer-weapon-fx/video/pw_nuke_effect.webm"])
+
 new Sequence()
+
 
     .canvasPan()
         .duration(1000)

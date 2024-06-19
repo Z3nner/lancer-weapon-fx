@@ -1,4 +1,7 @@
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/sprites/jetlancer_explosion_white_bg.png", "modules/lancer-weapon-fx/sprites/shockwave.png", "modules/lancer-weapon-fx/soundfx/pw_nuke.ogg", "modules/lancer-weapon-fx/video/pw_nuke_effect.webm"])
+
 new Sequence()
+
 	.effect("modules/lancer-weapon-fx/sprites/jetlancer_explosion_white_bg.png")
 		.fadeIn(100)
 		.duration(6000)
