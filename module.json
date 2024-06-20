@@ -28,6 +28,16 @@
                     "minimum": "2.3.7"
                 }
             }
+        ],
+        "recommends": [
+            {
+                "id": "jb2a_patreon",
+                "type": "module"
+            },
+            {
+                "id": "JB2A_DnD5e",
+                "type": "module"
+            }
         ]
     },
     "languages": [
