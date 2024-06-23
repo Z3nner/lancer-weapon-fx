@@ -1,4 +1,5 @@
 {
+    "name": "lancer-weapon-fx",
     "type": "module",
     "private": true,
     "scripts": {
