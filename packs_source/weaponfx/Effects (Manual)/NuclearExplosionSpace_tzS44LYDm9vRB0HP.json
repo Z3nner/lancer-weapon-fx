@@ -1,10 +1,10 @@
 {
-  "_id": "tzS44LYDm9vRB0HP",
-  "name": "NuclearExplosionSpace",
-  "img": "modules/lancer-weapon-fx/icons/mushroom-cloud.png",
-  "type": "script",
-  "scope": "global",
-  "folder": "o8nGPmux6bWEpn9M",
-  "_key": "!macros!tzS44LYDm9vRB0HP",
-  "command_source": "packs_source/weaponfx/Effects (Manual)/NuclearExplosionSpace_tzS44LYDm9vRB0HP.js"
+    "_id": "tzS44LYDm9vRB0HP",
+    "name": "NuclearExplosionSpace",
+    "img": "modules/lancer-weapon-fx/icons/mushroom-cloud.png",
+    "type": "script",
+    "scope": "global",
+    "folder": "o8nGPmux6bWEpn9M",
+    "_key": "!macros!tzS44LYDm9vRB0HP",
+    "command_source": "packs_source/weaponfx/Effects (Manual)/NuclearExplosionSpace_tzS44LYDm9vRB0HP.js"
 }

@@ -1,0 +1,7 @@
+{
+	"scripts/**/*": "prettier --write",
+	"packs_source/**/*": "prettier --write",
+	"lang/**/*": "prettier --write",
+	"tooling/**/*": "prettier --write",
+	"test/**/*": "prettier --write"
+}

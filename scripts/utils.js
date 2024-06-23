@@ -20,12 +20,10 @@ export function getUniquePoints(points) {
     const getPointId = point => `${point.x},${point.y}`;
 
     const seen = new Set();
-    return points
-        .filter(point => {
-            const id = getPointId(point);
-            if (seen.has(id)) return false;
-            seen.add(id);
-            return true;
-        });
+    return points.filter(point => {
+        const id = getPointId(point);
+        if (seen.has(id)) return false;
+        seen.add(id);
+        return true;
+    });
 }
-

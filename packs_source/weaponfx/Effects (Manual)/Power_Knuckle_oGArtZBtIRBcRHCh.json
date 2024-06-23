@@ -1,10 +1,10 @@
 {
-  "_id": "oGArtZBtIRBcRHCh",
-  "name": "Power Knuckle",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/thor-fist.png",
-  "scope": "global",
-  "folder": "o8nGPmux6bWEpn9M",
-  "_key": "!macros!oGArtZBtIRBcRHCh",
-  "command_source": "packs_source/weaponfx/Effects (Manual)/Power_Knuckle_oGArtZBtIRBcRHCh.js"
+    "_id": "oGArtZBtIRBcRHCh",
+    "name": "Power Knuckle",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/thor-fist.png",
+    "scope": "global",
+    "folder": "o8nGPmux6bWEpn9M",
+    "_key": "!macros!oGArtZBtIRBcRHCh",
+    "command_source": "packs_source/weaponfx/Effects (Manual)/Power_Knuckle_oGArtZBtIRBcRHCh.js"
 }

@@ -1,10 +1,10 @@
 {
-  "_id": "nCYIyBz5RESLVDdt",
-  "name": "DefaultTech",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/processor.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!nCYIyBz5RESLVDdt",
-  "command_source": "packs_source/weaponfx/Effects/DefaultTech_nCYIyBz5RESLVDdt.js"
+    "_id": "nCYIyBz5RESLVDdt",
+    "name": "DefaultTech",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/processor.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!nCYIyBz5RESLVDdt",
+    "command_source": "packs_source/weaponfx/Effects/DefaultTech_nCYIyBz5RESLVDdt.js"
 }

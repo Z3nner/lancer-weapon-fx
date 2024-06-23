@@ -1,8 +1,13 @@
-const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
+const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 const target = targetTokens[0];
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Autopod_Fire.ogg", "jb2a.lightning_ball.blue", "modules/lancer-weapon-fx/soundfx/AirBurst.ogg", "jb2a.explosion.02.blue"])
+await Sequencer.Preloader.preloadForClients([
+    "modules/lancer-weapon-fx/soundfx/Autopod_Fire.ogg",
+    "jb2a.lightning_ball.blue",
+    "modules/lancer-weapon-fx/soundfx/AirBurst.ogg",
+    "jb2a.explosion.02.blue",
+]);
 
 let sequence = new Sequence()
 
@@ -18,15 +23,16 @@ let sequence = new Sequence()
     .missed(targetsMissed.has(target.id))
     .waitUntilFinished();
 
-    sequence.sound()
-        .file("modules/lancer-weapon-fx/soundfx/AirBurst.ogg")
-        .playIf(!targetsMissed.has(target.id))
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+sequence
+    .sound()
+    .file("modules/lancer-weapon-fx/soundfx/AirBurst.ogg")
+    .playIf(!targetsMissed.has(target.id))
+    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
-        .file("jb2a.explosion.02.blue")
-        .playIf(!targetsMissed.has(target.id))
-        .scale(0.5)
-        .atLocation(target)
-        .waitUntilFinished();
+    .file("jb2a.explosion.02.blue")
+    .playIf(!targetsMissed.has(target.id))
+    .scale(0.5)
+    .atLocation(target)
+    .waitUntilFinished();
 
 sequence.play();

@@ -1,10 +1,10 @@
 {
-  "_id": "4M655uuaKwHfZJfZ",
-  "name": "Missile",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/missile-swarm.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!4M655uuaKwHfZJfZ",
-  "command_source": "packs_source/weaponfx/Effects/Missile_4M655uuaKwHfZJfZ.js"
+    "_id": "4M655uuaKwHfZJfZ",
+    "name": "Missile",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/missile-swarm.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!4M655uuaKwHfZJfZ",
+    "command_source": "packs_source/weaponfx/Effects/Missile_4M655uuaKwHfZJfZ.js"
 }

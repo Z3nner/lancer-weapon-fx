@@ -1,10 +1,10 @@
 {
-  "name": "Flechette Launcher",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/crowned-explosion.png",
-  "scope": "global",
-  "_id": "4znqR8pQvSs3KpZo",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!4znqR8pQvSs3KpZo",
-  "command_source": "packs_source/weaponfx/Effects/Flechette_Launcher_4znqR8pQvSs3KpZo.js"
+    "name": "Flechette Launcher",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/crowned-explosion.png",
+    "scope": "global",
+    "_id": "4znqR8pQvSs3KpZo",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!4znqR8pQvSs3KpZo",
+    "command_source": "packs_source/weaponfx/Effects/Flechette_Launcher_4znqR8pQvSs3KpZo.js"
 }

@@ -1,15 +1,20 @@
-const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
+const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/AssaultCannonFire.ogg", "jb2a.bullet.01.orange"])
+await Sequencer.Preloader.preloadForClients([
+    "modules/lancer-weapon-fx/soundfx/AssaultCannonFire.ogg",
+    "jb2a.bullet.01.orange",
+]);
 
 let sequence = new Sequence();
 
-for (let i=0; i < targetTokens.length; i++) {
+for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
-    sequence.sound()
+    sequence
+        .sound()
         .file("modules/lancer-weapon-fx/soundfx/AssaultCannonFire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-    sequence.effect()
+    sequence
+        .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .stretchTo(target)
@@ -17,10 +22,11 @@ for (let i=0; i < targetTokens.length; i++) {
         .name(`impact${i}`)
         .scale(0.5)
         .waitUntilFinished(-800);
-    sequence.effect()
+    sequence
+        .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
-        .stretchTo(`impact${i}`, {randomOffset: 0.4, gridUnits: true})
+        .stretchTo(`impact${i}`, { randomOffset: 0.4, gridUnits: true })
         .repeats(7, 50)
         .scale(0.5)
         .waitUntilFinished();

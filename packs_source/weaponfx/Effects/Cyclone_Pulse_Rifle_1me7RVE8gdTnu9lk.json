@@ -1,10 +1,10 @@
 {
-  "_id": "1me7RVE8gdTnu9lk",
-  "name": "Cyclone Pulse Rifle",
-  "type": "script",
-  "img": "modules/JB2A_DnD5e/Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!1me7RVE8gdTnu9lk",
-  "command_source": "packs_source/weaponfx/Effects/Cyclone_Pulse_Rifle_1me7RVE8gdTnu9lk.js"
+    "_id": "1me7RVE8gdTnu9lk",
+    "name": "Cyclone Pulse Rifle",
+    "type": "script",
+    "img": "modules/JB2A_DnD5e/Library/1st_Level/Magic_Missile/MagicMissile_01_Regular_Purple_Thumb.webp",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!1me7RVE8gdTnu9lk",
+    "command_source": "packs_source/weaponfx/Effects/Cyclone_Pulse_Rifle_1me7RVE8gdTnu9lk.js"
 }

@@ -1,10 +1,10 @@
 {
-  "_id": "UhdlCUxGv5UJGPQG",
-  "name": "Leviathan",
-  "img": "modules/lancer-weapon-fx/icons/machine-gun.png",
-  "type": "script",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!UhdlCUxGv5UJGPQG",
-  "command_source": "packs_source/weaponfx/Effects/Leviathan_UhdlCUxGv5UJGPQG.js"
+    "_id": "UhdlCUxGv5UJGPQG",
+    "name": "Leviathan",
+    "img": "modules/lancer-weapon-fx/icons/machine-gun.png",
+    "type": "script",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!UhdlCUxGv5UJGPQG",
+    "command_source": "packs_source/weaponfx/Effects/Leviathan_UhdlCUxGv5UJGPQG.js"
 }
