@@ -1,8 +1,11 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-const random = Sequencer.Helpers.random_float_between(200, 500);
+const random = Sequencer.Helpers.random_float_between(300, 500);
+
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/pistol_fire.ogg", "jb2a.bullet.01.orange"])
 
 let sequence = new Sequence();
+
 
 for (const target of targetTokens) {
     sequence.sound()
@@ -16,6 +19,6 @@ for (const target of targetTokens) {
         .stretchTo(target, {randomOffset: 0.4})
         .missed(targetsMissed.has(target.id))
         .repeats(3, random)
-        .waitUntilFinished(-600);
+        .waitUntilFinished(-100);
 }
 sequence.play();

@@ -8,6 +8,7 @@ const pBlast = {
     y: sourceToken.position.y + 0.7 * (pTarget.y - sourceToken.position.y),
 };
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/NexusReady.ogg", "modules/lancer-weapon-fx/soundfx/NexusFire.ogg", "jb2a.bullet.01.orange", "jb2a.side_impact.part.smoke.blue", "jb2a.impact.004.blue", "jb2a.zoning.inward.circle.loop", "modules/lancer-weapon-fx/soundfx/NexusConfirm.ogg"])
 
 let sequence = new Sequence()
 

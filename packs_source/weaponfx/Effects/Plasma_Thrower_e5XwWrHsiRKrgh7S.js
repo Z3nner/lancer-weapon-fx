@@ -2,7 +2,10 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg", "jb2a.breath_weapons02.burst.cone.fire.orange.02", "jb2a.flames.02.orange"])
+
 let sequence = new Sequence()
+
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
@@ -10,7 +13,7 @@ let sequence = new Sequence()
     sequence.effect()
         .file("jb2a.breath_weapons02.burst.cone.fire.orange.02")
         .atLocation(sourceToken)
-	.filter("ColorMatrix", {hue: 270})
+        .filter("ColorMatrix", {hue: 270})
         .filter("Glow", {distance: 3, color: 0xe99649, innerStrength: 2})
         .scale({x: 0.9})
         .playbackRate(1.6)

@@ -1,6 +1,9 @@
 const {targetTokens} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/LockOn.ogg", "jb2a.zoning.inward.square.loop.bluegreen.01.01"])
+
 let sequence = new Sequence();
+
 
 for (const target of targetTokens) {
 

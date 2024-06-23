@@ -1,8 +1,13 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/dramaticSparkles.ogg", "modules/lancer-weapon-fx/soundfx/jetlancerSound.ogg", "modules/lancer-weapon-fx/video/jetlancer_explosion_1000.webm", "modules/lancer-weapon-fx/sprites/jetlancer_explosion_white_bg.png", "modules/lancer-weapon-fx/sprites/RETROGRADE-crater.png"])
+
 let sequence = new Sequence();
 
+
 new Sequence()
+
+
 	.sound("modules/lancer-weapon-fx/soundfx/dramaticSparkles.ogg")
 		.fadeInAudio(4000)
 		.volume(0.3)

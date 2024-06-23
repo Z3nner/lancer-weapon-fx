@@ -1,5 +1,7 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg", "jb2a.bolt.physical.orange", "jb2a.explosion.01.orange", "modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg"])
+
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
@@ -14,7 +16,7 @@ for (const target of targetTokens) {
         .stretchTo(target)
         .missed(targetsMissed.has(target.id))
         .name("bolt")
-        .waitUntilFinished(-900)
+        .waitUntilFinished(-400)
     .effect()
         .file("jb2a.explosion.01.orange")
         .atLocation("bolt");

@@ -1,5 +1,7 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/sprites/DRILL.png", "modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg", "jb2a.gust_of_wind.veryfast", "jb2a.impact.yellow"])
+
 let sequence = new Sequence();
 
 let gridsize = canvas.grid.grid.options.dimensions.size;

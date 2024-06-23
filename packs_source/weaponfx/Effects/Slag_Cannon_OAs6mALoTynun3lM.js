@@ -2,7 +2,10 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/RetortLoop.ogg", "jb2a.breath_weapons02.burst.line", "jb2a.grease.dark_brown.loop"])
+
 let sequence = new Sequence()
+
 
     sequence.sound()
         .file("modules/lancer-weapon-fx/soundfx/RetortLoop.ogg")

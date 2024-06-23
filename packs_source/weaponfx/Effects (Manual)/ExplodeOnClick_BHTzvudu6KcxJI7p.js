@@ -11,7 +11,10 @@ let config = {
 
 let position = await warpgate.crosshairs.show(config);
 
+await Sequencer.Preloader.preloadForClients(["jb2a.explosion.08.orange", "jb2a.explosion.shrapnel.bomb.01.black"])
+
 let sequence = new Sequence()
+
 
 
     .effect()
