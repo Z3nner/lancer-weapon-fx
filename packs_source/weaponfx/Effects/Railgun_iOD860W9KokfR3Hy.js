@@ -30,7 +30,7 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
     return sequence;
 }
 
-await Sequencer.Preloader.preloadForClients(["jb2a.impact.orange.0", "modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg", "jb2a.bullet.Snipe.blue", "modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg", "modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg"], showProgressBar = true)
+await Sequencer.Preloader.preloadForClients(["jb2a.impact.orange.0", "modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg", "jb2a.bullet.Snipe.blue", "modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg", "modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg"])
 
 let sequence = new Sequence()
 

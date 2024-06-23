@@ -2,7 +2,7 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 
 const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg", "modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg", "jb2a.pack_hound_missile", "jb2a.explosion.01.orange", "modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg"], showProgressBar = true)
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg", "modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg", "jb2a.pack_hound_missile", "jb2a.explosion.01.orange", "modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg"])
 
 let sequence = new Sequence()
 

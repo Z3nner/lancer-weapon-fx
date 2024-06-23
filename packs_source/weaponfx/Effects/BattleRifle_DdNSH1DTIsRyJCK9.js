@@ -1,6 +1,6 @@
 const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/BR_Fire.ogg", "jb2a.bullet.03.blue", "modules/lancer-weapon-fx/soundfx/KineticImpact.ogg", "jb2a.impact.orange.0"], showProgressBar = true)
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/BR_Fire.ogg", "jb2a.bullet.03.blue", "modules/lancer-weapon-fx/soundfx/KineticImpact.ogg", "jb2a.impact.orange.0"])
 
 let sequence = new Sequence();
 

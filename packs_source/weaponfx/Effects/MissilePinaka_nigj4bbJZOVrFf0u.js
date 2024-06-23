@@ -3,7 +3,7 @@ const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weap
 // Pinaka wants 2 missiles, so get 2 groups
 const targetPoints = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 2);
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg", "modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg", "jb2a.throwable.launch.missile", "modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg", "jb2a.explosion.01.orange", "jb2a.explosion.08.orange"], showProgressBar = true)
+await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg", "modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg", "jb2a.throwable.launch.missile", "modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg", "jb2a.explosion.01.orange", "jb2a.explosion.08.orange"])
 
 let sequence = new Sequence();
 
