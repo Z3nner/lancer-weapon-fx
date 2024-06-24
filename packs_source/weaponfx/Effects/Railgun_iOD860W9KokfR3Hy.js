@@ -20,7 +20,7 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
     targets.forEach(t => {
         if (!targetsMissed.has(t.id)) {
             sequence
-                .effect()
+            .effect()
                 .file("jb2a.impact.orange.0")
                 .atLocation(t)
                 .rotateTowards(sourceToken)
@@ -41,22 +41,22 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .waitUntilFinished(-500);
 
 sequence
-    .effect()
+.effect()
     .file("jb2a.bullet.Snipe.blue")
     .atLocation(sourceToken)
     .stretchTo(target)
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 

@@ -11,7 +11,7 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .effect()
+    .effect()
         .file("modules/lancer-weapon-fx/sprites/LatchDrone.png")
         .rotate(260)
         .atLocation(sourceToken)
@@ -20,17 +20,17 @@ for (const target of targetTokens) {
         .missed(targetsMissed.has(target.id))
         .moveSpeed(1200);
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Mortar_Launch.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
         .waitUntilFinished();
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/Stabilize.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.9))
             .delay(200)
-            .effect()
+        .effect()
             .file("jb2a.healing_generic.400px.green")
             .atLocation(target)
             .scale(0.5)

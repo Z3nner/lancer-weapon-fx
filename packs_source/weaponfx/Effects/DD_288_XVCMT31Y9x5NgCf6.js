@@ -11,12 +11,12 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/DD288Full.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6))
         .waitUntilFinished(-3400);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.unarmed_strike.physical.01.blue")
         .filter("ColorMatrix", { hue: 000, brightness: 0.5 })
         .filter("Glow", { distance: 3, color: 0xe99649, innerStrength: 2 })
@@ -29,7 +29,7 @@ for (const target of targetTokens) {
         .waitUntilFinished(-650);
 
     sequence
-        .effect()
+    .effect()
         .file("jb2a.explosion_side.01.orange")
         .scaleToObject(6)
         .atLocation("impact")
@@ -38,7 +38,7 @@ for (const target of targetTokens) {
         .spriteOffset({ x: -2.9 }, { gridUnits: true })
         .zIndex(1);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.explosion.side_fracture.flask.01")
         .playIf(!targetsMissed.has(target.id))
         .scaleToObject(3)

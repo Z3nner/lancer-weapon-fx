@@ -20,17 +20,17 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/NexusReady.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .waitUntilFinished();
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/NexusFire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .repeats(3, 150);
 sequence
-    .effect()
+.effect()
     .file("jb2a.bullet.01.orange")
     .filter("ColorMatrix", { hue: 070 })
     .filter("Blur", { blur: 8, strength: 10, blurX: 4 })
@@ -39,7 +39,7 @@ sequence
     .repeats(3, 150)
     .waitUntilFinished(-800);
 sequence
-    .effect()
+.effect()
     .file("jb2a.side_impact.part.smoke.blue")
     .filter("ColorMatrix", { hue: 230, brightness: 0.5 })
     .scale(0.8)
@@ -52,7 +52,7 @@ for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
     sequence
-        .effect()
+    .effect()
         .file("jb2a.impact.004.blue")
         .playIf(!targetsMissed.has(target.id))
         .filter("ColorMatrix", { hue: 235, brightness: 0.5 })
@@ -61,7 +61,7 @@ for (let i = 0; i < targetTokens.length; i++) {
         .atLocation(target, { randomOffset: 0.5, gridUnits: true })
         .repeats(3, 100);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.zoning.inward.circle.loop")
         .playIf(!targetsMissed.has(target.id))
         .scale(0.4)
@@ -69,7 +69,7 @@ for (let i = 0; i < targetTokens.length; i++) {
         .belowTokens()
         .atLocation(target);
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/NexusConfirm.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .playIf(!targetsMissed.has(target.id));

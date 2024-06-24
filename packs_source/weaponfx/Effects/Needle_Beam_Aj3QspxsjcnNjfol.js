@@ -11,16 +11,16 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(-1200)
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Plasma_Fire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .repeats(2, 225)
 
-        .effect()
+    .effect()
         .file("jb2a.lasershot.green")
         .atLocation(sourceToken)
         .stretchTo(target)
@@ -29,7 +29,7 @@ for (const target of targetTokens) {
         .waitUntilFinished(-350);
     if (!targetsMissed.has(target.id)) {
         sequence
-            .effect()
+        .effect()
             .file("jb2a.impact.orange.0")
             .atLocation(target)
             .rotateTowards(sourceToken)

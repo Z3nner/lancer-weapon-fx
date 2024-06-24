@@ -10,13 +10,13 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/CPR_Fire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .repeats(5, 125);
 
     sequence
-        .effect()
+    .effect()
         .file("jb2a.magic_missile.purple")
         .filter("ColorMatrix", { hue: 220 })
         .atLocation(sourceToken)
@@ -26,7 +26,7 @@ for (const target of targetTokens) {
         .waitUntilFinished(-1600);
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/CPR_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .repeats(5, 125)

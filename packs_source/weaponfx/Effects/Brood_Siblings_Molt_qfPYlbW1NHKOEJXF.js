@@ -11,7 +11,7 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .effect()
+    .effect()
         .file("jb2a.melee_attack.03.trail.greatsword")
         .tint("#080303")
         .filter("Glow", { color: 0x8f0f0f })
@@ -22,7 +22,7 @@ for (const target of targetTokens) {
         .waitUntilFinished(-2500);
 
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
         .delay(500)
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
@@ -30,7 +30,7 @@ for (const target of targetTokens) {
 
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
 

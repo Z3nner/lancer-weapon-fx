@@ -11,12 +11,12 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/pistol_fire.ogg")
         .repeats(3, random)
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .scale(0.5)

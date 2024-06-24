@@ -10,7 +10,7 @@ await Sequencer.Preloader.preloadForClients([
 
 for (const target of targetTokens) {
     sequence
-        .effect()
+    .effect()
         .file("jb2a.melee_attack.03.trail.maul.01")
         .atLocation(sourceToken)
         .spriteOffset({ x: -0.3 }, { gridUnits: true })
@@ -18,17 +18,17 @@ for (const target of targetTokens) {
         .missed(targetsMissed.has(target.id))
         .waitUntilFinished(-1100);
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Axe_swing.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
         .waitUntilFinished(-1800);
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/HammerImpact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.9));
         sequence
-            .effect()
+        .effect()
             .file("jb2a.impact.ground_crack.orange.01")
             .atLocation(target)
             .belowTokens()

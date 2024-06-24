@@ -13,16 +13,16 @@ let sequence = new Sequence();
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .timeRange(700, 2000);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.pack_hound_missile")
         .atLocation(sourceToken)
         .stretchTo(target)
@@ -30,7 +30,7 @@ for (let i = 0; i < targetTokens.length; i++) {
         .name(`impact${i}`)
         .waitUntilFinished(-3200);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.explosion.01.orange")
         .atLocation(`impact${i}`)
         .scale(0.8)
@@ -39,7 +39,7 @@ for (let i = 0; i < targetTokens.length; i++) {
 
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .waitUntilFinished(-8500);

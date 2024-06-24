@@ -11,7 +11,7 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .effect()
+    .effect()
         .file("jb2a.melee_attack.01.magic_sword.yellow")
         .filter("ColorMatrix", { hue: 180 })
         .delay(500)
@@ -21,18 +21,18 @@ for (const target of targetTokens) {
         .waitUntilFinished(-1000)
         .missed(targetsMissed.has(target.id));
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Axe_swing.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(-1450);
 
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Melee.ogg")
         .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.impact.blue.3")
         .playIf(!targetsMissed.has(target.id))
         .scaleToObject(2)

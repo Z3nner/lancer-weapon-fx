@@ -16,22 +16,22 @@ let sequence = new Sequence();
 
 for (const targetPoint of targetPoints) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .timeRange(700, 2000);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.throwable.launch.missile")
         .atLocation(sourceToken)
         .stretchTo(targetPoint)
         .waitUntilFinished();
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.effect().file("jb2a.explosion.01.orange").atLocation(targetPoint).scale(1.2).zIndex(2);

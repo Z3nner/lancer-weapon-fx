@@ -35,7 +35,7 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
     targets.forEach(t => {
         if (!targetsMissed.has(t.id)) {
             sequence
-                .effect()
+            .effect()
                 .file("jb2a.chain_lightning.secondary.blue")
                 .atLocation(farthest)
                 .stretchTo(t, { randomOffset: 0.5 })
@@ -56,22 +56,22 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/ArcBowFire.ogg")
     .delay(800)
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/veil_rifle.ogg")
     .delay(1200)
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
-    .effect()
+.effect()
     .file("jb2a.arrow.physical.blue")
     .atLocation(sourceToken)
     .stretchTo(farthest)
     .waitUntilFinished(-1000)
-    .effect()
+.effect()
     .file("jb2a.chain_lightning.primary.blue")
     .atLocation(sourceToken)
     .stretchTo(farthest)

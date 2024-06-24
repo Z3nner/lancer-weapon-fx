@@ -11,11 +11,11 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.disintegrate.green")
         .startTime(900)
         .scale(0.86)
@@ -24,7 +24,7 @@ for (const target of targetTokens) {
         .missed(targetsMissed.has(target.id))
         .waitUntilFinished(-4000);
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     if (!targetsMissed.has(target.id)) {

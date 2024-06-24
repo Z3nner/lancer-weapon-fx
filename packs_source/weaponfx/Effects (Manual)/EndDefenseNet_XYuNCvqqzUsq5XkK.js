@@ -5,12 +5,12 @@ await Sequencer.Preloader.preloadForClients("jb2a.shield.01.outro_explode.blue")
 
 new Sequence()
 
-    .effect("jb2a.shield.01.outro_explode.blue")
+.effect("jb2a.shield.01.outro_explode.blue")
     .atLocation(token)
     .scaleToObject(9.5, { uniform: true })
     .waitUntilFinished(-400)
     .thenDo(endFX)
-    .play();
+.play();
 
 function endFX() {
     Sequencer.EffectManager.endEffects({ object: token });

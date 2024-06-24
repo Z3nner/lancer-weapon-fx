@@ -11,11 +11,11 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
-    .effect()
+.effect()
     .file("jb2a.breath_weapons02.burst.cone.fire.orange.02")
     .atLocation(sourceToken)
     .filter("ColorMatrix", { hue: 270 })
@@ -30,7 +30,7 @@ for (let i = 0; i < targetTokens.length; i++) {
 
     if (!targetsMissed.has(target.id)) {
         sequence
-            .effect()
+        .effect()
             .file("jb2a.flames.02.orange")
             .filter("ColorMatrix", { hue: 270 })
             .filter("Glow", { distance: 3, color: 0xe99649, innerStrength: 2 })

@@ -10,13 +10,13 @@ let sequence = new Sequence();
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Leviathan.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .delay(500)
         .waitUntilFinished(-2100);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .stretchTo(target, { randomOffset: 0.3 })
@@ -25,7 +25,7 @@ for (let i = 0; i < targetTokens.length; i++) {
         .scale(0.5)
         .waitUntilFinished(-775);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .stretchTo(`impact${i}`, { randomOffset: 0.6, gridUnits: true })

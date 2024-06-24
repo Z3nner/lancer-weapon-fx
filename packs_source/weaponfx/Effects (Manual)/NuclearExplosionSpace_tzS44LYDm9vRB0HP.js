@@ -7,22 +7,22 @@ await Sequencer.Preloader.preloadForClients([
 
 new Sequence()
 
-    .effect("modules/lancer-weapon-fx/sprites/jetlancer_explosion_white_bg.png")
+.effect("modules/lancer-weapon-fx/sprites/jetlancer_explosion_white_bg.png")
     .fadeIn(100)
     .duration(6000)
     .fadeOut(3000)
     .screenSpace()
-    .effect("modules/lancer-weapon-fx/sprites/shockwave.png")
+.effect("modules/lancer-weapon-fx/sprites/shockwave.png")
     .atLocation(token)
     .duration(7000)
     .scale(0.2)
     .scaleOut(12, 7000)
     .fadeOut(7000)
     .delay(3000)
-    .sound("modules/lancer-weapon-fx/soundfx/pw_nuke.ogg")
+.sound("modules/lancer-weapon-fx/soundfx/pw_nuke.ogg")
     .startTime(800)
     .delay(1000)
-    .effect("modules/lancer-weapon-fx/video/pw_nuke_effect.webm")
+.effect("modules/lancer-weapon-fx/video/pw_nuke_effect.webm")
     .delay(1000)
     .atLocation(token)
     .aboveLighting()
@@ -30,7 +30,7 @@ new Sequence()
     .scale(1)
     .zIndex(100)
     .thenDo(remainsAftermath)
-    .canvasPan()
+.canvasPan()
     .delay(1000)
     .atLocation(token)
     .scale(0.5)
@@ -40,7 +40,7 @@ new Sequence()
         fadeOutDuration: 10000,
         rotation: true,
     })
-    .play();
+.play();
 
 async function remainsAftermath() {
     console.log("AFTERMATH");

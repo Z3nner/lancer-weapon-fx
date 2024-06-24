@@ -5,13 +5,13 @@ await Sequencer.Preloader.preloadForClients(["jb2a.shield.01.intro", "jb2a.shiel
 
 new Sequence()
 
-    .effect("jb2a.shield.01.intro")
+.effect("jb2a.shield.01.intro")
     .atLocation(token)
     .waitUntilFinished(-700)
     .scaleToObject(9.5, { uniform: true })
-    .effect("jb2a.shield.01.loop.blue")
+.effect("jb2a.shield.01.loop.blue")
     .fadeIn(300)
     .persist()
     .attachTo(token, { bindVisibility: true })
     .scaleToObject(9.5, { uniform: true })
-    .play();
+.play();

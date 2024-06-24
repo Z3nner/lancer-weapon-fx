@@ -12,16 +12,16 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Load.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .waitUntilFinished()
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Fire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
 
-    .effect()
+.effect()
     .file("jb2a.bullet.01.orange")
     .atLocation(sourceToken)
     .stretchTo(target)
@@ -29,12 +29,12 @@ let sequence = new Sequence()
     .waitUntilFinished(-300);
 
 sequence
-    .effect()
+.effect()
     .file("jb2a.fireball.explosion.orange")
     .atLocation(target)
     .zIndex(1)
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Impact.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 

@@ -1,6 +1,6 @@
 {
 	"scripts/**/*": "prettier --write",
-	"packs_source/**/*": "prettier --write",
+	"packs_source/**/*": "node tooling/prettier/prettier-packs.js",
 	"lang/**/*": "prettier --write",
 	"tooling/**/*": "prettier --write",
 	"test/**/*": "prettier --write"

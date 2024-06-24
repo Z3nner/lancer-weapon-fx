@@ -9,7 +9,9 @@
         "new-effect": "node tooling/create-new-effect.mjs",
         "test": "npm run test:js",
         "test:js": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "format": "prettier --write scripts packs_source lang tooling test",
+        "format:general": "prettier --write scripts lang tooling test",
+        "format:packs": "node tooling/prettier/prettier-packs.js",
+        "format": "npm run format:general && npm run format:packs",
         "prepare": "husky"
     },
     "devDependencies": {

@@ -11,23 +11,23 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_cycle.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .delay(500);
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/shotgun_impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .delay(800);
     }
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .scale(0.9)

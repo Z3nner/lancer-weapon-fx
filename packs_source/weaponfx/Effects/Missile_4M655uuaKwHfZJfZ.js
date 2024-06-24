@@ -13,11 +13,11 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .timeRange(700, 2000);
@@ -26,7 +26,7 @@ sequence.effect().file("jb2a.explosion.01.orange").atLocation(target).scale(1.2)
 
 if (!targetsMissed.has(target.id)) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 }

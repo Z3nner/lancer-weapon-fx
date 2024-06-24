@@ -7,11 +7,11 @@ let sequence = new Sequence();
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/AR_Fire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .stretchTo(target)
@@ -19,7 +19,7 @@ for (let i = 0; i < targetTokens.length; i++) {
         .name(`impact${i}`)
         .waitUntilFinished(-550);
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .stretchTo(`impact${i}`, { randomOffset: 0.4, gridUnits: true })

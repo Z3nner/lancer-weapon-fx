@@ -13,14 +13,14 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Load.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .waitUntilFinished()
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/APR2_Fire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
-    .effect()
+.effect()
     .file("jb2a.lasershot.green")
     .atLocation(sourceToken)
     .stretchTo(target)
@@ -29,19 +29,19 @@ let sequence = new Sequence()
     .waitUntilFinished(-400);
 if (!targetsMissed.has(target.id)) {
     sequence
-        .effect()
+    .effect()
         .file("jb2a.toll_the_dead.green.shockwave")
         .atLocation(target)
         .scale(0.7)
         .zIndex(1)
-        .effect()
+    .effect()
         .file("jb2a.smoke.puff.side.02.white")
         .atLocation(target)
         .rotateTowards(sourceToken)
         .rotate(180)
         .zIndex(1)
         .tint("#43b918")
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/APR2_Impact.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 }

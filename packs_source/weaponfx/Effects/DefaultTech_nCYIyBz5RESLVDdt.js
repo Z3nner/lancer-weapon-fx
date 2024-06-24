@@ -13,11 +13,11 @@ await Sequencer.Preloader.preloadForClients([
 targetTokens.forEach(target => {
     let sequence = new Sequence()
 
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/TechPrepare.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
 
-        .effect()
+    .effect()
         .file("jb2a.extras.tmfx.outpulse.circle.02.normal")
         .scaleToObject(2.5)
         .filter("Glow", { color: 0x36c11a })
@@ -25,11 +25,11 @@ targetTokens.forEach(target => {
         .atLocation(sourceToken)
         .waitUntilFinished(-400)
 
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/TechWarn.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
 
-        .effect()
+    .effect()
         .file("jb2a.extras.tmfx.inpulse.circle.02.normal")
         .scaleToObject()
         .repeats(3, 75)
@@ -40,11 +40,11 @@ targetTokens.forEach(target => {
         .waitUntilFinished();
 
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/NexusConfirm.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .playIf(!targetsMissed.has(target.id))
-        .effect()
+    .effect()
         .file("jb2a.zoning.inward.circle.loop.bluegreen.01.01")
         .playIf(!targetsMissed.has(target.id))
         .scale(0.4)
@@ -52,7 +52,7 @@ targetTokens.forEach(target => {
         .belowTokens()
         .atLocation(target)
         .waitUntilFinished(-2200)
-        .effect()
+    .effect()
         .file("jb2a.static_electricity.03.blue")
         .scaleToObject(1.1)
         .atLocation(target)

@@ -10,13 +10,13 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished();
 
     sequence
-        .effect()
+    .effect()
         .file("jb2a.impact.orange.0")
         .atLocation(target, { randomOffset: 0.7 }, { gridUnits: true })
         .rotateTowards(sourceToken)
@@ -25,7 +25,7 @@ for (const target of targetTokens) {
         .rotate(230)
         .center();
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(-2800);

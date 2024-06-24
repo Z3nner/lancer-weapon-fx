@@ -14,7 +14,7 @@ let gridscale = gridsize / 100;
 
 for (const target of targetTokens) {
     sequence
-        .effect()
+    .effect()
         .file("modules/lancer-weapon-fx/sprites/DRILL.png")
         .scale(0.6)
         .filter("Glow", { color: 0xd7d23c })
@@ -27,19 +27,19 @@ for (const target of targetTokens) {
 
     if (!targetsMissed.has(target.id)) {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
             .repeats(8, 125)
             .delay(200)
-            .effect()
+        .effect()
             .file("jb2a.gust_of_wind.veryfast")
             .scale(0.2)
             .atLocation(sourceToken)
             .moveTowards(target)
             .zIndex(2)
             .delay(50)
-            .effect()
+        .effect()
             .file("jb2a.impact.yellow")
             .scale(0.4)
             .delay(200)
@@ -49,7 +49,7 @@ for (const target of targetTokens) {
             .waitUntilFinished();
     } else {
         sequence
-            .sound()
+        .sound()
             .file("modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
             .repeats(2, 170)

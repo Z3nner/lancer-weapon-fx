@@ -11,7 +11,7 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .effect()
+    .effect()
         .file("jb2a.melee_generic.slash.01.orange")
 
         .atLocation(sourceToken)
@@ -20,19 +20,19 @@ for (const target of targetTokens) {
         .delay(500)
         .missed(targetsMissed.has(target.id));
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
         .delay(500)
         .waitUntilFinished(-1300);
 
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
         .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.static_electricity.03.blue")
         .playIf(!targetsMissed.has(target.id))
         .scaleToObject(0.5)

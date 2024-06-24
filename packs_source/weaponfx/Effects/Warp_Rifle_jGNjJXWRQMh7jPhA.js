@@ -11,12 +11,12 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
     .startTime(900)
     .fadeInAudio(500)
-    .effect()
+.effect()
     .file("jb2a.energy_strands.range.multiple.purple.01")
     .scale(0.4)
     .atLocation(sourceToken)
@@ -25,11 +25,11 @@ let sequence = new Sequence()
     .waitUntilFinished(-1100);
 
 sequence
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg")
     .playIf(!targetsMissed.has(target.id))
     .delay(300)
-    .effect()
+.effect()
     .file("jb2a.divine_smite.caster.blueyellow")
     .playIf(!targetsMissed.has(target.id))
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))

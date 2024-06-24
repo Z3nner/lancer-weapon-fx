@@ -10,12 +10,12 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-    .effect()
+.effect()
     .file("jb2a.burning_hands.01.orange")
     .atLocation(sourceToken)
     .rotateTowards(target)
     .scale({ x: 0.75, y: 1.0 })
-    .sound()
+.sound()
     .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
     .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .waitUntilFinished(-3000);
@@ -25,7 +25,7 @@ for (let i = 0; i < targetTokens.length; i++) {
 
     if (!targetsMissed.has(target.id)) {
         sequence
-            .effect()
+        .effect()
             .file("jb2a.flames.02.orange")
             .opacity(0.7)
             .fadeIn(800)

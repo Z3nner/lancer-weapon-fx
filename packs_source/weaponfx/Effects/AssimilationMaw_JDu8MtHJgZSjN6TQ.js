@@ -11,11 +11,11 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/Melee.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.bite")
         .atLocation(target)
         .filter("ColorMatrix", { hue: 270 })
@@ -25,12 +25,12 @@ for (const target of targetTokens) {
         .scaleToObject(3)
         .waitUntilFinished(targetsMissed.has(target.id) ? 0 : -1000);
     sequence
-        .sound()
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/HeavyImpact.ogg")
         .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-        .effect()
+    .effect()
         .file("jb2a.divine_smite.caster.blueyellow")
         .playIf(!targetsMissed.has(target.id))
         .playbackRate(2.2)
