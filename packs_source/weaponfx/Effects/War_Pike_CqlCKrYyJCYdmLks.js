@@ -11,9 +11,9 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-    .effect()
-        .file("jb2a.spear.melee.01.white.2")
-        .filter("Glow", {
+        .effect()
+            .file("jb2a.spear.melee.01.white.2")
+            .filter("Glow", {
             color: 0x5f5858,
             innerStrength: 2,
             knockout: true,
@@ -24,24 +24,24 @@ for (const target of targetTokens) {
         .moveTowards(target)
         .missed(targetsMissed.has(target.id));
     sequence
-    .sound()
-        .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
-        .delay(950)
-        .endTime(600)
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
-        .waitUntilFinished(-800);
+        .sound()
+            .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
+            .delay(950)
+            .endTime(600)
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+            .waitUntilFinished(-800);
 
     sequence
-    .sound()
-        .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
-        .playIf(!targetsMissed.has(target.id))
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
+        .sound()
+            .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
+            .playIf(!targetsMissed.has(target.id))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
     sequence
-    .effect()
-        .file("jb2a.impact.orange.3")
-        .playIf(!targetsMissed.has(target.id))
-        .scaleToObject(2)
-        .atLocation(target)
-        .waitUntilFinished();
+        .effect()
+            .file("jb2a.impact.orange.3")
+            .playIf(!targetsMissed.has(target.id))
+            .scaleToObject(2)
+            .atLocation(target)
+            .waitUntilFinished();
 }
 sequence.play();

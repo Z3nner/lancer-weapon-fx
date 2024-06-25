@@ -37,17 +37,19 @@ async function main() {
             continue;
         }
 
+        let isAddingIndent = false;
         const jsFormatted = (await getPrettierFormatted(fileInfo))
             .split("\n")
             .map(line => {
-                if (!_DEINDENT_LINE_STARTS.some(start => line.trim().startsWith(start))) return line;
+                if (_DEINDENT_LINE_STARTS.some(start => line.trim().startsWith(start))) {
+                    isAddingIndent = true;
+                    return line;
+                }
 
-                const lineTrimmedStart = line.trimStart();
+                if (!line.trim().startsWith(".")) isAddingIndent = false;
+                if (!isAddingIndent) return line;
 
-                const curIndent = line.length - lineTrimmedStart.length;
-                if (curIndent <= _INDENT) return lineTrimmedStart;
-
-                return line.slice(_INDENT);
+                return line.padStart(line.length + _INDENT, " ");
             })
             .join("\n");
 

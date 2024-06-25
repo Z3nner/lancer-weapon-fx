@@ -20,12 +20,12 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
     targets.forEach(t => {
         if (!targetsMissed.has(t.id)) {
             sequence
-            .effect()
-                .file("jb2a.impact.orange.0")
-                .atLocation(t)
-                .rotateTowards(sourceToken)
-                .rotate(230)
-                .center();
+                .effect()
+                    .file("jb2a.impact.orange.0")
+                    .atLocation(t)
+                    .rotateTowards(sourceToken)
+                    .rotate(230)
+                    .center();
         }
     });
     return sequence;
@@ -41,24 +41,24 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
-.sound()
-    .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
-    .waitUntilFinished(-500);
+    .sound()
+        .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+        .waitUntilFinished(-500);
 
 sequence
-.effect()
-    .file("jb2a.bullet.Snipe.blue")
-    .atLocation(sourceToken)
-    .stretchTo(target)
+    .effect()
+        .file("jb2a.bullet.Snipe.blue")
+        .atLocation(sourceToken)
+        .stretchTo(target)
 
-.sound()
-    .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
-    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+    .sound()
+        .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
 
-.sound()
-    .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
-    .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+    .sound()
+        .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 
 sequence = repeatImpactAnimationForEachTarget(sequence, targetTokens);
 

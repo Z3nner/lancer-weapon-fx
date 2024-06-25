@@ -11,8 +11,8 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-    .effect()
-        .file("jb2a.melee_generic.slash.01.orange")
+        .effect()
+            .file("jb2a.melee_generic.slash.01.orange")
 
         .atLocation(sourceToken)
         .spriteOffset({ x: -0.2 }, { gridUnits: true })
@@ -20,24 +20,24 @@ for (const target of targetTokens) {
         .delay(500)
         .missed(targetsMissed.has(target.id));
     sequence
-    .sound()
-        .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
-        .delay(500)
-        .waitUntilFinished(-1300);
+        .sound()
+            .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+            .delay(500)
+            .waitUntilFinished(-1300);
 
     sequence
-    .sound()
-        .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
-        .playIf(!targetsMissed.has(target.id))
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
+        .sound()
+            .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
+            .playIf(!targetsMissed.has(target.id))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
     sequence
-    .effect()
-        .file("jb2a.static_electricity.03.blue")
-        .playIf(!targetsMissed.has(target.id))
-        .scaleToObject(0.5)
-        .atLocation(target, { randomOffset: 0.8, gridUnits: true })
-        .repeats(2, 80)
-        .waitUntilFinished(-2200);
+        .effect()
+            .file("jb2a.static_electricity.03.blue")
+            .playIf(!targetsMissed.has(target.id))
+            .scaleToObject(0.5)
+            .atLocation(target, { randomOffset: 0.8, gridUnits: true })
+            .repeats(2, 80)
+            .waitUntilFinished(-2200);
 }
 sequence.play();

@@ -11,43 +11,43 @@ let sequence = new Sequence();
 
 for (const target of targetTokens) {
     sequence
-    .sound()
-        .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+        .sound()
+            .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
-    .effect()
-        .file("jb2a.eldritch_blast.purple")
-        .startTime(900)
-        .scale(0.86)
-        .atLocation(sourceToken)
-        .stretchTo(target)
-        .missed(targetsMissed.has(target.id))
-        .name("impact")
-        .waitUntilFinished(-3100);
+        .effect()
+            .file("jb2a.eldritch_blast.purple")
+            .startTime(900)
+            .scale(0.86)
+            .atLocation(sourceToken)
+            .stretchTo(target)
+            .missed(targetsMissed.has(target.id))
+            .name("impact")
+            .waitUntilFinished(-3100);
     if (!targetsMissed.has(target.id)) {
         sequence
-        .sound()
-            .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+            .sound()
+                .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
         sequence
-        .effect()
-            .file("jb2a.impact.blue.3")
-            .scale(1.0)
-            .tint("#c91af9")
-            .atLocation(target)
-            .waitUntilFinished(-400);
+            .effect()
+                .file("jb2a.impact.blue.3")
+                .scale(1.0)
+                .tint("#c91af9")
+                .atLocation(target)
+                .waitUntilFinished(-400);
     } else {
         sequence
-        .sound()
-            .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+            .sound()
+                .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
         sequence
-        .effect()
-            .file("jb2a.impact.blue.3")
-            .scale(1.0)
-            .tint("#c91af9")
-            .atLocation("impact")
-            .waitUntilFinished(-400);
+            .effect()
+                .file("jb2a.impact.blue.3")
+                .scale(1.0)
+                .tint("#c91af9")
+                .atLocation("impact")
+                .waitUntilFinished(-400);
     }
 }
 sequence.play();
