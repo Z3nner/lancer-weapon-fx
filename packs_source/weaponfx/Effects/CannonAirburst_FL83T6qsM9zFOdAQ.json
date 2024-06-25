@@ -1,10 +1,10 @@
 {
-  "_id": "FL83T6qsM9zFOdAQ",
-  "name": "CannonAirburst",
-  "img": "modules/lancer-weapon-fx/icons/cluster-bomb.png",
-  "type": "script",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!FL83T6qsM9zFOdAQ",
-  "command_source": "packs_source/weaponfx/Effects/CannonAirburst_FL83T6qsM9zFOdAQ.js"
+    "_id": "FL83T6qsM9zFOdAQ",
+    "name": "CannonAirburst",
+    "img": "modules/lancer-weapon-fx/icons/cluster-bomb.png",
+    "type": "script",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!FL83T6qsM9zFOdAQ",
+    "command_source": "packs_source/weaponfx/Effects/CannonAirburst_FL83T6qsM9zFOdAQ.js"
 }

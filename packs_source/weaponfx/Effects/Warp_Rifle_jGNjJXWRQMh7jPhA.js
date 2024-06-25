@@ -1,8 +1,13 @@
-const {targetsMissed, targetTokens, sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
+const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 const target = targetTokens[0];
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg", "jb2a.energy_strands.range.multiple.purple.01", "modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg", "jb2a.divine_smite.caster.blueyellow"])
+await Sequencer.Preloader.preloadForClients([
+    "modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg",
+    "jb2a.energy_strands.range.multiple.purple.01",
+    "modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg",
+    "jb2a.divine_smite.caster.blueyellow",
+]);
 
 let sequence = new Sequence()
 
@@ -13,13 +18,14 @@ let sequence = new Sequence()
         .fadeInAudio(500)
     .effect()
         .file("jb2a.energy_strands.range.multiple.purple.01")
-        .scale(0.40)
+        .scale(0.4)
         .atLocation(sourceToken)
         .stretchTo(target)
         .missed(targetsMissed.has(target.id))
-        .waitUntilFinished(-1100)
+        .waitUntilFinished(-1100);
 
-    sequence.sound()
+sequence
+    .sound()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg")
         .playIf(!targetsMissed.has(target.id))
         .delay(300)
@@ -29,8 +35,8 @@ let sequence = new Sequence()
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
         .scaleToObject(3)
         .tint("#9523e1")
-        .filter("Glow", {color: 0xffffff, distance: 1})
+        .filter("Glow", { color: 0xffffff, distance: 1 })
         .atLocation(target)
-        .waitUntilFinished(-1000)
+        .waitUntilFinished(-1000);
 
 sequence.play();

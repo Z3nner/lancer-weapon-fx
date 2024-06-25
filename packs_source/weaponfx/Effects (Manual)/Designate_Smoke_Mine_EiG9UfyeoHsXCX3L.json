@@ -1,10 +1,10 @@
 {
-  "_id": "EiG9UfyeoHsXCX3L",
-  "name": "Designate Smoke Mine",
-  "img": "modules/lancer-weapon-fx/icons/SmokeArea.png",
-  "type": "script",
-  "scope": "global",
-  "folder": "o8nGPmux6bWEpn9M",
-  "_key": "!macros!EiG9UfyeoHsXCX3L",
-  "command_source": "packs_source/weaponfx/Effects (Manual)/Designate_Smoke_Mine_EiG9UfyeoHsXCX3L.js"
+    "_id": "EiG9UfyeoHsXCX3L",
+    "name": "Designate Smoke Mine",
+    "img": "modules/lancer-weapon-fx/icons/SmokeArea.png",
+    "type": "script",
+    "scope": "global",
+    "folder": "o8nGPmux6bWEpn9M",
+    "_key": "!macros!EiG9UfyeoHsXCX3L",
+    "command_source": "packs_source/weaponfx/Effects (Manual)/Designate_Smoke_Mine_EiG9UfyeoHsXCX3L.js"
 }

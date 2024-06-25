@@ -1,7 +1,7 @@
-import {euclideanDistance, fisherYatesShuffle, getUniquePoints} from "./utils.js";
+import { euclideanDistance, fisherYatesShuffle, getUniquePoints } from "./utils.js";
 
 export default class LloydsAlgorithm {
-    static _assignToClusters (points, centroids) {
+    static _assignToClusters(points, centroids) {
         const clusters = Array.from(centroids, () => []);
 
         for (const point of points) {
@@ -13,7 +13,7 @@ export default class LloydsAlgorithm {
         return clusters;
     }
 
-    static _calculateCentroids (cluster) {
+    static _calculateCentroids(cluster) {
         // Calculate the centroid (mean) of a cluster of points.
         if (cluster.length === 0) {
             return null;
@@ -25,7 +25,7 @@ export default class LloydsAlgorithm {
         return { x: sumX / cluster.length, y: sumY / cluster.length };
     }
 
-    static getCentroids (points, numCentroids) {
+    static getCentroids(points, numCentroids) {
         if (numCentroids <= 0) {
             return [];
         }
@@ -42,19 +42,19 @@ export default class LloydsAlgorithm {
         if (centroids.length < numCentroids) {
             // If there are insufficiently many unique seed points, generate more points by adding an increasing offset
             //   to the biggest X and Y values from all points.
-            const maxX = Math.max(...uniquePoints.map(({x}) => x));
-            const maxY = Math.max(...uniquePoints.map(({y}) => y));
+            const maxX = Math.max(...uniquePoints.map(({ x }) => x));
+            const maxY = Math.max(...uniquePoints.map(({ y }) => y));
 
             for (let i = centroids.length; i < numCentroids; ++i) {
-                centroids.push({x: maxX + i, y: maxY + i});
+                centroids.push({ x: maxX + i, y: maxY + i });
             }
         }
 
         let previousCentroids;
         while (
             !previousCentroids ||
-            !centroids.every((centroid, i) =>
-                centroid.x === previousCentroids[i].x && centroid.y === previousCentroids[i].y
+            !centroids.every(
+                (centroid, i) => centroid.x === previousCentroids[i].x && centroid.y === previousCentroids[i].y,
             )
         ) {
             previousCentroids = centroids.slice();

@@ -1,10 +1,10 @@
 {
-  "_id": "6vtYP47LXaX5POYB",
-  "name": "Veil Rifle",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/laser-blast.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!6vtYP47LXaX5POYB",
-  "command_source": "packs_source/weaponfx/Effects/Veil_Rifle_6vtYP47LXaX5POYB.js"
+    "_id": "6vtYP47LXaX5POYB",
+    "name": "Veil Rifle",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/laser-blast.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!6vtYP47LXaX5POYB",
+    "command_source": "packs_source/weaponfx/Effects/Veil_Rifle_6vtYP47LXaX5POYB.js"
 }

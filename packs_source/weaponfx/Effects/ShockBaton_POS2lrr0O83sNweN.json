@@ -1,10 +1,10 @@
 {
-  "_id": "POS2lrr0O83sNweN",
-  "name": "ShockBaton",
-  "img": "modules/lancer-weapon-fx/icons/shining-sword.png",
-  "type": "script",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!POS2lrr0O83sNweN",
-  "command_source": "packs_source/weaponfx/Effects/ShockBaton_POS2lrr0O83sNweN.js"
+    "_id": "POS2lrr0O83sNweN",
+    "name": "ShockBaton",
+    "img": "modules/lancer-weapon-fx/icons/shining-sword.png",
+    "type": "script",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!POS2lrr0O83sNweN",
+    "command_source": "packs_source/weaponfx/Effects/ShockBaton_POS2lrr0O83sNweN.js"
 }

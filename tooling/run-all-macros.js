@@ -39,12 +39,12 @@
     // ---
 
     try {
-        const pDelay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+        const pDelay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
         const packMacros = game.packs.get("lancer-weapon-fx.weaponfx");
         const macros = [...(await packMacros.getDocuments())]
             .filter(macro => macro.folder?.name === "Effects")
-            .sort((a, b) => a.name.localeCompare(b.name, {sensitivity: "base"}));
+            .sort((a, b) => a.name.localeCompare(b.name, { sensitivity: "base" }));
 
         for (const macro of macros) {
             if (NAMES_BLOCKLIST.has(macro.name)) continue;
@@ -59,9 +59,7 @@
                 const tempMacro = new Macro(macroData);
                 tempMacro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
 
-                const ptMessageMiss = isMiss != null
-                    ? ` (${isMiss ? "Miss" : "Hit"})`
-                    : "";
+                const ptMessageMiss = isMiss != null ? ` (${isMiss ? "Miss" : "Hit"})` : "";
                 ui.notifications.warn(`Playing "${macroData.name}"${ptMessageMiss}`);
 
                 tempMacro.execute(tokenSource, tokenTargets);

@@ -1,10 +1,10 @@
 {
-  "_id": "Aj3QspxsjcnNjfol",
-  "name": "Needle Beam",
-  "type": "script",
-  "img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Green_Thumb.webp",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!Aj3QspxsjcnNjfol",
-  "command_source": "packs_source/weaponfx/Effects/Needle_Beam_Aj3QspxsjcnNjfol.js"
+    "_id": "Aj3QspxsjcnNjfol",
+    "name": "Needle Beam",
+    "type": "script",
+    "img": "modules/JB2A_DnD5e/Library/Generic/Weapon_Attacks/Ranged/LaserShot_01_Regular_Green_Thumb.webp",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!Aj3QspxsjcnNjfol",
+    "command_source": "packs_source/weaponfx/Effects/Needle_Beam_Aj3QspxsjcnNjfol.js"
 }

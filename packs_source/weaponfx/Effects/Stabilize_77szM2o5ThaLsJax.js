@@ -1,6 +1,9 @@
-const {sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
+const { sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Stabilize.ogg", "jb2a.healing_generic.400px.green"])
+await Sequencer.Preloader.preloadForClients([
+    "modules/lancer-weapon-fx/soundfx/Stabilize.ogg",
+    "jb2a.healing_generic.400px.green",
+]);
 
 let sequence = new Sequence()
 

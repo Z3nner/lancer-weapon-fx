@@ -1,10 +1,10 @@
 {
-  "_id": "Ui60K7EYoOV23KNM",
-  "name": "Apocalypse Rail",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/target-laser.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!Ui60K7EYoOV23KNM",
-  "command_source": "packs_source/weaponfx/Effects/Apocalypse_Rail_Ui60K7EYoOV23KNM.js"
+    "_id": "Ui60K7EYoOV23KNM",
+    "name": "Apocalypse Rail",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/target-laser.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!Ui60K7EYoOV23KNM",
+    "command_source": "packs_source/weaponfx/Effects/Apocalypse_Rail_Ui60K7EYoOV23KNM.js"
 }

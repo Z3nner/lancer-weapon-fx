@@ -1,10 +1,10 @@
 {
-  "_id": "uIr2lCpJWXbDaowG",
-  "name": "Hammer",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/hammer-drop.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!uIr2lCpJWXbDaowG",
-  "command_source": "packs_source/weaponfx/Effects/Hammer_uIr2lCpJWXbDaowG.js"
+    "_id": "uIr2lCpJWXbDaowG",
+    "name": "Hammer",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/hammer-drop.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!uIr2lCpJWXbDaowG",
+    "command_source": "packs_source/weaponfx/Effects/Hammer_uIr2lCpJWXbDaowG.js"
 }

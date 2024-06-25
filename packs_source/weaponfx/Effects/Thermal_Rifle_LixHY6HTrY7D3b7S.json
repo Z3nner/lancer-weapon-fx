@@ -1,10 +1,10 @@
 {
-  "_id": "LixHY6HTrY7D3b7S",
-  "name": "Thermal Rifle",
-  "type": "script",
-  "img": "modules/JB2A_DnD5e/Library/3rd_Level/Fireball/FireballBeam_01_Orange_Thumb.webp",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!LixHY6HTrY7D3b7S",
-  "command_source": "packs_source/weaponfx/Effects/Thermal_Rifle_LixHY6HTrY7D3b7S.js"
+    "_id": "LixHY6HTrY7D3b7S",
+    "name": "Thermal Rifle",
+    "type": "script",
+    "img": "modules/JB2A_DnD5e/Library/3rd_Level/Fireball/FireballBeam_01_Orange_Thumb.webp",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!LixHY6HTrY7D3b7S",
+    "command_source": "packs_source/weaponfx/Effects/Thermal_Rifle_LixHY6HTrY7D3b7S.js"
 }

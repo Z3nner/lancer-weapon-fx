@@ -1,10 +1,10 @@
 {
-  "_id": "eyeOAl8lFp0w3Hfd",
-  "name": "Kraul Rifle",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/harpoon-chain.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!eyeOAl8lFp0w3Hfd",
-  "command_source": "packs_source/weaponfx/Effects/Kraul_Rifle_eyeOAl8lFp0w3Hfd.js"
+    "_id": "eyeOAl8lFp0w3Hfd",
+    "name": "Kraul Rifle",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/harpoon-chain.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!eyeOAl8lFp0w3Hfd",
+    "command_source": "packs_source/weaponfx/Effects/Kraul_Rifle_eyeOAl8lFp0w3Hfd.js"
 }

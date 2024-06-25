@@ -1,10 +1,10 @@
 {
-  "_id": "Hlf1weIjm3FsVE9Z",
-  "name": "ElectricExplodeOnClick",
-  "img": "modules/lancer-weapon-fx/icons/crowned-explosion.png",
-  "type": "script",
-  "scope": "global",
-  "folder": "o8nGPmux6bWEpn9M",
-  "_key": "!macros!Hlf1weIjm3FsVE9Z",
-  "command_source": "packs_source/weaponfx/Effects (Manual)/ElectricExplodeOnClick_Hlf1weIjm3FsVE9Z.js"
+    "_id": "Hlf1weIjm3FsVE9Z",
+    "name": "ElectricExplodeOnClick",
+    "img": "modules/lancer-weapon-fx/icons/crowned-explosion.png",
+    "type": "script",
+    "scope": "global",
+    "folder": "o8nGPmux6bWEpn9M",
+    "_key": "!macros!Hlf1weIjm3FsVE9Z",
+    "command_source": "packs_source/weaponfx/Effects (Manual)/ElectricExplodeOnClick_Hlf1weIjm3FsVE9Z.js"
 }

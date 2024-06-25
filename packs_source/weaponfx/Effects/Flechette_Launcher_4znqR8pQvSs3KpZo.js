@@ -1,6 +1,10 @@
-const {sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
+const { sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-await Sequencer.Preloader.preloadForClients(["modules/lancer-weapon-fx/soundfx/Flechette.ogg", "jb2a.explosion.04.blue", "jb2a.impact.yellow"])
+await Sequencer.Preloader.preloadForClients([
+    "modules/lancer-weapon-fx/soundfx/Flechette.ogg",
+    "jb2a.explosion.04.blue",
+    "jb2a.impact.yellow",
+]);
 
 let sequence = new Sequence()
 
@@ -16,5 +20,5 @@ let sequence = new Sequence()
         .file("jb2a.impact.yellow")
         .scale(0.5)
         .repeats(6, 20)
-        .atLocation(sourceToken, {randomOffset: 2.2, gridUnits: true})
+        .atLocation(sourceToken, { randomOffset: 2.2, gridUnits: true })
     .play();

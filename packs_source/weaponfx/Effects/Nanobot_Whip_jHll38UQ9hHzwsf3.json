@@ -1,10 +1,10 @@
 {
-  "_id": "jHll38UQ9hHzwsf3",
-  "name": "Nanobot Whip",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/electric-whip.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!jHll38UQ9hHzwsf3",
-  "command_source": "packs_source/weaponfx/Effects/Nanobot_Whip_jHll38UQ9hHzwsf3.js"
+    "_id": "jHll38UQ9hHzwsf3",
+    "name": "Nanobot Whip",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/electric-whip.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!jHll38UQ9hHzwsf3",
+    "command_source": "packs_source/weaponfx/Effects/Nanobot_Whip_jHll38UQ9hHzwsf3.js"
 }

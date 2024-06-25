@@ -1,10 +1,10 @@
 {
-  "_id": "RPjF4SvsMP3dolyX",
-  "name": "AMR",
-  "type": "script",
-  "img": "modules/lancer-weapon-fx/icons/supersonic-bullet.png",
-  "scope": "global",
-  "folder": "Qf6H7pepYZi6Oa6S",
-  "_key": "!macros!RPjF4SvsMP3dolyX",
-  "command_source": "packs_source/weaponfx/Effects/AMR_RPjF4SvsMP3dolyX.js"
+    "_id": "RPjF4SvsMP3dolyX",
+    "name": "AMR",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/supersonic-bullet.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!RPjF4SvsMP3dolyX",
+    "command_source": "packs_source/weaponfx/Effects/AMR_RPjF4SvsMP3dolyX.js"
 }
