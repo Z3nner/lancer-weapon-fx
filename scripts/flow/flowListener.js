@@ -1,11 +1,12 @@
 import { FlowInfo, getTokenByIdOrActorId, processFlowInfo } from "./common.js";
+import { pGetMacroUuid } from "../effectResolver/effectResolver.js";
 
 /**
  * @param state
  * @param {?string} fallbackActionIdentifier Identifier used if the flow does not specify one.
- * @return {FlowInfo}
+ * @return {Promise<FlowInfo>}
  */
-const _getFlowInfo = (state, { fallbackActionIdentifier = null } = {}) => {
+const _pGetFlowInfo = async (state, { fallbackActionIdentifier = null } = {}) => {
     const zippedTargetInfo = Array.from(
         {
             length: Math.max(state.data.acc_diff?.targets?.length || 0, state.data.hit_results?.length || 0),
@@ -18,7 +19,7 @@ const _getFlowInfo = (state, { fallbackActionIdentifier = null } = {}) => {
 
     return new FlowInfo({
         sourceToken: getTokenByIdOrActorId(state.actor.token?.id || state.actor?.id),
-        actionIdentifier: state.item?.system?.lid || fallbackActionIdentifier,
+        macroUuid: await pGetMacroUuid(state.item?.system?.lid, fallbackActionIdentifier),
         targetTokens: zippedTargetInfo.map(({ target }) => target.target).filter(Boolean),
         targetsMissed: new Set(
             zippedTargetInfo
@@ -34,19 +35,19 @@ const _getFlowInfo = (state, { fallbackActionIdentifier = null } = {}) => {
  * @param {?((string|Function))} fallbackActionIdentifier
  */
 const _bindFlowHook = ({ flowName, fallbackActionIdentifier = null }) => {
-    Hooks.on(`lancer.postFlow.${flowName}`, (flow, isSuccess) => {
+    Hooks.on(`lancer.postFlow.${flowName}`, async (flow, isSuccess) => {
         if (!isSuccess) return;
 
         if (fallbackActionIdentifier != null && fallbackActionIdentifier instanceof Function) {
             fallbackActionIdentifier = fallbackActionIdentifier(flow);
         }
 
-        const flowInfo = _getFlowInfo(flow.state, {
+        const flowInfo = await _pGetFlowInfo(flow.state, {
             fallbackActionIdentifier,
         });
         if (flowInfo == null) return;
 
-        processFlowInfo(flowInfo);
+        await processFlowInfo(flowInfo);
     });
 };
 
@@ -71,7 +72,7 @@ const _onReady = () => {
     _bindFlowHook({ flowName: "FullRepairFlow", fallbackActionIdentifier: "lwfx_stabilize" });
 
     // Core power
-    _bindFlowHook({ flowName: "CoreActiveFlow" });
+    _bindFlowHook({ flowName: "CoreActiveFlow", fallbackActionIdentifier: "lwfx_core_power" });
 
     // Other activations, which use an action
     // E.g. "Pattern-A Smoke Charges" -> "Use Quick"
