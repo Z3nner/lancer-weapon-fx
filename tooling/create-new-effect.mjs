@@ -16,11 +16,6 @@ const _TYPE_INFO = {
             fs.readFileSync(path.join(DIR_PACKS_SOURCE, PACK_ID, "Effects__Manual__o8nGPmux6bWEpn9M.json"), "utf-8"),
         ),
     },
-    "utility": {
-        folderJson: JSON.parse(
-            fs.readFileSync(path.join(DIR_PACKS_SOURCE, PACK_ID, "Utilities_pwwwYY4IGpKs8tc1.json"), "utf-8"),
-        ),
-    },
 };
 
 const program = new Command();
