@@ -12,7 +12,10 @@ const _pGetLwfxMacroUuid = async macroName => {
         return null;
     }
 
-    const macro = (await pack.getDocuments()).find(doc => doc.name === macroName);
+    // Case- and whitespace-insensitive search
+    const macroSearchName = macroName.toLowerCase().trim();
+    const macro = (await pack.getDocuments()).find(doc => doc.name.toLowerCase().trim() === macroSearchName);
+
     if (!macro) {
         ui.notifications.error(`Lancer Weapon FX | Macro ${macroName} not found`);
         return null;
