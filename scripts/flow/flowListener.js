@@ -30,17 +30,36 @@ const _pGetFlowInfo = async (state, { fallbackActionIdentifier = null } = {}) =>
     });
 };
 
-/**
- * @param {string} flowName
- * @param {?((string|Function))} fallbackActionIdentifier
- */
-const _bindFlowHook = ({ flowName, fallbackActionIdentifier = null }) => {
-    Hooks.on(`lancer.postFlow.${flowName}`, async (flow, isSuccess) => {
-        if (!isSuccess) return;
+/* -------------------------------------------- */
 
-        if (fallbackActionIdentifier != null && fallbackActionIdentifier instanceof Function) {
-            fallbackActionIdentifier = fallbackActionIdentifier(flow);
-        }
+/**
+ * Allow "aborted" flows to trigger effects in some cases.
+ * Examples:
+ * - When a 1-structure mech suffers structure damage.
+ *   The flow is aborted by the `noStructureRemaining` step.
+ * - When a 1-stress mech suffers stress.
+ *   The flow is aborted by the `noStressRemaining` step.
+ */
+const _isTriggerOnAbortedFlow = ({ flowName, flow }) => {
+    if (flowName === "StructureFlow") return flow.state.data.remStruct === 0;
+    if (flowName === "OverheatFlow") return flow.state.data.remStress === 0;
+    return false;
+};
+
+/**
+ * @param {string} options.flowName
+ * @param {?((string|Function))} [options.fallbackActionIdentifier]
+ */
+const _bindFlowHook = options => {
+    const { flowName, fallbackActionIdentifier: fallbackActionIdentifier_ = null } = options;
+
+    Hooks.on(`lancer.postFlow.${flowName}`, async (flow, isContinue) => {
+        if (!isContinue && !_isTriggerOnAbortedFlow({ flowName, flow })) return;
+
+        const fallbackActionIdentifier =
+            fallbackActionIdentifier_ != null && fallbackActionIdentifier_ instanceof Function
+                ? fallbackActionIdentifier_(flow)
+                : fallbackActionIdentifier_;
 
         const flowInfo = await _pGetFlowInfo(flow.state, {
             fallbackActionIdentifier,
@@ -51,17 +70,47 @@ const _bindFlowHook = ({ flowName, fallbackActionIdentifier = null }) => {
     });
 };
 
+/* -------------------------------------------- */
+
+const fallbackActionIdentifier_BasicAttackFlow = flow => {
+    return flow.state.data.attack_type === "Melee" ? "lwfx_default_melee" : "lwfx_default_ranged";
+};
+
+const fallbackActionIdentifier_StructureFlow = flow => {
+    switch (flow.state.data.title) {
+        case "Crushing Hit":
+            return "lwfx_structure_crushing_hit";
+        case "Direct Hit":
+            return `lwfx_structure_direct_hit_${Math.clamped(flow.state.data.remStruct, 1, 3)}`;
+        case "System Trauma":
+            return "lwfx_structure_system_trauma";
+        case "Glancing Blow":
+            return "lwfx_structure_glancing_blow";
+    }
+    return "lwfx_structure";
+};
+
+const fallbackActionIdentifier_OverheatFlow = flow => {
+    switch (flow.state.data.title) {
+        case "Irreversible Meltdown":
+            return "lwfx_overheat_irreversible_meltdown";
+        case "Meltdown":
+            return `lwfx_overheat_meltdown_${Math.clamped(flow.state.data.remStress, 1, 3)}`;
+        case "Destabilized Power Plant":
+            return "lwfx_overheat_destabilized_power_plant";
+        case "Emergency Shunt":
+            return "lwfx_overheat_emergency_shunt";
+    }
+    return "lwfx_overheat";
+};
+
 const _onReady = () => {
     if (!foundry.utils.isNewerVersion(game.version, "11")) return;
 
     // Weapon attacks
     _bindFlowHook({ flowName: "WeaponAttackFlow" });
     // Basic attacks
-    _bindFlowHook({
-        flowName: "BasicAttackFlow",
-        fallbackActionIdentifier: flow =>
-            flow.state.data.attack_type === "Melee" ? "lwfx_default_melee" : "lwfx_default_ranged",
-    });
+    _bindFlowHook({ flowName: "BasicAttackFlow", fallbackActionIdentifier: fallbackActionIdentifier_BasicAttackFlow });
 
     // Tech attacks and invades
     _bindFlowHook({ flowName: "TechAttackFlow", fallbackActionIdentifier: "default_tech_attack" });
@@ -86,12 +135,12 @@ const _onReady = () => {
     _bindFlowHook({ flowName: "OverchargeFlow", fallbackActionIdentifier: "lwfx_overcharge" });
 
     // Structure
-    _bindFlowHook({ flowName: "StructureFlow", fallbackActionIdentifier: "lwfx_structure" });
+    _bindFlowHook({ flowName: "StructureFlow", fallbackActionIdentifier: fallbackActionIdentifier_StructureFlow });
     // Structure side effects (equipment destruction)
     _bindFlowHook({ flowName: "SecondaryStructureFlow", fallbackActionIdentifier: "lwfx_structure_secondary" });
 
     // Stress
-    _bindFlowHook({ flowName: "OverheatFlow", fallbackActionIdentifier: "lwfx_overheat" });
+    _bindFlowHook({ flowName: "OverheatFlow", fallbackActionIdentifier: fallbackActionIdentifier_OverheatFlow });
 
     // Cascades (structure/stress side effect)
     _bindFlowHook({ flowName: "CascadeFlow", fallbackActionIdentifier: "lwfx_cascade" });
