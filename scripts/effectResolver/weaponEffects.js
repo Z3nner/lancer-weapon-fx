@@ -199,6 +199,20 @@ const weaponEffects = {
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
     "npc_Tempest_TyphoonNaniteCannon": "Nexus",
     "npc_PDCTurret": "Leviathan",
+    //HEURISTICS
+    "lwfx_heuristic_melee": "DefaultMelee",
+    "lwfx_heuristic_cqb_energy": "PPC",
+    "lwfx_heuristic_cqb_shotgun": "Shotgun",
+    "lwfx_heuristic_cqb_other": "Pistol",
+    "lwfx_heuristic_cannon_energy": "Tachyon Lance",
+    "lwfx_heuristic_cannon_mg": "HMG",
+    "lwfx_heuristic_cannon_other": "Mortar",
+    "lwfx_heuristic_launcher": "Missile",
+    "lwfx_heuristic_nexus": "Nexus",
+    "lwfx_heuristic_rifle_energy": "Thermal Rifle",
+    "lwfx_heuristic_rifle_mg": "HMG",
+    "lwfx_heuristic_rifle_ar": "Assault Rifle",
+    "lwfx_heuristic_rifle_other": "AMR",
 };
 
 export { weaponEffects };
