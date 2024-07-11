@@ -105,8 +105,6 @@ const fallbackActionIdentifier_OverheatFlow = flow => {
 };
 
 const _onReady = () => {
-    if (!foundry.utils.isNewerVersion(game.version, "11")) return;
-
     // Weapon attacks
     _bindFlowHook({ flowName: "WeaponAttackFlow" });
     // Basic attacks
