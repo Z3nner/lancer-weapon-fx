@@ -34,7 +34,7 @@ export async function processFlowInfo(flowInfo) {
     const temp_macro = new Macro(macro.toObject());
 
     (temp_macro.flags[MODULE_ID] ||= {}).flowInfo = flowInfo;
-    temp_macro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+    temp_macro.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
 
     temp_macro.execute({ actor: sourceToken.actor, token: sourceToken });
 }

@@ -13,7 +13,7 @@
     "version": "1.8.0",
     "compatibility": {
         "minimum": 11,
-        "verified": "11.315"
+        "verified": "12.328"
     },
     "url": "https://github.com/Z3nner/lancer-weapon-fx",
     "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.json",
