@@ -57,7 +57,7 @@
                 const macroData = macro.toObject();
 
                 const tempMacro = new Macro(macroData);
-                tempMacro.ownership.default = CONST.DOCUMENT_PERMISSION_LEVELS.OWNER;
+                tempMacro.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
 
                 const ptMessageMiss = isMiss != null ? ` (${isMiss ? "Miss" : "Hit"})` : "";
                 ui.notifications.warn(`Playing "${macroData.name}"${ptMessageMiss}`);
