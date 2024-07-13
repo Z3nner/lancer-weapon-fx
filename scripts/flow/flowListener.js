@@ -1,5 +1,6 @@
 import { FlowInfo, getTokenByIdOrActorId, processFlowInfo } from "./common.js";
 import { pGetMacroUuid } from "../effectResolver/effectResolver.js";
+import { fallbackActionIdentifier as fallbackActionIdentifier_WeaponAttackFlow } from "./WeaponAttackFlow/heuristic.js";
 
 /**
  * @param state
@@ -106,7 +107,10 @@ const fallbackActionIdentifier_OverheatFlow = flow => {
 
 const _onReady = () => {
     // Weapon attacks
-    _bindFlowHook({ flowName: "WeaponAttackFlow" });
+    _bindFlowHook({
+        flowName: "WeaponAttackFlow",
+        fallbackActionIdentifier: fallbackActionIdentifier_WeaponAttackFlow,
+    });
     // Basic attacks
     _bindFlowHook({ flowName: "BasicAttackFlow", fallbackActionIdentifier: fallbackActionIdentifier_BasicAttackFlow });
 
