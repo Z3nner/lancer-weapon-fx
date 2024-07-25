@@ -41,7 +41,7 @@ const _getCustomMacroUuid_itemName = ({ itemName, customEffects }) => {
     return macroUuid;
 };
 
-const _getCustomMacroUuid = (itemLid, itemName) => {
+const _getCustomMacroUuid = (itemLid, itemName = null) => {
     const customEffects = (game.settings.get(MODULE_ID, SETTING_EFFECTS_MANAGER_STATE) || {}).effects;
     if (!customEffects || !Object.keys(customEffects).length) return null;
 
@@ -89,12 +89,23 @@ export const pGetMacroUuid = async (itemLid, itemName, fallbackActionIdentifier)
         return customUuid;
     }
 
+    // Resolve specific effects defined by the module
     const lwfxUuid = await _pGetLwfxMacroUuid(weaponEffects[itemLid]);
     if (lwfxUuid) {
         console.log(`Lancer Weapon FX | Found macro "${lwfxUuid}" for Lancer ID "${itemLid}"`);
         return lwfxUuid;
     }
 
+    // Resolve custom macros bound on fallback "fake LID"s
+    const customFallbackUuid = await _getCustomMacroUuid(fallbackActionIdentifier, null);
+    if (customFallbackUuid) {
+        console.log(
+            `Lancer Weapon FX | Found custom macro "${customFallbackUuid}" for fallback identifier "${fallbackActionIdentifier}"`,
+        );
+        return customFallbackUuid;
+    }
+
+    // Resolve fallback effects defined by the module
     const lwfxFallbackUuid = await _pGetLwfxMacroUuid(weaponEffects[fallbackActionIdentifier]);
     if (lwfxFallbackUuid) {
         console.log(
