@@ -1,23 +1,26 @@
 {
     "id": "lancer-weapon-fx",
     "title": "Lancer Weapon FX",
-    "description": "Manual Weapon special effects oriented towards Lancer TTRPG.",
+    "description": "Special effects for weapons and items oriented towards Lancer TTRPG.",
     "authors": [
         {
             "name": "Z3nner"
         },
         {
             "name": "dodgepong"
+        },
+        {
+            "name": "cirrahn"
         }
     ],
-    "version": "1.8.0",
+    "version": "2.0.0",
     "compatibility": {
         "minimum": 11,
         "verified": "12.328"
     },
     "url": "https://github.com/Z3nner/lancer-weapon-fx",
     "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.json",
-    "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/1.8.0/module.zip",
+    "download": "https://github.com/Z3nner/lancer-weapon-fx/releases/download/2.0.0/module.zip",
     "relationships": {
         "requires": [
             {
