@@ -27,6 +27,7 @@ If you'd like to change any effect, or replace an existing effect with your own,
 The module supports adding effects when mechs stabilize, full repair, overcharge, or roll a structure or stress check.  As of 2.0.0, only an animation for Stabilize is implemented but default animations are planned for the rest for a future release.  If you'd like to add an effect or replace a default one with your own, you can enter any of the following keys into the Lancer ID of an effect stub in the Effects Manager.
 
 ```
+lwfx_core_power
 lwfx_cascade
 lwfx_overcharge
 lwfx_overheat

@@ -68,7 +68,7 @@ program
 • Complete the macro JS
 • Edit the "img" in the macro JSON
 • Run "npm run db:pack"
-• Test in-game!${type === "effect" ? `\n• (Add to "scripts/effectResolver/weaponEffects.js")` : ""}`);
+• Test in-game!${type === "effect" ? `\n• (Add to "scripts/weaponEffects.js")` : ""}`);
     });
 
 program.parse();
