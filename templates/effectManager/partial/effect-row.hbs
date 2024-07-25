@@ -1,0 +1,124 @@
+<div
+    class="lwfx__clipped-top lwfx__flexrow-v-center lwfx-effects-manager__row lwfx__darken-2 lwfx-effects-manager__effect"
+    data-effect-id="{{effect.id}}"
+    data-folder-id="{{folder.id}}"
+    data-drop-target="row"
+>
+    <span
+        draggable="true"
+        data-drag-type="row"
+        class="lwfx-effects-manager__grip lwfx__h-100 lwfx__flexshrink-0 lwfx__flexrow-vh-center"
+    >
+        <i class="fas fa-grip-dots-vertical lwfx-effects-manager__grip-handle"></i>
+    </span>
+
+    <input
+        type="checkbox"
+        class="lwfx__mr-2 lwfx__min-w-initial lwfx__m-0"
+        data-name-transient="effects.{{effect.id}}.isSelected"
+    >
+
+    <label
+        class="lwfx__clipped lwfx__flexcol lwfx__mr-2 lwfx__darken-1"
+        data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Mode Hint"}}"
+    >
+        <span class="lancer-header lancer-primary submajor minor">
+            {{localize "lancer-weapon-fx.effectManager.app.Mode"}}
+        </span>
+        <select name="effects.{{effect.id}}.mode" class="lwfx-effects-manager__effect-sel">
+            {{selectOptions rowModes.choices selected=effect.mode localize=true}}
+        </select>
+    </label>
+
+    {{#if (eq effect.mode rowModes.CUSTOM_EFFECT_MODE_NAME) }}
+        <label
+            class="lwfx__clipped lwfx__flexcol lwfx__w-100 lwfx__min-w-100 lwfx__mr-2 lwfx__darken-1"
+        >
+            <span class="lancer-header lancer-primary submajor minor">
+                <span>
+                    {{#if effect.isDuplicate}}
+                        <i
+                            class="fas fa-triangle-exclamation lwfx__fa lwfx-effects-manager__icon-duplicate lwfx__ml-1"
+                            data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Multiple Effects Item Name Hint"}}"
+                        ></i>
+                    {{/if}}
+                    {{localize "lancer-weapon-fx.effectManager.app.Item Name"}}
+                </span>
+            </span>
+            <input
+                type="text"
+                name="effects.{{effect.id}}.itemName"
+                value="{{effect.itemName}}"
+                class="lwfx-effects-manager__effect-ipt"
+            >
+        </label>
+    {{else}}
+        <label
+            class="lwfx__clipped lwfx__flexcol lwfx__w-100 lwfx__min-w-100 lwfx__mr-2 lwfx__darken-1"
+        >
+            <span class="lancer-header lancer-primary submajor minor">
+                <span>
+                    {{#if effect.isDuplicate}}
+                        <i
+                            class="fas fa-triangle-exclamation lwfx__fa lwfx-effects-manager__icon-duplicate lwfx__ml-1"
+                            data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Multiple Effects Lancer ID Hint"}}"
+                        ></i>
+                    {{/if}}
+                    {{localize "lancer-weapon-fx.effectManager.app.Lancer ID"}}
+                </span>
+            </span>
+            <input
+                type="text"
+                name="effects.{{effect.id}}.itemLid"
+                value="{{effect.itemLid}}"
+                class="lwfx-effects-manager__effect-ipt"
+            >
+        </label>
+    {{/if}}
+
+    {{! region Macro dropdown and input field }}
+    <label
+        class="lwfx__clipped lwfx__flexcol lwfx__mr-2 lwfx__darken-1"
+    >
+        <span class="lancer-header lancer-primary submajor minor">
+            {{localize "lancer-weapon-fx.effectManager.app.Macro"}}
+        </span>
+        {{! TODO(v12) convert to extension of `AbstractFormInputElement` }}
+        <select
+            data-name-proxy="effects.{{effect.id}}.macroUuid"
+            class="lwfx__max-w-100px lwfx-effects-manager__effect-sel"
+        >
+            {{selectOptions macros.choices selected=effect.macroUuid localize=true blank=""}}
+        </select>
+    </label>
+
+    <label
+        class="lwfx__clipped lwfx__flexcol lwfx__w-100 lwfx__min-w-100 lwfx__mr-2 lwfx__darken-1"
+    >
+        <span class="lancer-header lancer-primary submajor minor">
+            {{localize "lancer-weapon-fx.effectManager.app.Macro UUID"}}
+        </span>
+        <input
+            type="text"
+            data-name-proxy="effects.{{effect.id}}.macroUuid"
+            value="{{effect.macroUuid}}"
+            class="lwfx-effects-manager__effect-ipt"
+        >
+    </label>
+
+    <input
+        type="hidden"
+        name="effects.{{effect.id}}.macroUuid"
+        value="{{effect.macroUuid}}"
+    >
+    {{! endregion }}
+
+    <button
+        type="button"
+        name="btn-effect-play"
+        data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Execute Macro"}}"
+        class="lwfx__w-initial"
+    >
+        <i class="fas fa-dice-d20 fa-fw lwfx__fa lwfx__fa-fw"></i>
+    </button>
+</div>

@@ -2,6 +2,7 @@ import { MODULE_ID } from "./consts.js";
 
 export const SETTING_VOLUME = "volume";
 export const SETTING_IS_WEAPON_HEURISTIC_ACTIVE = "isWeaponHeuristicActive";
+export const SETTING_EFFECTS_MANAGER_STATE = "effectsManagerState";
 
 export const SETTING_DEBUG_IS_DEFAULT_MISS = "debug-is-default-miss";
 

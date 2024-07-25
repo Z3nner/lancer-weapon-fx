@@ -20,7 +20,7 @@ const _pGetFlowInfo = async (state, { fallbackActionIdentifier = null } = {}) =>
 
     return new FlowInfo({
         sourceToken: getTokenByIdOrActorId(state.actor.token?.id || state.actor?.id),
-        macroUuid: await pGetMacroUuid(state.item?.system?.lid, fallbackActionIdentifier),
+        macroUuid: await pGetMacroUuid(state.item?.system?.lid, state.item?.name, fallbackActionIdentifier),
         targetTokens: zippedTargetInfo.map(({ target }) => target.target).filter(Boolean),
         targetsMissed: new Set(
             zippedTargetInfo

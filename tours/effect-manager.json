@@ -1,0 +1,34 @@
+{
+    "title": "lancer-weapon-fx.effectManager.tour.Title",
+    "description": "lancer-weapon-fx.effectManager.tour.Description",
+    "restricted": true,
+    "steps": [
+        {
+            "id": "1",
+            "selector": "[data-tour-tag=\"lwfx-dropzone\"]",
+            "title": "lancer-weapon-fx.effectManager.tour.Step 1 Title",
+            "content": "lancer-weapon-fx.effectManager.tour.Step 1 Content"
+        },
+        {
+            "id": "2",
+            "selector": "[data-tour-tag=\"lwfx-dropzone\"]",
+            "title": "lancer-weapon-fx.effectManager.tour.Step 2 Title",
+            "content": "lancer-weapon-fx.effectManager.tour.Step 2 Content"
+        },
+        {
+            "id": "3",
+            "title": "lancer-weapon-fx.effectManager.tour.Step 3 Title",
+            "content": "lancer-weapon-fx.effectManager.tour.Step 3 Content"
+        }
+    ],
+    "localization": {
+        "lancer-weapon-fx.effectManager.tour.Title": "Effect Manager",
+        "lancer-weapon-fx.effectManager.tour.Description": "Manage custom effects for your world.",
+        "lancer-weapon-fx.effectManager.tour.Step 1 Title": "Creating Effects",
+        "lancer-weapon-fx.effectManager.tour.Step 1 Content": "Drag-and-drop an Item or Macro to the app to create a new effect.",
+        "lancer-weapon-fx.effectManager.tour.Step 2 Title": "Modifying Effects",
+        "lancer-weapon-fx.effectManager.tour.Step 2 Content": "Drag-and-drop an Item or Macro to an effect to update that effect.",
+        "lancer-weapon-fx.effectManager.tour.Step 3 Title": "Effect Precedence",
+        "lancer-weapon-fx.effectManager.tour.Step 3 Content": "Custom effects will take precedence over built-in effects."
+    }
+}

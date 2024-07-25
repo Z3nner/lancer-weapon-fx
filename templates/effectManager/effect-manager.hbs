@@ -1,0 +1,124 @@
+<form
+    class="standard-form lwfx-effects-manager lwfx__flexcol lwfx__h-100 lwfx__min-h-0"
+    data-drop-target="app"
+>
+    {{! Header controls }}
+    <div class="lwfx__flexcol lwfx__mb-1">
+        <div class="lwfx__flexrow-v-center lwfx__w-100 lwfx__min-w-0 lwfx__mb-1">
+            <input
+                type="checkbox"
+                class="lwfx__mr-1 lwfx__min-w-initial lwfx__m-0 lwfx__ml-1"
+                data-name-transient="select-all"
+                data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Select All"}}"
+            >
+            <button
+                type="button"
+                name="btn-selected-delete"
+                class="lwfx__w-initial lwfx__px-2 lwfx__ws-nowrap"
+            >
+                <i class="fas fa-trash lwfx__fa"></i>
+                {{localize "lancer-weapon-fx.effectManager.app.Delete Selected"}}
+            </button>
+
+            <div class="lwfx-effects-manager__vr lwfx__mx-1"></div>
+
+            <button
+                type="button"
+                name="btn-effect-create"
+                class="lwfx__mr-1"
+            >
+                <i class="fas fa-explosion lwfx__fa"></i>
+                {{localize "lancer-weapon-fx.effectManager.app.Create Effect"}}
+            </button>
+            <button
+                type="button"
+                name="btn-folder-create"
+            >
+                <i class="fas fa-folder lwfx__fa"></i>
+                {{localize "lancer-weapon-fx.effectManager.app.Create Folder"}}
+            </button>
+
+            <div class="lwfx-effects-manager__vr lwfx__mx-1"></div>
+
+            <button
+                type="button"
+                name="btn-export"
+                class="lwfx__w-initial lwfx__mr-1"
+                data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Export Data"}}"
+            >
+                <i class="fas fa-file-export fa-fw lwfx__fa lwfx__fa-fw"></i>
+            </button>
+            <button
+                type="button"
+                name="btn-import"
+                class="lwfx__w-initial"
+                data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Import Data"}}"
+            >
+                <i class="fas fa-file-import fa-fw lwfx__fa lwfx__fa-fw"></i>
+            </button>
+
+            <div class="lwfx-effects-manager__vr lwfx__mx-1"></div>
+
+            <button
+                type="button"
+                name="btn-start-tour"
+                class="lwfx__w-initial"
+                data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Start Tour"}}"
+            >
+                <i class="fas fa-circle-info fa-fw lwfx__fa lwfx__fa-fw"></i>
+            </button>
+        </div>
+    </div>
+
+    <hr class="lwfx__w-100 lwfx-effects-manager__hr lwfx__m-0">
+
+    {{! Folder and effect list }}
+    <div
+        data-tour-tag="lwfx-dropzone"
+        class="lwfx__h-100 lwfx__min-h-0 lwfx__flexcol lwfx__scrollable"
+    >
+        {{#each folders as |folder|}}
+            {{>
+                lancer-weapon-fx.effect-manager-folder-row
+                folder=folder
+                macros=@root.macros
+                rowModes=@root.rowModes
+            }}
+        {{/each}}
+
+        {{#if isDisplayEffectsUncategorized}}
+            <div
+                data-drop-target="effects-uncategorized"
+                class="lwfx__clipped-top lwfx__flexcol lwfx-effects-manager__row lwfx__darken-1 lwfx__w-100 lwfx-effects-manager__uncategorized"
+            >
+                <div class="lancer-header lancer-primary submajor">
+                    <i>{{localize "lancer-weapon-fx.effectManager.app.Uncategorized"}}</i>
+                </div>
+
+                {{#if effectsUncategorized}}
+                    <div class="lwfx__flexcol lwfx__my-1">
+                        {{#each effectsUncategorized as |effect|}}
+                            {{>
+                                lancer-weapon-fx.effect-manager-effect-row
+                                effect=effect
+                                folder=null
+                                macros=@root.macros
+                                rowModes=@root.rowModes
+                            }}
+                        {{/each}}
+                    </div>
+                {{else}}
+                    <div class="lwfx__flexrow-vh-center lwfx-effects-manager__effects-uncategorized-empty">
+                        <i>{{localize "lancer-weapon-fx.effectManager.app.Uncategorized Hint 1"}}</i>
+                    </div>
+                {{/if}}
+            </div>
+        {{/if}}
+
+        {{#if isDisplayUsageHint}}
+            <div class="lwfx__h-100 lwfx__flexrow-vh-center">
+                {{localize "lancer-weapon-fx.effectManager.app.Usage Hint"}}
+            </div>
+        {{/if}}
+    </div>
+</form>

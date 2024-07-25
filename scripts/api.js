@@ -1,6 +1,6 @@
-import { euclideanDistance } from "./utils.js";
+import { euclideanDistance, getMacroVariables } from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
-import { SETTING_DEBUG_IS_DEFAULT_MISS, SETTING_VOLUME } from "./settings.js";
+import { SETTING_VOLUME } from "./settings.js";
 import { MODULE_ID } from "./consts.js";
 
 /**
@@ -11,29 +11,6 @@ class ModuleApi {
         return volume * game.settings.get(MODULE_ID, SETTING_VOLUME);
     }
 
-    static getMacroVariables(macro) {
-        const sourceTokenFallback = canvas.tokens.controlled[0] ?? game.combat?.current?.tokenId;
-        const targetsFallback = [...game.user.targets];
-        const flowInfo = macro?.flags?.[MODULE_ID]?.flowInfo;
-
-        if (!flowInfo) {
-            return {
-                sourceToken: sourceTokenFallback,
-                targetTokens: targetsFallback,
-                targetsMissed: game.settings.get(MODULE_ID, SETTING_DEBUG_IS_DEFAULT_MISS)
-                    ? new Set(targetsFallback.map(target => target.id))
-                    : new Set(),
-            };
-        }
-
-        const { sourceToken, targetTokens, targetsMissed } = flowInfo;
-        return {
-            sourceToken: sourceToken || sourceTokenFallback,
-            targetTokens: targetTokens || targetsFallback,
-            targetsMissed,
-        };
-    }
-
     static getTargetLocationsFromTokenGroup(targetTokens, numGroups) {
         const targetPoints = targetTokens.map(token => {
             return { x: token.center.x, y: token.center.y };
@@ -42,6 +19,7 @@ class ModuleApi {
         return LloydsAlgorithm.getCentroids(targetPoints, numGroups);
     }
 
+    static getMacroVariables = getMacroVariables;
     static euclideanDistance = euclideanDistance;
 }
 
