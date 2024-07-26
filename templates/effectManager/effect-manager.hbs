@@ -2,6 +2,12 @@
     class="standard-form lwfx-effects-manager lwfx__flexcol lwfx__h-100 lwfx__min-h-0"
     data-drop-target="app"
 >
+    <datalist id="lwfx-effects-manager-lids">
+        {{#each lids as |lid|}}
+            <option value="{{lid}}"></option>
+        {{/each}}
+    </datalist>
+
     {{! Header controls }}
     <div class="lwfx__flexcol lwfx__mb-1">
         <div class="lwfx__flexrow-v-center lwfx__w-100 lwfx__min-w-0 lwfx__mb-1">

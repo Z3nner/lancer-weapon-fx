@@ -1,4 +1,4 @@
-import { weaponEffects } from "./weaponEffects.js";
+import { weaponEffects } from "../weaponEffects.js";
 import { MODULE_ID, PACK_ID_WEAPONFX } from "../consts.js";
 import { SETTING_EFFECTS_MANAGER_STATE } from "../settings.js";
 import { getSearchString } from "../utils.js";

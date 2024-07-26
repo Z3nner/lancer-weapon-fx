@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { expect, jest, test } from "@jest/globals";
-import { weaponEffects } from "../scripts/effectResolver/weaponEffects.js";
+import { weaponEffects } from "../scripts/weaponEffects.js";
 import { DIR_PACKS_SOURCE, PACK_ID } from "../tooling/consts.mjs";
 
 const AUTO_EFFECTS_DIR = path.join(DIR_PACKS_SOURCE, PACK_ID, "Effects");
