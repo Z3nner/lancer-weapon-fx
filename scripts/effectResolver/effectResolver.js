@@ -1,58 +1,7 @@
 import { weaponEffects } from "../weaponEffects.js";
-import { MODULE_ID, PACK_ID_WEAPONFX } from "../consts.js";
-import { SETTING_EFFECTS_MANAGER_STATE } from "../settings.js";
+import { PACK_ID_WEAPONFX } from "../consts.js";
 import { getSearchString } from "../utils.js";
-
-/* -------------------------------------------- */
-
-const _getCustomMacroUuid_itemLid = ({ itemLid, customEffects }) => {
-    const itemLidSearch = getSearchString(itemLid);
-    if (!itemLidSearch) return null;
-
-    const byLid = Object.values(customEffects)
-        // `.filter` instead of `.find` so we can warn if multiple matches
-        .filter(effect => getSearchString(effect.itemLid) === itemLid && getSearchString(effect.macroUuid));
-
-    if (!byLid.length) return null;
-
-    const [{ macroUuid }] = byLid;
-    if (byLid.length === 1) return macroUuid;
-
-    ui.notifications.warn(`Multiple custom effects found for Lancer ID "${itemLid}"!`);
-
-    return macroUuid;
-};
-
-const _getCustomMacroUuid_itemName = ({ itemName, customEffects }) => {
-    const itemNameSearch = getSearchString(itemName);
-    if (!itemNameSearch) return null;
-
-    const byName = Object.values(customEffects)
-        // `.filter` instead of `.find` so we can warn if multiple matches
-        .filter(effect => getSearchString(effect.itemName) === itemNameSearch && getSearchString(effect.macroUuid));
-
-    if (!byName.length) return null;
-
-    const [{ macroUuid }] = byName;
-    if (byName.length === 1) return macroUuid;
-
-    ui.notifications.warn(`Multiple custom effects found for Item Name "${itemName}"!`);
-
-    return macroUuid;
-};
-
-const _getCustomMacroUuid = (itemLid, itemName = null) => {
-    const customEffects = (game.settings.get(MODULE_ID, SETTING_EFFECTS_MANAGER_STATE) || {}).effects;
-    if (!customEffects || !Object.keys(customEffects).length) return null;
-
-    const byLid = _getCustomMacroUuid_itemLid({ itemLid, customEffects });
-    if (byLid) return byLid;
-
-    const byName = _getCustomMacroUuid_itemName({ itemName, customEffects });
-    if (byName) return byName;
-
-    return null;
-};
+import { getCustomMacroUuid } from "./effectResolverCustom.js";
 
 /* -------------------------------------------- */
 
@@ -79,9 +28,9 @@ const _pGetLwfxMacroUuid = async macroName => {
 
 /* -------------------------------------------- */
 
-export const pGetMacroUuid = async (itemLid, itemName, fallbackActionIdentifier) => {
+export const pGetMacroUuid = async ({ actorUuid, itemLid, itemName, fallbackActionIdentifier }) => {
     // Resolve custom macros first, to allow the user to override the module defaults
-    const customUuid = await _getCustomMacroUuid(itemLid, itemName);
+    const customUuid = await getCustomMacroUuid({ actorUuid, itemLid, itemName });
     if (customUuid) {
         console.log(
             `Lancer Weapon FX | Found custom macro "${customUuid}" for Lancer ID "${itemLid}"/Item Name "${itemName}"`,
@@ -97,7 +46,7 @@ export const pGetMacroUuid = async (itemLid, itemName, fallbackActionIdentifier)
     }
 
     // Resolve custom macros bound on fallback "fake LID"s
-    const customFallbackUuid = await _getCustomMacroUuid(fallbackActionIdentifier, null);
+    const customFallbackUuid = await getCustomMacroUuid({ actorUuid, itemLid: fallbackActionIdentifier });
     if (customFallbackUuid) {
         console.log(
             `Lancer Weapon FX | Found custom macro "${customFallbackUuid}" for fallback identifier "${fallbackActionIdentifier}"`,

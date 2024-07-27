@@ -44,7 +44,9 @@
                 "Multiple Effects Item Name Hint": "Multiple effects exist with this item name!",
                 "Multiple Effects Lancer ID Hint": "Multiple effects exist with this Lancer ID!",
                 "Start Tour": "Start Tour",
-                "Usage Hint": "Drag-and-drop an Item or Macro to create a new effect."
+                "Usage Hint": "Drag-and-drop an Item or Macro to create a new effect.",
+                "Folder No Actor Hint": "Effects in this folder will be used by every actor. To instead restrict the use of these effects to a single actor, drag-and-drop an Actor to this folder.",
+                "Unlink Actor": "Unlink Actor"
             },
 
             "fields": {

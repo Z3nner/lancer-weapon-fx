@@ -20,7 +20,13 @@ const _pGetFlowInfo = async (state, { fallbackActionIdentifier = null } = {}) =>
 
     return new FlowInfo({
         sourceToken: getTokenByIdOrActorId(state.actor.token?.id || state.actor?.id),
-        macroUuid: await pGetMacroUuid(state.item?.system?.lid, state.item?.name, fallbackActionIdentifier),
+        macroUuid: await pGetMacroUuid({
+            // Prefer the token base actor, if available. This ensures linking for synthetic (NPC token) actors.
+            actorUuid: state.actor?.token?.baseActor?.uuid || state.actor?.uuid,
+            itemLid: state.item?.system?.lid,
+            itemName: state.item?.name,
+            fallbackActionIdentifier,
+        }),
         targetTokens: zippedTargetInfo.map(({ target }) => target.target).filter(Boolean),
         targetsMissed: new Set(
             zippedTargetInfo
