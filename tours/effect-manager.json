@@ -19,6 +19,18 @@
             "id": "3",
             "title": "lancer-weapon-fx.effectManager.tour.Step 3 Title",
             "content": "lancer-weapon-fx.effectManager.tour.Step 3 Content"
+        },
+        {
+            "id": "4",
+            "selector": "[data-tour-tag=\"lwfx-dropzone\"]",
+            "title": "lancer-weapon-fx.effectManager.tour.Step 4 Title",
+            "content": "lancer-weapon-fx.effectManager.tour.Step 4 Content"
+        },
+        {
+            "id": "5",
+            "selector": "[data-tour-tag=\"lwfx-dropzone\"]",
+            "title": "lancer-weapon-fx.effectManager.tour.Step 5 Title",
+            "content": "lancer-weapon-fx.effectManager.tour.Step 5 Content"
         }
     ],
     "localization": {
@@ -29,6 +41,10 @@
         "lancer-weapon-fx.effectManager.tour.Step 2 Title": "Modifying Effects",
         "lancer-weapon-fx.effectManager.tour.Step 2 Content": "Drag-and-drop an Item or Macro to an effect to update that effect.",
         "lancer-weapon-fx.effectManager.tour.Step 3 Title": "Effect Precedence",
-        "lancer-weapon-fx.effectManager.tour.Step 3 Content": "Custom effects will take precedence over built-in effects."
+        "lancer-weapon-fx.effectManager.tour.Step 3 Content": "Custom effects will take precedence over built-in effects.",
+        "lancer-weapon-fx.effectManager.tour.Step 4 Title": "Folders",
+        "lancer-weapon-fx.effectManager.tour.Step 4 Content": "Effects can be organized into folders. Drag-and-drop an effect to move it into a folder.",
+        "lancer-weapon-fx.effectManager.tour.Step 5 Title": "Actor-Specific Effects",
+        "lancer-weapon-fx.effectManager.tour.Step 5 Content": "Drag-and-drop an Actor to a folder to link the Actor to that folder. Effects in the folder will only be played for the linked actor."
     }
 }

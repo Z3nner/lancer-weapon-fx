@@ -142,17 +142,18 @@ export class EffectManagerApp extends FormApplication {
     getData(options = {}) {
         const dataModel = this._datamodel.toObject();
 
-        const { effectCountsName, effectCountsLancerId } = this._getData_getEffectCounts({ dataModel });
+        const effectCounts = this._getData_getEffectCounts({ dataModel });
 
         const effects = Object.entries(dataModel.effects).map(([id, effect]) => ({
             id,
             ...effect,
-            isDuplicate: this._getData_isEffectDuplicate({ effect, effectCountsName, effectCountsLancerId }),
+            isDuplicate: this._getData_isEffectDuplicate({ dataModel, effect, effectCounts }),
         }));
 
         const folders = Object.entries(dataModel.folders).map(([id, folder]) => ({
             id,
             ...folder,
+            actorLink: this._getData_getActorLinkHtml({ actorUuid: folder.actorUuid }),
             effects: effects.filter(effect => effect.folderId === id),
         }));
 
@@ -214,23 +215,53 @@ export class EffectManagerApp extends FormApplication {
         };
     }
 
+    _getData_getActorLinkHtml({ actorUuid }) {
+        if (actorUuid == null) return null;
+
+        // Fake a regex match
+        const lnk = TextEditor._createContentLink([
+            null, // m0, full match
+            "UUID", // m1, type
+            actorUuid, // m2, target
+        ]);
+        if (!lnk) return null;
+
+        lnk.classList.add("lwfx-effects-manager__actor-link");
+
+        return lnk.outerHTML;
+    }
+
+    _getData_getEffectCountPath({ dataModel, effect, searchName }) {
+        const actorUuid = dataModel.folders[effect.folderId]?.actorUuid || "_";
+        return ["name", actorUuid, effect.mode, searchName].join(".");
+    }
+
     _getData_getEffectCounts({ dataModel }) {
-        const effectCountsName = {};
-        const effectCountsLancerId = {};
+        const effectCounts = {};
 
         Object.values(dataModel.effects).forEach(effect => {
             switch (effect.mode) {
                 case CUSTOM_EFFECT_MODE_NAME: {
                     const searchName = getSearchString(effect.itemName);
                     if (!searchName) return;
-                    effectCountsName[searchName] = (effectCountsName[searchName] || 0) + 1;
+                    const propPath = this._getData_getEffectCountPath({ dataModel, effect, searchName });
+                    foundry.utils.setProperty(
+                        effectCounts,
+                        propPath,
+                        (foundry.utils.getProperty(effectCounts, propPath) || 0) + 1,
+                    );
                     return;
                 }
 
                 case CUSTOM_EFFECT_MODE_LID: {
                     const searchName = getSearchString(effect.itemLid);
                     if (!searchName) return;
-                    effectCountsLancerId[searchName] = (effectCountsLancerId[searchName] || 0) + 1;
+                    const propPath = this._getData_getEffectCountPath({ dataModel, effect, searchName });
+                    foundry.utils.setProperty(
+                        effectCounts,
+                        propPath,
+                        (foundry.utils.getProperty(effectCounts, propPath) || 0) + 1,
+                    );
                     return;
                 }
 
@@ -239,16 +270,28 @@ export class EffectManagerApp extends FormApplication {
             }
         });
 
-        return { effectCountsName, effectCountsLancerId };
+        return effectCounts;
     }
 
-    _getData_isEffectDuplicate({ effect, effectCountsName, effectCountsLancerId }) {
+    _getData_isEffectDuplicate({ dataModel, effect, effectCounts }) {
         switch (effect.mode) {
-            case CUSTOM_EFFECT_MODE_NAME:
-                return effectCountsName[getSearchString(effect.itemName)] > 1;
+            case CUSTOM_EFFECT_MODE_NAME: {
+                const propPath = this._getData_getEffectCountPath({
+                    dataModel,
+                    effect,
+                    searchName: getSearchString(effect.itemName),
+                });
+                return foundry.utils.getProperty(effectCounts, propPath) > 1;
+            }
 
-            case CUSTOM_EFFECT_MODE_LID:
-                return effectCountsLancerId[getSearchString(effect.itemLid)] > 1;
+            case CUSTOM_EFFECT_MODE_LID: {
+                const propPath = this._getData_getEffectCountPath({
+                    dataModel,
+                    effect,
+                    searchName: getSearchString(effect.itemLid),
+                });
+                return foundry.utils.getProperty(effectCounts, propPath) > 1;
+            }
 
             default:
                 throw new Error(`Unknown mode: ${effect.mode}`);
@@ -270,6 +313,7 @@ export class EffectManagerApp extends FormApplication {
 
         $html.on("click", `[name="btn-folder-expand-collapse"]`, this._handleClick_folderExpandCollapse.bind(this));
         $html.on("click", `[name="btn-folder-create-effect"]`, this._handleClick_folderCreateEffect.bind(this));
+        $html.on("click", `[data-name="btn-folder-actor-unlink"]`, this._handleClick_folderActorUnlink.bind(this));
         $html.on("click", `[name="btn-folder-delete"]`, this._handleClick_folderDelete.bind(this));
 
         $html.on("click", `[name="btn-effect-play"]`, this._handleClick_playPreview.bind(this));
@@ -432,6 +476,19 @@ export class EffectManagerApp extends FormApplication {
         });
     }
 
+    async _handleClick_folderActorUnlink(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        const folderId = evt.currentTarget.closest("[data-folder-id]").getAttribute("data-folder-id");
+
+        await this._updateObject(null, {
+            [`folders.${folderId}`]: {
+                actorUuid: null,
+            },
+        });
+    }
+
     async _handleClick_folderDelete(evt) {
         const folderId = evt.currentTarget.closest("[data-folder-id]").getAttribute("data-folder-id");
 
@@ -540,6 +597,9 @@ export class EffectManagerApp extends FormApplication {
 
             case "Macro":
                 return this._onDrop_macro({ evt, data });
+
+            case "Actor":
+                return this._onDrop_actor({ evt, data });
         }
     }
 
@@ -618,6 +678,28 @@ export class EffectManagerApp extends FormApplication {
             [`effects.${foundry.utils.randomID()}`]: this._getNewEffect({
                 macroUuid: macro.uuid,
                 folderId,
+            }),
+        });
+    }
+
+    async _onDrop_actor({ evt, data }) {
+        const eleFolder = evt.currentTarget.closest("[data-folder-id]");
+
+        const actor = await fromUuid(data.uuid);
+
+        // If dropped to an existing row, update that row
+        if (eleFolder) {
+            const folderId = eleFolder.getAttribute("data-folder-id");
+
+            return this._updateObject(null, {
+                [`folders.${folderId}.actorUuid`]: actor.uuid,
+            });
+        }
+
+        // Otherwise, create a new row
+        return this._updateObject(null, {
+            [`folders.${foundry.utils.randomID()}`]: this._getNewFolder({
+                actorUuid: actor.uuid,
             }),
         });
     }
@@ -711,9 +793,10 @@ export class EffectManagerApp extends FormApplication {
         };
     }
 
-    _getNewFolder({ name, isCollapsed } = {}) {
+    _getNewFolder({ name, actorUuid, isCollapsed } = {}) {
         return {
             name: name || null,
+            actorUuid: actorUuid || null,
             isCollapsed: isCollapsed || false,
         };
     }

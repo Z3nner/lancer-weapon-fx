@@ -37,8 +37,21 @@
             name="folders.{{folder.id}}.name"
             value="{{folder.name}}"
             placeholder="{{localize "lancer-weapon-fx.effectManager.app.Folder Name"}}"
-            class="lwfx__w-100 lwfx__mr-1 lwfx-effects-manager__ipt-folder-name submajor"
+            class="lwfx__w-100 lwfx-effects-manager__ipt-folder-name lwfx__mr-0 submajor"
         >
+
+        {{#if folder.actorUuid}}
+            <div class="lwfx-effects-manager__wrp-actor-link lwfx__flexrow-v-center lwfx__ws-nowrap lwfx__ml-2 lwfx__mr-1 lwfx__h-100">
+                {{{folder.actorLink}}}
+                <a
+                    class="fas fa-user-slash fa-fw lwfx__fa lwfx__fa-fw lwfx__ml-2 lwfx__mr-1"
+                    data-name="btn-folder-actor-unlink"
+                    data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Unlink Actor"}}"
+                ></a>
+            </div>
+        {{else}}
+            <i class="lwfx__mx-2 fas fa-users fa-fw lwfx__fa lwfx__fa-fw" data-tooltip="{{localize "lancer-weapon-fx.effectManager.app.Folder No Actor Hint"}}"></i>
+        {{/if}}
 
         <button
             type="button"

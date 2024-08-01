@@ -9,6 +9,13 @@ export const schemaFolder = new foundry.data.fields.SchemaField({
         label: "Name",
     }),
 
+    // TODO(v12) switch to `foundry.data.fields.DocumentUUIDField`
+    actorUuid: new foundry.data.fields.StringField({
+        type: "Actor",
+        label: "lancer-weapon-fx.effectManager.fields.actorUuid.label",
+        nullable: true,
+    }),
+
     isCollapsed: new foundry.data.fields.BooleanField({
         initial: false,
     }),

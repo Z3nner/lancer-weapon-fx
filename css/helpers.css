@@ -129,9 +129,18 @@
     margin-right: calc(0.5 * var(--lwfx-spacer)) !important;
 }
 
+.lwfx__mx-2 {
+    margin-left: var(--lwfx-spacer) !important;
+    margin-right: var(--lwfx-spacer) !important;
+}
+
 .lwfx__my-1 {
     margin-top: calc(0.5 * var(--lwfx-spacer)) !important;
     margin-bottom: calc(0.5 * var(--lwfx-spacer)) !important;
+}
+
+.lwfx__mr-0 {
+    margin-right: 0 !important;
 }
 
 .lwfx__mr-1 {
@@ -148,6 +157,10 @@
 
 .lwfx__ml-1 {
     margin-left: calc(0.5 * var(--lwfx-spacer)) !important;
+}
+
+.lwfx__ml-2 {
+    margin-left: var(--lwfx-spacer) !important;
 }
 
 .lwfx__pr-2 {

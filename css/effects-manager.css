@@ -36,12 +36,33 @@
     font-weight: 700;
     text-transform: uppercase;
     border: 0;
+    text-align: left;
 }
 
 .lancer.app input.lwfx-effects-manager__ipt-folder-name[type="text"]::placeholder {
     color: color-mix(in srgb, var(--light-text), var(--dark-text) 27%);
     font-style: italic;
     font-weight: initial;
+}
+
+.lwfx-effects-manager__wrp-actor-link {
+    border: 1px solid var(--darken-3);
+    border-radius: 5px;
+    padding: .25em;
+    background: var(--light-gray-color);
+    color: var(--dark-text);
+}
+
+a.lwfx-effects-manager__actor-link {
+    padding: 1px calc(0.5 * var(--lwfx-spacer));
+    flex: unset;
+    color: var(--light-text);
+    border-color: var(--darken-3);
+    background: var(--dark-gray-color);
+}
+
+a.lwfx-effects-manager__actor-link i {
+    color: var(--dark-text);
 }
 
 /* -------------------------------------------- */
