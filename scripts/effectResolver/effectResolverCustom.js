@@ -87,11 +87,12 @@ export const getCustomMacroUuid = ({ actorUuid, itemLid, itemName = null }) => {
     const customState = game.settings.get(MODULE_ID, SETTING_EFFECTS_MANAGER_STATE);
     if (!Object.keys(customState?.effects || {}).length) return null;
 
-    const byLid = _getCustomMacroUuidByItemLid({ actorUuid, itemLid, customState });
-    if (byLid) return byLid;
-
+    // Resolve by name first. This allows the name of a renamed item to take precedence over its user-invisible LID.
     const byName = _getCustomMacroUuidByItemName({ actorUuid, itemName, customState });
     if (byName) return byName;
+
+    const byLid = _getCustomMacroUuidByItemLid({ actorUuid, itemLid, customState });
+    if (byLid) return byLid;
 
     return null;
 };
