@@ -24,21 +24,35 @@ If you'd like to change any effect, or replace an existing effect with your own,
 
 #### Non-item effects
 
-The module supports adding effects when mechs stabilize, full repair, overcharge, or roll a structure or stress check.  As of 2.0.0, only an animation for Stabilize is implemented but default animations are planned for the rest for a future release.  If you'd like to add an effect or replace a default one with your own, you can enter any of the following keys into the Lancer ID of an effect stub in the Effects Manager.
+Effects for some non-item actions and rolls are supported. Default effects for many of these are planned.  If you'd like to add an effect or replace a default one with your own, you can enter any of the following keys into the Lancer ID of an effect stub in the Effects Manager.
 
+##### Supported Actions
 ```
 lwfx_core_power
 lwfx_cascade
 lwfx_overcharge
-lwfx_overheat
+lwfx_stabilize
+```
+> [!NOTE]
+> lwfx_stabilize also covers Full Repairs
+
+
+##### Reactor Stress
+```
   lwfx_overheat_emergency_shunt
   lwfx_overheat_destabilized_power_plant
   lwfx_overheat_meltdown_3
   lwfx_overheat_meltdown_2
   lwfx_overheat_meltdown_1
   lwfx_overheat_irreversible_meltdown
-lwfx_stabilize
-lwfx_structure
+```
+
+> [!NOTE]
+> the number at the end of _overheat_meltdown_ and _structure_direct_hit_ refers to the number of stress or structure remaining.  meltdown_3 means 3 stress remaining.
+
+
+##### Structure Damage
+```
   lwfx_structure_glancing_blow
   lwfx_structure_system_trauma
     lwfx_structure_secondary
@@ -47,10 +61,12 @@ lwfx_structure
   lwfx_structure_direct_hit_1
   lwfx_structure_crushing_hit
 ```
-Note 1: the number at the end of _overheat_meltdown_ and _structure_direct_hit_ refers to the number of stress or structure remaining.  meltdown_3 means 3 stress remaining.
 
-Note 2: lwfx_stabilize also covers Full Repairs
 
-Note 3: lwfx_structure_secondary is for the second part of the System Trauma roll, allowing one effect to be triggered when the system trauma result is rolled, and a second when the roll for weapon or system is made.
 
-Note 4: To reuse the same animation for different results, make an effect stub for each key from the list above, and drag the desired macro onto each stub.
+
+> [!TIP]
+> ``lwfx_structure_system_trauma`` triggers on the first part of the roll, the d6 resulting in System Trauma. ``lwfx_structure_secondary`` is for the second part of the System Trauma roll, the roll between losing a weapon or a system.
+
+> [!TIP]
+> To reuse the same animation for different results, make an effect stub for each key from the list above, and drag the desired macro onto each stub.
