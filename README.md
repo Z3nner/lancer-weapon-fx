@@ -47,6 +47,13 @@ lwfx_stabilize
   lwfx_overheat_irreversible_meltdown
 ```
 
+If you are using the [LANCER Alternative Structure](https://foundryvtt.com/packages/lancer-alt-structure) module, `lwfx_overheat_destabilized_power_plant` and `lwfx_overheat_irreversible_meltdown` are replaced with the following:
+
+```
+  lwfx_overheat_destabilized_power_plant → lwfx_overheat_power_failure
+  lwfx_overheat_irreversible_meltdown    → lwfx_overheat_critical_reactor_failure
+```
+
 > [!NOTE]
 > the number at the end of _overheat_meltdown_ and _structure_direct_hit_ refers to the number of stress or structure remaining.  meltdown_3 means 3 stress remaining.
 
