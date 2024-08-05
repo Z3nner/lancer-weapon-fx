@@ -83,30 +83,66 @@ const fallbackActionIdentifier_BasicAttackFlow = flow => {
     return flow.state.data.attack_type === "Melee" ? "lwfx_default_melee" : "lwfx_default_ranged";
 };
 
+/**
+ * Convert a named structure flow to a `lwfx` fake LID.
+ *
+ * Includes support for "Lancer Alternative Structure"/"Maria's Alternate Ruleset" rules. This renames some results.
+ * See:
+ *  - https://foundryvtt.com/packages/lancer-alt-structure
+ *  - https://docs.google.com/document/d/1unN3HDDeAK3pN1rmgFgZgAXp5flnQ9-KMu-TXt34tnU/edit
+ */
 const fallbackActionIdentifier_StructureFlow = flow => {
     switch (flow.state.data.title) {
         case "Crushing Hit":
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.crushingHit"):
             return "lwfx_structure_crushing_hit";
+
         case "Direct Hit":
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.directHit"):
             return `lwfx_structure_direct_hit_${Math.clamped(flow.state.data.remStruct, 1, 3)}`;
+
         case "System Trauma":
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.systemTrauma"):
             return "lwfx_structure_system_trauma";
+
         case "Glancing Blow":
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.glancingBlow"):
             return "lwfx_structure_glancing_blow";
     }
     return "lwfx_structure";
 };
 
+/**
+ * Convert a named stress flow to a `lwfx` fake LID.
+ *
+ * Includes support for "Lancer Alternative Structure"/"Maria's Alternate Ruleset" rules. This renames some results.
+ * See:
+ *  - https://foundryvtt.com/packages/lancer-alt-structure
+ *  - https://docs.google.com/document/d/1unN3HDDeAK3pN1rmgFgZgAXp5flnQ9-KMu-TXt34tnU/edit
+ */
 const fallbackActionIdentifier_OverheatFlow = flow => {
     switch (flow.state.data.title) {
         case "Irreversible Meltdown":
             return "lwfx_overheat_irreversible_meltdown";
+
         case "Meltdown":
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StressTitles.meltdown"):
             return `lwfx_overheat_meltdown_${Math.clamped(flow.state.data.remStress, 1, 3)}`;
+
         case "Destabilized Power Plant":
             return "lwfx_overheat_destabilized_power_plant";
+
         case "Emergency Shunt":
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StressTitles.emergencyShunt"):
             return "lwfx_overheat_emergency_shunt";
+
+        // Found in "Lancer Alternative Structure"
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StressTitles.criticalFail"):
+            return "lwfx_overheat_critical_reactor_failure";
+
+        // Found in "Lancer Alternative Structure"
+        case game.i18n.localize("LANCER-ALT-STRUCTURE.StressTitles.powerFail"):
+            return "lwfx_overheat_power_failure";
     }
     return "lwfx_overheat";
 };
