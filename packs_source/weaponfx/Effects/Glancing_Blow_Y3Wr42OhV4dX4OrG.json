@@ -1,0 +1,10 @@
+{
+    "_id": "Y3Wr42OhV4dX4OrG",
+    "name": "Glancing Blow",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/structure.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!Y3Wr42OhV4dX4OrG",
+    "command_source": "packs_source/weaponfx/Effects/Glancing_Blow_Y3Wr42OhV4dX4OrG.js"
+}

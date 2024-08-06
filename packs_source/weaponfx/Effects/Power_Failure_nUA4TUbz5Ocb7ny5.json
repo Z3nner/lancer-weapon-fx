@@ -1,0 +1,10 @@
+{
+    "_id": "nUA4TUbz5Ocb7ny5",
+    "name": "Power Failure",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/reactor.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!nUA4TUbz5Ocb7ny5",
+    "command_source": "packs_source/weaponfx/Effects/Power_Failure_nUA4TUbz5Ocb7ny5.js"
+}

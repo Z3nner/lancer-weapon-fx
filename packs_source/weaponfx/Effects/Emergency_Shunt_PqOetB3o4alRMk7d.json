@@ -1,0 +1,10 @@
+{
+    "_id": "PqOetB3o4alRMk7d",
+    "name": "Emergency Shunt",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/reactor.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!PqOetB3o4alRMk7d",
+    "command_source": "packs_source/weaponfx/Effects/Emergency_Shunt_PqOetB3o4alRMk7d.js"
+}

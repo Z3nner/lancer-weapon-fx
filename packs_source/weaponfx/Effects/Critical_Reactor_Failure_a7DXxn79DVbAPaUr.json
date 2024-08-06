@@ -1,0 +1,10 @@
+{
+    "_id": "a7DXxn79DVbAPaUr",
+    "name": "Critical Reactor Failure",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/reactor.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!a7DXxn79DVbAPaUr",
+    "command_source": "packs_source/weaponfx/Effects/Critical_Reactor_Failure_a7DXxn79DVbAPaUr.js"
+}

@@ -1,0 +1,10 @@
+{
+    "_id": "Ve9GIWf7kSiigqWe",
+    "name": "Direct Hit 1",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/structure.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!Ve9GIWf7kSiigqWe",
+    "command_source": "packs_source/weaponfx/Effects/Direct_Hit_1_Ve9GIWf7kSiigqWe.js"
+}

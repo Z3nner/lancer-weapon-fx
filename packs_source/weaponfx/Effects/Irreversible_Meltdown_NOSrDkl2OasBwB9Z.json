@@ -1,0 +1,10 @@
+{
+    "_id": "NOSrDkl2OasBwB9Z",
+    "name": "Irreversible Meltdown",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/reactor.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!NOSrDkl2OasBwB9Z",
+    "command_source": "packs_source/weaponfx/Effects/Irreversible_Meltdown_NOSrDkl2OasBwB9Z.js"
+}

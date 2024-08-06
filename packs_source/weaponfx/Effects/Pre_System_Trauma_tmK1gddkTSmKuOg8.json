@@ -1,0 +1,10 @@
+{
+    "_id": "tmK1gddkTSmKuOg8",
+    "name": "Pre System Trauma",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/structure.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!tmK1gddkTSmKuOg8",
+    "command_source": "packs_source/weaponfx/Effects/Pre_System_Trauma_tmK1gddkTSmKuOg8.js"
+}

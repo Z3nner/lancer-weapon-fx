@@ -1,0 +1,10 @@
+{
+    "_id": "EjhXUapgr82imuAa",
+    "name": "Meltdown",
+    "type": "script",
+    "img": "systems/lancer/assets/icons/white/reactor.svg",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!EjhXUapgr82imuAa",
+    "command_source": "packs_source/weaponfx/Effects/Meltdown_EjhXUapgr82imuAa.js"
+}
