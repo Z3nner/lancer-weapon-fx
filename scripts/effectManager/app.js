@@ -161,29 +161,33 @@ export class EffectManagerApp extends FormApplication {
             this.constructor._macroLookup.map(({ name, uuid }) => [uuid, name]),
         );
 
-        this._getDataCache_lids ||= [
-            ...Object.keys(weaponEffects),
+        this._getDataCache_lids ||= Array.from(
+            new Set([
+                ...Object.keys(weaponEffects),
 
-            "lwfx_core_power",
-            "lwfx_cascade",
-            "lwfx_overcharge",
-            "lwfx_overheat",
-            "lwfx_overheat_emergency_shunt",
-            "lwfx_overheat_destabilized_power_plant",
-            "lwfx_overheat_meltdown_3",
-            "lwfx_overheat_meltdown_2",
-            "lwfx_overheat_meltdown_1",
-            "lwfx_overheat_irreversible_meltdown",
-            "lwfx_stabilize",
-            "lwfx_structure",
-            "lwfx_structure_glancing_blow",
-            "lwfx_structure_system_trauma",
-            "lwfx_structure_secondary",
-            "lwfx_structure_direct_hit_3",
-            "lwfx_structure_direct_hit_2",
-            "lwfx_structure_direct_hit_1",
-            "lwfx_structure_crushing_hit",
-        ].sort((a, b) => a.localeCompare(b, { sensitivity: "base" }));
+                "lwfx_core_power",
+                "lwfx_cascade",
+                "lwfx_overcharge",
+                "lwfx_overheat",
+                "lwfx_overheat_emergency_shunt",
+                "lwfx_overheat_destabilized_power_plant",
+                "lwfx_overheat_meltdown_3",
+                "lwfx_overheat_meltdown_2",
+                "lwfx_overheat_meltdown_1",
+                "lwfx_overheat_irreversible_meltdown",
+                "lwfx_stabilize",
+                "lwfx_structure",
+                "lwfx_structure_glancing_blow",
+                "lwfx_structure_system_trauma",
+                "lwfx_structure_secondary",
+                "lwfx_structure_direct_hit_3",
+                "lwfx_structure_direct_hit_2",
+                "lwfx_structure_direct_hit_1",
+                "lwfx_structure_crushing_hit",
+                "lwfx_overheat_power_failure",
+                "lwfx_overheat_critical_reactor_failure",
+            ]),
+        ).sort((a, b) => a.localeCompare(b, { sensitivity: "base" }));
 
         return {
             // TODO(v12) use fields to generate inputs
