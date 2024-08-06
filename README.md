@@ -33,9 +33,8 @@ lwfx_cascade
 lwfx_overcharge
 lwfx_stabilize
 ```
-> [!NOTE]
-> lwfx_stabilize also covers Full Repairs
 
+Effects assigned to ``lwfx_stabilize`` will also trigger with Full Repair.
 
 ##### Reactor Stress
 ```
@@ -47,15 +46,16 @@ lwfx_stabilize
   lwfx_overheat_irreversible_meltdown
 ```
 
-If you are using the [LANCER Alternative Structure](https://foundryvtt.com/packages/lancer-alt-structure) module, `lwfx_overheat_destabilized_power_plant` and `lwfx_overheat_irreversible_meltdown` are replaced with the following:
-
-```
-  lwfx_overheat_destabilized_power_plant → lwfx_overheat_power_failure
-  lwfx_overheat_irreversible_meltdown    → lwfx_overheat_critical_reactor_failure
-```
+The number at the end of ``lwfx_overheat_meltdown_`` and ``lwfx_structure_direct_hit_`` refers to the number of stress or structure remaining.  ``meltdown_3`` means 3 stress remaining.
 
 > [!NOTE]
-> the number at the end of _overheat_meltdown_ and _structure_direct_hit_ refers to the number of stress or structure remaining.  meltdown_3 means 3 stress remaining.
+> If you are using the [LANCER Alternative Structure](https://foundryvtt.com/packages/lancer-alt-structure) module, `lwfx_overheat_destabilized_power_plant` and `lwfx_overheat_irreversible_meltdown` are replaced with the following:
+>
+> ```
+>  lwfx_overheat_destabilized_power_plant → lwfx_overheat_power_failure
+>  lwfx_overheat_irreversible_meltdown    → lwfx_overheat_critical_reactor_failure
+> ```
+
 
 
 ##### Structure Damage
@@ -69,11 +69,14 @@ If you are using the [LANCER Alternative Structure](https://foundryvtt.com/packa
   lwfx_structure_crushing_hit
 ```
 
-
-
-
 > [!TIP]
 > ``lwfx_structure_system_trauma`` triggers on the first part of the roll, the d6 resulting in System Trauma. ``lwfx_structure_secondary`` is for the second part of the System Trauma roll, the roll between losing a weapon or a system.
 
 > [!TIP]
 > To reuse the same animation for different results, make an effect stub for each key from the list above, and drag the desired macro onto each stub.
+
+#### Linking Actors to Folders
+
+By default, folders help organize effects for all actors.  However, if you'd prefer to create a folder of effects to customize just a single actor, first create a new folder in the effects manager, then drag the actor from the actor tab to the new folder.  Effects in this folder will only apply to the linked actor.
+
+[actor-link-unlink.webm](https://github.com/user-attachments/assets/93ed3a75-0389-4acf-90b8-1f037f3adbc8)
