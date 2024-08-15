@@ -3,7 +3,7 @@ import { SETTING_EFFECTS_MANAGER_STATE } from "../settings.js";
 import { EffectManagerData } from "./models.js";
 import { getMacroVariables, getSearchString } from "../utils.js";
 import { CUSTOM_EFFECT_MODE_LID, CUSTOM_EFFECT_MODE_NAME, TOUR_ID } from "./consts.js";
-import { weaponEffects } from "../weaponEffects.js";
+import { EFFECTS_WEAR_AND_TEAR, EFFECTS_GEAR } from "../weaponEffects.js";
 
 /**
  * Singleton app to manage effects.
@@ -163,7 +163,8 @@ export class EffectManagerApp extends FormApplication {
 
         this._getDataCache_lids ||= Array.from(
             new Set([
-                ...Object.keys(weaponEffects),
+                ...Object.keys(EFFECTS_WEAR_AND_TEAR),
+                ...Object.keys(EFFECTS_GEAR),
 
                 "lwfx_core_power",
                 "lwfx_cascade",
