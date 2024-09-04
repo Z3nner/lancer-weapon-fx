@@ -1,28 +1,30 @@
-const weaponEffects = {
- //NON-ITEM EFFECTS
+export const EFFECTS_WEAR_AND_TEAR = {
+    "lwfx_overcharge": "Overcharge",
+    "lwfx_overheat_critical_reactor_failure": "Critical Reactor Failure",
+    "lwfx_overheat_destabilized_power_plant": "Destabilized Power Plant",
+    "lwfx_overheat_emergency_shunt": "Emergency Shunt",
+    "lwfx_overheat_irreversible_meltdown": "Irreversible Meltdown",
+    "lwfx_overheat_meltdown_3": "Meltdown",
+    "lwfx_overheat_meltdown_2": "Meltdown",
+    "lwfx_overheat_meltdown_1": "Meltdown",
+    "lwfx_overheat_power_failure": "Power Failure",
+    "lwfx_stabilize": "Stabilize",
+    "lwfx_structure_glancing_blow": "Glancing Blow",
+    "lwfx_structure_system_trauma": "Pre System Trauma",
+    "lwfx_structure_secondary": "System Trauma",
+    "lwfx_structure_direct_hit_3": "Direct Hit 2",
+    "lwfx_structure_direct_hit_2": "Direct Hit 2",
+    "lwfx_structure_direct_hit_1": "Direct Hit 1",
+    "lwfx_structure_crushing_hit": "Crushing Hit",
+};
+
+export const EFFECTS_GEAR = {
+    //NON-ITEM EFFECTS
     "default_tech_attack": "DefaultTech",
     "lwfx_default_melee": "DefaultMelee",
     "lwfx_default_ranged": "Pistol",
-    "lwfx_overcharge" : "Overcharge",
-    "lwfx_overheat_critical_reactor_failure" : "Critical Reactor Failure",
-    "lwfx_overheat_destabilized_power_plant" : "Destabilized Power Plant",
-    "lwfx_overheat_emergency_shunt" : "Emergency Shunt",
-    "lwfx_overheat_irreversible_meltdown" : "Irreversible Meltdown",
-    "lwfx_overheat_meltdown_3" : "Meltdown",
-    "lwfx_overheat_meltdown_2" : "Meltdown",
-    "lwfx_overheat_meltdown_1" : "Meltdown",
-    "lwfx_overheat_power_failure" : "Power Failure",
-    "lwfx_stabilize": "Stabilize",
-    "lwfx_structure_glancing_blow" : "Glancing Blow",
-    "lwfx_structure_system_trauma" : "Pre System Trauma",
-    "lwfx_structure_secondary" : "System Trauma",
-    "lwfx_structure_direct_hit_3" : "Direct Hit 2",
-    "lwfx_structure_direct_hit_2" : "Direct Hit 2",
-    "lwfx_structure_direct_hit_1" : "Direct Hit 1",
-    "lwfx_structure_crushing_hit" : "Crushing Hit",
-     
-    
- //CORE, LONG RIM, WALLFLOWER, KTB
+
+    //CORE, LONG RIM, WALLFLOWER, KTB
     "mw_andromeda_pattern_heavy_laser_rifle": "Lasers",
     "mw_annihilation_nexus": "Nexus",
     "mw_annihilator": "Annihilator",
@@ -195,7 +197,7 @@ const weaponEffects = {
     //SOLSTICE RAIN
     "mw_xc_br_battle_rifle": "BattleRifle",
     "mw_xc_dpm_predator_nexus": "Nexus",
-    
+
     //DUSTGRAVE
     "mw_blast_pick": "BlastPick",
     "mw_brutus_shield": "DefaultMelee",
@@ -216,13 +218,13 @@ const weaponEffects = {
     "npcf_rock_drill_industrial_mech": "Combat Drill",
     "npcf_serrated_machete_spec_op": "DefaultMelee",
     "npcf_wrecker_industrial_mech": "DefaultMelee",
-    
+
     //SIRENS SONG
     "npc_Leech_PairedTalonsMKII": "Plasma Talons",
     "npc_PDCTurret": "Leviathan",
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
     "npc_Tempest_TyphoonNaniteCannon": "Nexus",
-    
+
     //HEURISTICS
     "lwfx_heuristic_melee": "DefaultMelee",
     "lwfx_heuristic_cqb_energy": "PPC",
@@ -238,5 +240,3 @@ const weaponEffects = {
     "lwfx_heuristic_rifle_ar": "Assault Rifle",
     "lwfx_heuristic_rifle_other": "AMR",
 };
-
-export { weaponEffects };

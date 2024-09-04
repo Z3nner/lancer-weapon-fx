@@ -2,6 +2,10 @@
     "lancer-weapon-fx": {
         "Sound Volume": "Sound Volume",
         "Sound Volume Hint": "Set a base volume level for all sound effects. Note that for each user, this value is combined with the user's \"Global: Interface\" volume setting (see the \"Playlists\" sidebar tab) to produce their final volume level.",
+        "Play Default Gear Effects": "Play Default Gear Effects",
+        "Play Default Gear Effects Hint": "Play default effects (those included in the module) for gear (weapons, systems, etc.).",
+        "Play Default Wear and Tear Effects": "Play Default Wear and Tear Effects",
+        "Play Default Wear and Tear Effects Hint": "Play default effects (those included in the module) for wear and tear (Overcharge, Stabilize, Structure and Stress damage, etc.).",
         "Use Weapon Heuristic": "Use Weapon Heuristic",
         "Use Weapon Heuristic Hint": "Use a heuristic to determine a suitable effect to play when using an unknown (homebrew/custom) weapon.",
         "Debug: Play Miss Animations by Default": "Debug: Play Miss Animations by Default",

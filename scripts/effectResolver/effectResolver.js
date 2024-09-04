@@ -1,7 +1,8 @@
-import { weaponEffects } from "../weaponEffects.js";
-import { PACK_ID_WEAPONFX } from "../consts.js";
+import { EFFECTS_WEAR_AND_TEAR, EFFECTS_GEAR } from "../weaponEffects.js";
+import { MODULE_ID, PACK_ID_WEAPONFX } from "../consts.js";
 import { getSearchString } from "../utils.js";
 import { getCustomMacroUuid } from "./effectResolverCustom.js";
+import { SETTING_IS_PLAY_DEFAULT_EFFECTS_GEAR, SETTING_IS_PLAY_DEFAULT_EFFECTS_WEAR_AND_TEAR } from "../settings.js";
 
 /* -------------------------------------------- */
 
@@ -38,11 +39,18 @@ export const pGetMacroUuid = async ({ actorUuid, itemLid, itemName, fallbackActi
         return customUuid;
     }
 
+    const effectLookups = [
+        game.settings.get(MODULE_ID, SETTING_IS_PLAY_DEFAULT_EFFECTS_GEAR) ? EFFECTS_GEAR : null,
+        game.settings.get(MODULE_ID, SETTING_IS_PLAY_DEFAULT_EFFECTS_WEAR_AND_TEAR) ? EFFECTS_WEAR_AND_TEAR : null,
+    ].filter(Boolean);
+
     // Resolve specific effects defined by the module
-    const lwfxUuid = await _pGetLwfxMacroUuid(weaponEffects[itemLid]);
-    if (lwfxUuid) {
-        console.log(`Lancer Weapon FX | Found macro "${lwfxUuid}" for Lancer ID "${itemLid}"`);
-        return lwfxUuid;
+    for (const effectLookup of effectLookups) {
+        const lwfxUuid = await _pGetLwfxMacroUuid(effectLookup[itemLid]);
+        if (lwfxUuid) {
+            console.log(`Lancer Weapon FX | Found macro "${lwfxUuid}" for Lancer ID "${itemLid}"`);
+            return lwfxUuid;
+        }
     }
 
     // Resolve custom macros bound on fallback "fake LID"s
@@ -55,12 +63,14 @@ export const pGetMacroUuid = async ({ actorUuid, itemLid, itemName, fallbackActi
     }
 
     // Resolve fallback effects defined by the module
-    const lwfxFallbackUuid = await _pGetLwfxMacroUuid(weaponEffects[fallbackActionIdentifier]);
-    if (lwfxFallbackUuid) {
-        console.log(
-            `Lancer Weapon FX | Found macro "${lwfxFallbackUuid}" for fallback identifier "${fallbackActionIdentifier}"`,
-        );
-        return lwfxFallbackUuid;
+    for (const effectLookup of effectLookups) {
+        const lwfxFallbackUuid = await _pGetLwfxMacroUuid(effectLookup[fallbackActionIdentifier]);
+        if (lwfxFallbackUuid) {
+            console.log(
+                `Lancer Weapon FX | Found macro "${lwfxFallbackUuid}" for fallback identifier "${fallbackActionIdentifier}"`,
+            );
+            return lwfxFallbackUuid;
+        }
     }
 
     console.log(
