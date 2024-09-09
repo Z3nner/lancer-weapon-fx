@@ -14,8 +14,8 @@ await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/NexusConfirm.ogg",
     "modules/lancer-weapon-fx/soundfx/EmergencyShunt.ogg",
     "jb2a.moonbeam.01.loop",
-    "modules/JB2A_DnD5e/Library/Generic/Smoke/SmokePuffRing01_02_Regular_White_400x400.webm",
-    "modules/JB2A_DnD5e/Library/Generic/Smoke/SmokePuffSide02_02_Regular_White_400x400.webm",
+    "jb2a.smoke.puff.ring.01.white.0",
+    "jb2a.smoke.puff.ring.01.white.1",
 ]);
 
 new Sequence()
@@ -62,7 +62,7 @@ new Sequence()
     .rotate(-35)
     .belowTokens()
  .effect()
-    .file("modules/JB2A_DnD5e/Library/Generic/Smoke/SmokePuffRing01_02_Regular_White_400x400.webm")
+    .file("jb2a.smoke.puff.ring.01.white.0")
     .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty}})
     .opacity(0.6)
     .tint(0x33ddff)
@@ -71,7 +71,7 @@ new Sequence()
     .scaleToObject(1.4)
     .belowTokens()
  .effect()
-    .file("modules/JB2A_DnD5e/Library/Generic/Smoke/SmokePuffSide02_02_Regular_White_400x400.webm")
+    .file("jb2a.smoke.puff.ring.01.white.1")
     .attachTo(sourceToken, {align: "right", edge: "on"})
     .opacity(0.6)
     .tint(0x33ddff)
