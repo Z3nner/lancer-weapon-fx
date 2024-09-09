@@ -10,7 +10,7 @@ await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/Stabilize.ogg",
     "jb2a.healing_generic.400px.green",
     "modules/lancer-weapon-fx/advisories/Stabilize.svg",
-    "modules/JB2A_DnD5e/Library/Generic/UI/HeartbeatECG01_01_Regular_Green_400x400.webm",
+    "jb2a.ui.heartbeat.01.green",
 ]);
 
 let sequence = new Sequence()
@@ -32,7 +32,7 @@ let sequence = new Sequence()
         .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } } )
         .scaleToObject(1.7)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/UI/HeartbeatECG01_01_Regular_Green_400x400.webm")
+        .file("jb2a.ui.heartbeat.01.green")
         .attachTo(sourceToken, {align: "bottom", edge: "outer" })
         .scale(0.4)
         .tint("0x1eff00")
@@ -42,7 +42,7 @@ let sequence = new Sequence()
         .spriteAnchor( { y: 1.05 } )
         .waitUntilFinished(-500)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/UI/HeartbeatECG01_01_Regular_Green_400x400.webm")
+        .file("jb2a.ui.heartbeat.01.green")
         .attachTo(sourceToken, {align: "bottom", edge: "outer" })
         .scale(0.4)
         .rotate(180)
