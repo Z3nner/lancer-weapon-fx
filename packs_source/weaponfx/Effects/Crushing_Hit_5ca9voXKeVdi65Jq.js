@@ -13,6 +13,8 @@ await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/DirectHitExplosion1.ogg",
     "modules/lancer-weapon-fx/soundfx/DirectHitExplosion2.ogg",
     "jb2a.impact.005.orange",
+    "jb2a.explosion.08.orange",
+    "jb2a.explosion.01.orange",
 ]);
 
 new Sequence()
