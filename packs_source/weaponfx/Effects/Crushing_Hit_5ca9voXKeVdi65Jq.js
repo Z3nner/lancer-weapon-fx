@@ -9,10 +9,10 @@ const ipivoty = -pivoty;
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/advisories/CrushingHit.svg",
     "jb2a.static_electricity.03.blue",
-    "modules/JB2A_DnD5e/Library/Generic/Explosion/SideExplosion01_02_Regular_Orange_600x600.webm",
+    "jb2a.explosion_side.01.orange.2",
     "modules/lancer-weapon-fx/soundfx/DirectHitExplosion1.ogg",
     "modules/lancer-weapon-fx/soundfx/DirectHitExplosion2.ogg",
-    "modules/JB2A_DnD5e/Library/Generic/Impact/Impact_05_Regular_Orange_400x400.webm",
+    "jb2a.impact.005.orange",
 ]);
 
 new Sequence()
@@ -35,7 +35,7 @@ new Sequence()
         .repeats(2, 2600)
         .mask(sourceToken)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Explosion/SideExplosion01_02_Regular_Orange_600x600.webm")
+        .file("jb2a.explosion_side.01.orange.2")
         .atLocation(sourceToken, { randomOffset: 0.5, gridUnits: true})
         .randomSpriteRotation()
         .scaleToObject(1.4)
@@ -43,7 +43,7 @@ new Sequence()
         .delay(900)
         .opacity(0.8)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Impact/Impact_05_Regular_Orange_400x400.webm")
+        .file("jb2a.impact.005.orange")
         .atLocation(sourceToken, { randomOffset: 0.5, gridUnits: true})
         .randomSpriteRotation()
         .scaleToObject(1.4)
@@ -57,7 +57,7 @@ new Sequence()
         .repeats(3, 825)
         .delay(900)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Explosion/SideExplosion01_02_Regular_Orange_600x600.webm")
+        .file("jb2a.explosion_side.01.orange.2")
         .atLocation(sourceToken, { randomOffset: 0.5, gridUnits: true})
         .randomSpriteRotation()
         .scaleToObject()
@@ -65,7 +65,7 @@ new Sequence()
         .delay(2400)
         .opacity(0.8)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Impact/Impact_05_Regular_Orange_400x400.webm")
+        .file("jb2a.impact.005.orange")
         .atLocation(sourceToken, { randomOffset: 0.5, gridUnits: true})
         .randomSpriteRotation()
         .scaleToObject(1.5)
