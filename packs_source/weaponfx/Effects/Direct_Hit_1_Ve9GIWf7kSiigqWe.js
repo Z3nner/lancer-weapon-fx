@@ -6,6 +6,8 @@ await Sequencer.Preloader.preloadForClients([
     "jb2a.explosion_side.01.orange.1",
     "modules/lancer-weapon-fx/soundfx/DirectHitExplosion1.ogg",
     "jb2a.impact.005.orange",
+    "jb2a.explosion.08.orange,
+    "jb2a.explosion.01.orange",
 ]);
 
 const pivotx = token.document.flags["hex-size-support"]?.pivotx || 0;
@@ -79,12 +81,12 @@ new Sequence()
         .delay(2400)
         .waitUntilFinished(-500)
    .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Explosion/Explosion_05_Regular_Orange_400x400.webm")
+        .file("jb2a.explosion.08.orange")
         .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } } )
         .scaleToObject(2)
         .opacity(0.8)
    .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Explosion/Explosion_01_Orange_400x400.webm")
+        .file("jb2a.explosion.01.orange")
         .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } } )
         .scaleToObject(2)
         .playbackRate(0.6)
