@@ -13,7 +13,7 @@ await Sequencer.Preloader.preloadForClients([
     "jb2a.static_electricity.03",
     "jb2a.smoke.plumes.01.grey",
     "modules/lancer-weapon-fx/soundfx/Annihilator.ogg",
-    "modules/JB2A_DnD5e/Library/Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Burst_1200x400.webm",
+    "jb2a.breath_weapons02.burst.line.fire.orange.01",
     "jb2a.moonbeam.01.loop",
     ]);
 
@@ -72,7 +72,7 @@ new Sequence()
       .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
       .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect() 
-      .file("modules/JB2A_DnD5e/Library/Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Burst_1200x400.webm")
+      .file("jb2a.breath_weapons02.burst.line.fire.orange.01")
       .playbackRate(2.8)
       .filter("Glow", { distance: 10, color: 0x00b3ff, innerStrength: 10 })
       .opacity(0.5)
@@ -87,7 +87,7 @@ new Sequence()
       .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
       .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
-      .file("modules/JB2A_DnD5e/Library/Generic/Template/Line/Breath_Weapon/Breathweapon02_Fire01_Regular_Orange_Line_Burst_1200x400.webm")
+      .file("jb2a.breath_weapons02.burst.line.fire.orange.01")
       .playbackRate(2.8)
       .filter("Glow", { distance: 3, color: 0x00b3ff, innerStrength: 4 })
       .opacity(0.5)

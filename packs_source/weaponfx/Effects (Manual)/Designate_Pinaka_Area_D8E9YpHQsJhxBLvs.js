@@ -9,7 +9,7 @@ game.lancer.canvas.WeaponRangeTemplate.fromRange({
         if (t) {
             t.update({
                 texture:
-                    "modules/JB2A_DnD5e/Library/Generic/Zoning/ZoningSquare01In_01_Regular_BlueGreen_Loop_600x600.webm",
+                    "jb2a.zoning.inward.square.loop.bluegreen.01.01",
                 distance: 1,
                 fillColor: "#FF0000",
             });

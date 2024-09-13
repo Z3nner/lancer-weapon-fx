@@ -3,7 +3,7 @@ const {sourceToken} = game.modules.get("lancer-weapon-fx").api.getMacroVariables
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/advisories/GlancingBlow.svg",
     "modules/lancer-weapon-fx/soundfx/ricochet.ogg",
-    "modules/JB2A_DnD5e/Library/Generic/Impact/Impact_05_Regular_Orange_400x400.webm",
+    "jb2a.impact.005.orange",
 ]);
 
 const pivotx = token.document.flags["hex-size-support"]?.pivotx || 0;
@@ -30,13 +30,13 @@ new Sequence()
       .file("modules/lancer-weapon-fx/soundfx/ricochet.ogg")
       .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.4))
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Impact/Impact_05_Regular_Orange_400x400.webm")
+        .file("jb2a.impact.005.orange")
         .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } } )
         .rotate(90)
         .scaleToObject(1.6)
         .opacity(0.8)
     .effect()
-        .file("modules/JB2A_DnD5e/Library/Generic/Impact/Impact_05_Regular_Orange_400x400.webm")
+        .file("jb2a.impact.005.orange")
         .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } } )
         .rotate(270)
         .scaleToObject(1.6)
