@@ -8,8 +8,7 @@ game.lancer.canvas.WeaponRangeTemplate.fromRange({
     .then(t => {
         if (t) {
             t.update({
-                texture:
-                    "jb2a.zoning.inward.square.loop.bluegreen.01.01",
+                texture: "jb2a.zoning.inward.square.loop.bluegreen.01.01",
                 distance: 1,
                 fillColor: "#FF0000",
             });
