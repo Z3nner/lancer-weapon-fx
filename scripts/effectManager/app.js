@@ -139,7 +139,7 @@ export class EffectManagerApp extends FormApplication {
     _getDataCache_lids;
 
     /** @override */
-    getData(options = {}) {
+    async getData(options = {}) {
         const dataModel = this._datamodel.toObject();
 
         const effectCounts = this._getData_getEffectCounts({ dataModel });
@@ -150,12 +150,14 @@ export class EffectManagerApp extends FormApplication {
             isDuplicate: this._getData_isEffectDuplicate({ dataModel, effect, effectCounts }),
         }));
 
-        const folders = Object.entries(dataModel.folders).map(([id, folder]) => ({
-            id,
-            ...folder,
-            actorLink: this._getData_getActorLinkHtml({ actorUuid: folder.actorUuid }),
-            effects: effects.filter(effect => effect.folderId === id),
-        }));
+        const folders = await Promise.all(
+            Object.entries(dataModel.folders).map(async ([id, folder]) => ({
+                id,
+                ...folder,
+                actorLink: await this._getData_pGetActorLinkHtml({ actorUuid: folder.actorUuid }),
+                effects: effects.filter(effect => effect.folderId === id),
+            })),
+        );
 
         this._getDataCache_macro_choices ||= Object.fromEntries(
             this.constructor._macroLookup.map(({ name, uuid }) => [uuid, name]),
@@ -220,12 +222,12 @@ export class EffectManagerApp extends FormApplication {
         };
     }
 
-    _getData_getActorLinkHtml({ actorUuid }) {
+    async _getData_pGetActorLinkHtml({ actorUuid }) {
         if (actorUuid == null) return null;
 
         // Fake a regex match
-        const lnk = TextEditor._createContentLink([
-            null, // m0, full match
+        const lnk = await TextEditor._createContentLink([
+            `@UUID[${actorUuid}]`, // m0, full match
             "UUID", // m1, type
             actorUuid, // m2, target
         ]);
