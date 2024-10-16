@@ -77,22 +77,28 @@ export class EffectManagerData extends foundry.abstract.DataModel {
             effects: new foundry.data.fields.ObjectField({
                 initial: () => ({}),
                 validate: (value, options) => {
-                    return Object.values(value).every(obj => {
-                        const isValid = schemaCustomEffect.validate(obj, options);
-                        if (isValid === undefined) return true;
-                        return isValid;
-                    });
+                    return (
+                        Object.keys(value).every(id => id != null && id.trim()) &&
+                        Object.values(value).every(obj => {
+                            const isValid = schemaCustomEffect.validate(obj, options);
+                            if (isValid === undefined) return true;
+                            return isValid;
+                        })
+                    );
                 },
             }),
 
             folders: new foundry.data.fields.ObjectField({
                 initial: () => ({}),
                 validate: (value, options) => {
-                    return Object.values(value).every(obj => {
-                        const isValid = schemaFolder.validate(obj, options);
-                        if (isValid === undefined) return true;
-                        return isValid;
-                    });
+                    return (
+                        Object.keys(value).every(id => id != null && id.trim()) &&
+                        Object.values(value).every(obj => {
+                            const isValid = schemaFolder.validate(obj, options);
+                            if (isValid === undefined) return true;
+                            return isValid;
+                        })
+                    );
                 },
             }),
         };

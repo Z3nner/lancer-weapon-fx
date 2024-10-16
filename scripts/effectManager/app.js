@@ -464,8 +464,7 @@ export class EffectManagerApp extends FormApplication {
     /* ----- */
 
     async _handleClick_folderExpandCollapse(evt) {
-        const eleFolder = evt.currentTarget.closest("[data-folder-id]");
-        const folderId = eleFolder?.getAttribute("data-folder-id");
+        const folderId = evt.currentTarget.closest("[data-folder-id]")?.getAttribute("data-folder-id");
         if (!folderId) throw new Error("Should never occur!");
 
         await this._updateObject(null, {
@@ -488,6 +487,7 @@ export class EffectManagerApp extends FormApplication {
         evt.stopPropagation();
 
         const folderId = evt.currentTarget.closest("[data-folder-id]").getAttribute("data-folder-id");
+        if (!folderId) throw new Error("Should never occur!");
 
         await this._updateObject(null, {
             [`folders.${folderId}`]: {
@@ -498,6 +498,7 @@ export class EffectManagerApp extends FormApplication {
 
     async _handleClick_folderDelete(evt) {
         const folderId = evt.currentTarget.closest("[data-folder-id]").getAttribute("data-folder-id");
+        if (!folderId) throw new Error("Should never occur!");
 
         await this._updateObject(null, {
             [`folders.-=${folderId}`]: null,
@@ -697,6 +698,7 @@ export class EffectManagerApp extends FormApplication {
         // If dropped to an existing row, update that row
         if (eleFolder) {
             const folderId = eleFolder.getAttribute("data-folder-id");
+            if (!folderId) throw new Error("Should never occur!");
 
             return this._updateObject(null, {
                 [`folders.${folderId}.actorUuid`]: actor.uuid,
