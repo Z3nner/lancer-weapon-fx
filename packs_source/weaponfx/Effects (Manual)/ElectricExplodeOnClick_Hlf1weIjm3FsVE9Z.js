@@ -1,36 +1,60 @@
-//This Macro requires Warpgate module to function. When executed, the macro will play the explosion fx on the clicked location.  Useful for grenades or any other occurance where something needs to explode.
+// To use this Macro: After triggering the macro an indicator will appear to show the place where the explosion animation will play.  Left click to trigger the effect, Right click or Escape to cancel.
 
-if (typeof warpgate === "undefined") ui.notifications.error("This macro requires the Warpgate module to be installed!");
+// Preload the explosion animations
+await Sequencer.Preloader.preloadForClients([
+    "jb2a.explosion.02.blue", 
+    "jb2a.thunderwave.center.blue",
+    "modules/lancer-weapon-fx/soundfx/AirBurst.ogg"
+]);
 
-let config = {
-    size: 2,
-    icon: "icons/White/crowned-explosion.png",
-    label: "EGrenade",
-    interval: 1,
-};
+// Create and add the preview icon to the canvas
+const texture = PIXI.Texture.from("icons/pings/chevron.webp");
+const preview = new PIXI.Sprite(texture);
+preview.anchor.set(0.5);
 
-let position = await warpgate.crosshairs.show(config);
+// Get the texture's native aspect ratio
+const aspectRatio = texture.width / texture.height;
 
-await Sequencer.Preloader.preloadForClients(["jb2a.explosion.02.blue", "jb2a.thunderwave.center.blue"]);
+// Set width based on grid size
+const gridSize = canvas.grid.size;
+if (texture.width > texture.height) {
+    preview.width = gridSize;  // Scale by width
+    preview.height = gridSize / aspectRatio;  // Scale height to maintain proportions
+} else {
+    preview.height = gridSize;  // Scale by height
+    preview.width = gridSize * aspectRatio;  // Scale width to maintain proportions
+}
 
-let sequence = new Sequence()
+canvas.stage.addChild(preview);
 
-    .effect()
-        .file("jb2a.explosion.02.blue")
-        .atLocation(position)
-        .scale(0.8)
-        .name("impact")
-        .delay(500)
-        .opacity(0.8)
-    .effect()
-        .file("jb2a.thunderwave.center.blue")
-        .atLocation(position)
-        .name("impact")
-        .scale(0.6)
-        .scaleOut(2, 400)
-        .delay(600)
-    .sound("modules/lancer-weapon-fx/soundfx/AirBurst.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
-        .delay(500)
+// Mouse move handler to update preview position
+canvas.stage.on('mousemove', (event) => {
+    const t = canvas.stage.worldTransform;
+    const tx = ((event.data.global.x - t.tx) / canvas.stage.scale.x) * 1.01;
+    const ty = ((event.data.global.y - t.ty) / canvas.stage.scale.y) * 1.01;
 
-    .play();
+    // Get the grid-snapped position based on the translated world coordinates
+    const snappedPos = canvas.grid.getSnappedPosition(tx, ty);
+    
+    // Adjust the preview position
+    preview.position.set(snappedPos.x - gridSize / 4, snappedPos.y - gridSize / 2); // Original offsets for the preview
+});
+
+// Click handler to finalize and play the animation
+canvas.stage.on('click', async (event) => {
+    const t = canvas.stage.worldTransform;
+    const tx = ((event.data.global.x - t.tx) / canvas.stage.scale.x) * 1.01;
+    const ty = ((event.data.global.y - t.ty) / canvas.stage.scale.y) * 1.01;
+
+    // Get the grid-snapped position based on the translated world coordinates
+    const snappedPos = canvas.grid.getSnappedPosition(tx, ty);
+    
+    canvas.stage.off('mousemove').off('click').removeChild(preview);
+
+    // Play the effects at the original positions
+    new Sequence()
+        .effect().file("jb2a.explosion.02.blue").atLocation({ x: snappedPos.x - gridSize / 4, y: snappedPos.y - gridSize / 6 }).delay(500)
+        .effect().file("jb2a.thunderwave.center.blue").atLocation({ x: snappedPos.x - gridSize / 4, y: snappedPos.y - gridSize / 6 }).scale(0.6).delay(600)
+        .sound("modules/lancer-weapon-fx/soundfx/AirBurst.ogg").volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7)).delay(500)
+        .play();
+});

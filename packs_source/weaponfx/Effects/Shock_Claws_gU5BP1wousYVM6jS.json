@@ -1,0 +1,10 @@
+{
+    "_id": "gU5BP1wousYVM6jS",
+    "name": "Shock Claws",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/claw-slashes.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!gU5BP1wousYVM6jS",
+    "command_source": "packs_source/weaponfx/Effects/Shock_Claws_gU5BP1wousYVM6jS.js"
+}

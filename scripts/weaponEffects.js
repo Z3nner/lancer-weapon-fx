@@ -197,7 +197,23 @@ export const EFFECTS_GEAR = {
     //SOLSTICE RAIN
     "mw_xc_br_battle_rifle": "BattleRifle",
     "mw_xc_dpm_predator_nexus": "Nexus",
-
+    
+    //WINTER SCAR
+    "mw_shrapnel_cannon": "Shrapnel Cannon",
+    "mw_fusion_torch": "Plasma Torch",
+    "mw_superthermal_blade": "Charged Blade",
+    "mw_integrated_shock_claws": "Shock Claws",
+    "npc_mbt_smoothbore_cannon": "Apocalypse Rail",
+    "npc_mbt_railgun": "Railgun",
+    "npc_mbt_antares-pattern_laser_cannon": "Lasers",
+    "npc_mbt_anti-tank_gun": "Apocalypse Rail",
+    "npc_mbt_streetsweeper_canister_projector": "CannonAirburst",
+    "npc_mbt_pintle-mounted_machine_gun": "HMG",
+    "npc_mbt_anti-armor_missiles": "Missile",
+    "npc_mbt_marker_nexus": "Nexus",
+    "npc_mbt_skylight_anti-air_laser": "Lasers",
+    "npc_mbt_multi-directional_charges": "Flechette Launcher",
+    
     //DUSTGRAVE
     "mw_blast_pick": "BlastPick",
     "mw_brutus_shield": "DefaultMelee",

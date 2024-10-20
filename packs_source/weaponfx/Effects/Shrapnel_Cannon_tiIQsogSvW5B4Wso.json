@@ -1,0 +1,10 @@
+{
+    "_id": "tiIQsogSvW5B4Wso",
+    "name": "Shrapnel Cannon",
+    "type": "script",
+    "img": "modules/lancer-weapon-fx/icons/cluster-bomb.png",
+    "scope": "global",
+    "folder": "Qf6H7pepYZi6Oa6S",
+    "_key": "!macros!tiIQsogSvW5B4Wso",
+    "command_source": "packs_source/weaponfx/Effects/Shrapnel_Cannon_tiIQsogSvW5B4Wso.js"
+}
