@@ -8,7 +8,7 @@ game.lancer.canvas.WeaponRangeTemplate.fromRange({
     .then(t => {
         if (t) {
             t.update({
-                texture: "jb2a.smoke.plumes_loop.01.grey.2",
+                texture: Sequencer.Database.getEntry("jb2a.smoke.plumes_loop.01.grey.2").file,
                 distance: 1.8,
                 fillColor: "#756c6c",
             });
