@@ -40,7 +40,7 @@ const _getCustomMacroUuidByItemLid = ({ actorUuid, itemLid, customState }) => {
     const candidateEffects = Object.values(customState.effects)
         .sort(_sortCustomEffects)
         // `.filter` instead of `.find` so we can warn if multiple matches
-        .filter(effect => getSearchString(effect.itemLid) === itemLid && getSearchString(effect.macroUuid));
+        .filter(effect => getSearchString(effect.itemLid) === itemLidSearch && getSearchString(effect.macroUuid));
 
     const byLid = _getActorSpecificCandidateEffects({
         actorUuid,
