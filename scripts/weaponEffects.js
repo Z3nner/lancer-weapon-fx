@@ -197,7 +197,7 @@ export const EFFECTS_GEAR = {
     //SOLSTICE RAIN
     "mw_xc_br_battle_rifle": "BattleRifle",
     "mw_xc_dpm_predator_nexus": "Nexus",
-    
+
     //WINTER SCAR
     "mw_shrapnel_cannon": "Shrapnel Cannon",
     "mw_fusion_torch": "Plasma Torch",
@@ -213,7 +213,7 @@ export const EFFECTS_GEAR = {
     "npc_mbt_marker_nexus": "Nexus",
     "npc_mbt_skylight_anti-air_laser": "Lasers",
     "npc_mbt_multi-directional_charges": "Flechette Launcher",
-    
+
     //DUSTGRAVE
     "mw_blast_pick": "BlastPick",
     "mw_brutus_shield": "DefaultMelee",
@@ -240,6 +240,55 @@ export const EFFECTS_GEAR = {
     "npc_PDCTurret": "Leviathan",
     "npc_Tempest_NaniteMonsoonDispensers": "Nexus",
     "npc_Tempest_TyphoonNaniteCannon": "Nexus",
+
+    //NPC REBAKE
+    "npc-rebake_npcf_missile_launcher_ace": "Missile",
+    "npc-rebake_npcf_missile_swarm_ace": "Missiles",
+    "npc-rebake_npcf_light_laser_aegis": "Lasers",
+    "npc-rebake_npcf_light_machine_gun_archer": "HMG",
+    "npc-rebake_npcf_heated_blade_assassin": "DefaultMelee",
+    "npc-rebake_npcf_devils_cough_shotgun_assassin": "Shotgun",
+    "npc-rebake_npcf_weapon_heavy_assault": "Assault Rifle",
+    "npc-rebake_npcf_weapon_combat_knife": "DefaultMelee",
+    "npc-rebake_npcf_weapon_underslung_grenade": "Mortar",
+    "npc-rebake_npcf_graviton_lance_barricade": "Warp Rifle",
+    "npc-rebake_npcf_rotary_grenade_launcher_bastion": "Mortar",
+    "npc-rebake_npcf_heavy_assault_shield_bastion": "DefaultMelee",
+    "npc-rebake_npcf_chain_axe_berserker": "DefaultMelee",
+    "npc-rebake_npcf_harpoon_cannon_berserker": "ArcBow",
+    "npc-rebake_npcf_bombard_cannon_bombard": "Apocalypse Rail",
+    "npc-rebake_npcf_dual_shotguns_breacher": "Shotgun",
+    "npc-rebake_npcf_ram_cannon_cataphract": "DefaultMelee",
+    "npc-rebake_npcf_demolition_hammer_demolisher": "Hammer",
+    "npc-rebake_npcf_earthshatter_demolisher": "Hammer",
+    "npc-rebake_npcf_flak_cannon_engineer": "Mortar",
+    "npc-rebake_npcf_drum_shotgun_goliath": "Shotgun",
+    "npc-rebake_npcf_hunter_killer_nexus_hive": "Nexus",
+    "npc-rebake_npcf_stinger_pistol_hornet": "Pistol",
+    "npc-rebake_npcf_raptor_plasma_rifle_operator": "Plasma Rifle",
+    "npc-rebake_npcf_flamethrower_pyro": "Flamethrower",
+    "npc-rebake_npcf_missile_pods_rainmaker": "Missiles",
+    "npc-rebake_npcf_carbon_fiber_sword_ronin": "DefaultMelee",
+    "npc-rebake_npcf_thermal_lance_scourer": "Thermal Rifle",
+    "npc-rebake_npcf_marker_rifle_scout": "LockOn",
+    "npc-rebake_npcf_grav_grenade_launcher_seeder": "Displacer",
+    "npc-rebake_npcf_combat_shotgun_sentinel": "Shotgun",
+    "npc-rebake_npcf_retractable_sword_sentinel": "DefaultMelee",
+    "npc-rebake_npcf_anti_materiel_rifle_sniper": "AMR",
+    "npc-rebake_npcf_monowire_sword_specter": "DefaultMelee",
+    "npc-rebake_npcf_machine_pistol_specter": "Pistol",
+    "npc-rebake_npcf_dmr_artillery_grunt": "AMR",
+    "npc-rebake_npcf_shoulder_mortar_artillery_grunt": "Mortar",
+    "npc-rebake_npcf_survival_pistol_artillery_grunt": "Pistol",
+    "npc-rebake_npcf_shotgun_defender_grunt": "Shotgun",
+    "npc-rebake_npcf_assault_rifle_striker_grunt": "Assault Rifle",
+    "npc-rebake_npcf_heavy_blade_striker_grunt": "DefaultMelee",
+    "npc-rebake_npcf_hellfire_projector_ultra": "Annihilator",
+    "npc-rebake_npcf_hyperdense_blade_ultra": "DefaultMelee",
+    "npc-rebake_npcf_miniaturized_railgun_ultra": "Railgun",
+    "npc-rebake_npcf_nova_missiles_ultra": "Missiles",
+    "npc-rebake_npcf_ravager_turret_ultra": "HMG",
+    "npc-rebake_npcf_wraith_nexus_ultra": "Nexus",
 
     //HEURISTICS
     "lwfx_heuristic_melee": "DefaultMelee",
