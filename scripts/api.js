@@ -1,6 +1,7 @@
 import { euclideanDistance, getMacroVariables } from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
-import { SETTING_VOLUME } from "./settings.js";
+import tokenHeightOffset from "./tokenHeightOffset.js";
+import { SETTING_VOLUME, SETTING_SCREENSHAKE, SETTING_SCREENSHAKE_INTENSITY } from "./settings.js";
 import { MODULE_ID } from "./consts.js";
 
 /**
@@ -17,6 +18,61 @@ class ModuleApi {
         });
 
         return LloydsAlgorithm.getCentroids(targetPoints, numGroups);
+    }
+
+    static getTokenHeightOffset({
+        targetToken,
+        randomOffset_ = false,
+        sprayOffset = false,
+        missed = false,
+        moveTowards = false,
+        tokenHeightPercent = 0.6,
+        ignoreElevation = false,
+    } = {}) {
+        return tokenHeightOffset.getTokenHeightOffset({
+            targetToken: targetToken,
+            randomOffset_: randomOffset_,
+            sprayOffset: sprayOffset,
+            missed: missed,
+            moveTowards: moveTowards,
+            tokenHeightPercent: tokenHeightPercent,
+            ignoreElevation: ignoreElevation,
+        });
+    }
+
+    static isIsometric() {
+        // Check if the current canvas is isometric
+        return tokenHeightOffset.isIsometric();
+    }
+
+    static calculateScreenshake(shakeObject) {
+        // take in the screenshake object and scale strength/frequency values by the screenshake intensity
+        // and return the screenshake object
+        shakeObject.strength = shakeObject.strength * this.getScreenshakeIntensity();
+        shakeObject.frequency = shakeObject.frequency * this.getScreenshakeIntensity();
+
+        return shakeObject;
+    }
+
+    static getScreenshakeEnabled() {
+        // Check if screenshake is enabled in the settings or if the intensity is 0
+        if (
+            !game.settings.get(MODULE_ID, SETTING_SCREENSHAKE) ||
+            game.settings.get(MODULE_ID, SETTING_SCREENSHAKE_INTENSITY) === 0
+        ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    static getScreenshakeIntensity() {
+        // If screenshake is enabled, return the intensity value
+        // If screenshake is not enabled, return 0
+        if (!game.settings.get(MODULE_ID, SETTING_SCREENSHAKE)) {
+            return 0;
+        }
+        return game.settings.get(MODULE_ID, SETTING_SCREENSHAKE_INTENSITY);
     }
 
     static getMacroVariables = getMacroVariables;
