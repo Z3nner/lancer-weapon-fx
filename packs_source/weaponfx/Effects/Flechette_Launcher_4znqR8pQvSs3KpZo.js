@@ -2,6 +2,7 @@ const { sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariabl
 
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/Flechette.ogg",
+    "jb2a.explosion.shrapnel.bomb.01.black",
     "jb2a.explosion.04.blue",
     "jb2a.impact.yellow",
 ]);
