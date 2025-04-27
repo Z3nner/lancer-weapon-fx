@@ -9,6 +9,10 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
+    let targetHeightOffsetRand = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({ targetToken: target, randomOffset: 0.7, missed: targetsMissed.has(target.id) });
+
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
@@ -18,11 +22,13 @@ for (const target of targetTokens) {
     sequence
         .effect()
             .file("jb2a.impact.orange.0")
-            .atLocation(target, { randomOffset: 0.7 }, { gridUnits: true })
-            .rotateTowards(sourceToken)
-            .missed(targetsMissed.has(target.id))
-
-        .rotate(230)
+            .atLocation(target, targetHeightOffsetRand)
+            .xray()
+            .aboveInterface()
+        //.rotateTowards(sourceToken)
+        .missed(targetsMissed.has(target.id))
+        .isometric({ overlay: true })
+        //.rotate(230)
         .center();
     sequence
         .sound()

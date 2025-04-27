@@ -1,5 +1,8 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+// the calculated height of the token (including scaling & elevation)
+const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
+
 const findFarthestTargetOfGroup = function (targetTokens) {
     let farthestToken = null;
     let farthestTokenDistance = 0;
@@ -16,6 +19,10 @@ const findFarthestTargetOfGroup = function (targetTokens) {
 
 const farthest = findFarthestTargetOfGroup(targetTokens);
 
+const targetHeightOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: farthest, missed: targetsMissed.has(farthest.id) });
+
 await Sequencer.Preloader.preloadForClients([
     "jb2a.bullet.Snipe.blue",
     "modules/lancer-weapon-fx/soundfx/veil_rifle.ogg",
@@ -29,9 +36,11 @@ for (const target of targetTokens) {
             .file("jb2a.bullet.Snipe.blue")
             .filter("ColorMatrix", { hue: 60 })
             .filter("Glow", { distance: 3 })
-            .atLocation(sourceToken)
+            .atLocation(sourceToken, heightOffset)
             .scale(0.8)
-            .stretchTo(farthest)
+            .xray()
+            .aboveInterface()
+            .stretchTo(farthest, targetHeightOffset)
             .missed(targetsMissed.has(target.id));
     sequence
         .sound()

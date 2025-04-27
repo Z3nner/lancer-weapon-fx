@@ -9,15 +9,25 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
+    const targetHeightOffset = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+    const targetHeightOffsetRand = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), randomOffset: true });
+
     sequence
         .effect()
             .file("jb2a.claws.400px.red")
-            .tint("#720d87")
-            .scale(0.8)
-            .zIndex(1)
-            .opacity(0.6)
-            .atLocation(target)
-            .missed(targetsMissed.has(target.id));
+        //.scale(0.8)
+        .zIndex(1)
+        .opacity(0.6)
+        .scaleToObject(2)
+        .isometric({ overlay: true })
+        .xray()
+        .aboveInterface()
+        .atLocation(target, targetHeightOffset)
+        .missed(targetsMissed.has(target.id));
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Melee.ogg")
@@ -29,8 +39,10 @@ for (const target of targetTokens) {
                 .file("jb2a.impact.blue.2")
                 .scale(1.0)
                 .tint("#c91af9")
-                .atLocation(target, { randomOffset: 0.1 | true })
+                .atLocation(target, targetHeightOffsetRand)
                 .delay(200)
+                .xray()
+                .aboveInterface()
                 .repeats(2, 250);
     }
 }

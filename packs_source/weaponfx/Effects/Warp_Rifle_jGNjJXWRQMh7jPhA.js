@@ -1,5 +1,8 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+// the calculated height of the token (including scaling & elevation)
+const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
+
 const target = targetTokens[0];
 
 await Sequencer.Preloader.preloadForClients([
@@ -8,6 +11,10 @@ await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/DisplacerHit2.ogg",
     "jb2a.divine_smite.caster.blueyellow",
 ]);
+
+const targetHeightOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
 
 let sequence = new Sequence()
 
@@ -19,9 +26,11 @@ let sequence = new Sequence()
     .effect()
         .file("jb2a.energy_strands.range.multiple.purple.01")
         .scale(0.4)
-        .atLocation(sourceToken)
-        .stretchTo(target)
+        .atLocation(sourceToken, heightOffset)
+        .stretchTo(target, targetHeightOffset)
         .missed(targetsMissed.has(target.id))
+        .xray()
+        .aboveInterface()
         .waitUntilFinished(-1100);
 
 sequence
@@ -33,10 +42,13 @@ sequence
         .file("jb2a.divine_smite.caster.blueyellow")
         .playIf(!targetsMissed.has(target.id))
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
-        .scaleToObject(3)
+        .scaleToObject(2.5)
         .tint("#9523e1")
         .filter("Glow", { color: 0xffffff, distance: 1 })
-        .atLocation(target)
+        .xray()
+        .aboveInterface()
+        .atLocation(target, targetHeightOffset)
+        .isometric({ overlay: true })
         .waitUntilFinished(-1000);
 
 sequence.play();
