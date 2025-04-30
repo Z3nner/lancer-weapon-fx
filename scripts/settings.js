@@ -1,7 +1,6 @@
 import { MODULE_ID } from "./consts.js";
 
 export const SETTING_VOLUME = "volume";
-export const SETTING_SCREENSHAKE = "screenshake-enabled";
 export const SETTING_SCREENSHAKE_INTENSITY = "screenshake-intensity";
 export const SETTING_IS_PLAY_DEFAULT_EFFECTS_GEAR = "isPlayDefaultEffectsGear";
 export const SETTING_IS_PLAY_DEFAULT_EFFECTS_WEAR_AND_TEAR = "isPlayDefaultEffectsWearAndTear";

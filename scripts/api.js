@@ -1,7 +1,7 @@
 import { euclideanDistance, getMacroVariables } from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
 import tokenHeightOffset from "./tokenHeightOffset.js";
-import { SETTING_VOLUME, SETTING_SCREENSHAKE, SETTING_SCREENSHAKE_INTENSITY } from "./settings.js";
+import { SETTING_VOLUME, SETTING_SCREENSHAKE_INTENSITY } from "./settings.js";
 import { MODULE_ID } from "./consts.js";
 
 /**
@@ -67,11 +67,7 @@ class ModuleApi {
     }
 
     static getScreenshakeIntensity() {
-        // If screenshake is enabled, return the intensity value
-        // If screenshake is not enabled, return 0
-        if (!game.settings.get(MODULE_ID, SETTING_SCREENSHAKE)) {
-            return 0;
-        }
+        // Return the screenshake intensity setting value
         return game.settings.get(MODULE_ID, SETTING_SCREENSHAKE_INTENSITY);
     }
 
