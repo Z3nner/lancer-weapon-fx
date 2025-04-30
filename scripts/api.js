@@ -22,19 +22,20 @@ class ModuleApi {
 
     static getTokenHeightOffset({
         targetToken,
-        randomOffset_ = false,
+        randomOffset = false,
         sprayOffset = false,
         missed = false,
-        moveTowards = false,
+        useAbsoluteCoords = false,
         tokenHeightPercent = 0.6,
         ignoreElevation = false,
     } = {}) {
+        // get the token height offset for the target token
         return tokenHeightOffset.getTokenHeightOffset({
             targetToken: targetToken,
-            randomOffset_: randomOffset_,
+            randomOffset_: randomOffset,
             sprayOffset: sprayOffset,
             missed: missed,
-            moveTowards: moveTowards,
+            useAbsoluteCoords: useAbsoluteCoords,
             tokenHeightPercent: tokenHeightPercent,
             ignoreElevation: ignoreElevation,
         });
@@ -45,11 +46,22 @@ class ModuleApi {
         return tokenHeightOffset.isIsometric();
     }
 
+    static isometricEffectFlag() {
+        // for manually setting the isometric effect flag
+        // on sequencer .isometric() calls
+        const isIsometric = tokenHeightOffset.isIsometric();
+
+        if (isIsometric) {
+            return {overlay: true};
+        }
+        return {};
+    }
+
     static calculateScreenshake(shakeObject) {
         // take in the screenshake object and scale strength/frequency values by the screenshake intensity
         // and return the screenshake object
-        shakeObject.strength = shakeObject.strength * this.getScreenshakeIntensity();
-        shakeObject.frequency = shakeObject.frequency * this.getScreenshakeIntensity();
+        shakeObject.strength = Math.round(shakeObject.strength * this.getScreenshakeIntensity());
+        shakeObject.frequency = Math.round(shakeObject.frequency * this.getScreenshakeIntensity());
 
         return shakeObject;
     }
