@@ -2,6 +2,9 @@ const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-we
 
 const random = Sequencer.Helpers.random_float_between(200, 300);
 
+// the calculated height of the token (including scaling & elevation)
+const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
+
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/Laser_Fire.ogg",
     "jb2a.impact.blue.2",
@@ -12,28 +15,45 @@ let sequence = new Sequence();
 
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
+
+    let targetOffset = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({
+            targetToken: target,
+            sprayOffset: true,
+            randomOffset: 0.4,
+            missed: targetsMissed.has(target.id),
+        });
+
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Laser_Fire.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .duration(633)
             .repeats(3, random);
-    sequence
-        .effect()
-            .file("jb2a.impact.blue.2")
-            .playIf(!targetsMissed.has(target.id))
-            .atLocation(`impact${i}`)
-            .scaleToObject(2)
-            .repeats(3, random)
-            .delay(300);
+    for (let j = 0; j < 3; j++) {
+        sequence
+            .canvasPan()
+                .shake(
+                game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                    duration: random,
+                    fadeOutDuration: random,
+                    strength: 7,
+                    frequency: 20,
+                    rotation: false,
+                }),
+            )
+            .delay(j * random);
+    }
     sequence
         .effect()
             .file("jb2a.lasershot.blue")
-            .atLocation(sourceToken)
-            .stretchTo(target, { randomOffset: 0.4 })
+            .atLocation(sourceToken, heightOffset)
+            .stretchTo(target, targetOffset)
             .missed(targetsMissed.has(target.id))
-            .name(`impact${i}`)
             .repeats(3, random)
+            .xray()
+            .aboveInterface()
             .waitUntilFinished();
 }
 sequence.play();
