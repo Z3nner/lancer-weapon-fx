@@ -19,6 +19,16 @@ let sequence = new Sequence();
 
 for (const targetPoint of targetPoints) {
     sequence
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 200,
+                fadeOutDuration: 100,
+                strength: 8,
+                frequency: 10,
+                rotation: false,
+            }),
+        )
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
@@ -42,13 +52,24 @@ for (const targetPoint of targetPoints) {
             .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 700,
+                fadeOutDuration: 300,
+                strength: 20,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
         .effect()
             .file("jb2a.explosion.01.orange")
             .atLocation(targetPoint)
             .scale(1.2)
             .zIndex(2)
             .xray()
-            .aboveInterface();
+            .aboveInterface()
+            .randomSpriteRotation();
     sequence
         .effect()
             .file("jb2a.explosion.08.orange")
@@ -56,6 +77,7 @@ for (const targetPoint of targetPoints) {
             .scale(1.2)
             .zIndex(1)
             .xray()
-            .aboveInterface();
+            .aboveInterface()
+            .randomSpriteRotation();
 }
 sequence.play();

@@ -15,8 +15,11 @@ await Sequencer.Preloader.preloadForClients([
 // this is used to calculate the height of the effect
 const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
 
-target.x += averageElevation * canvas.scene.grid.size;
-target.y -= averageElevation * canvas.scene.grid.size;
+// if we're isometric, add offset to the target height so it looks like the effect is targeting the average elevation
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    target.x += averageElevation * canvas.scene.grid.size;
+    target.y -= averageElevation * canvas.scene.grid.size;
+}
 
 let sequence = new Sequence()
     // SPRAY
@@ -85,7 +88,7 @@ for (let i = 0; i < targetTokens.length; i++) {
                 .aboveInterface()
                 .center()
                 .xray()
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .scaleToObject(1.2);
     }
 }

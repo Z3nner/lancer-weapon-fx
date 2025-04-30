@@ -16,15 +16,28 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     const targetMoveTowards = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), moveTowards: true });
+        .api.getTokenHeightOffset({ targetToken: target, useAbsoluteCoords: true });
 
     const targetHeightOffsetRand5 = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), randomOffset: 0.5 });
+        .api.getTokenHeightOffset({ targetToken: target, randomOffset: 0.5 });
     const targetHeightOffsetRand6 = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), randomOffset: 0.6 });
+        .api.getTokenHeightOffset({ targetToken: target, randomOffset: 0.6 });
 
+    sequence
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 700,
+                fadeOutDuration: 150,
+                fadeInDuration: 250,
+                strength: 5,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
+        .delay(500);
     sequence
         .effect()
             .file("jb2a.melee_attack.01.magic_sword.yellow")
@@ -43,6 +56,20 @@ for (const target of targetTokens) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .waitUntilFinished(-1450);
 
+    // IMPACT
+    sequence
+        .canvasPan()
+            .playIf(!targetsMissed.has(target.id))
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 600,
+                fadeOutDuration: 400,
+                strength: 10,
+                frequency: 15,
+                rotation: false,
+            }),
+        )
+        .delay(100);
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Melee.ogg")
@@ -56,7 +83,8 @@ for (const target of targetTokens) {
             .xray()
             .aboveInterface()
             .atLocation(target, targetHeightOffsetRand5)
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+            .randomSpriteRotation()
             .waitUntilFinished(-1200);
     sequence
         .effect()
@@ -67,7 +95,8 @@ for (const target of targetTokens) {
             .aboveInterface()
             .atLocation(target, targetHeightOffsetRand6)
             .repeats(3, 75)
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+            .randomSpriteRotation()
             .waitUntilFinished(-1200);
 }
 sequence.play();

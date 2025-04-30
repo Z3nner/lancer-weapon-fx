@@ -2,6 +2,9 @@ const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-we
 
 // the calculated height of the token (including scaling & elevation)
 const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
+const rotateTowardsOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: sourceToken, useAbsoluteCoords: true });
 
 const findFarthestTargetOfGroup = function (targetTokens) {
     let farthestToken = null;
@@ -32,7 +35,8 @@ const repeatImpactAnimationForEachTarget = async function (sequence, targets) {
                 .effect()
                     .file("jb2a.impact.orange.0")
                     .atLocation(t, targetHeightOffset)
-                    .isometric({ overlay: true })
+                    .rotate(230)
+                    .rotateTowards(rotateTowardsOffset)
                     .center();
         }
     }

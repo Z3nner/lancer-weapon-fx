@@ -4,7 +4,7 @@ const impacts = [
     "jb2a.impact.002.blue",
     "jb2a.impact.003.blue",
     "jb2a.impact.004.blue",
-    "jb2a.impact.007.blue",
+    //"jb2a.impact.007.blue",
     "jb2a.impact.011.blue",
 ];
 
@@ -18,7 +18,7 @@ await Sequencer.Preloader.preloadForClients([
     "jb2a.impact.002.blue",
     "jb2a.impact.003.blue",
     "jb2a.impact.004.blue",
-    "jb2a.impact.007.blue",
+    //"jb2a.impact.007.blue",
     "jb2a.impact.011.blue",
 ]);
 
@@ -27,11 +27,24 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     const targetMoveTowards = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), moveTowards: true });
+        .api.getTokenHeightOffset({ targetToken: target, useAbsoluteCoords: true });
     const targetHeightOffsetRand = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, randomOffset: 1, missed: targetsMissed.has(target.id) });
+        .api.getTokenHeightOffset({ targetToken: target, randomOffset: 1 });
 
+    sequence
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 500,
+                fadeOutDuration: 150,
+                fadeInDuration: 250,
+                strength: 8,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
+        .delay(500);
     sequence
         .effect()
             .file("jb2a.divine_smite.target.blueyellow")
@@ -57,6 +70,19 @@ for (const target of targetTokens) {
                 .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
                 .delay(800)
                 .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
+        for (let j = 0; j < 5; j++) {
+            sequence
+                .canvasPan()
+                    .shake({
+                    duration: 80,
+                    fadeInDuration: 20,
+                    fadeOutDuration: 30,
+                    strength: 7 + j * 3, // increase strength with each iteration.
+                    frequency: 25 - j * 2,
+                    rotation: false,
+                })
+                .delay(1200 + j * 80);
+        }
         sequence
             .effect()
                 .file(impacts)
@@ -65,8 +91,10 @@ for (const target of targetTokens) {
                 .xray()
                 .aboveInterface()
                 .atLocation(target, targetHeightOffsetRand)
-                .repeats(4, 80)
+                .repeats(5, 80)
                 .delay(1200)
+                .randomSpriteRotation()
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .waitUntilFinished(-1500);
     }
 }

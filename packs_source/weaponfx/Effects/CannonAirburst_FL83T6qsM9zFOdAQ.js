@@ -21,9 +21,11 @@ const pTargetHeightOffset = game.modules
     .get("lancer-weapon-fx")
     .api.getTokenHeightOffset({ targetToken: elevatedTarget });
 
-// add an extra offset to the target height offset to make it look like the explosion is above the heighest target
-pTargetHeightOffset.offset.x = pTargetHeightOffset.offset.x + 1;
-pTargetHeightOffset.offset.y = pTargetHeightOffset.offset.y - 1;
+// if we're isometric, add an extra offset to the target height offset to make it look like the explosion is above the heighest target
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    pTargetHeightOffset.offset.x += 1;
+    pTargetHeightOffset.offset.y -= 1;
+}
 
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg",
@@ -37,10 +39,21 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence()
 
+    // initial bullet
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 200,
+            fadeInDuration: 150,
+            strength: 4,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
     .effect()
         .file("jb2a.bullet.01.orange")
         .from(sourceToken, heightOffset)
@@ -48,12 +61,25 @@ sequence
         .xray()
         .aboveInterface()
         .waitUntilFinished(-200)
+    // airburst explosion
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 400,
+            fadeInDuration: 50,
+            fadeOutDuration: 150,
+            strength: 7,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
     .effect()
         .file("jb2a.explosion.08.orange")
         .atLocation(pBlast, pTargetHeightOffset)
         .scale(0.8)
         .xray()
         .aboveInterface()
+        .randomSpriteRotation()
         .zIndex(1)
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Flechette.ogg")
@@ -90,4 +116,17 @@ for (let i = 0; i < targetTokens.length; i++) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .delay(350);
 }
+sequence
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 1500,
+            fadeInDuration: 100,
+            fadeOutDuration: 1300,
+            strength: 10,
+            frequency: 20,
+            rotation: false,
+        }),
+    )
+    .delay(350);
 sequence.play();

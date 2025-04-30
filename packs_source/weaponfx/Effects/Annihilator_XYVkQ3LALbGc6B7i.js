@@ -7,7 +7,7 @@ await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg",
     "jb2a.eldritch_blast.purple",
     "modules/lancer-weapon-fx/soundfx/Annihilator.ogg",
-    "jb2a.impact.blue.3",
+    "jb2a.impact.004.blue",
 ]);
 
 let sequence = new Sequence();
@@ -31,45 +31,38 @@ for (const target of targetTokens) {
             .aboveInterface()
             .stretchTo(target, targetHeightOffset)
             .missed(targetsMissed.has(target.id))
-            .name("impact")
             .waitUntilFinished(-3100);
     if (!targetsMissed.has(target.id)) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
             .canvasPan()
                 .shake(
                 game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
                     duration: 700,
                     fadeOutDuration: 500,
-                    intensity: 4,
-                    speed: 5,
+                    strength: 8,
+                    frequency: 25,
                     rotation: false,
                 }),
             )
             .delay(100);
         sequence
             .effect()
-                .file("jb2a.impact.004.pinkpurple")
+                .file("jb2a.impact.004.blue")
+                .filter("ColorMatrix", { hue: 50 })
                 .scale(1.0)
                 .atLocation(target, targetHeightOffset)
                 .xray()
                 .aboveInterface()
+                .randomSpriteRotation()
                 .waitUntilFinished(-400);
     } else {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-        sequence
-            .effect()
-                .file("jb2a.impact.004.pinkpurple")
-                .scale(1.0)
-                .atLocation(target, targetHeightOffset)
-                .xray()
-                .aboveInterface()
-                .waitUntilFinished(-400);
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.2));
     }
 }
 sequence.play();

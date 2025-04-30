@@ -24,16 +24,15 @@ for (const target of targetTokens) {
 
     const impactScale = (tokenHeight + targetTokenHeight) / 4;
 
+    // SHOT
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/WeaponBeep.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-    sequence
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Thermal_Rifle_Fire.ogg")
             .delay(400)
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-    sequence
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .effect()
             .file("jb2a.fireball.beam.orange")
             .scale(1.25)
@@ -42,15 +41,26 @@ for (const target of targetTokens) {
             .stretchTo(target, targetHeightOffset)
             .missed(targetsMissed.has(target.id))
             .xray()
-            .aboveInterface();
+            .aboveInterface()
+        .canvasPan()
+            .playIf(!targetsMissed.has(target.id))
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 700,
+                fadeInDuration: 500,
+                strength: 6,
+                frequency: 15,
+                rotation: false,
+            }),
+        );
 
+    // IMPACT
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Thermal_Rifle_Hit.ogg")
             .playIf(!targetsMissed.has(target.id))
             .delay(700)
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-    sequence
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .effect()
             .file("jb2a.impact.orange.0")
             .playIf(!targetsMissed.has(target.id))
@@ -62,6 +72,17 @@ for (const target of targetTokens) {
             .xray()
             .aboveInterface()
             .delay(700)
-            .waitUntilFinished();
+            .waitUntilFinished(-833)
+        .canvasPan()
+            .playIf(!targetsMissed.has(target.id))
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 700,
+                fadeOutDuration: 500,
+                strength: 8,
+                frequency: 25,
+                rotation: false,
+            }),
+        );
 }
 sequence.play();

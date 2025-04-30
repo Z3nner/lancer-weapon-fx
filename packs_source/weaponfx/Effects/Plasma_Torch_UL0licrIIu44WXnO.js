@@ -16,6 +16,40 @@ await Sequencer.Preloader.preloadForClients([
 ]);
 
 let sequence = new Sequence()
+    // SPRAY
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 500,
+            fadeOutDuration: 250,
+            fadeInDuration: 50,
+            strength: 14,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 2867,
+            fadeOutDuration: 1500,
+            fadeInDuration: 500,
+            strength: 4,
+            frequency: 10,
+            rotation: false,
+        }),
+    )
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 300,
+            fadeOutDuration: 200,
+            fadeInDuration: 50,
+            strength: 10,
+            frequency: 15,
+            rotation: false,
+        }),
+    )
     .effect()
         .file("jb2a.fire_jet.orange")
         .filter("ColorMatrix", { hue: 210 })

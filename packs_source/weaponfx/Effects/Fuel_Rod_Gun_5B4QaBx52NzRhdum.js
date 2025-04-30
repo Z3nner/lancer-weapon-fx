@@ -3,6 +3,10 @@ const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-we
 // the calculated height of the token (including scaling & elevation)
 const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
 const tokenHeight = sourceToken.verticalHeight;
+const rotateTowardsOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+    targetToken: sourceToken,
+    useAbsoluteCoords: true,
+});
 
 // the targeted token
 const target = targetTokens[0];
@@ -98,14 +102,16 @@ if (!targetsMissed.has(target.id)) {
         .effect()
             .file("jb2a.toll_the_dead.green.shockwave")
             .atLocation(target, targetHeightOffset)
-            .scaleToObject(2)
+            .scaleToObject(1.5)
             .aboveInterface()
             .xray()
-            .zIndex(1)
+        //.randomSpriteRotation()
+        .zIndex(1)
         .effect()
             .file("jb2a.smoke.puff.side.02.white")
             .atLocation(target, targetHeightOffset)
-            .rotateTowards(sourceToken)
+            .rotateTowards(rotateTowardsOffset)
+            .spriteOffset({ x: 0.5, y: 0 }, { gridUnits: true })
             .rotate(180)
             .aboveInterface()
             .xray()

@@ -12,14 +12,12 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    const targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            sprayOffset: true,
-            randomOffset: 0.5,
-            missed: targetsMissed.has(target.id),
-        });
+    const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        sprayOffset: true,
+        randomOffset: 0.5,
+        missed: targetsMissed.has(target.id),
+    });
 
     const random = Sequencer.Helpers.random_float_between(100, 125);
     const randomShots = Sequencer.Helpers.random_float_between(5, 7);
@@ -47,14 +45,14 @@ for (const target of targetTokens) {
     sequence
         .effect()
             .file("jb2a.magic_missile.purple")
-            .filter("ColorMatrix", { hue: 220 })
-            .atLocation(sourceToken, heightOffset)
-            .stretchTo(target, targetHeightOffset)
-            .missed(targetsMissed.has(target.id))
-            .aboveInterface()
-            .xray()
-            .repeats(randomShots, random)
-            .waitUntilFinished(-1600);
+        //.filter("ColorMatrix", { hue: 220 })
+        .atLocation(sourceToken, heightOffset)
+        .stretchTo(target, targetHeightOffset)
+        .missed(targetsMissed.has(target.id))
+        .aboveInterface()
+        .xray()
+        .repeats(randomShots, random)
+        .waitUntilFinished(-1600);
     // IMPACT
     if (!targetsMissed.has(target.id)) {
         for (let j = 0; j < randomShots; j++) {

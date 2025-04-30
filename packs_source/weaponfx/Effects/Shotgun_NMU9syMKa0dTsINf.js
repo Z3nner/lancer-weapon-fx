@@ -4,8 +4,8 @@ const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-we
 const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
 
 await Sequencer.Preloader.preloadForClients([
-    "emily3k.sfx.shotgun.equip",
-    "emily3k.sfx.shotgun.shot.2",
+    "modules/lancer-weapon-fx/soundfx/shotgun_cycle.ogg",
+    "modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg",
     "modules/lancer-weapon-fx/soundfx/shotgun_impact.ogg",
     "jb2a.bullet.01.orange",
 ]);
@@ -15,11 +15,10 @@ const totalMissed = targetsMissed ? targetsMissed.size : 0;
 
 //get the total number of targets hit
 const totalTargets = targetTokens.length - totalMissed;
-console.log("total targets:" + targetTokens.length + " - total missed: " + totalMissed);
+
 // calculate the total number of bullets to fire
 // 6 base bullets + 1 per target hit after the first
 const totalBullets = 6 + totalTargets - 1;
-console.log(totalBullets);
 
 // calculate the total amount of bullets to give to each target
 const bulletsPerTarget = Math.floor(totalBullets / targetTokens.length);
@@ -31,14 +30,13 @@ let sequence = new Sequence();
 
 sequence
     .sound()
-        .file("emily3k.sfx.shotgun.equip")
+        .file("modules/lancer-weapon-fx/soundfx/shotgun_cycle.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
-        .waitUntilFinished(-500);
+        .waitUntilFinished(-1200);
 sequence
     .sound()
-        .file("emily3k.sfx.shotgun.shot.2")
+        .file("modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1))
-    //.delay(200)
     .canvasPan()
         .shake(
         game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
@@ -82,6 +80,7 @@ for (const target of targetTokens) {
             .delay(500);
     sequence
         .canvasPan()
+            .playIf(!targetsMissed.has(target.id))
             .shake(
             game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
                 duration: 100,

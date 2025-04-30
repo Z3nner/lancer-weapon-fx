@@ -13,14 +13,12 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    let targetOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            sprayOffset: true,
-            randomOffset: 0.5,
-            missed: targetsMissed.has(target.id),
-        });
+    let targetOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        sprayOffset: 0.3,
+        randomOffset: 0.5,
+        missed: targetsMissed.has(target.id),
+    });
 
     sequence
         .sound()

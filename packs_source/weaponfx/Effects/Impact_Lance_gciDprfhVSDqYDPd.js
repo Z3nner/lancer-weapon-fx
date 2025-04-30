@@ -68,6 +68,7 @@ for (const target of targetTokens) {
                 .atLocation(target, targetHeightOffset)
                 .aboveInterface()
                 .xray()
+                .randomSpriteRotation()
                 .waitUntilFinished(-400);
     }
 }

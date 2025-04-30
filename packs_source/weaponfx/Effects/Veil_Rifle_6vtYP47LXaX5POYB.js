@@ -41,7 +41,18 @@ for (const target of targetTokens) {
             .xray()
             .aboveInterface()
             .stretchTo(farthest, targetHeightOffset)
-            .missed(targetsMissed.has(target.id));
+            .missed(targetsMissed.has(target.id))
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 200,
+                fadeOutDuration: 200,
+                strength: 10,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
+        .delay(100);
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/veil_rifle.ogg")

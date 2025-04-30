@@ -39,12 +39,14 @@ let sequence = new Sequence()
         .scaleToObject(2)
         .aboveInterface()
         .xray()
+        .randomSpriteRotation()
         .waitUntilFinished()
     .effect()
         .file("jb2a.explosion.shrapnel.bomb.01.black")
         .scale(0.6)
         .belowTokens()
         .xray()
+        .randomSpriteRotation()
         .atLocation(sourceToken, heightOffsetFlat);
 for (let j = 0; j < 6; j++) {
     sequence
@@ -66,6 +68,7 @@ sequence
         .scale(0.5)
         .repeats(6, 20)
         .aboveInterface()
+        .randomSpriteRotation()
         .xray()
         .atLocation(sourceToken, heightOffsetFlat2);
 

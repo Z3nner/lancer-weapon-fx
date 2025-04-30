@@ -15,11 +15,49 @@ await Sequencer.Preloader.preloadForClients([
 // this is used to calculate the height of the effect
 const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
 
-target.x += averageElevation * canvas.scene.grid.size;
-target.y -= averageElevation * canvas.scene.grid.size;
+// if we're isometric, add offset to the target height so it looks like the effect is targeting the average elevation
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    target.x += averageElevation * canvas.scene.grid.size;
+    target.y -= averageElevation * canvas.scene.grid.size;
+}
 
 let sequence = new Sequence();
 
+// SPRAY
+sequence
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 500,
+            fadeOutDuration: 250,
+            fadeInDuration: 50,
+            strength: 14,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 3867,
+            fadeOutDuration: 1500,
+            fadeInDuration: 500,
+            strength: 4,
+            frequency: 10,
+            rotation: false,
+        }),
+    )
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 300,
+            fadeOutDuration: 200,
+            fadeInDuration: 50,
+            strength: 10,
+            frequency: 15,
+            rotation: false,
+        }),
+    );
 sequence
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/flamethrower_fire.ogg")
@@ -55,7 +93,7 @@ for (let i = 0; i < targetTokens.length; i++) {
                 .fadeOut(800)
                 .aboveInterface()
                 .xray()
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .atLocation(target, targetHeightOffset)
                 .scaleToObject(2);
     }

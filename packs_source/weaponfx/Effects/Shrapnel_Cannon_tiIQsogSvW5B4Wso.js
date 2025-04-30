@@ -5,21 +5,22 @@ const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffs
 
 const pTarget = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-// get the average document.elevation of the targetTokens
-// this is used to calculate the height of the effect
-const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
+// get the closest target to the sourceToken
+const closestTarget = targetTokens.reduce((prev, curr) => {
+    const prevDistance = canvas.grid.measureDistance(sourceToken.position, prev.position);
+    const currDistance = canvas.grid.measureDistance(sourceToken.position, curr.position);
+    return prevDistance < currDistance ? prev : curr;
+}, targetTokens[0]);
 
-// get the average tokenheightoffset.x of the targetTokens
-// use the tokenHeightOffset macro to get the height offset of the target tokens
-// this is used to calculate the height of the effect
-const targetHeightOffsets = await Promise.all(
-    targetTokens.map(token => game.macros.getName("tokenHeightOffset").execute({ targetToken: token })),
-);
-const averageTokenHeightOffset =
-    targetHeightOffsets.reduce((sum, offset) => sum + offset.offset.x, 0) / targetHeightOffsets.length;
+const closestTargetHeightOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: closestTarget, tokenHeightPercent: 1 });
 
-pTarget.x += averageTokenHeightOffset * canvas.scene.grid.size;
-pTarget.y -= averageTokenHeightOffset * canvas.scene.grid.size;
+// // if we're isometric, add offset to the target height so it looks like the effect is targeting the average elevation
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    pTarget.x += closestTargetHeightOffset.offset.x * canvas.grid.size;
+    pTarget.y += closestTargetHeightOffset.offset.y * canvas.grid.size;
+}
 
 // Calculate the point 80% of the distance between sourceToken and pTarget
 const pBlast = {
@@ -49,6 +50,14 @@ let sequence = new Sequence()
         .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
+    .canvasPan()
+        .shake({
+        duration: 90,
+        fadeOutDuration: 50,
+        strength: 15,
+        frequency: 25,
+        rotation: false,
+    })
     .effect()
         .file("jb2a.bullet.01.orange")
         .from(sourceToken, heightOffset)
@@ -64,9 +73,28 @@ sequence
         .zIndex(1)
         .xray()
         .aboveInterface()
+    .canvasPan()
+        .shake({
+        duration: 150,
+        fadeOutDuration: 50,
+        strength: 15,
+        frequency: 25,
+        rotation: false,
+    })
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Flechette.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
+sequence
+    .canvasPan()
+        .shake({
+        duration: 100,
+        fadeOutDuration: 30,
+        strength: 30,
+        frequency: 15,
+        rotation: false,
+    })
+    .delay(100);
+
 sequence
     .effect()
         .file("jb2a.bullet.02.orange")
@@ -82,6 +110,10 @@ sequence
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
+    let targetHeightOffset = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({ targetToken: target, sprayOffset: true, missed: targetsMissed.has(target.id) });
+
     sequence
         .effect()
             .file("jb2a.bullet.02.orange")
@@ -89,13 +121,13 @@ for (let i = 0; i < targetTokens.length; i++) {
             .scale(0.5)
             .playbackRate(0.8)
             .atLocation(pBlast)
-            .stretchTo(target)
+            .stretchTo(target, targetHeightOffset)
             .xray()
             .aboveInterface()
         .effect()
             .file("jb2a.explosion_side.01.orange")
             .playIf(!targetsMissed.has(target.id))
-            .atLocation(target)
+            .atLocation(target, targetHeightOffset)
             .rotateTowards(pBlast)
             .center()
             .delay(450)
@@ -106,7 +138,20 @@ for (let i = 0; i < targetTokens.length; i++) {
             .playIf(!targetsMissed.has(target.id))
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .delay(450)
-            .repeats(2, 300)
+            .repeats(2, 300);
+    for (let j = 0; j < 4; j++) {
+        sequence
+            .canvasPan()
+                .shake({
+                duration: 25,
+                fadeOutDuration: 15,
+                strength: 30,
+                frequency: 10,
+                rotation: false,
+            })
+            .delay(750 + j * 25);
+    }
+    sequence
         .effect()
             .file("jb2a.explosion_side.01.orange")
             .atLocation("impact${i}")
@@ -118,6 +163,6 @@ for (let i = 0; i < targetTokens.length; i++) {
             .center()
             .delay(750)
             .xray()
-            .belowTokens();
+            .aboveInterface();
 }
 sequence.play();

@@ -1,6 +1,9 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
+const rotateTowardsOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: sourceToken, useAbsoluteCoords: true });
 
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/WeaponClick.ogg",
@@ -10,13 +13,15 @@ await Sequencer.Preloader.preloadForClients([
     "jb2a.impact.orange.0",
 ]);
 
+const isIsometric = game.modules.get("lancer-weapon-fx").api.isIsometric();
+
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
     //get the height of the target
     const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
         targetToken: target,
-        sprayOffset: true,
+        sprayOffset: 0.3,
         missed: targetsMissed.has(target.id),
     });
 
@@ -42,8 +47,8 @@ for (const target of targetTokens) {
             game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
                 duration: 200,
                 fadeOutDuration: 200,
-                intensity: 2,
-                speed: 5,
+                strength: 10,
+                frequency: 25,
                 rotation: false,
             }),
         )
@@ -56,10 +61,11 @@ for (const target of targetTokens) {
                 .delay(75);
         sequence
             .effect()
-                .file("jb2a.impact.001.orange")
+                .file("jb2a.impact.orange.0")
                 .atLocation(target, targetHeightOffset)
-                .isomtric({ overlay: true })
                 .center()
+                .rotateTowards(rotateTowardsOffset)
+                .rotate(230)
                 .delay(75)
                 .xray()
                 .aboveInterface()

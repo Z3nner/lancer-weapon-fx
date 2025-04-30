@@ -17,13 +17,11 @@ let sequence = new Sequence();
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
-    const targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            missed: targetsMissed.has(target.id),
-            tokenHeightPercent: 0.0,
-        });
+    const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        missed: targetsMissed.has(target.id),
+        tokenHeightPercent: 0.0,
+    });
 
     sequence
         .sound()
@@ -51,7 +49,17 @@ for (let i = 0; i < targetTokens.length; i++) {
                 .zIndex(1)
                 .xray()
                 .aboveInterface()
-                .waitUntilFinished(-1300);
+                .waitUntilFinished(-1300)
+            .canvasPan()
+                .shake(
+                game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                    duration: 700,
+                    fadeOutDuration: 300,
+                    strength: 10,
+                    frequency: 25,
+                    rotation: false,
+                }),
+            );
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
@@ -74,7 +82,7 @@ for (let i = 0; i < targetTokens.length; i++) {
                 .atLocation(sourceToken, heightOffset)
                 .stretchTo(target, missedOffset)
                 .xray()
-                .aboveInterface()
+                .belowTokens()
                 .waitUntilFinished(-3200);
         sequence
             .effect()
@@ -86,8 +94,19 @@ for (let i = 0; i < targetTokens.length; i++) {
                 .xray()
                 .rotate(-135)
                 .rotateTowards(sourceToken)
-                .aboveInterface()
-                .waitUntilFinished(-1300);
+                .belowTokens()
+                .waitUntilFinished(-1300)
+            .canvasPan() // a nice little shake on miss
+                .playIf(targetsMissed.has(target.id))
+                .shake(
+                game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                    duration: 300,
+                    fadeOutDuration: 200,
+                    strength: 5,
+                    frequency: 25,
+                    rotation: false,
+                }),
+            );
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")

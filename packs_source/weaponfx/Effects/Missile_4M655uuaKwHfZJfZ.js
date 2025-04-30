@@ -5,13 +5,16 @@ const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffs
 
 const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-// get the average elevation of the targets
-// get the average document.elevation of the targetTokens
-// this is used to calculate the height of the effect
-const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
+// if we're isometric, add the elevation offset
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    // get the average elevation of the targets
+    // this is used to calculate the height of the effect
+    const averageElevation =
+        targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
 
-target.x += averageElevation * canvas.scene.grid.size;
-target.y -= averageElevation * canvas.scene.grid.size;
+    target.x += averageElevation * canvas.scene.grid.size;
+    target.y -= averageElevation * canvas.scene.grid.size;
+}
 
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg",

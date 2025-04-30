@@ -13,9 +13,7 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    const targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+    const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: target });
     const targetHeightOffsetRand = game.modules
         .get("lancer-weapon-fx")
         .api.getTokenHeightOffset({ targetToken: target, randomOffset: 0.4, missed: targetsMissed.has(target.id) });
@@ -70,8 +68,7 @@ for (const target of targetTokens) {
             .playIf(!targetsMissed.has(target.id))
             .scaleToObject(0.5)
             .atLocation(target, targetHeightOffsetRand)
-            .spriteRotation(45)
-            .spriteScale({ x: 0.8164965809277259, y: 1.414213562373095 })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
             .repeats(2, 80)
             .aboveInterface()
             .xray()

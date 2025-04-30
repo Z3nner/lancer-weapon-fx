@@ -5,12 +5,16 @@ const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffs
 
 const centerMass = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-// get the average document.elevation of the targetTokens
-// this is used to calculate the height of the effect
-const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
+// if we're isometric, add the elevation offset
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    // get the average document.elevation of the targetTokens
+    // this is used to calculate the height of the effect
+    const averageElevation =
+        targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
 
-centerMass.x += averageElevation * canvas.scene.grid.size;
-centerMass.y -= averageElevation * canvas.scene.grid.size;
+    centerMass.x += averageElevation * canvas.scene.grid.size;
+    centerMass.y -= averageElevation * canvas.scene.grid.size;
+}
 
 const repeatImpactAnimationForEachTarget = async function (sequence, targetTokens) {
     for (const t of targetTokens) {
@@ -60,7 +64,7 @@ sequence
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
     .effect()
         .file("jb2a.smoke.puff.side.02.white")
-        .atLocation(sourceToken)
+        .atLocation(sourceToken, heightOffset)
         .rotateTowards(centerMass)
         .aboveInterface()
         .xray()
@@ -91,6 +95,7 @@ sequence
         .atLocation(centerMass)
         .aboveInterface()
         .xray()
+        .randomSpriteRotation()
         .scale(0.5);
 sequence
     .effect()
@@ -100,6 +105,7 @@ sequence
         .rotate(180)
         .aboveInterface()
         .xray()
+        .randomSpriteRotation()
         .center();
 sequence
     .sound()

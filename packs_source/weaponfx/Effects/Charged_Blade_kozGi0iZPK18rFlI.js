@@ -15,7 +15,10 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     const targetHeightOffset = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+        .api.getTokenHeightOffset({ targetToken: target, sprayOffset: true });
+    let targetMoveTowards = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({ targetToken: target, useAbsoluteCoords: true });
 
     // SLASH
     sequence
@@ -37,9 +40,11 @@ for (const target of targetTokens) {
             .delay(500)
             .scaleToObject(4.5)
             .atLocation(sourceToken, heightOffset)
-            .moveTowards(target)
+            .moveTowards(targetMoveTowards)
             .waitUntilFinished(-1000)
             .missed(targetsMissed.has(target.id))
+            .xray()
+            .aboveInterface()
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Axe_swing.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
@@ -67,6 +72,10 @@ for (const target of targetTokens) {
             .playIf(!targetsMissed.has(target.id))
             .scaleToObject(2)
             .atLocation(target, targetHeightOffset)
+            .randomSpriteRotation()
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+            .xray()
+            .aboveInterface()
             .waitUntilFinished(-1200);
 }
 sequence.play();

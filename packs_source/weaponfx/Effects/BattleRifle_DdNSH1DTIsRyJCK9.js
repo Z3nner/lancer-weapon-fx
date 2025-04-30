@@ -22,7 +22,7 @@ for (let i = 0; i < targetTokens.length; i++) {
     for (let j = 0; j < repeatCount; j++) {
         const targetOffset = game.modules
             .get("lancer-weapon-fx")
-            .api.getTokenHeightOffset({ targetToken: target, sprayOffset: true, missed: targetsMissed.has(target.id) });
+            .api.getTokenHeightOffset({ targetToken: target, sprayOffset: 0.6, missed: targetsMissed.has(target.id) });
         // SHOT
         sequence
             .sound()
@@ -79,10 +79,12 @@ for (let i = 0; i < targetTokens.length; i++) {
                 .zIndex(2)
                 .atLocation(target, targetOffset)
                 .rotateTowards(sourceToken)
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .rotate(230)
                 .xray()
                 .aboveInterface()
+                .randomSpriteRotation()
                 .center();
     }
 }
-sequence.play({ preload: true });
+sequence.play();

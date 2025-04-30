@@ -4,7 +4,7 @@ const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-we
 const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
 
 await Sequencer.Preloader.preloadForClients([
-    "jb2a.melee_attack.03.trail.03.pinkpurple",
+    "jb2a.melee_attack.05.trail.01.pinkpurple",
     "modules/lancer-weapon-fx/soundfx/bladeswing.ogg",
     "modules/lancer-weapon-fx/soundfx/bladehit.ogg",
     "jb2a.impact.002.dark_red",
@@ -13,23 +13,32 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    const targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+    const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: target });
     const moveTowardsOffset = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), moveTowards: true });
+        .api.getTokenHeightOffset({ targetToken: target, useAbsoluteCoords: true });
 
     sequence
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 300,
+                fadeInDuration: 250,
+                strength: 6,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
+        .delay(300)
         .effect()
-            .file("jb2a.melee_attack.03.trail.03.pinkpurple")
+            .file("jb2a.melee_attack.05.trail.01.pinkpurple")
             .tint("#080303")
             .filter("Glow", { color: 0x8f0f0f })
             .scaleToObject(4.5)
             .atLocation(sourceToken, heightOffset)
             .aboveInterface()
             .xray()
-            .moveTowards(target, moveTowardsOffset)
+            .moveTowards(moveTowardsOffset)
             .missed(targetsMissed.has(target.id))
             .waitUntilFinished(-2500);
     sequence
@@ -46,13 +55,26 @@ for (const target of targetTokens) {
                 .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
         sequence
             .effect()
-                .file("jb2a.impact.002.dark_red")
+                .file("jb2a.impact.002.blue")
+                .tint("#080303")
+                .filter("Glow", { color: 0x8f0f0f })
                 .scaleToObject(2)
                 .atLocation(target, targetHeightOffset)
                 .aboveInterface()
                 .xray()
                 .randomSpriteRotation()
-                .waitUntilFinished(-1500);
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+                .waitUntilFinished(-1500)
+            .canvasPan()
+                .shake(
+                game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                    duration: 300,
+                    fadeInDuration: 50,
+                    strength: 8,
+                    frequency: 25,
+                    rotation: false,
+                }),
+            );
     }
 }
 sequence.play();

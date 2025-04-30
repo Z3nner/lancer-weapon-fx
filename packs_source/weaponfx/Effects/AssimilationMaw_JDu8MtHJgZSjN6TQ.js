@@ -10,9 +10,7 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    const targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+    const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: target });
 
     // BITE
     sequence
@@ -38,7 +36,7 @@ for (const target of targetTokens) {
             .zIndex(1)
             .opacity(0.7)
             .scaleToObject(3)
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
             .xray()
             .aboveInterface()
             .waitUntilFinished(targetsMissed.has(target.id) ? 0 : -1000);
@@ -50,7 +48,7 @@ for (const target of targetTokens) {
             duration: 500,
             fadeOutDuration: 300,
             fadeInDurationL: 100,
-            strength: 25,
+            strength: 15,
             frequency: 25,
             rotation: false,
         })
@@ -64,12 +62,13 @@ for (const target of targetTokens) {
             .playIf(!targetsMissed.has(target.id))
             .playbackRate(2.2)
             .scaleToObject(1.7)
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
             .filter("Glow", { color: 0x8a0303, distance: 2, innerStrength: 2 })
             .filter("ColorMatrix", { hue: 300 })
             .atLocation(target, targetHeightOffset)
             .xray()
             .aboveInterface()
+            .randomSpriteRotation()
             .waitUntilFinished(-1000);
 }
 sequence.play();

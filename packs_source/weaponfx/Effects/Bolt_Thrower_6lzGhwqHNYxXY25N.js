@@ -66,9 +66,10 @@ for (const target of targetTokens) {
             .file("jb2a.explosion.01.orange")
             .atLocation(target, targetHeightOffset)
             .playIf(!targetsMissed.has(target.id))
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
             .aboveInterface()
             .xray()
+            .randomSpriteRotation()
             .waitUntilFinished();
 }
 sequence.play();

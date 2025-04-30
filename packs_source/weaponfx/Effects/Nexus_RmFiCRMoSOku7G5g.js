@@ -5,21 +5,22 @@ const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffs
 
 const pTarget = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-// get the average document.elevation of the targetTokens
-// this is used to calculate the height of the effect
-const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
+// if we're isometric, add offset to the target height so it looks like the effect is targeting the average elevation
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    // get the average tokenheightoffset.x of the targetTokens
+    // use the tokenHeightOffset macro to get the height offset of the target tokens
+    // this is used to calculate the height of the effect
+    const targetHeightOffsets = await Promise.all(
+        targetTokens.map(token =>
+            game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: token }),
+        ),
+    );
+    const averageTokenHeightOffset =
+        targetHeightOffsets.reduce((sum, offset) => sum + offset.offset.x, 0) / targetHeightOffsets.length;
 
-// get the average tokenheightoffset.x of the targetTokens
-// use the tokenHeightOffset macro to get the height offset of the target tokens
-// this is used to calculate the height of the effect
-const targetHeightOffsets = await Promise.all(
-    targetTokens.map(token => game.macros.getName("tokenHeightOffset").execute({ targetToken: token })),
-);
-const averageTokenHeightOffset =
-    targetHeightOffsets.reduce((sum, offset) => sum + offset.offset.x, 0) / targetHeightOffsets.length;
-
-pTarget.x += averageTokenHeightOffset * canvas.scene.grid.size;
-pTarget.y -= averageTokenHeightOffset * canvas.scene.grid.size;
+    pTarget.x += averageTokenHeightOffset * canvas.scene.grid.size;
+    pTarget.y -= averageTokenHeightOffset * canvas.scene.grid.size;
+}
 
 // Calculate the point 70% of the distance between sourceToken and pTarget
 const pBlast = {
@@ -54,8 +55,8 @@ for (let j = 0; j < 3; j++) {
             game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
                 duration: 100,
                 fadeOutDuration: 100,
-                intensity: 2,
-                speed: 10,
+                strength: 15,
+                frequency: 25,
                 rotation: false,
             }),
         )
@@ -63,15 +64,15 @@ for (let j = 0; j < 3; j++) {
 }
 sequence
     .effect()
-        .file("jb2a.bullet.01.green")
-    //.filter("ColorMatrix", { hue: 070 })
-    .filter("Blur", { blur: 8, strength: 4, blurX: 4 })
-    .atLocation(sourceToken, heightOffset)
-    .stretchTo(pBlast, { randomOffset: 0.6 })
-    .aboveInterface()
-    .xray()
-    .repeats(3, 150)
-    .waitUntilFinished(-800);
+        .file("jb2a.bullet.01.orange")
+        .filter("ColorMatrix", { hue: 070 })
+        .filter("Blur", { blur: 8, strength: 4, blurX: 4 })
+        .atLocation(sourceToken, heightOffset)
+        .stretchTo(pBlast, { randomOffset: 0.6 })
+        .aboveInterface()
+        .xray()
+        .repeats(3, 150)
+        .waitUntilFinished(-800);
 
 sequence
     .canvasPan()
@@ -80,8 +81,8 @@ sequence
             duration: 1200,
             fadeOutDuration: 600,
             fadeInDuration: 800,
-            intensity: 2,
-            speed: 10,
+            strength: 15,
+            frequency: 25,
             rotation: false,
         }),
     )
@@ -100,13 +101,11 @@ sequence
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
-    let targetHeightOffsetFloor = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            tokenHeightPercent: 0.0,
-            missed: targetsMissed.has(target.id),
-        });
+    let targetHeightOffsetFloor = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        tokenHeightPercent: 0.0,
+        missed: targetsMissed.has(target.id),
+    });
     let targetHeightOffsetRand = game.modules
         .get("lancer-weapon-fx")
         .api.getTokenHeightOffset({ targetToken: target, randomOffset: 0.7, missed: targetsMissed.has(target.id) });
@@ -119,8 +118,8 @@ for (let i = 0; i < targetTokens.length; i++) {
                 game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
                     duration: 100,
                     fadeOutDuration: 75,
-                    intensity: 4,
-                    speed: 10,
+                    strength: 15,
+                    frequency: 25,
                     rotation: false,
                 }),
             )
@@ -133,7 +132,8 @@ for (let i = 0; i < targetTokens.length; i++) {
             .filter("ColorMatrix", { hue: 235, brightness: 0.5 })
             .scale(0.5)
             .aboveInterface()
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+            .randomSpriteRotation()
             .xray()
             .zIndex(1)
             .atLocation(target, targetHeightOffsetRand)

@@ -24,16 +24,34 @@ for (const target of targetTokens) {
         .get("lancer-weapon-fx")
         .api.getTokenHeightOffset({ targetToken: target, randomOffset: 1, missed: targetsMissed.has(target.id) });
 
+    const rotateTowardsOffset = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({
+            targetToken: target,
+            missed: targetsMissed.has(target.id),
+            useAbsoluteCoords: true,
+        });
+
     sequence
         .effect()
             .file("jb2a.melee_generic.slash.01.orange")
             .scaleToObject(4)
             .atLocation(sourceToken, heightOffset)
             .spriteOffset({ x: -1.5 }, { gridUnits: true })
-            .rotateTowards(target, targetHeightOffset)
+            .rotateTowards(rotateTowardsOffset)
             .delay(500)
-            .missed(targetsMissed.has(target.id));
-    sequence
+            .missed(targetsMissed.has(target.id))
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 300,
+                fadeInDuration: 300,
+                strength: 4,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
+        .delay(500)
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/bladeswing.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
@@ -43,20 +61,37 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Mortar_Impact.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
-        sequence
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
             .effect()
                 .file("jb2a.explosion.01.orange")
                 .scale(1)
                 .zIndex(2)
-                .atLocation(target, targetHeightOffsetRand05);
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+                .aboveInterface()
+                .xray()
+                .randomSpriteRotation()
+                .atLocation(target, targetHeightOffsetRand05)
+            .canvasPan()
+                .shake(
+                game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                    duration: 1500,
+                    fadeInDuration: 100,
+                    fadeOutDuration: 1000,
+                    strength: 10,
+                    frequency: 25,
+                    rotation: false,
+                }),
+            );
         sequence
             .effect()
                 .file("jb2a.static_electricity.03.blue")
                 .scale(0.4)
                 .atLocation(target, targetHeightOffsetRand1)
                 .repeats(2, 80)
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+                .aboveInterface()
+                .xray()
+                .randomSpriteRotation()
                 .waitUntilFinished(-800);
     }
 }

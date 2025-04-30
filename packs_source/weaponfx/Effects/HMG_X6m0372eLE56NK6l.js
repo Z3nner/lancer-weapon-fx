@@ -13,14 +13,12 @@ let sequence = new Sequence();
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
-    let targetOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            sprayOffset: true,
-            randomOffset: 0.5,
-            missed: targetsMissed.has(target.id),
-        });
+    let targetOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        sprayOffset: true,
+        randomOffset: 0.5,
+        missed: targetsMissed.has(target.id),
+    });
 
     sequence
         .sound()
@@ -31,10 +29,10 @@ for (let i = 0; i < targetTokens.length; i++) {
             .canvasPan()
                 .shake(
                 game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
-                    duration: 100,
-                    fadeOutDuration: 100,
+                    duration: 50,
+                    fadeOutDuration: 30,
                     strength: 15,
-                    frequency: 25,
+                    frequency: 15,
                     rotation: false,
                 }),
             )
@@ -51,6 +49,15 @@ for (let i = 0; i < targetTokens.length; i++) {
             .repeats(8, 50)
             .scale(0.5)
             .waitUntilFinished(-800);
+    sequence.canvasPan().shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 1000,
+            fadeOutDuration: 1000,
+            strength: 10,
+            frequency: 25,
+            rotation: false,
+        }),
+    );
 }
 
 sequence.play();

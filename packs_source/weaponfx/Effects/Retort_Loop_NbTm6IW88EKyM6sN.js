@@ -4,7 +4,7 @@ const impacts = [
     "jb2a.impact.002.blue",
     "jb2a.impact.003.blue",
     "jb2a.impact.004.blue",
-    "jb2a.impact.007.blue",
+    //"jb2a.impact.007.blue",
     "jb2a.impact.011.blue",
 ];
 
@@ -18,7 +18,7 @@ await Sequencer.Preloader.preloadForClients([
     "jb2a.impact.002.blue",
     "jb2a.impact.003.blue",
     "jb2a.impact.004.blue",
-    "jb2a.impact.007.blue",
+    //"jb2a.impact.007.blue",
     "jb2a.impact.011.blue",
 ]);
 
@@ -36,9 +36,6 @@ for (const target of targetTokens) {
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/RetortLoop.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
-
-    if (!targetsMissed.has(target.id)) {
-    }
     sequence
         .effect()
             .file("jb2a.energy_beam.normal.bluepink.02")
@@ -50,18 +47,43 @@ for (const target of targetTokens) {
             .xray()
             .aboveInterface()
             .delay(200);
+    sequence
+        .canvasPan() // rising weak high speed shake for background
+            .shake({
+            duration: 3500,
+            fadeInDuration: 3000,
+            fadeOutDuration: 500,
+            strength: 5,
+            frequency: 1,
+            rotation: false,
+        })
+        .delay(200); // line up to start of beam
     if (!targetsMissed.has(target.id)) {
         sequence
             .effect()
-                .file("jb2a.divine_smite.caster.reversed.purplepink")
+                .file("jb2a.divine_smite.caster.reversed.blueyellow")
+                .filter("ColorMatrix", { hue: 220 })
                 .scale(0.3)
                 .atLocation(target, targetHeightOffset)
                 .xray()
                 .aboveLighting()
                 .fadeIn(200)
                 .playbackRate(0.8)
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .delay(400);
+        for (let j = 0; j < 8; j++) {
+            sequence
+                .canvasPan()
+                    .shake({
+                    duration: 200,
+                    fadeInDuration: 50,
+                    fadeOutDuration: 100,
+                    strength: 5 + j, // increase strength with each iteration.
+                    frequency: 25 - j * 2,
+                    rotation: false,
+                })
+                .delay(700 + j * 200);
+        }
         sequence
             .effect()
                 .file(impacts)
@@ -70,7 +92,7 @@ for (const target of targetTokens) {
                 .repeats(8, 200)
                 .xray()
                 .aboveInterface()
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .delay(700);
     } else {
         sequence
@@ -80,7 +102,7 @@ for (const target of targetTokens) {
                 .atLocation("impact", targetHeightOffsetRandNine)
                 .xray()
                 .aboveInterface()
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .repeats(8, 200)
                 .delay(700);
     }

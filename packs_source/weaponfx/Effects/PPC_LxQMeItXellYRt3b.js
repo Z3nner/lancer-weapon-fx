@@ -35,8 +35,8 @@ for (const target of targetTokens) {
             game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
                 duration: 800,
                 fadeOutDuration: 600,
-                strength: 8,
-                frequency: 30,
+                strength: 25,
+                frequency: 20,
                 rotation: false,
             }),
         )

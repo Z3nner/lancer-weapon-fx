@@ -13,14 +13,11 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    let targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            sprayOffset: true,
-            randomOffset: 0.3,
-            missed: targetsMissed.has(target.id),
-        });
+    let targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        missed: targetsMissed.has(target.id),
+        sprayOffset: 0.3,
+    });
 
     sequence
         .canvasPan() // charge

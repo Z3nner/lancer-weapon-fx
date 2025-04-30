@@ -13,18 +13,26 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 for (const target of targetTokens) {
-    const targetHeightOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+    const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: target });
     const moveTowardsOffset = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), moveTowards: true });
+        .api.getTokenHeightOffset({ targetToken: target, useAbsoluteCoords: true });
 
-    const rotateTowardsOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
+    const rotateTowardsOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: target });
     rotateTowardsOffset.rotationOffset = 90;
 
+    sequence // launch
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 300,
+                fadeOutDuration: 50,
+                fadeInDuration: 200,
+                strength: 5,
+                frequency: 15,
+                rotation: false,
+            }),
+        );
     sequence
         .effect()
             .file("modules/lancer-weapon-fx/sprites/LatchDrone.png")
@@ -39,8 +47,28 @@ for (const target of targetTokens) {
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Mortar_Launch.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
-            .waitUntilFinished();
+            .waitUntilFinished(-200);
     if (!targetsMissed.has(target.id)) {
+        sequence // impact/stabilize
+            .canvasPan()
+                .shake({
+                duration: 250,
+                fadeInDuration: 100,
+                //fadeOutDuration: 100,
+                strength: 6, // increase strength with each iteration.
+                frequency: 15,
+                rotation: false,
+            })
+            .canvasPan()
+                .shake({
+                duration: 1500,
+                fadeInDuration: 200,
+                fadeOutDuration: 1300,
+                strength: 4, // increase strength with each iteration.
+                frequency: 2,
+                rotation: false,
+            })
+            .delay(200);
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Stabilize.ogg")
@@ -50,7 +78,7 @@ for (const target of targetTokens) {
                 .file("jb2a.healing_generic.400px.green")
                 .atLocation(target, targetHeightOffset)
                 .scaleToObject(2.1)
-                .isometric({ overlay: true })
+                .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
                 .delay(200)
                 .xray()
                 .aboveInterface()

@@ -18,6 +18,16 @@ const targetHeightOffset = game.modules
 
 let sequence = new Sequence()
 
+    .canvasPan() // rising weak high speed shake for background
+        .shake({
+        duration: 3500,
+        fadeInDuration: 3000,
+        fadeOutDuration: 500,
+        strength: 7,
+        frequency: 4,
+        rotation: false,
+    })
+    .delay(200) // line up to start of beam
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/DisplacerFire.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
@@ -48,7 +58,8 @@ sequence
         .xray()
         .aboveInterface()
         .atLocation(target, targetHeightOffset)
-        .isometric({ overlay: true })
+        .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+        .randomSpriteRotation()
         .waitUntilFinished(-1000);
 
 sequence.play();

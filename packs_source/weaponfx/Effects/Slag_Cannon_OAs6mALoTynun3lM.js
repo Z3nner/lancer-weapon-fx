@@ -5,21 +5,20 @@ const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffs
 
 const target = game.modules.get("lancer-weapon-fx").api.getTargetLocationsFromTokenGroup(targetTokens, 1)[0];
 
-// get the average document.elevation of the targetTokens
-// this is used to calculate the height of the effect
-const averageElevation = targetTokens.reduce((sum, token) => sum + token.document.elevation, 0) / targetTokens.length;
-
 // get the average tokenheightoffset.x of the targetTokens
 // use the tokenHeightOffset macro to get the height offset of the target tokens
 // this is used to calculate the height of the effect
 const targetHeightOffsets = await Promise.all(
-    targetTokens.map(token => game.macros.getName("tokenHeightOffset").execute({ targetToken: token })),
+    targetTokens.map(token => game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: token })),
 );
 const averageTokenHeightOffset =
     targetHeightOffsets.reduce((sum, offset) => sum + offset.offset.x, 0) / targetHeightOffsets.length;
 
-target.x += averageTokenHeightOffset * canvas.scene.grid.size;
-target.y -= averageTokenHeightOffset * canvas.scene.grid.size;
+// if we're isometric, add offset to the target height so it looks like the effect is targeting the average elevation
+if (game.modules.get("lancer-weapon-fx").api.isIsometric()) {
+    target.x += averageTokenHeightOffset * canvas.scene.grid.size;
+    target.y -= averageTokenHeightOffset * canvas.scene.grid.size;
+}
 
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/RetortLoop.ogg",
@@ -34,6 +33,40 @@ sequence
         .file("modules/lancer-weapon-fx/soundfx/RetortLoop.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
+    // SPRAY
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 300,
+            fadeOutDuration: 250,
+            fadeInDuration: 50,
+            strength: 10,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 5067,
+            fadeOutDuration: 2500,
+            fadeInDuration: 500,
+            strength: 4,
+            frequency: 10,
+            rotation: false,
+        }),
+    )
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 300,
+            fadeOutDuration: 200,
+            fadeInDuration: 50,
+            strength: 10,
+            frequency: 15,
+            rotation: false,
+        }),
+    )
     .effect()
         .file("jb2a.breath_weapons02.burst.line")
         .atLocation(sourceToken, heightOffset)
@@ -48,14 +81,12 @@ sequence
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
-    let targetHeightOffsetFloorRand = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            tokenHeightPercent: 0.0,
-            randomOffset: 2,
-            missed: targetsMissed.has(target.id),
-        });
+    let targetHeightOffsetFloorRand = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        tokenHeightPercent: 0.0,
+        randomOffset: 2,
+        missed: targetsMissed.has(target.id),
+    });
 
     if (!targetsMissed.has(target.id)) {
         sequence

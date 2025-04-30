@@ -18,13 +18,26 @@ for (const target of targetTokens) {
         .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id) });
     const moveTowardsOffset = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, missed: targetsMissed.has(target.id), moveTowards: true });
+        .api.getTokenHeightOffset({
+            targetToken: target,
+            missed: targetsMissed.has(target.id),
+            useAbsoluteCoords: true,
+        });
 
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Autopod_Fire.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
-    sequence
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 200,
+                fadeOutDuration: 200,
+                strength: 4,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
         .effect()
             .file("jb2a.template_circle.vortex.loop.blue")
             .endTime(4700)
@@ -35,14 +48,27 @@ for (const target of targetTokens) {
             .xray()
             .moveTowards(moveTowardsOffset)
             .waitUntilFinished();
-    sequence.sound().file("modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg").volume(0.7);
     sequence
+        .sound()
+            .file("modules/lancer-weapon-fx/soundfx/Autopod_Impact.ogg")
+            .volume(0.7)
+        .canvasPan()
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 200,
+                fadeOutDuration: 200,
+                strength: 6,
+                frequency: 25,
+                rotation: false,
+            }),
+        )
         .effect()
             .file("jb2a.impact.yellow.1")
             .scale(0.6)
             .aboveInterface()
-            .isometric({ overlay: true })
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
             .xray()
+            .randomSpriteRotation()
             .atLocation(target, targetHeightOffset);
 }
 sequence.play();

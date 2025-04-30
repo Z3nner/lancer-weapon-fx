@@ -20,24 +20,18 @@ for (let i = 0; i < targetTokens.length; i++) {
 
     let targetOffset = game.modules
         .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({ targetToken: target, sprayOffset: true, missed: targetsMissed.has(target.id) });
+        .api.getTokenHeightOffset({ targetToken: target, sprayOffset: 0.3, missed: targetsMissed.has(target.id) });
 
     const randomDelay = Sequencer.Helpers.random_float_between(300, 400);
     let randomShots = Sequencer.Helpers.random_int_between(2, 4);
 
     for (let j = 0; j < randomShots; j++) {
-        const targetOffsetX = (Math.random() < 0.5 ? -1 : 1) * Math.random() * halfTargetTokenHeight * 0.3;
-        const targetOffsetY = (Math.random() < 0.5 ? -1 : 1) * Math.random() * halfTargetTokenHeight * 0.3;
+        const targetHeightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+            targetToken: target,
+            sprayOffset: true,
+            missed: targetsMissed.has(target.id),
+        });
 
-        let shotOffset = targetsMissed.has(target.id)
-            ? { gridUnits: true }
-            : {
-                  "offset": {
-                      x: targetOffset.offset.x + halfTargetTokenHeight + targetOffsetX,
-                      y: -halfTargetTokenHeight + targetOffset.offset.y + targetOffsetY,
-                  },
-                  gridUnits: true,
-              };
         // SHOT
         sequence
             .canvasPan()
@@ -58,7 +52,7 @@ for (let i = 0; i < targetTokens.length; i++) {
             .effect()
                 .file("jb2a.lasershot.green")
                 .atLocation(sourceToken, heightOffset)
-                .stretchTo(target, shotOffset)
+                .stretchTo(target, targetHeightOffset)
                 .scale(tokenHeight)
                 .missed(targetsMissed.has(target.id))
                 .waitUntilFinished(-700);
@@ -78,7 +72,7 @@ for (let i = 0; i < targetTokens.length; i++) {
             .effect()
                 .file("jb2a.impact.004.blue")
                 .playIf(!targetsMissed.has(target.id))
-                .atLocation(target, shotOffset)
+                .atLocation(target, targetHeightOffset)
                 .tint("#1aff34")
                 .scale(tokenHeight / 1.5)
                 .delay(300)
