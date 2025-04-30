@@ -124,20 +124,12 @@ export default class TokenHeightOffset {
         // if sprayOffset is a number, use that as number for the spray's random offset
         const randomSprayOffset = typeof sprayOffset === "number" ? sprayOffset : 0.5;
 
-        console.log("sprayOffset", randomSprayOffset);
-        console.log("tokenHeightOffset", tokenHeightOffset);
-
         // need to add an additional height offset in iso because when
         // displayed in iso the spray offset is squished
         let randomHeightOffset = isIsometric ? (Math.random() < 0.5 ? -0.5 : 1) * Math.random() * randomSprayOffset : 0;
 
-        console.log("randomHeightOffset", randomHeightOffset);
-
         const targetOffsetX = (Math.random() < 0.5 ? -1 : 1) * Math.random() * ((tokenHeight / 2) * randomSprayOffset);
         const targetOffsetY = (Math.random() < 0.5 ? -1 : 1) * Math.random() * ((tokenHeight / 2) * randomSprayOffset);
-
-        console.log("targetOffsetX", targetOffsetX);
-        console.log("targetOffsetY", targetOffsetY);
 
         heightOffset.offset.x += randomHeightOffset + targetOffsetX;
         heightOffset.offset.y -= randomHeightOffset - targetOffsetY;
