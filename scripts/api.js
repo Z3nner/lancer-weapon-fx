@@ -52,7 +52,7 @@ class ModuleApi {
         const isIsometric = tokenHeightOffset.isIsometric();
 
         if (isIsometric) {
-            return {overlay: true};
+            return { overlay: true };
         }
         return {};
     }
@@ -64,18 +64,6 @@ class ModuleApi {
         shakeObject.frequency = Math.round(shakeObject.frequency * this.getScreenshakeIntensity());
 
         return shakeObject;
-    }
-
-    static getScreenshakeEnabled() {
-        // Check if screenshake is enabled in the settings or if the intensity is 0
-        if (
-            !game.settings.get(MODULE_ID, SETTING_SCREENSHAKE) ||
-            game.settings.get(MODULE_ID, SETTING_SCREENSHAKE_INTENSITY) === 0
-        ) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     static getScreenshakeIntensity() {

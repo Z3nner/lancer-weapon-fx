@@ -23,15 +23,6 @@ export const bindHooks = () => {
             default: 1.0,
         });
 
-        game.settings.register(MODULE_ID, SETTING_SCREENSHAKE, {
-            name: "lancer-weapon-fx.Enable Screenshake",
-            hint: "lancer-weapon-fx.Enable Screenshake Hint",
-            scope: "world",
-            config: true,
-            type: Boolean,
-            default: true,
-        });
-
         game.settings.register(MODULE_ID, SETTING_SCREENSHAKE_INTENSITY, {
             name: "lancer-weapon-fx.Screenshake Intensity",
             hint: "lancer-weapon-fx.Screenshake Intensity Hint",
