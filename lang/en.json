@@ -2,6 +2,8 @@
     "lancer-weapon-fx": {
         "Sound Volume": "Sound Volume",
         "Sound Volume Hint": "Set a base volume level for all sound effects. Note that for each user, this value is combined with the user's \"Global: Interface\" volume setting (see the \"Playlists\" sidebar tab) to produce their final volume level.",
+        "Screenshake Intensity": "Screenshake Intensity",
+        "Screenshake Intensity Hint": "Raise or lower the intensity of the screenshake effect. Lowering this value may help some users who find the effect uncomfortable. Lowing to 0 will disable the effect.",
         "Play Default Gear Effects": "Play Default Gear Effects",
         "Play Default Gear Effects Hint": "Play default effects (those included in the module) for gear (weapons, systems, etc.).",
         "Play Default Wear and Tear Effects": "Play Default Wear and Tear Effects",
