@@ -289,6 +289,9 @@ export const EFFECTS_GEAR = {
     "npc-rebake_npcf_nova_missiles_ultra": "Missiles",
     "npc-rebake_npcf_ravager_turret_ultra": "HMG",
     "npc-rebake_npcf_wraith_nexus_ultra": "Nexus",
+    "nrfaw-npc-rebake_npcf_judgement_shotgun_avenger": "Shotgun",
+    "nrfaw-npc-rebake_npcf_scouring_whip_lurker": "Nanobot Whip",
+    "nrfaw-npc-rebake_npcf_slug_pistol_avenger": "Pistol",
 
     //HEURISTICS
     "lwfx_heuristic_melee": "DefaultMelee",
