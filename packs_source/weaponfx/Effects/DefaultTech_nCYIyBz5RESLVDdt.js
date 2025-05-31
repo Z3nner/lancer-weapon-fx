@@ -1,5 +1,10 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
+// the calculated height of the token (including scaling & elevation)
+const heightOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: sourceToken, tokenHeightPercent: 0.0 });
+
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/TechPrepare.ogg",
     "jb2a.extras.tmfx.outpulse.circle.02.normal",
@@ -10,34 +15,70 @@ await Sequencer.Preloader.preloadForClients([
     "jb2a.static_electricity.03.blue",
 ]);
 
-targetTokens.forEach(target => {
-    let sequence = new Sequence()
+targetTokens.forEach(async target => {
+    let sequence = new Sequence();
 
+    const targetHeightOffsetFloor = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        tokenHeightPercent: 0.0,
+        missed: targetsMissed.has(target.id),
+    });
+    const targetHeightOffsetRand = game.modules
+        .get("lancer-weapon-fx")
+        .api.getTokenHeightOffset({ targetToken: target, randomOffset: 0.7, missed: targetsMissed.has(target.id) });
+
+    for (let j = 0; j < 2; j++) {
+        sequence
+            .canvasPan()
+                .shake({
+                duration: 100,
+                fadeInDuration: 30,
+                fadeOutDuration: 60,
+                strength: 6, // increase strength with each iteration.
+                frequency: 15,
+                rotation: false,
+            })
+            .delay(100 + j * 150);
+    }
+    sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/TechPrepare.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
-
         .effect()
             .file("jb2a.extras.tmfx.outpulse.circle.02.normal")
             .scaleToObject(2.5)
             .filter("Glow", { color: 0x36c11a })
             .playbackRate(1.3)
-            .atLocation(sourceToken)
+            .atLocation(sourceToken, heightOffset)
             .waitUntilFinished(-400)
+            .belowTokens()
+            .xray()
 
+        .canvasPan() // effect on target shake
+            .shake(
+            game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                duration: 700,
+                fadeOutDuration: 150,
+                fadeInDuration: 250,
+                strength: 7,
+                frequency: 20,
+                rotation: false,
+            }),
+        )
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/TechWarn.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
-
         .effect()
             .file("jb2a.extras.tmfx.inpulse.circle.02.normal")
             .scaleToObject()
             .repeats(3, 75)
             .playbackRate(1.5)
-            .atLocation(target, { randomOffset: 0.7, gridUnits: true })
+            .atLocation(target, targetHeightOffsetRand)
             .filter("Glow", { color: 0x36c11a })
             .missed(targetsMissed.has(target.id))
-            .waitUntilFinished();
+            .waitUntilFinished()
+            .aboveInterface()
+            .xray();
 
     sequence
         .sound()
@@ -50,13 +91,17 @@ targetTokens.forEach(target => {
             .scale(0.4)
             .fadeOut(3800, { ease: "easeOutBack" })
             .belowTokens()
-            .atLocation(target)
+            .xray()
+            .atLocation(target, targetHeightOffsetFloor)
             .waitUntilFinished(-2200)
         .effect()
             .file("jb2a.static_electricity.03.blue")
             .scaleToObject(1.1)
-            .atLocation(target)
-            .playIf(!targetsMissed.has(target.id));
+            .atLocation(target, targetHeightOffsetRand)
+            .repeats(3, 200)
+            .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
+            .playIf(!targetsMissed.has(target.id))
+            .xray();
 
     sequence.play();
 });
