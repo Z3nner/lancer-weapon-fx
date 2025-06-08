@@ -66,12 +66,22 @@ export default class TokenHeightOffset {
             return;
         }
 
+        if (this.isSequencerVersionAtLeast(3, 5, 4)) {
+            // If Sequencer version is 3.5.4 or higher, use the new token height percent setting
+            // invalidate any tokenHeightPercent over 0.5, and stop it from going negative
+            //if (tokenHeightPercent > 0) {
+            tokenHeightPercent = tokenHeightPercent - 0.5;
+            //}
+            console.log(tokenHeightPercent);
+            ignoreElevation = true;
+        }
+
         // get the token half height location
         const tokenHeight = targetToken.verticalHeight;
         // Calculate token elevation and height based on conditions
         // For non-isometric maps or when configured to ignore elevation, we don't apply height/elevation offsets
-        const tokenElevation = !isIsometric || ignoreElevation ? 0 : targetToken.document.elevation;
-        const halfTokenHeight = tokenHeight * tokenHeightPercent;
+        let tokenElevation = !isIsometric || ignoreElevation ? 0 : targetToken.document.elevation;
+        let halfTokenHeight = tokenHeight * tokenHeightPercent;
         const tokenHeightOffset = !isIsometric || missed ? 0 : halfTokenHeight;
 
         // build the dict!!
@@ -202,5 +212,32 @@ export default class TokenHeightOffset {
 
         // If no isometric modules are enabled, return false
         return false;
+    }
+
+    static getSequencerVersion() {
+        // Check if the Sequencer module is active
+        if (!game.modules.get("sequencer")?.active) {
+            return null;
+        }
+
+        // Get the Sequencer version from the module metadata
+        const sequencerModule = game.modules.get("sequencer");
+        return sequencerModule.version || null;
+    }
+
+    static isSequencerVersionAtLeast(major, minor = 0, patch = 0) {
+        // Get the Sequencer version
+        const version = this.getSequencerVersion();
+        if (!version) return false;
+
+        // Split the version string into components
+        const [vMajor, vMinor, vPatch] = version.split(".").map(Number);
+
+        // Compare the version components
+        return (
+            vMajor > major ||
+            (vMajor === major && vMinor > minor) ||
+            (vMajor === major && vMinor === minor && vPatch >= patch)
+        );
     }
 }
