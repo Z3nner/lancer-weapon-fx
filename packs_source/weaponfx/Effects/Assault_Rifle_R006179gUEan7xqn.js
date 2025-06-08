@@ -6,7 +6,7 @@ const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffs
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/AR_Fire.ogg",
     "jb2a.bullet.01.orange",
-    "emily3k.sfx.artillery.reload",
+    "modules/lancer-weapon-fx/soundfx/WeaponClick.ogg",
 ]);
 
 let sequence = new Sequence();
@@ -21,14 +21,12 @@ sequence
 for (let i = 0; i < targetTokens.length; i++) {
     let target = targetTokens[i];
 
-    const targetOffset = game.modules
-        .get("lancer-weapon-fx")
-        .api.getTokenHeightOffset({
-            targetToken: target,
-            sprayOffset: 0.3,
-            randomOffset: 0.4,
-            missed: targetsMissed.has(target.id),
-        });
+    const targetOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({
+        targetToken: target,
+        sprayOffset: 0.3,
+        randomOffset: 0.4,
+        missed: targetsMissed.has(target.id),
+    });
 
     // 3 shots
     const shots = 4;
