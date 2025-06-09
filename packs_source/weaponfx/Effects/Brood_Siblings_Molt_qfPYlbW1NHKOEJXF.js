@@ -52,7 +52,7 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
         sequence
             .effect()
                 .file("jb2a.impact.002.blue")

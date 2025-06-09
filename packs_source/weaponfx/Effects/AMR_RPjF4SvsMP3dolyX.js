@@ -28,11 +28,11 @@ for (const target of targetTokens) {
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/WeaponClick.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .waitUntilFinished(200)
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
             .file("jb2a.bullet.Snipe.blue")
@@ -57,7 +57,7 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
                 .delay(75);
         sequence
             .effect()

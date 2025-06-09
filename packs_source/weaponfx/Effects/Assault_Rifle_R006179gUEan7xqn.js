@@ -15,7 +15,7 @@ let sequence = new Sequence();
 sequence
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/WeaponClick.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(200);
 
 for (let i = 0; i < targetTokens.length; i++) {
@@ -34,7 +34,7 @@ for (let i = 0; i < targetTokens.length; i++) {
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/AR_Fire.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     // loop through the repeat count and increase the delay each time
     for (let j = 0; j < shots; j++) {
         sequence

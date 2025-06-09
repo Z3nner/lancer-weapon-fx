@@ -19,7 +19,7 @@ for (const target of targetTokens) {
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/PPC2.ogg")
             .delay(400)
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence.canvasPan().shake(
         game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
             duration: 400,

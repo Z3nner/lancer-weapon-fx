@@ -50,7 +50,7 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/HammerImpact.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.9));
         sequence
             .canvasPan() // IMPACT SHAKE
                 .shake(

@@ -21,7 +21,7 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence()
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
         .file("jb2a.bullet.Snipe.blue")
         .tint("#9d9595")
@@ -55,7 +55,7 @@ if (!targetsMissed.has(target.id)) {
             .aboveInterface()
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 }
 
 sequence.play();

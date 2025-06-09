@@ -36,7 +36,7 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .canvasPan()
                 .shake(
                 game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
@@ -62,7 +62,7 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.2));
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     }
 }
 sequence.play();

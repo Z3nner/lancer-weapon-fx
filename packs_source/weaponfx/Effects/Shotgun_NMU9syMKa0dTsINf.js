@@ -31,12 +31,12 @@ let sequence = new Sequence();
 sequence
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_cycle.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(-1200);
 sequence
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .canvasPan()
         .shake(
         game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
@@ -93,7 +93,7 @@ for (const target of targetTokens) {
         .delay(950)
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/shotgun_impact.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.6))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .playIf(!targetsMissed.has(target.id))
             .delay(800);
 }

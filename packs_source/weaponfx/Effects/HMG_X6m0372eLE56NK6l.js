@@ -23,7 +23,7 @@ for (let i = 0; i < targetTokens.length; i++) {
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/AssaultCannonFire.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     for (let j = 0; j < 8; j++) {
         sequence
             .canvasPan()

@@ -66,7 +66,7 @@ let sequence = new Sequence()
     )
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .waitUntilFinished(-500);
 
 sequence
@@ -99,11 +99,11 @@ sequence
     .delay(200)
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/AMR_Fire.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
 
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/AMR_Impact.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 
 sequence = await repeatImpactAnimationForEachTarget(sequence, targetTokens);
 

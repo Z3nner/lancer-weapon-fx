@@ -26,7 +26,7 @@ for (const target of targetTokens) {
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/CPR_Fire.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .repeats(randomShots, random);
     for (let j = 0; j < randomShots; j++) {
         sequence
@@ -72,7 +72,7 @@ for (const target of targetTokens) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/CPR_Impact.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
                 .repeats(randomShots, random)
                 .waitUntilFinished();
     }

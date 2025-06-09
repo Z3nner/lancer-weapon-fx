@@ -61,7 +61,7 @@ sequence
     )
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Mortar_Launch.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
         .file("jb2a.smoke.puff.side.02.white")
         .atLocation(sourceToken, heightOffset)
@@ -110,7 +110,7 @@ sequence
 sequence
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/Mortar_Impact.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 
 sequence = await repeatImpactAnimationForEachTarget(sequence, targetTokens);
 

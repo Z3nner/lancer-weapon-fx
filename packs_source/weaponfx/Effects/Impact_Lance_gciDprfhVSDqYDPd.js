@@ -20,7 +20,7 @@ for (const target of targetTokens) {
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Annihilator_Charge.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
             .file("jb2a.disintegrate.green")

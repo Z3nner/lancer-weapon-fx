@@ -26,11 +26,11 @@ for (let i = 0; i < targetTokens.length; i++) {
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Launch.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
             .timeRange(700, 2000);
     if (!targetsMissed.has(target.id)) {
         sequence
@@ -63,7 +63,7 @@ for (let i = 0; i < targetTokens.length; i++) {
         sequence
             .sound()
                 .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
-                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1))
+                .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
                 .waitUntilFinished(-8500);
     } else {
         // calculate a random offset for the target, it should always clear the token's radius

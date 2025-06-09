@@ -22,7 +22,7 @@ for (const target of targetTokens) {
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/shotgun_fire.ogg")
             .delay(200)
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .canvasPan()
             .shake(
@@ -51,7 +51,7 @@ for (const target of targetTokens) {
             .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
             .playIf(!targetsMissed.has(target.id))
             .delay(50)
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1))
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .canvasPan()
             .playIf(!targetsMissed.has(target.id))
             .shake({

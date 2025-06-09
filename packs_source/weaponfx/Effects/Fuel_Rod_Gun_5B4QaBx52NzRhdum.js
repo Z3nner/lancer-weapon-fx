@@ -75,7 +75,7 @@ let sequence = new Sequence()
     )
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/APR2_Fire.ogg")
-        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.8))
+        .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
     .effect()
         .file("jb2a.lasershot.green")
         .atLocation(sourceToken, heightOffset)
@@ -119,7 +119,7 @@ if (!targetsMissed.has(target.id)) {
             .tint("#43b918")
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/APR2_Impact.ogg")
-            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(1));
+            .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 }
 
 sequence.play({ preload: true });
