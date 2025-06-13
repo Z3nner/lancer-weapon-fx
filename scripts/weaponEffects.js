@@ -194,6 +194,7 @@ export const EFFECTS_GEAR = {
     "nrfaw-npc_npcf_skirmisher_kit_explosive_rifle_strider": "Bolt Thrower",
     "nrfaw-npc_npcf_slug_pistol_avenger": "Pistol",
 
+
     //SOLSTICE RAIN
     "mw_xc_br_battle_rifle": "BattleRifle",
     "mw_xc_dpm_predator_nexus": "Nexus",
@@ -292,6 +293,9 @@ export const EFFECTS_GEAR = {
     "nrfaw-npc-rebake_npcf_judgement_shotgun_avenger": "Shotgun",
     "nrfaw-npc-rebake_npcf_scouring_whip_lurker": "Nanobot Whip",
     "nrfaw-npc-rebake_npcf_slug_pistol_avenger": "Pistol",
+    "nrfaw-npc-rebake_npcf_marksman_kit_ranger_long_rifle_strider": "AMR",
+    "nrfaw-npc-rebake_npcf_skirmisher_kit_explosive_carbine_strider": "Bolt Thrower",
+    "nrfaw-npc-rebake_npcf_survival_knife_strider": "DefaultMelee",
 
     //HEURISTICS
     "lwfx_heuristic_melee": "DefaultMelee",
