@@ -16,6 +16,13 @@ export const EFFECTS_WEAR_AND_TEAR = {
     "lwfx_structure_direct_hit_2": "Direct Hit 2",
     "lwfx_structure_direct_hit_1": "Direct Hit 1",
     "lwfx_structure_crushing_hit": "Crushing Hit",
+    "lwfx_monstrosity_fatal": "Monstrosity Fatal Hit",
+    "lwfx_monstrosity_direct_hit_3": "Monstrosity Direct Hit 2",
+    "lwfx_monstrosity_direct_hit_2": "Monstrosity Direct Hit 2",
+    "lwfx_monstrosity_direct_hit_1": "Monstrosity Direct Hit 1",
+    "lwfx_monstrosity_dismember": "Monstrosity Dismemberment",
+    "lwfx_monstrosity_powerful_hit": "Monstrosity Powerful Hit",
+    "lwfx_monstrosity_glancing_hit": "Monstrosity Glancing Hit",
 };
 
 export const EFFECTS_GEAR = {

@@ -92,20 +92,37 @@ const fallbackActionIdentifier_BasicAttackFlow = flow => {
  *  - https://docs.google.com/document/d/1unN3HDDeAK3pN1rmgFgZgAXp5flnQ9-KMu-TXt34tnU/edit
  */
 const fallbackActionIdentifier_StructureFlow = flow => {
+    // Helper to check if an actor is a Monstrosity by looking for the Unique Physiology trait
+    function hasUniquePhysiology(actor) {
+        return actor.is_npc() && actor.itemTypes.npc_feature.some(i => i.system.lid === "npcf_unique_physiology_monstrosity");
+    }
+
+    if (hasUniquePhysiology) {
+        switch (flow.state.data.title) {
+            case game.i18n.localize("lancer.tables.structureMonstrosity.title.fatal"):
+                return "lwfx_monstrosity_fatal";
+            case game.i18n.localize("lancer.tables.structureMonstrosity.title.direct"):
+                return `lwfx_monstrosity_direct_hit_${Math.clamped(flow.state.data.remStruct, 1, 3)}`;
+            case game.i18n.localize("lancer.tables.structureMonstrosity.title.dismember"):
+                return "lwfx_monstrosity_dismember";
+            case game.i18n.localize("lancer.tables.structureMonstrosity.title.powerful"):
+                return "lwfx_monstrosity_powerful_hit";
+            case game.i18n.localize("lancer.tables.structureMonstrosity.title.glancing"):
+                return "lwfx_monstrosity_glancing_hit";
+        }
+        return "lwfx_monstrosity_structure";
+    }
     switch (flow.state.data.title) {
-        case "Crushing Hit":
+        case game.i18n.localize("lancer.tables.structure.title.crushing"):
         case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.crushingHit"):
             return "lwfx_structure_crushing_hit";
-
-        case "Direct Hit":
+        case game.i18n.localize("lancer.tables.structure.title.direct"):
         case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.directHit"):
             return `lwfx_structure_direct_hit_${Math.clamped(flow.state.data.remStruct, 1, 3)}`;
-
-        case "System Trauma":
+        case game.i18n.localize("lancer.tables.structure.title.trauma"):
         case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.systemTrauma"):
             return "lwfx_structure_system_trauma";
-
-        case "Glancing Blow":
+        case game.i18n.localize("lancer.tables.structure.title.glancing"):
         case game.i18n.localize("LANCER-ALT-STRUCTURE.StructureTitles.glancingBlow"):
             return "lwfx_structure_glancing_blow";
     }
