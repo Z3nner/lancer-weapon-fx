@@ -16,7 +16,7 @@
     "version": "2.0.1",
     "compatibility": {
         "minimum": 11,
-        "verified": "12.328"
+        "verified": "12.343"
     },
     "url": "https://github.com/Z3nner/lancer-weapon-fx",
     "manifest": "https://github.com/Z3nner/lancer-weapon-fx/releases/latest/download/module.json",
@@ -59,7 +59,7 @@
         }
     ],
     "esmodules": [
-        "./scripts/WeaponFX.js"
+        "./WeaponFX.bundle.js"
     ],
     "styles": [
         "./css/effects-manager.css",
@@ -73,5 +73,12 @@
             "module": "lancer-weapon-fx",
             "type": "Macro"
         }
-    ]
+    ],
+    "socket": true,
+    "flags": {
+        "hotReload": {
+            "extensions": ["css", "hbs"],
+            "paths": ["css", "templates"]
+        }
+    }
 }

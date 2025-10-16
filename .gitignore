@@ -1,9 +1,16 @@
 # IDE files
 ## IntelliJ
 .idea
+.vs
 
 # Node.js
 node_modules/
 
 # Compiled compendiums
 packs/
+
+# Build config
+foundryconfig.json
+
+# Build output
+dist/
