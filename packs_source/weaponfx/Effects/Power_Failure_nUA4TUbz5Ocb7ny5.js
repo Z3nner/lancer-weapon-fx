@@ -1,10 +1,10 @@
 const { sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
-const pivotx = token.document.flags["hex-size-support"]?.pivotx || 0;
-const ipivotx = -pivotx;
-
-const pivoty = token.document.flags["hex-size-support"]?.pivoty || 0;
-const ipivoty = -pivoty;
+// the calculated height of the token (including scaling & elevation)
+const heightOffset = game.modules.get("lancer-weapon-fx").api.getTokenHeightOffset({ targetToken: sourceToken });
+const attachOffset = game.modules
+    .get("lancer-weapon-fx")
+    .api.getTokenHeightOffset({ targetToken: sourceToken, ignoreElevation: true });
 
 await Sequencer.Preloader.preloadForClients([
     "modules/lancer-weapon-fx/soundfx/dramaticSparkles.ogg",
@@ -16,7 +16,18 @@ await Sequencer.Preloader.preloadForClients([
 ]);
 
 new Sequence()
-
+    // rising shake
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 5000,
+            fadeInDuration: 2000,
+            fadeOutDuration: 1000,
+            strength: 3,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/dramaticSparkles.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.2))
@@ -26,12 +37,14 @@ new Sequence()
         .repeats(3, 1000)
     .effect()
         .file("jb2a.moonbeam.01.loop")
-        .attachTo(sourceToken, { offset: { x: ipivotx, y: ipivoty } })
+        .attachTo(sourceToken, attachOffset)
         .tint("#f9a353")
         .scaleToObject(2.3)
         .fadeIn(2000)
         .fadeOut(1000)
         .playbackRate(0.7)
+        .randomSpriteRotation()
+        .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
         .opacity(0.4)
         .mask(sourceToken)
     .effect()
@@ -42,21 +55,24 @@ new Sequence()
         .scale(0.09)
         .filter("Glow", { distance: 2, color: 0x000000 })
         .aboveInterface()
+        .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
         .duration(5000)
         .fadeIn(400)
         .fadeOut(800, { delay: -1200 })
         .waitUntilFinished(-2500)
     .effect()
         .file("jb2a.static_electricity.03")
-        .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } })
+        .atLocation(sourceToken, heightOffset)
         .scaleToObject(1)
         .opacity(0.8)
         .repeats(3, 400)
+        .randomRotation()
+        .isometric(game.modules.get("lancer-weapon-fx").api.isometricEffectFlag())
         .delay(500)
         .mask(sourceToken)
     .effect()
         .file("jb2a.smoke.plumes.01.grey")
-        .atLocation(sourceToken, { offset: { x: ipivotx, y: ipivoty } })
+        .atLocation(sourceToken, heightOffset)
         .opacity(0.34)
         .tint(0x33ddff)
         .filter("Glow", { color: 0x00a1e6 })

@@ -39,7 +39,19 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
                     .file("jb2a.chain_lightning.secondary.blue")
                     .atLocation(farthest)
                     .stretchTo(t, { randomOffset: 0.5 })
-                    .delay(800);
+                    .delay(800)
+                .canvasPan()
+                    .shake(
+                    game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+                        duration: 300,
+                        fadeInDuration: 50,
+                        fadeOutDuration: 150,
+                        strength: 12,
+                        frequency: 25,
+                        rotation: false,
+                    }),
+                )
+                .delay(800);
         }
     });
     return sequence;
@@ -56,6 +68,18 @@ await Sequencer.Preloader.preloadForClients([
 let sequence = new Sequence();
 
 sequence
+    .canvasPan()
+        .shake(
+        game.modules.get("lancer-weapon-fx").api.calculateScreenshake({
+            duration: 300,
+            fadeInDuration: 150,
+            fadeOutDuration: 50,
+            strength: 10,
+            frequency: 25,
+            rotation: false,
+        }),
+    )
+    .delay(800)
     .sound()
         .file("modules/lancer-weapon-fx/soundfx/ArcBowFire.ogg")
         .delay(800)
