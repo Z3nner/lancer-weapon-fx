@@ -16,6 +16,16 @@ export const EFFECTS_WEAR_AND_TEAR = {
     "lwfx_structure_direct_hit_2": "Direct Hit 2",
     "lwfx_structure_direct_hit_1": "Direct Hit 1",
     "lwfx_structure_crushing_hit": "Crushing Hit",
+
+    // Monstrosity "UNIQUE PHYSIOLOGY" table
+    // TODO(Future) implement!
+    // "lwfx_monstrosity_fatal": "Monstrosity Fatal Hit",
+    // "lwfx_monstrosity_direct_hit_3": "Monstrosity Direct Hit 2",
+    // "lwfx_monstrosity_direct_hit_2": "Monstrosity Direct Hit 2",
+    // "lwfx_monstrosity_direct_hit_1": "Monstrosity Direct Hit 1",
+    // "lwfx_monstrosity_dismember": "Monstrosity Dismemberment",
+    // "lwfx_monstrosity_powerful_hit": "Monstrosity Powerful Hit",
+    // "lwfx_monstrosity_glancing_hit": "Monstrosity Glancing Hit",
 };
 
 export const EFFECTS_GEAR = {
@@ -193,7 +203,6 @@ export const EFFECTS_GEAR = {
     "nrfaw-npc_npcf_siege_kit_shoulder_mortar_strider": "Mortar",
     "nrfaw-npc_npcf_skirmisher_kit_explosive_rifle_strider": "Bolt Thrower",
     "nrfaw-npc_npcf_slug_pistol_avenger": "Pistol",
-
 
     //SOLSTICE RAIN
     "mw_xc_br_battle_rifle": "BattleRifle",
