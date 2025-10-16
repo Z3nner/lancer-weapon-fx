@@ -6,12 +6,20 @@
 
 This repository uses Node.js to provide tooling. Download and install the [latest runtime](https://nodejs.org/en).
 
+Then, copy `example.foundryconfig.json` to `foundryconfig.json` and edit the `"path"` to point to your Foundry `Data` folder (the folder which contains `modules/`, `systems/`, and `worlds/`).
+
 Then, run the following:
 
 ```bash
 npm clean-install
 npm run build
 ```
+
+This will watch for file changes in the project, and copy them to your Foundry data folder. For CSS and Handlebars files, Foundry's "hot reload" is used, so your changes will be applied without refreshing. 
+
+Press `CTRL+C` to quit.
+
+⚠️ This module includes compendiums, which are locked when a world is active. Return to Foundry's `/setup` page before running `npm run build`. ⚠️
 
 ### Creating and Editing Macros
 

@@ -32,8 +32,10 @@ jobs:
     - name: Create Zip
       run: |
         npm ci
-        npm run build
-        zip -r ./module.zip module.json advisories/ icons/ lang/ packs/ scripts/ sprites/ soundfx/ video/ templates/ css/ tours/
+        npm run release
+        pushd dist/lancer-weapon-fx
+        zip -r ../../module.zip .
+        popd
 
     # Create a release for this specific version
     - name: Update Release with Files
