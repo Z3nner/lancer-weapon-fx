@@ -12,6 +12,8 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.divine_smite.target.blueyellow")
             .scale(0.9)
             .tint("#066605")
@@ -35,6 +37,8 @@ for (const target of targetTokens) {
                 .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
         sequence
             .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                 .file("jb2a.impact.blue")
                 .scale(0.5)
                 .tint("#066605")

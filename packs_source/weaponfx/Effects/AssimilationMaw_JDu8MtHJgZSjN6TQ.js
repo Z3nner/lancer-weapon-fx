@@ -16,6 +16,8 @@ for (const target of targetTokens) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bite")
             .atLocation(target)
             .filter("ColorMatrix", { hue: 270 })
@@ -31,6 +33,8 @@ for (const target of targetTokens) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.divine_smite.caster.blueyellow")
             .playIf(!targetsMissed.has(target.id))
             .playbackRate(2.2)

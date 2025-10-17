@@ -26,6 +26,8 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bullet.Snipe.blue")
             .filter("ColorMatrix", { hue: 60 })
             .filter("Glow", { distance: 3 })

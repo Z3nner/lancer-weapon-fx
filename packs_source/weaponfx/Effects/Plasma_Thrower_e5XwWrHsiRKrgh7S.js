@@ -16,6 +16,8 @@ sequence
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.breath_weapons02.burst.cone.fire.orange.02")
         .atLocation(sourceToken)
         .filter("ColorMatrix", { hue: 270 })
@@ -31,6 +33,8 @@ for (let i = 0; i < targetTokens.length; i++) {
     if (!targetsMissed.has(target.id)) {
         sequence
             .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                 .file("jb2a.flames.02.orange")
                 .filter("ColorMatrix", { hue: 270 })
                 .filter("Glow", { distance: 3, color: 0xe99649, innerStrength: 2 })

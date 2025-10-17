@@ -17,8 +17,10 @@ for (const target of targetTokens) {
             .waitUntilFinished(-3400);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.unarmed_strike.physical.01.blue")
-            .filter("ColorMatrix", { hue: 000, brightness: 0.5 })
+            .filter("ColorMatrix", { hue: 0, brightness: 0.5 })
             .filter("Glow", { distance: 3, color: 0xe99649, innerStrength: 2 })
             .atLocation(sourceToken)
             .playbackRate(0.7)
@@ -30,6 +32,8 @@ for (const target of targetTokens) {
 
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.explosion_side.01.orange")
             .scaleToObject(6)
             .atLocation("impact")
@@ -39,6 +43,8 @@ for (const target of targetTokens) {
             .zIndex(1);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.explosion.side_fracture.flask.01")
             .playIf(!targetsMissed.has(target.id))
             .scaleToObject(3)

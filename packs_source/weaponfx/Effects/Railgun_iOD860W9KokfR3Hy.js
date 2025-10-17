@@ -21,6 +21,8 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
         if (!targetsMissed.has(t.id)) {
             sequence
                 .effect()
+                    .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                    .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                     .file("jb2a.impact.orange.0")
                     .atLocation(t)
                     .rotateTowards(sourceToken)
@@ -48,6 +50,8 @@ let sequence = new Sequence()
 
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.bullet.Snipe.blue")
         .atLocation(sourceToken)
         .stretchTo(target)

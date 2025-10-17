@@ -23,6 +23,8 @@ for (let i = 0; i < targetTokens.length; i++) {
             .timeRange(700, 2000);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.pack_hound_missile")
             .atLocation(sourceToken)
             .stretchTo(target)
@@ -31,6 +33,8 @@ for (let i = 0; i < targetTokens.length; i++) {
             .waitUntilFinished(-3200);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.explosion.01.orange")
             .atLocation(`impact${i}`)
             .scale(0.8)

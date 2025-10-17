@@ -16,6 +16,8 @@ for (const target of targetTokens) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.disintegrate.green")
             .startTime(900)
             .scale(0.86)
@@ -28,7 +30,14 @@ for (const target of targetTokens) {
             .file("modules/lancer-weapon-fx/soundfx/Annihilator.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     if (!targetsMissed.has(target.id)) {
-        sequence.effect().file("jb2a.impact.blue.3").scaleToObject(2).atLocation(target).waitUntilFinished(-400);
+        sequence
+            .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+                .file("jb2a.impact.blue.3")
+                .scaleToObject(2)
+                .atLocation(target)
+                .waitUntilFinished(-400);
     }
 }
 sequence.play();

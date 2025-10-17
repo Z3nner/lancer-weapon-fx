@@ -8,6 +8,10 @@
         "Play Default Wear and Tear Effects Hint": "Play default effects (those included in the module) for wear and tear (Overcharge, Stabilize, Structure and Stress damage, etc.).",
         "Use Weapon Heuristic": "Use Weapon Heuristic",
         "Use Weapon Heuristic Hint": "Use a heuristic to determine a suitable effect to play when using an unknown (homebrew/custom) weapon.",
+        "Ignore Fog of War": "Ignore Fog of War",
+        "Ignore Fog of War Hint": "If enabled, effects will be visible in areas which have been explored, but are not currently visible.",
+        "Ignore Lighting Coloration": "Ignore Lighting Coloration",
+        "Ignore Lighting Coloration Hint": "If enabled, effects will not be affected by lighting coloration.",
         "Debug: Play Miss Animations by Default": "Debug: Play Miss Animations by Default",
 
         "effectManager": {
