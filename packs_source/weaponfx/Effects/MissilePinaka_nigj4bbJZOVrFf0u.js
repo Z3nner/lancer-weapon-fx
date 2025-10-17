@@ -26,6 +26,8 @@ for (const targetPoint of targetPoints) {
             .timeRange(700, 2000);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.throwable.launch.missile")
             .atLocation(sourceToken)
             .stretchTo(targetPoint)
@@ -34,7 +36,21 @@ for (const targetPoint of targetPoints) {
         .sound()
             .file("modules/lancer-weapon-fx/soundfx/Missile_Impact.ogg")
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
-    sequence.effect().file("jb2a.explosion.01.orange").atLocation(targetPoint).scale(1.2).zIndex(2);
-    sequence.effect().file("jb2a.explosion.08.orange").atLocation(targetPoint).scale(1.2).zIndex(1);
+    sequence
+        .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+            .file("jb2a.explosion.01.orange")
+            .atLocation(targetPoint)
+            .scale(1.2)
+            .zIndex(2);
+    sequence
+        .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+            .file("jb2a.explosion.08.orange")
+            .atLocation(targetPoint)
+            .scale(1.2)
+            .zIndex(1);
 }
 sequence.play();

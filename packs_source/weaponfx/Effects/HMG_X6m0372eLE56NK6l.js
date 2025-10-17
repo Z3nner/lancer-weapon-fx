@@ -15,6 +15,8 @@ for (let i = 0; i < targetTokens.length; i++) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bullet.01.orange")
             .atLocation(sourceToken)
             .stretchTo(target)
@@ -24,6 +26,8 @@ for (let i = 0; i < targetTokens.length; i++) {
             .waitUntilFinished(-800);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bullet.01.orange")
             .atLocation(sourceToken)
             .stretchTo(`impact${i}`, { randomOffset: 0.4, gridUnits: true })

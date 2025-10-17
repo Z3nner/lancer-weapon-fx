@@ -8,6 +8,8 @@ await Sequencer.Preloader.preloadForClients([
 new Sequence()
 
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("modules/lancer-weapon-fx/advisories/SystemTrauma.svg")
         .attachTo(sourceToken, { align: "bottom-left", edge: "inner" })
         .animateProperty("sprite", "position.y", { from: 0, to: 1, duration: 3500, gridUnits: true, fromEnd: true })
@@ -20,6 +22,8 @@ new Sequence()
         .fadeOut(800, { delay: -1200 })
 
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.static_electricity.03.blue")
         .atLocation(sourceToken)
         .scaleToObject(1.1)

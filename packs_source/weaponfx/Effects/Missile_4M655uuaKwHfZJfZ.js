@@ -21,8 +21,23 @@ sequence
         .file("modules/lancer-weapon-fx/soundfx/Missile_Travel.ogg")
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
         .timeRange(700, 2000);
-sequence.effect().file("jb2a.pack_hound_missile").atLocation(sourceToken).stretchTo(target).waitUntilFinished(-3200);
-sequence.effect().file("jb2a.explosion.01.orange").atLocation(target).scale(1.2).zIndex(1).waitUntilFinished(-1300);
+sequence
+    .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+        .file("jb2a.pack_hound_missile")
+        .atLocation(sourceToken)
+        .stretchTo(target)
+        .waitUntilFinished(-3200);
+sequence
+    .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+        .file("jb2a.explosion.01.orange")
+        .atLocation(target)
+        .scale(1.2)
+        .zIndex(1)
+        .waitUntilFinished(-1300);
 
 if (!targetsMissed.has(target.id)) {
     sequence

@@ -17,6 +17,8 @@ for (const target of targetTokens) {
             .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bolt.physical.orange")
             .atLocation(sourceToken)
             .startTime(500)
@@ -25,6 +27,8 @@ for (const target of targetTokens) {
             .name("bolt")
             .waitUntilFinished(-400)
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.explosion.01.orange")
             .atLocation("bolt");
 

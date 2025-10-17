@@ -31,8 +31,10 @@ sequence
         .repeats(3, 150);
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.bullet.01.orange")
-        .filter("ColorMatrix", { hue: 070 })
+        .filter("ColorMatrix", { hue: 70 })
         .filter("Blur", { blur: 8, strength: 10, blurX: 4 })
         .atLocation(sourceToken)
         .stretchTo(pBlast, { randomOffset: 0.6 })
@@ -40,6 +42,8 @@ sequence
         .waitUntilFinished(-800);
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.side_impact.part.smoke.blue")
         .filter("ColorMatrix", { hue: 230, brightness: 0.5 })
         .scale(0.8)
@@ -53,6 +57,8 @@ for (let i = 0; i < targetTokens.length; i++) {
 
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.impact.004.blue")
             .playIf(!targetsMissed.has(target.id))
             .filter("ColorMatrix", { hue: 235, brightness: 0.5 })
@@ -62,6 +68,8 @@ for (let i = 0; i < targetTokens.length; i++) {
             .repeats(3, 100);
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.zoning.inward.circle.loop")
             .playIf(!targetsMissed.has(target.id))
             .scale(0.4)

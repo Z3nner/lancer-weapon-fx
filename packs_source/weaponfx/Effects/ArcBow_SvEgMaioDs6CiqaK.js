@@ -36,6 +36,8 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
         if (!targetsMissed.has(t.id)) {
             sequence
                 .effect()
+                    .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                    .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                     .file("jb2a.chain_lightning.secondary.blue")
                     .atLocation(farthest)
                     .stretchTo(t, { randomOffset: 0.5 })
@@ -67,11 +69,15 @@ sequence
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.arrow.physical.blue")
         .atLocation(sourceToken)
         .stretchTo(farthest)
         .waitUntilFinished(-1000)
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.chain_lightning.primary.blue")
         .atLocation(sourceToken)
         .stretchTo(farthest)

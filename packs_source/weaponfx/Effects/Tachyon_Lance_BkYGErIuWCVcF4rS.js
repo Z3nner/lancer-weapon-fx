@@ -17,6 +17,8 @@ for (const target of targetTokens) {
 
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.impact.orange.0")
             .atLocation(target, { randomOffset: 0.7 }, { gridUnits: true })
             .rotateTowards(sourceToken)
