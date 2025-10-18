@@ -4,7 +4,7 @@ const findFarthestTargetOfGroup = function (targetTokens) {
     let farthestToken = null;
     let farthestTokenDistance = 0;
     targetTokens.forEach(t => {
-        let distance = canvas.grid.measureDistance(sourceToken, t);
+        let distance = canvas.grid.measurePath([sourceToken, t]).distance;
         if (distance > farthestTokenDistance) {
             farthestToken = t;
             farthestTokenDistance = distance;
@@ -26,6 +26,8 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bullet.Snipe.blue")
             .filter("ColorMatrix", { hue: 60 })
             .filter("Glow", { distance: 3 })

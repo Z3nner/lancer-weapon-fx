@@ -4,7 +4,7 @@ const findFarthestTargetOfGroup = function (targetTokens) {
     let farthestToken = null;
     let farthestTokenDistance = 0;
     targetTokens.forEach(t => {
-        let distance = canvas.grid.measureDistance(sourceToken, t);
+        let distance = canvas.grid.measurePath([sourceToken, t]).distance;
         if (distance > farthestTokenDistance) {
             farthestToken = t;
             farthestTokenDistance = distance;
@@ -19,10 +19,10 @@ const farthest = findFarthestTargetOfGroup(targetTokens);
 function findNearestTargetOfGroup(targetTokens) {
     let nearestToken = null;
     let nearestTokenDistance = Infinity;
-    targetTokens.forEach(n => {
-        let distance = canvas.grid.measureDistance(sourceToken, n);
+    targetTokens.forEach(t => {
+        let distance = canvas.grid.measurePath([sourceToken, t]).distance;
         if (distance < nearestTokenDistance) {
-            nearestToken = n;
+            nearestToken = t;
             nearestTokenDistance = distance;
         }
     });
@@ -36,6 +36,8 @@ const repeatImpactAnimationForEachTarget = function (sequence, targets) {
         if (!targetsMissed.has(t.id)) {
             sequence
                 .effect()
+                    .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                    .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                     .file("jb2a.chain_lightning.secondary.blue")
                     .atLocation(farthest)
                     .stretchTo(t, { randomOffset: 0.5 })
@@ -67,11 +69,15 @@ sequence
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5));
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.arrow.physical.blue")
         .atLocation(sourceToken)
         .stretchTo(farthest)
         .waitUntilFinished(-1000)
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.chain_lightning.primary.blue")
         .atLocation(sourceToken)
         .stretchTo(farthest)

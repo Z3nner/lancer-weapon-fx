@@ -21,6 +21,8 @@ for (const target of targetTokens) {
             .repeats(2, 225)
 
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.lasershot.green")
             .atLocation(sourceToken)
             .stretchTo(target)
@@ -30,6 +32,8 @@ for (const target of targetTokens) {
     if (!targetsMissed.has(target.id)) {
         sequence
             .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                 .file("jb2a.impact.orange.0")
                 .atLocation(target)
                 .rotateTowards(sourceToken)

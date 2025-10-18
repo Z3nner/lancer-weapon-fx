@@ -1,7 +1,7 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 await Sequencer.Preloader.preloadForClients([
-    "jb2a.melee_attack.03.trail.maul.01",
+    "jb2a.melee_attack.03.maul.01",
     "modules/lancer-weapon-fx/soundfx/Axe_swing.ogg",
     "modules/lancer-weapon-fx/soundfx/HammerImpact.ogg",
     "jb2a.impact.ground_crack.orange.01",
@@ -12,7 +12,9 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     sequence
         .effect()
-            .file("jb2a.melee_attack.03.trail.maul.01")
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+            .file("jb2a.melee_attack.03.maul.01")
             .filter("Glow", {
             color: 0x18f014,
             innerStrength: 1.5,
@@ -38,6 +40,8 @@ for (const target of targetTokens) {
                 .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.9));
         sequence
             .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                 .file("jb2a.impact.ground_crack.orange.01")
                 .tint("#18f014")
                 .atLocation(target)

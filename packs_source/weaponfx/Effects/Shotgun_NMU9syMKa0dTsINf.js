@@ -28,6 +28,8 @@ for (const target of targetTokens) {
     }
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.bullet.01.orange")
             .atLocation(sourceToken)
             .scale(0.9)

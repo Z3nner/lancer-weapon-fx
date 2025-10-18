@@ -17,6 +17,8 @@ for (const target of targetTokens) {
 
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.magic_missile.purple")
             .filter("ColorMatrix", { hue: 220 })
             .atLocation(sourceToken)

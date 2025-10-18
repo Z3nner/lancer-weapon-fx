@@ -1,7 +1,7 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 await Sequencer.Preloader.preloadForClients([
-    "jb2a.melee_attack.03.trail.greatsword",
+    "jb2a.melee_attack.03.greatsword",
     "modules/lancer-weapon-fx/soundfx/bladeswing.ogg",
     "modules/lancer-weapon-fx/soundfx/bladehit.ogg",
     "jb2a.impact.blue",
@@ -12,7 +12,9 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     sequence
         .effect()
-            .file("jb2a.melee_attack.03.trail.greatsword")
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+            .file("jb2a.melee_attack.03.greatsword")
             .tint("#080303")
             .filter("Glow", { color: 0x8f0f0f })
             .scaleToObject(4.5)
@@ -34,7 +36,14 @@ for (const target of targetTokens) {
                 .file("modules/lancer-weapon-fx/soundfx/bladehit.ogg")
                 .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
 
-        sequence.effect().file("jb2a.impact.blue").scaleToObject(2).atLocation(target).waitUntilFinished(-1500);
+        sequence
+            .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
+                .file("jb2a.impact.blue")
+                .scaleToObject(2)
+                .atLocation(target)
+                .waitUntilFinished(-1500);
     }
 }
 sequence.play();

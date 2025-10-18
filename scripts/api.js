@@ -1,6 +1,6 @@
 import { euclideanDistance, getMacroVariables } from "./utils.js";
 import LloydsAlgorithm from "./lloydsAlgorithm.js";
-import { SETTING_VOLUME } from "./settings.js";
+import { SETTING_IS_IGNORE_FOG_OF_WAR, SETTING_IS_IGNORE_LIGHTING_COLORATION, SETTING_VOLUME } from "./settings.js";
 import { MODULE_ID } from "./consts.js";
 
 /**
@@ -9,6 +9,14 @@ import { MODULE_ID } from "./consts.js";
 class ModuleApi {
     static getEffectVolume(volume) {
         return volume * game.settings.get(MODULE_ID, SETTING_VOLUME);
+    }
+
+    static isEffectIgnoreLightingColoration() {
+        return !!game.settings.get(MODULE_ID, SETTING_IS_IGNORE_LIGHTING_COLORATION);
+    }
+
+    static isEffectIgnoreFogOfWar() {
+        return !!game.settings.get(MODULE_ID, SETTING_IS_IGNORE_FOG_OF_WAR);
     }
 
     static getTargetLocationsFromTokenGroup(targetTokens, numGroups) {

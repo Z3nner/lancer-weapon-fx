@@ -13,6 +13,8 @@ let sequence = new Sequence();
 for (const target of targetTokens) {
     sequence
         .effect()
+            .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+            .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
             .file("jb2a.divine_smite.target.blueyellow")
             .scale(0.9)
             .tint("#8c0353")
@@ -36,6 +38,8 @@ for (const target of targetTokens) {
                 .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.7));
         sequence
             .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                 .file("jb2a.extras.tmfx.outpulse.circle.01.normal")
                 .atLocation(target, { randomOffset: 0.7, gridUnits: true })
                 .scaleToObject(1.2)
@@ -48,6 +52,8 @@ for (const target of targetTokens) {
 
         sequence
             .effect()
+                .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+                .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
                 .file("jb2a.impact.001")
                 .scaleToObject(1.2)
                 .tint("#8c0353")

@@ -22,6 +22,8 @@ let sequence = new Sequence()
         .volume(game.modules.get("lancer-weapon-fx").api.getEffectVolume(0.5))
 
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.bullet.01.orange")
         .atLocation(sourceToken)
         .stretchTo(target)
@@ -30,6 +32,8 @@ let sequence = new Sequence()
 
 sequence
     .effect()
+        .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
+        .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.fireball.explosion.orange")
         .atLocation(target)
         .zIndex(1)

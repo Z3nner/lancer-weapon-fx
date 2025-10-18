@@ -13,12 +13,22 @@
     const NAMES_BLOCKLIST = new Set([]);
 
     const NAMES_NO_MISS = new Set([
+        "Critical Reactor Failure",
+        "Crushing Hit",
+        "Destabilized Power Plant",
+        "Direct Hit 1",
+        "Direct Hit 2",
+        "Emergency Shunt",
         "Flechette Launcher",
-        "Flamethrower",
+        "Glancing Blow",
+        "Irreversible Meltdown",
         "LockOn",
-        "Plasma Thrower",
-        "Plasma Torch",
+        "Meltdown",
+        "Overcharge",
+        "Power Failure",
+        "Pre System Trauma",
         "Stabilize",
+        "System Trauma",
     ]);
 
     // ---
