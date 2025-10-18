@@ -9,8 +9,7 @@ await Sequencer.Preloader.preloadForClients([
 
 let sequence = new Sequence();
 
-let gridsize = canvas.grid.grid.options.dimensions.size;
-let gridscale = gridsize / 100;
+let gridscale = canvas.grid.size / 100;
 
 for (const target of targetTokens) {
     sequence
