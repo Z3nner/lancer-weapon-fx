@@ -34,7 +34,7 @@ sequence
         .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.throwable.launch.missile")
         .scale(0.7)
-        .from(sourceToken)
+        .atLocation(sourceToken)
         .stretchTo(pBlast)
         .waitUntilFinished(-200)
     .effect()

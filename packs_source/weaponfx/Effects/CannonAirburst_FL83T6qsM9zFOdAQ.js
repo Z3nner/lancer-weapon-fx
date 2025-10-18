@@ -28,7 +28,7 @@ sequence
         .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
         .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
         .file("jb2a.bullet.01.orange")
-        .from(sourceToken)
+        .atLocation(sourceToken)
         .stretchTo(pBlast)
         .waitUntilFinished(-200)
     .effect()
