@@ -1,7 +1,7 @@
 const { targetsMissed, targetTokens, sourceToken } = game.modules.get("lancer-weapon-fx").api.getMacroVariables(this);
 
 await Sequencer.Preloader.preloadForClients([
-    "jb2a.melee_attack.03.trail.greatsword",
+    "jb2a.melee_attack.03.greatsword",
     "modules/lancer-weapon-fx/soundfx/bladeswing.ogg",
     "modules/lancer-weapon-fx/soundfx/bladehit.ogg",
     "jb2a.impact.blue",
@@ -14,7 +14,7 @@ for (const target of targetTokens) {
         .effect()
             .xray(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreFogOfWar())
             .aboveInterface(game.modules.get("lancer-weapon-fx").api.isEffectIgnoreLightingColoration())
-            .file("jb2a.melee_attack.03.trail.greatsword")
+            .file("jb2a.melee_attack.03.greatsword")
             .tint("#080303")
             .filter("Glow", { color: 0x8f0f0f })
             .scaleToObject(4.5)
