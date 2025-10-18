@@ -4,7 +4,7 @@ const findFarthestTargetOfGroup = function (targetTokens) {
     let farthestToken = null;
     let farthestTokenDistance = 0;
     targetTokens.forEach(t => {
-        let distance = canvas.grid.measureDistance(sourceToken, t);
+        let distance = canvas.grid.measurePath([sourceToken, t]).distance;
         if (distance > farthestTokenDistance) {
             farthestToken = t;
             farthestTokenDistance = distance;
@@ -19,10 +19,10 @@ const farthest = findFarthestTargetOfGroup(targetTokens);
 function findNearestTargetOfGroup(targetTokens) {
     let nearestToken = null;
     let nearestTokenDistance = Infinity;
-    targetTokens.forEach(n => {
-        let distance = canvas.grid.measureDistance(sourceToken, n);
+    targetTokens.forEach(t => {
+        let distance = canvas.grid.measurePath([sourceToken, t]).distance;
         if (distance < nearestTokenDistance) {
-            nearestToken = n;
+            nearestToken = t;
             nearestTokenDistance = distance;
         }
     });
