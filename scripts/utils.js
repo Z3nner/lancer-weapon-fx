@@ -49,8 +49,8 @@ export function getMacroVariables(macro = null, token = null) {
     const { sourceToken, targetTokens, targetsMissed } = flowInfo;
     return {
         sourceToken: sourceToken || sourceTokenFallback,
-        targetTokens: targetTokens || targetsFallback,
-        targetsMissed,
+        targetTokens: targetTokens && targetTokens.length > 0 ? targetTokens : targetsFallback,
+        targetsMissed: targetsMissed || new Set(),
     };
 }
 

@@ -11,6 +11,17 @@ const buildPath = getBuildPath(packageJson.id);
 
 console.log(`Bundling to ${buildPath}`);
 
+let isSamePath = false;
+try {
+    const realSource = fs.realpathSync(process.cwd());
+    const realDest = fs.realpathSync(buildPath);
+    if (realSource.toLowerCase() === realDest.toLowerCase()) {
+        isSamePath = true;
+    }
+} catch (e) {
+    // Path might not exist yet
+}
+
 const _FILES_COPY_AND_WATCH = ["module.json"];
 const _FILES_COPY_ONCE = [];
 
@@ -37,20 +48,28 @@ export default {
         file: path.join(buildPath, "WeaponFX.bundle.js"),
     },
     plugins: [
-        copy({
-            targets: [
-                ..._FILES_COPY_AND_WATCH.map(fname => ({ src: fname, dest: buildPath })),
-                ..._DIRS_COPY_AND_WATCH.map(dir => ({ src: `${dir}/*`, dest: path.join(buildPath, dir) })),
-            ],
-        }),
-        copy({
-            copyOnce: true,
-            copySync: true,
-            targets: [
-                ..._FILES_COPY_ONCE.map(fname => ({ src: fname, dest: buildPath })),
-                ..._DIRS_COPY_ONCE.map(dir => ({ src: `${dir}/*`, dest: path.join(buildPath, dir) })),
-            ],
-        }),
+        ...[
+            isSamePath
+                ? null
+                : copy({
+                      targets: [
+                          ..._FILES_COPY_AND_WATCH.map(fname => ({ src: fname, dest: buildPath })),
+                          ..._DIRS_COPY_AND_WATCH.map(dir => ({ src: `${dir}/*`, dest: path.join(buildPath, dir) })),
+                      ],
+                  }),
+        ].filter(Boolean),
+        ...[
+            isSamePath
+                ? null
+                : copy({
+                      copyOnce: true,
+                      copySync: true,
+                      targets: [
+                          ..._FILES_COPY_ONCE.map(fname => ({ src: fname, dest: buildPath })),
+                          ..._DIRS_COPY_ONCE.map(dir => ({ src: `${dir}/*`, dest: path.join(buildPath, dir) })),
+                      ],
+                  }),
+        ].filter(Boolean),
         ...[
             process.env.NODE_ENV === "production"
                 ? null

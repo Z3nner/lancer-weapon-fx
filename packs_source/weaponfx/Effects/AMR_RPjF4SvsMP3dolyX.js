@@ -49,4 +49,5 @@ for (const target of targetTokens) {
                 .waitUntilFinished();
     }
 }
+
 sequence.play();

@@ -95,7 +95,9 @@ const fallbackActionIdentifier_StructureFlow = flow => {
     // Monstrosities have a unique structure table
     if (
         flow.state.actor?.is_npc() &&
-        flow.state.actor.itemTypes?.npc_feature?.some(item => item.system.lid === "npcf_unique_physiology_monstrosity")
+        flow.state.actor.itemTypes?.npc_feature?.some(item =>
+            ["npcf_unique_physiology_monstrosity", "feature_unique_physiology"].includes(item.system.lid),
+        )
     ) {
         switch (flow.state.data.title) {
             case game.i18n.localize("lancer.tables.structureMonstrosity.title.fatal"):

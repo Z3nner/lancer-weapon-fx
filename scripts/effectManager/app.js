@@ -111,15 +111,16 @@ export class EffectManagerApp extends FormApplication {
 
     /** @override */
     async _renderInner(...args) {
-        const $html = await super._renderInner(...args);
+        const html = await super._renderInner(...args);
+        const el = html instanceof jQuery ? html[0] : html;
 
         this._iptsTransient = {};
-        $html.find(`[data-name-transient]`).each((i, ipt) => {
+        el.querySelectorAll("[data-name-transient]").forEach(ipt => {
             const nameTransient = ipt.getAttribute("data-name-transient");
             foundry.utils.setProperty(this._iptsTransient, nameTransient, ipt);
         });
 
-        return $html;
+        return html;
     }
 
     /* -------------------------------------------- */
@@ -308,24 +309,89 @@ export class EffectManagerApp extends FormApplication {
     /* -------------------------------------------- */
 
     /** @override */
-    activateListeners($html) {
-        super.activateListeners($html);
+    activateListeners(html) {
+        super.activateListeners(html);
+        const el = html instanceof jQuery ? html[0] : html;
 
-        $html.on("click", `[name="btn-effect-create"]`, this._handleClick_createEffect.bind(this));
-        $html.on("click", `[name="btn-folder-create"]`, this._handleClick_createFolder.bind(this));
-        $html.on("click", `[name="btn-export"]`, this._handleClick_export.bind(this));
-        $html.on("click", `[name="btn-import"]`, this._handleClick_import.bind(this));
-        $html.on("click", `[name="btn-start-tour"]`, this._handleClick_startTour.bind(this));
-        $html.on("click", `[name="btn-selected-delete"]`, this._handleClick_deleteSelected.bind(this));
+        el.addEventListener("click", evt => {
+            const target = evt.target;
 
-        $html.on("click", `[name="btn-folder-expand-collapse"]`, this._handleClick_folderExpandCollapse.bind(this));
-        $html.on("click", `[name="btn-folder-create-effect"]`, this._handleClick_folderCreateEffect.bind(this));
-        $html.on("click", `[data-name="btn-folder-actor-unlink"]`, this._handleClick_folderActorUnlink.bind(this));
-        $html.on("click", `[name="btn-folder-delete"]`, this._handleClick_folderDelete.bind(this));
+            const btnEffectCreate = target.closest('[name="btn-effect-create"]');
+            if (btnEffectCreate) {
+                this._handleClick_createEffect(evt);
+                return;
+            }
 
-        $html.on("click", `[name="btn-effect-play"]`, this._handleClick_playPreview.bind(this));
+            const btnFolderCreate = target.closest('[name="btn-folder-create"]');
+            if (btnFolderCreate) {
+                this._handleClick_createFolder(evt);
+                return;
+            }
 
-        $html.on("change", `[data-name-proxy]`, this._handleChange_inputProxy.bind(this));
+            const btnExport = target.closest('[name="btn-export"]');
+            if (btnExport) {
+                this._handleClick_export(evt);
+                return;
+            }
+
+            const btnImport = target.closest('[name="btn-import"]');
+            if (btnImport) {
+                this._handleClick_import(evt);
+                return;
+            }
+
+            const btnStartTour = target.closest('[name="btn-start-tour"]');
+            if (btnStartTour) {
+                this._handleClick_startTour(evt);
+                return;
+            }
+
+            const btnSelectedDelete = target.closest('[name="btn-selected-delete"]');
+            if (btnSelectedDelete) {
+                this._handleClick_deleteSelected(evt);
+                return;
+            }
+
+            const btnFolderExpandCollapse = target.closest('[name="btn-folder-expand-collapse"]');
+            if (btnFolderExpandCollapse) {
+                this._handleClick_folderExpandCollapse(evt);
+                return;
+            }
+
+            const btnFolderCreateEffect = target.closest('[name="btn-folder-create-effect"]');
+            if (btnFolderCreateEffect) {
+                this._handleClick_folderCreateEffect(evt);
+                return;
+            }
+
+            const btnFolderActorUnlink = target.closest('[data-name="btn-folder-actor-unlink"]');
+            if (btnFolderActorUnlink) {
+                this._handleClick_folderActorUnlink(evt);
+                return;
+            }
+
+            const btnFolderDelete = target.closest('[name="btn-folder-delete"]');
+            if (btnFolderDelete) {
+                this._handleClick_folderDelete(evt);
+                return;
+            }
+
+            const btnEffectPlay = target.closest('[name="btn-effect-play"]');
+            if (btnEffectPlay) {
+                this._handleClick_playPreview(evt);
+                return;
+            }
+        });
+
+        el.addEventListener("change", evt => {
+            const target = evt.target;
+
+            const dataNameProxy = target.closest("[data-name-proxy]");
+            if (dataNameProxy) {
+                this._handleChange_inputProxy(evt);
+                return;
+            }
+        });
 
         this._iptsTransient["select-all"].addEventListener("change", this._handleChange_cbSelectAll.bind(this));
         Object.entries(this._iptsTransient["effects"] || {}).forEach(([, nameTo]) => {
@@ -402,7 +468,8 @@ export class EffectManagerApp extends FormApplication {
                         icon: `<i class="fas fa-file-import"></i>`,
                         label: game.i18n.localize(`${MODULE_ID}.effectManager.app.Import`),
                         callback: async html => {
-                            const form = html.find("form")[0];
+                            const el = html instanceof jQuery ? html[0] : html;
+                            const form = el.querySelector("form");
                             if (!form.data.files.length)
                                 return ui.notifications.error("You did not upload a data file!");
                             const txt = await readTextFromFile(form.data.files[0]);
