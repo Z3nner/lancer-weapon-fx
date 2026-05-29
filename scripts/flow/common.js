@@ -31,7 +31,12 @@ export async function processFlowInfo(flowInfo) {
         return;
     }
 
-    const temp_macro = new Macro(macro.toObject());
+    const MacroCls = globalThis.Macro ?? foundry.documents?.Macro;
+    if (!MacroCls) {
+        console.error("Lancer Weapon FX | Macro class not available");
+        return;
+    }
+    const temp_macro = new MacroCls(macro.toObject());
 
     (temp_macro.flags[MODULE_ID] ||= {}).flowInfo = flowInfo;
     temp_macro.ownership.default = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
