@@ -43,14 +43,16 @@ export function getMacroVariables(macro = null, token = null) {
             targetsMissed: game.settings.get(MODULE_ID, SETTING_DEBUG_IS_DEFAULT_MISS)
                 ? new Set(targetsFallback.map(target => target.id))
                 : new Set(),
+            targetsCrit: new Set(),
         };
     }
 
-    const { sourceToken, targetTokens, targetsMissed } = flowInfo;
+    const { sourceToken, targetTokens, targetsMissed, targetsCrit } = flowInfo;
     return {
         sourceToken: sourceToken || sourceTokenFallback,
         targetTokens: targetTokens || targetsFallback,
         targetsMissed,
+        targetsCrit,
     };
 }
 

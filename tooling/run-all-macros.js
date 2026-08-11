@@ -43,6 +43,7 @@
             sourceToken: tokenSource,
             targetsMissed: isMiss ? new Set(tokenTargets.map(token => token.id)) : new Set(),
             targetTokens: tokenTargets,
+            targetsCrit: new Set(),
         };
     };
 

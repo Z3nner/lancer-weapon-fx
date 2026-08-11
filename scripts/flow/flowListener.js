@@ -36,6 +36,12 @@ const _pGetFlowInfo = async (state, { fallbackActionIdentifier = null } = {}) =>
                 .map(({ target, hit_result }) => (hit_result?.target ?? target?.target)?.id)
                 .filter(Boolean),
         ),
+        targetsCrit: new Set(
+            zippedTargetInfo
+                .filter(({ hit_result }) => hit_result?.crit)
+                .map(({ target, hit_result }) => (hit_result?.target ?? target?.target)?.id)
+                .filter(Boolean),
+        ),
     });
 };
 
